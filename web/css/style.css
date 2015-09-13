@@ -2081,7 +2081,7 @@ tbody {
 ---------------------------------- */
 .btn {
 	padding: 10px 12px;
-	font-size: 14px;
+	font-size: 12px;
 	line-height: 1.42857143;
 	min-width: 160px;
 	text-align: center;
@@ -2098,6 +2098,11 @@ tbody {
 .btn:active {
 	outline: none;
 	box-shadow: none;
+}
+.btn-login {
+    min-width: 80px;
+    font-size: 14px;
+    font-weight: 700;
 }
 .btn.btn-lg {
 	padding: 17px 12px;
@@ -3526,7 +3531,7 @@ a.overlay.small i {
 	text-transform: uppercase;
 	font-size: 14px;
 	font-weight: 700;
-	padding: 12px 20px 12px 19px;
+	padding: 20px 10px 12px 10px;
 	z-index: 102;
 	border: 1px solid transparent;
 	bottom: -1px;

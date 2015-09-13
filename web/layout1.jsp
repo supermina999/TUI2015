@@ -82,7 +82,7 @@
 
 								<!-- logo -->
 								<div class="logo">
-									<a href="index.jsp"><img id="logo" src="images/logo_red.png" alt="iDea"></a>
+									<a href="index.jsp"><img id="logo" src="images/logo.png" alt="iDea"></a>
 								</div>
 
 							</div>
@@ -116,7 +116,7 @@
 
 											<!-- Collect the nav links, forms, and other content for toggling -->
 											<div class="collapse navbar-collapse" id="navbar-collapse-1">
-												<ul class="nav navbar-nav navbar-right">
+												<ul class="nav navbar-nav">
 													<li <% if (tab == 1) { %>class="active" <% } %>>
 														<a href="index.jsp">Главная</a>
 													</li>
@@ -135,6 +135,44 @@
                                                                                                         <li <% if (tab == 6) { %>class="active" <% } %>>
 														<a href="reports.jsp">Отчёты</a>
 													</li>
+                                                                                                        <li>
+                                                                                                            <div class="btn-group dropdown">
+                                                                                                                <button type="button" class="btn dropdown-toggle btn-login btn-default" data-toggle="dropdown"><i class="fa fa-user"></i> Вход</button>
+                                                                                                                <ul class="dropdown-menu dropdown-menu-right dropdown-animation">
+                                                                                                                        <li>
+                                                                                                                                <div class="form-block center-block">
+                                                                                                                                    <center><h2 class="title">Авторизация</h2></center>
+                                                                                                                                    <hr>
+                                                                                                                                    <form class="form-horizontal">
+                                                                                                                                            <div class="form-group has-feedback">
+                                                                                                                                                    <label class="col-sm-3 control-label">Логин</label>
+                                                                                                                                                    <div class="col-sm-8">
+                                                                                                                                                            <input type="text" class="form-control" id="login" required>
+                                                                                                                                                            <i class="fa fa-user form-control-feedback"></i>
+                                                                                                                                                    </div>
+                                                                                                                                            </div>
+                                                                                                                                            <div class="form-group has-feedback">
+                                                                                                                                                    <label class="col-sm-3 control-label">Пароль</label>
+                                                                                                                                                    <div class="col-sm-8">
+                                                                                                                                                            <input type="password" class="form-control" id="password"required>
+                                                                                                                                                            <i class="fa fa-lock form-control-feedback"></i>
+                                                                                                                                                    </div>
+                                                                                                                                            </div>
+                                                                                                                                            <div class="form-group">
+                                                                                                                                                    <div class="col-sm-offset-3 col-sm-8">
+                                                                                                                                                            <div class="checkbox">
+                                                                                                                                                                    <label>
+                                                                                                                                                                            <input type="checkbox"> Запомнить меня
+                                                                                                                                                                    </label>
+                                                                                                                                                            </div>											
+                                                                                                                                                            <button type="submit" class="btn btn-group btn-default btn-block">Вход</button>
+                                                                                                                                                    </div>
+                                                                                                                                            </div>
+                                                                                                                                    </form>
+                                                                                                                        </li>
+                                                                                                                </ul>
+                                                                                                            </div>
+                                                                                                        </li>
 												</ul>
 											</div>
 
