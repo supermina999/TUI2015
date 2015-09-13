@@ -1,4 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 			<!-- footer start (Add "light" class to #footer in order to enable light footer) -->
 			<!-- ================ -->
 			<footer id="footer">
