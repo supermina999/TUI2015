@@ -1,9 +1,3 @@
-<%-- 
-    Document   : index
-    Created on : 13.09.2015, 10:15:19
-    Author     : artem
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@include file="layout1.jsp"%>
 			<!-- banner start -->

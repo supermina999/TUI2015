@@ -1,9 +1,3 @@
-<%-- 
-    Document   : layout1
-    Created on : 13.09.2015, 9:55:44
-    Author     : artem
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->

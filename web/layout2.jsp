@@ -1,11 +1,4 @@
-<%-- 
-    Document   : layout2
-    Created on : 13.09.2015, 9:56:36
-    Author     : artem
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
 			<!-- footer start (Add "light" class to #footer in order to enable light footer) -->
 			<!-- ================ -->
 			<footer id="footer">
