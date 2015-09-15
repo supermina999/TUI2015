@@ -1,6 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<% int minpermission = 8; 
-   int tab = 6; %>
+<% int minPermission = 8; 
+   int tab = 3; %>
 <%@include file = "layout1.jsp"%>
 <br>
     <div class="form-block center-block">
