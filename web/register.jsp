@@ -29,6 +29,21 @@
                 </div> <br>
                 
                 <div class="form-group has-feedback">
+                    <label class="col-sm-3 control-label">Организация</label>
+                    <div class="col-sm-8">
+                        <select class="form-control" style="width: 100%;">
+                                    <option>Выберите организацию</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                           </select>
+                    </div>
+                </div>
+                
+                <br>
+                
+                <div class="form-group has-feedback">
                         <label class="col-sm-3 control-label">Фамилия </label>
                         <div class="col-sm-8">
                                 <input type="text" class="form-control" id="surname" required>

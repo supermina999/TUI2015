@@ -49,6 +49,8 @@
                                 </tr>
                         </tbody>
                         </table>
+                    <a href="addOrganization.jsp" class="btn btn-default btn-lg">Добавить организацию </a>
+                    <a href="register.jsp" class="btn btn-default btn-lg">Добавить волонтера </a>
                 </div>
         </center>
 <%@include file = "layout2.jsp"%>

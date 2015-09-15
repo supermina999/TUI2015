@@ -4,34 +4,53 @@
 <%@include file = "layout1.jsp"%>
 <br>
     <div class="form-block center-block">
-        <center><h1 class="title">Добавить новый ресурс</h1></center>
+        <center><h2 class="title">Добавить ресурс</h2></center>
         <hr>
-            <form role="form">
-                <label class="col-sm-3 control-label">Наименование</label>
-		<select class="form-control">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-		</select>
-            <br>
-            </form>
-            <form role="form">
+        <form class="form-horizontal">
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Количество</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1">
-		</div>
-		<div class="form-group">
-                    <label for="exampleInputPassword1">Город</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1">
-		</div>
+                        <label class="col-sm-3 control-label">Наименование</label>
+                        <div class="col-sm-8">
+                                <input type="text" class="form-control" id="name" required>
+                        </div>
+                </div>
                 <div class="form-group">
-                    <label for="exampleInputPassword1">Склад</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1">
-		</div>
-		<button type="submit" class="btn btn-default">Добавить</button>
-            </form>
-    </div>
-          
+                        <label class="col-sm-3 control-label">Количество</label>
+                        <div class="col-sm-8">
+                                <input type="text" class="form-control" id="number" required>
+                        </div>
+                </div>
+                <div class="form-group has-feedback">
+                    <label class="col-sm-3 control-label">Город</label>
+                    <div class="col-sm-8">
+                        <select class="form-control" style="width: 100%;">
+                                    <option>Выберите город</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                           </select>
+                    </div>
+                </div>
+                <div class="form-group has-feedback">
+                    <label class="col-sm-3 control-label">Склад</label>
+                    <div class="col-sm-8">
+                        <select class="form-control" style="width: 100%;">
+                                    <option>Выберите склад</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                           </select>
+                    </div>
+                </div>
+            
+                <div class="form-group">
+                        <div class="col-sm-offset-3 col-sm-8">					
+                                <button type="submit" class="btn btn-group btn-default btn-block">Готово</button>
+                        </div>
+                </div>
+        </form>
+</div>
+
+
 <%@include file = "layout2.jsp"%>
