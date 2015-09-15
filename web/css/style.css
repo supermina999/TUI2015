@@ -2099,11 +2099,7 @@ tbody {
 	outline: none;
 	box-shadow: none;
 }
-.btn-login {
-    min-width: 80px;
-    font-size: 14px;
-    font-weight: 700;
-}
+
 .btn.btn-lg {
 	padding: 17px 12px;
 	font-size: 18px;
