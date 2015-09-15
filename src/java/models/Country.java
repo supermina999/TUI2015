@@ -12,29 +12,42 @@ import java.sql.SQLException;
  * @author roma
  */
 public class Country extends DBModel {
-    public Country(DBEntry[] entryes) {
+    static protected String tableName;
+    static protected DBEntry[] stdEntryes;
+    protected Country(DBEntry[] entryes) {
         super(entryes);
+        
+    }
+    public Country() {
+        super();
         
     }
     
     public static void init()
     {
-        Person.tableName = "country";
-        Person.stdEntryes = new DBEntry[2];
-        Person.stdEntryes[0] = new DBEntry();
-        Person.stdEntryes[0].name = "id";
-        Person.stdEntryes[0].type = EntryType.Int;
-        Person.stdEntryes[1] = new DBEntry();
-        Person.stdEntryes[1].name = "name";
-        Person.stdEntryes[1].type = EntryType.String;
+        Country.tableName = "country";
+        Country.stdEntryes = new DBEntry[2];
+        Country.stdEntryes[0] = new DBEntry();
+        Country.stdEntryes[0].name = "id";
+        Country.stdEntryes[0].type = EntryType.Int;
+        Country.stdEntryes[1] = new DBEntry();
+        Country.stdEntryes[1].name = "name";
+        Country.stdEntryes[1].type = EntryType.String;
     }
      public static Country getOne( DBEntry[] entryes) throws ClassNotFoundException, SQLException
     {
-        return (Country)Country.getOne(entryes, 1);
+        DBModel.tableName = Country.tableName;
+        DBModel.stdEntryes = Country.stdEntryes;
+        return new Country(Country.getOne(entryes, 1).entryes);
     }
     public static Country[] getAll( DBEntry[] entryes) throws ClassNotFoundException, SQLException
     {
-        return (Country[])Country.getAll(entryes, 1);
+        DBModel.tableName = Country.tableName;
+        DBModel.stdEntryes = Country.stdEntryes;
+        DBModel[] ans1 = Country.getAll(entryes, 1);
+        Country[] ans2 = new Country[ans1.length];
+        for(int i=0; i<ans1.length; i++) ans2[i]=new Country(ans1[i].entryes);
+        return ans2;
     }
     public int getId()
     {

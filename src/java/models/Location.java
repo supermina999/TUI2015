@@ -12,38 +12,51 @@ import java.sql.SQLException;
  * @author roma
  */
 public class Location extends DBModel {
-    public Location(DBEntry[] entryes) {
+    static protected String tableName;
+    static protected DBEntry[] stdEntryes;
+    protected Location(DBEntry[] entryes) {
         super(entryes);
+        
+    }
+    public Location() {
+        super();
         
     }
     
     public static void init()
     {
-        Person.tableName = "location";
-        Person.stdEntryes = new DBEntry[5];
-        Person.stdEntryes[0] = new DBEntry();
-        Person.stdEntryes[0].name = "id";
-        Person.stdEntryes[0].type = EntryType.Int;
-        Person.stdEntryes[1] = new DBEntry();
-        Person.stdEntryes[1].name = "city_id";
-        Person.stdEntryes[1].type = EntryType.Int;
-        Person.stdEntryes[2] = new DBEntry();
-        Person.stdEntryes[2].name = "address";
-        Person.stdEntryes[2].type = EntryType.String;  
-        Person.stdEntryes[3] = new DBEntry();
-        Person.stdEntryes[3].name = "x_coord";
-        Person.stdEntryes[3].type = EntryType.Int;
-        Person.stdEntryes[4] = new DBEntry();
-        Person.stdEntryes[4].name = "y_coord";
-        Person.stdEntryes[4].type = EntryType.Int;    
+        Location.tableName = "location";
+        Location.stdEntryes = new DBEntry[5];
+        Location.stdEntryes[0] = new DBEntry();
+        Location.stdEntryes[0].name = "id";
+        Location.stdEntryes[0].type = EntryType.Int;
+        Location.stdEntryes[1] = new DBEntry();
+        Location.stdEntryes[1].name = "city_id";
+        Location.stdEntryes[1].type = EntryType.Int;
+        Location.stdEntryes[2] = new DBEntry();
+        Location.stdEntryes[2].name = "address";
+        Location.stdEntryes[2].type = EntryType.String;  
+        Location.stdEntryes[3] = new DBEntry();
+        Location.stdEntryes[3].name = "x_coord";
+        Location.stdEntryes[3].type = EntryType.Int;
+        Location.stdEntryes[4] = new DBEntry();
+        Location.stdEntryes[4].name = "y_coord";
+        Location.stdEntryes[4].type = EntryType.Int;    
     }
-     public static Location getOne( DBEntry[] entryes) throws ClassNotFoundException, SQLException
+    public static Location getOne( DBEntry[] entryes) throws ClassNotFoundException, SQLException
     {
-        return (Location)Location.getOne(entryes, 1);
+        DBModel.tableName = Location.tableName;
+        DBModel.stdEntryes = Location.stdEntryes;
+        return new Location(Location.getOne(entryes, 1).entryes);
     }
     public static Location[] getAll( DBEntry[] entryes) throws ClassNotFoundException, SQLException
     {
-        return (Location[])Location.getAll(entryes, 1);
+        DBModel.tableName = Location.tableName;
+        DBModel.stdEntryes = Location.stdEntryes;
+        DBModel[] ans1 = Location.getAll(entryes, 1);
+        Location[] ans2 = new Location[ans1.length];
+        for(int i=0; i<ans1.length; i++) ans2[i]=new Location(ans1[i].entryes);
+        return ans2;
     }
     public int getId()
     {

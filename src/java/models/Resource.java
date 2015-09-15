@@ -12,32 +12,45 @@ import java.sql.SQLException;
  * @author roma
  */
 public class Resource extends DBModel {
-    public Resource(DBEntry[] entryes) {
+    static protected String tableName;
+    static protected DBEntry[] stdEntryes;
+    protected Resource(DBEntry[] entryes) {
         super(entryes);
+        
+    }
+    public Resource() {
+        super();
         
     }
     
     public static void init()
     {
-        Person.tableName = "resource";
-        Person.stdEntryes = new DBEntry[3];
-        Person.stdEntryes[0] = new DBEntry();
-        Person.stdEntryes[0].name = "id";
-        Person.stdEntryes[0].type = EntryType.Int;
-        Person.stdEntryes[1] = new DBEntry();
-        Person.stdEntryes[1].name = "name";
-        Person.stdEntryes[1].type = EntryType.String;
-        Person.stdEntryes[2] = new DBEntry();
-        Person.stdEntryes[2].name = "weight";
-        Person.stdEntryes[2].type = EntryType.Int;        
+        Resource.tableName = "resource";
+        Resource.stdEntryes = new DBEntry[3];
+        Resource.stdEntryes[0] = new DBEntry();
+        Resource.stdEntryes[0].name = "id";
+        Resource.stdEntryes[0].type = EntryType.Int;
+        Resource.stdEntryes[1] = new DBEntry();
+        Resource.stdEntryes[1].name = "name";
+        Resource.stdEntryes[1].type = EntryType.String;
+        Resource.stdEntryes[2] = new DBEntry();
+        Resource.stdEntryes[2].name = "weight";
+        Resource.stdEntryes[2].type = EntryType.Int;        
     }
      public static Resource getOne( DBEntry[] entryes) throws ClassNotFoundException, SQLException
     {
-        return (Resource)Resource.getOne(entryes, 1);
+        DBModel.tableName = Resource.tableName;
+        DBModel.stdEntryes = Resource.stdEntryes;
+        return new Resource(Resource.getOne(entryes, 1).entryes);
     }
     public static Resource[] getAll( DBEntry[] entryes) throws ClassNotFoundException, SQLException
     {
-        return (Resource[])Resource.getAll(entryes, 1);
+        DBModel.tableName = Resource.tableName;
+        DBModel.stdEntryes = Resource.stdEntryes;
+        DBModel[] ans1 = Resource.getAll(entryes, 1);
+        Resource[] ans2 = new Resource[ans1.length];
+        for(int i=0; i<ans1.length; i++) ans2[i]=new Resource(ans1[i].entryes);
+        return ans2;
     }
     public int getId()
     {

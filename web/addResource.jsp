@@ -1,3 +1,4 @@
+<%@page import="models.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <% int minpermission = 8; 
    int tab = 6; %>

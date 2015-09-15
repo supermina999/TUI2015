@@ -12,32 +12,45 @@ import java.sql.SQLException;
  * @author roma
  */
 public class Stock extends DBModel {
-    public Stock(DBEntry[] entryes) {
+    static protected String tableName;
+    static protected DBEntry[] stdEntryes;
+    protected Stock(DBEntry[] entryes) {
         super(entryes);
+        
+    }
+     public Stock() {
+        super();
         
     }
     
     public static void init()
     {
-        Person.tableName = "stock";
-        Person.stdEntryes = new DBEntry[3];
-        Person.stdEntryes[0] = new DBEntry();
-        Person.stdEntryes[0].name = "id";
-        Person.stdEntryes[0].type = EntryType.Int;
-        Person.stdEntryes[1] = new DBEntry();
-        Person.stdEntryes[1].name = "organization_id";
-        Person.stdEntryes[1].type = EntryType.Int; 
-        Person.stdEntryes[2] = new DBEntry();
-        Person.stdEntryes[2].name = "location_id";
-        Person.stdEntryes[2].type = EntryType.Int;  
+        Stock.tableName = "stock";
+        Stock.stdEntryes = new DBEntry[3];
+        Stock.stdEntryes[0] = new DBEntry();
+        Stock.stdEntryes[0].name = "id";
+        Stock.stdEntryes[0].type = EntryType.Int;
+        Stock.stdEntryes[1] = new DBEntry();
+        Stock.stdEntryes[1].name = "organization_id";
+        Stock.stdEntryes[1].type = EntryType.Int; 
+        Stock.stdEntryes[2] = new DBEntry();
+        Stock.stdEntryes[2].name = "location_id";
+        Stock.stdEntryes[2].type = EntryType.Int;  
     }
      public static Stock getOne( DBEntry[] entryes) throws ClassNotFoundException, SQLException
     {
-        return (Stock)Stock.getOne(entryes, 1);
+        DBModel.tableName = Stock.tableName;
+        DBModel.stdEntryes = Stock.stdEntryes;
+        return new Stock(Stock.getOne(entryes, 1).entryes);
     }
     public static Stock[] getAll( DBEntry[] entryes) throws ClassNotFoundException, SQLException
     {
-        return (Stock[])Stock.getAll(entryes, 1);
+        DBModel.tableName = Stock.tableName;
+        DBModel.stdEntryes = Stock.stdEntryes;
+        DBModel[] ans1 = Stock.getAll(entryes, 1);
+        Stock[] ans2 = new Stock[ans1.length];
+        for(int i=0; i<ans1.length; i++) ans2[i]=new Stock(ans1[i].entryes);
+        return ans2;
     }
     public int getId()
     {

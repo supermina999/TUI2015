@@ -12,29 +12,42 @@ import java.sql.SQLException;
  * @author roma
  */
 public class Station extends DBModel {
-    public Station(DBEntry[] entryes) {
+    static protected String tableName;
+    static protected DBEntry[] stdEntryes;
+    protected Station(DBEntry[] entryes) {
         super(entryes);
+        
+    }
+    public Station() {
+        super();
         
     }
     
     public static void init()
     {
-        Person.tableName = "station";
-        Person.stdEntryes = new DBEntry[2];
-        Person.stdEntryes[0] = new DBEntry();
-        Person.stdEntryes[0].name = "id";
-        Person.stdEntryes[0].type = EntryType.Int;
-        Person.stdEntryes[1] = new DBEntry();
-        Person.stdEntryes[1].name = "location_id";
-        Person.stdEntryes[1].type = EntryType.Int;
+        Station.tableName = "station";
+        Station.stdEntryes = new DBEntry[2];
+        Station.stdEntryes[0] = new DBEntry();
+        Station.stdEntryes[0].name = "id";
+        Station.stdEntryes[0].type = EntryType.Int;
+        Station.stdEntryes[1] = new DBEntry();
+        Station.stdEntryes[1].name = "location_id";
+        Station.stdEntryes[1].type = EntryType.Int;
     }
      public static Station getOne( DBEntry[] entryes) throws ClassNotFoundException, SQLException
     {
-        return (Station)Station.getOne(entryes, 1);
+        DBModel.tableName = Station.tableName;
+        DBModel.stdEntryes = Station.stdEntryes;
+        return new Station(Station.getOne(entryes, 1).entryes);
     }
     public static Station[] getAll( DBEntry[] entryes) throws ClassNotFoundException, SQLException
     {
-        return (Station[])Station.getAll(entryes, 1);
+        DBModel.tableName = Station.tableName;
+        DBModel.stdEntryes = Station.stdEntryes;
+        DBModel[] ans1 = Station.getAll(entryes, 1);
+        Station[] ans2 = new Station[ans1.length];
+        for(int i=0; i<ans1.length; i++) ans2[i]=new Station(ans1[i].entryes);
+        return ans2;
     }
     public int getId()
     {

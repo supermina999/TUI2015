@@ -12,7 +12,13 @@ import java.sql.SQLException;
  * @author roma
  */
 public class Person extends DBModel {
-    public Person(DBEntry[] entryes) {
+    static protected String tableName;
+    static protected DBEntry[] stdEntryes;
+    public Person()
+    {
+        super();
+    }
+    protected Person(DBEntry[] entryes) {
         super(entryes);
         
     }
@@ -61,11 +67,18 @@ public class Person extends DBModel {
     
     public static Person getOne( DBEntry[] entryes) throws ClassNotFoundException, SQLException
     {
-        return (Person)Person.getOne(entryes, 1);
+        DBModel.tableName = Person.tableName;
+        DBModel.stdEntryes = Person.stdEntryes;
+        return new Person(Person.getOne(entryes, 1).entryes);
     }
     public static Person[] getAll( DBEntry[] entryes) throws ClassNotFoundException, SQLException
     {
-        return (Person[])Person.getAll(entryes, 1);
+        DBModel.tableName = Person.tableName;
+        DBModel.stdEntryes = Person.stdEntryes;
+        DBModel[] ans1 = Person.getAll(entryes, 1);
+        Person[] ans2 = new Person[ans1.length];
+        for(int i=0; i<ans1.length; i++) ans2[i]=new Person(ans1[i].entryes);
+        return ans2;
     }
     public int getId()
     {

@@ -12,36 +12,49 @@ import java.sql.SQLException;
  * @author roma
  */
 public class Transport extends DBModel {
-    public Transport(DBEntry[] entryes) {
+    static protected String tableName;
+    static protected DBEntry[] stdEntryes;
+    protected Transport(DBEntry[] entryes) {
         super(entryes);
+        
+    }
+     public Transport() {
+        super();
         
     }
     
     public static void init()
     {
-        Person.tableName = "transport";
-        Person.stdEntryes = new DBEntry[4];
-        Person.stdEntryes[0] = new DBEntry();
-        Person.stdEntryes[0].name = "id";
-        Person.stdEntryes[0].type = EntryType.Int;
-        Person.stdEntryes[1] = new DBEntry();
-        Person.stdEntryes[1].name = "name";
-        Person.stdEntryes[1].type = EntryType.String;
-        Person.stdEntryes[2] = new DBEntry();
-        Person.stdEntryes[2].name = "max_weight";
-        Person.stdEntryes[2].type = EntryType.Int;
-        Person.stdEntryes[3] = new DBEntry();
-        Person.stdEntryes[3].name = "organization_id";
-        Person.stdEntryes[3].type = EntryType.Int;
+        Transport.tableName = "transport";
+        Transport.stdEntryes = new DBEntry[4];
+        Transport.stdEntryes[0] = new DBEntry();
+        Transport.stdEntryes[0].name = "id";
+        Transport.stdEntryes[0].type = EntryType.Int;
+        Transport.stdEntryes[1] = new DBEntry();
+        Transport.stdEntryes[1].name = "name";
+        Transport.stdEntryes[1].type = EntryType.String;
+        Transport.stdEntryes[2] = new DBEntry();
+        Transport.stdEntryes[2].name = "max_weight";
+        Transport.stdEntryes[2].type = EntryType.Int;
+        Transport.stdEntryes[3] = new DBEntry();
+        Transport.stdEntryes[3].name = "organization_id";
+        Transport.stdEntryes[3].type = EntryType.Int;
         
     }
      public static Transport getOne( DBEntry[] entryes) throws ClassNotFoundException, SQLException
     {
-        return (Transport)Transport.getOne(entryes, 1);
+        DBModel.tableName = Transport.tableName;
+        DBModel.stdEntryes = Transport.stdEntryes;
+        return new Transport(Transport.getOne(entryes, 1).entryes);
     }
     public static Transport[] getAll( DBEntry[] entryes) throws ClassNotFoundException, SQLException
     {
-        return (Transport[])Transport.getAll(entryes, 1);
+        DBModel.tableName = Transport.tableName;
+        DBModel.stdEntryes = Transport.stdEntryes;
+        DBModel[] ans1 = Transport.getAll(entryes, 1);
+        Transport[] ans2 = new Transport[ans1.length];
+        for(int i=0; i<ans1.length; i++) ans2[i]=new Transport(ans1[i].entryes);
+        return ans2;
     }
     public int getId()
     {

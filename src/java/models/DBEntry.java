@@ -12,7 +12,7 @@ package models;
 public class DBEntry 
     {
         public String name;
-        private String value="";
+        private String value="1";
         public EntryType type; 
         public void setValue(Object obj)
         {

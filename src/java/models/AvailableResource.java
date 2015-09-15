@@ -12,35 +12,47 @@ import java.sql.SQLException;
  * @author roma
  */
 public class AvailableResource extends DBModel {
-    public AvailableResource(DBEntry[] entryes) {
+    static protected String tableName;
+    static protected DBEntry[] stdEntryes;
+    protected AvailableResource(DBEntry[] entryes) {
         super(entryes);
         
     }
-    
+    public AvailableResource() {
+        super();
+     
+    }
     public static void init()
     {
-        Person.tableName = "available_resource";
-        Person.stdEntryes = new DBEntry[4];
-        Person.stdEntryes[0] = new DBEntry();
-        Person.stdEntryes[0].name = "id";
-        Person.stdEntryes[0].type = EntryType.Int;
-        Person.stdEntryes[1] = new DBEntry();
-        Person.stdEntryes[1].name = "resource_id";
-        Person.stdEntryes[1].type = EntryType.Int; 
-        Person.stdEntryes[2] = new DBEntry();
-        Person.stdEntryes[2].name = "stock_id";
-        Person.stdEntryes[2].type = EntryType.Int;
-        Person.stdEntryes[3] = new DBEntry();
-        Person.stdEntryes[3].name = "number";
-        Person.stdEntryes[3].type = EntryType.Int;    
+        AvailableResource.tableName = "available_resource";
+        AvailableResource.stdEntryes = new DBEntry[4];
+        AvailableResource.stdEntryes[0] = new DBEntry();
+        AvailableResource.stdEntryes[0].name = "id";
+        AvailableResource.stdEntryes[0].type = EntryType.Int;
+        AvailableResource.stdEntryes[1] = new DBEntry();
+        AvailableResource.stdEntryes[1].name = "resource_id";
+        AvailableResource.stdEntryes[1].type = EntryType.Int; 
+        AvailableResource.stdEntryes[2] = new DBEntry();
+        AvailableResource.stdEntryes[2].name = "stock_id";
+        AvailableResource.stdEntryes[2].type = EntryType.Int;
+        AvailableResource.stdEntryes[3] = new DBEntry();
+        AvailableResource.stdEntryes[3].name = "number";
+        AvailableResource.stdEntryes[3].type = EntryType.Int;    
     }
-     public static AvailableResource getOne( DBEntry[] entryes) throws ClassNotFoundException, SQLException
+    public static AvailableResource getOne( DBEntry[] entryes) throws ClassNotFoundException, SQLException
     {
-        return (AvailableResource)AvailableResource.getOne(entryes, 1);
+        DBModel.tableName = AvailableResource.tableName;
+        DBModel.stdEntryes = AvailableResource.stdEntryes;
+        return new AvailableResource(AvailableResource.getOne(entryes, 1).entryes);
     }
     public static AvailableResource[] getAll( DBEntry[] entryes) throws ClassNotFoundException, SQLException
     {
-        return (AvailableResource[])AvailableResource.getAll(entryes, 1);
+        DBModel.tableName = AvailableResource.tableName;
+        DBModel.stdEntryes = AvailableResource.stdEntryes;
+        DBModel[] ans1 = AvailableResource.getAll(entryes, 1);
+        AvailableResource[] ans2 = new AvailableResource[ans1.length];
+        for(int i=0; i<ans1.length; i++) ans2[i]=new AvailableResource(ans1[i].entryes);
+        return ans2;
     }
     public int getId()
     {

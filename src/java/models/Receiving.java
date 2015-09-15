@@ -12,35 +12,48 @@ import java.sql.SQLException;
  * @author roma
  */
 public class Receiving extends DBModel {
-    public Receiving(DBEntry[] entryes) {
+    static protected String tableName;
+    static protected DBEntry[] stdEntryes;
+    protected Receiving(DBEntry[] entryes) {
         super(entryes);
+        
+    }
+     public Receiving() {
+        super();
         
     }
     
     public static void init()
     {
-        Person.tableName = "receiving";
-        Person.stdEntryes = new DBEntry[4];
-        Person.stdEntryes[0] = new DBEntry();
-        Person.stdEntryes[0].name = "id";
-        Person.stdEntryes[0].type = EntryType.Int;
-        Person.stdEntryes[1] = new DBEntry();
-        Person.stdEntryes[1].name = "resource_id";
-        Person.stdEntryes[1].type = EntryType.Int; 
-        Person.stdEntryes[2] = new DBEntry();
-        Person.stdEntryes[2].name = "stock_id";
-        Person.stdEntryes[2].type = EntryType.Int;
-        Person.stdEntryes[3] = new DBEntry();
-        Person.stdEntryes[3].name = "number";
-        Person.stdEntryes[3].type = EntryType.Int;    
+        Receiving.tableName = "receiving";
+        Receiving.stdEntryes = new DBEntry[4];
+        Receiving.stdEntryes[0] = new DBEntry();
+        Receiving.stdEntryes[0].name = "id";
+        Receiving.stdEntryes[0].type = EntryType.Int;
+        Receiving.stdEntryes[1] = new DBEntry();
+        Receiving.stdEntryes[1].name = "resource_id";
+        Receiving.stdEntryes[1].type = EntryType.Int; 
+        Receiving.stdEntryes[2] = new DBEntry();
+        Receiving.stdEntryes[2].name = "stock_id";
+        Receiving.stdEntryes[2].type = EntryType.Int;
+        Receiving.stdEntryes[3] = new DBEntry();
+        Receiving.stdEntryes[3].name = "number";
+        Receiving.stdEntryes[3].type = EntryType.Int;    
     }
      public static Receiving getOne( DBEntry[] entryes) throws ClassNotFoundException, SQLException
     {
-        return (Receiving)Receiving.getOne(entryes, 1);
+        DBModel.tableName = Receiving.tableName;
+        DBModel.stdEntryes = Receiving.stdEntryes;
+        return new Receiving(Receiving.getOne(entryes, 1).entryes);
     }
     public static Receiving[] getAll( DBEntry[] entryes) throws ClassNotFoundException, SQLException
     {
-        return (Receiving[])Receiving.getAll(entryes, 1);
+        DBModel.tableName = Receiving.tableName;
+        DBModel.stdEntryes = Receiving.stdEntryes;
+        DBModel[] ans1 = Receiving.getAll(entryes, 1);
+        Receiving[] ans2 = new Receiving[ans1.length];
+        for(int i=0; i<ans1.length; i++) ans2[i]=new Receiving(ans1[i].entryes);
+        return ans2;
     }
     public int getId()
     {

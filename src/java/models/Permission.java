@@ -12,29 +12,41 @@ import java.sql.SQLException;
  * @author roma
  */
 public class Permission extends DBModel {
-    public Permission(DBEntry[] entryes) {
+    static protected String tableName;
+    static protected DBEntry[] stdEntryes;
+    protected Permission(DBEntry[] entryes) {
         super(entryes);
         
+    }   
+     public Permission() {
+        super();
+        
     }
-    
     public static void init()
     {
-        Person.tableName = "permission";
-        Person.stdEntryes = new DBEntry[2];
-        Person.stdEntryes[0] = new DBEntry();
-        Person.stdEntryes[0].name = "id";
-        Person.stdEntryes[0].type = EntryType.Int;
-        Person.stdEntryes[1] = new DBEntry();
-        Person.stdEntryes[1].name = "name";
-        Person.stdEntryes[1].type = EntryType.String;
+        Permission.tableName = "permission";
+        Permission.stdEntryes = new DBEntry[2];
+        Permission.stdEntryes[0] = new DBEntry();
+        Permission.stdEntryes[0].name = "id";
+        Permission.stdEntryes[0].type = EntryType.Int;
+        Permission.stdEntryes[1] = new DBEntry();
+        Permission.stdEntryes[1].name = "name";
+        Permission.stdEntryes[1].type = EntryType.String;
     }
      public static Permission getOne( DBEntry[] entryes) throws ClassNotFoundException, SQLException
     {
-        return (Permission)Permission.getOne(entryes, 1);
+        DBModel.tableName = Permission.tableName;
+        DBModel.stdEntryes = Permission.stdEntryes;
+        return new Permission(Permission.getOne(entryes, 1).entryes);
     }
     public static Permission[] getAll( DBEntry[] entryes) throws ClassNotFoundException, SQLException
     {
-        return (Permission[])Permission.getAll(entryes, 1);
+        DBModel.tableName = Permission.tableName;
+        DBModel.stdEntryes = Permission.stdEntryes;
+        DBModel[] ans1 = Permission.getAll(entryes, 1);
+        Permission[] ans2 = new Permission[ans1.length];
+        for(int i=0; i<ans1.length; i++) ans2[i]=new Permission(ans1[i].entryes);
+        return ans2;
     }
     public int getId()
     {
