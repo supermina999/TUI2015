@@ -1,7 +1,12 @@
+<%@page import="models.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <% int minPermission = 8; 
-   int tab = 0; %>
+   int tab = 5; %>
 <%@include file = "layout1.jsp"%>
+<%
+    DBModel.init();
+    Organization[] organization = Organization.getAll(null);
+%>
 <br>
     <div class="form-block center-block">
         <center><h2 class="title">Добавить пункт выдачи</h2></center>
@@ -26,11 +31,11 @@
                     <div class="col-sm-8">
                         <select class="form-control" style="width: 100%;">
                                     <option>Выберите организацию</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
-                           </select>
+                                    <%for (int i = 0; i < organization.length; i++)
+                                    {%>
+                                        <option><%=organization[i].getName()%></option>
+                                    <%}%>
+                        </select>
                     </div>
                 </div>
                 <div class="form-group">
@@ -39,5 +44,5 @@
                         </div>
                 </div>
         </form>
-</div>
+    </div>
 <%@include file = "layout2.jsp"%>

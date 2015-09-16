@@ -26,13 +26,16 @@ public class Station extends DBModel {
     public static void init()
     {
         Station.tableName = "station";
-        Station.stdEntryes = new DBEntry[2];
+        Station.stdEntryes = new DBEntry[3];
         Station.stdEntryes[0] = new DBEntry();
         Station.stdEntryes[0].name = "id";
         Station.stdEntryes[0].type = EntryType.Int;
         Station.stdEntryes[1] = new DBEntry();
         Station.stdEntryes[1].name = "location_id";
         Station.stdEntryes[1].type = EntryType.Int;
+        Station.stdEntryes[2] = new DBEntry();
+        Station.stdEntryes[2].name = "organization_id";
+        Station.stdEntryes[2].type = EntryType.Int;
     }
      public static Station getOne( DBEntry[] entryes) throws ClassNotFoundException, SQLException
     {
@@ -64,6 +67,14 @@ public class Station extends DBModel {
     public void setLoactionId(int id)
     {
         this.entryes[1].setValue(id);
+    }
+    public int getOrganizationId()
+    {
+        return Integer.parseInt(this.entryes[2].getValue());
+    }
+    public void setOrganizationId(int id)
+    {
+        this.entryes[2].setValue(id);
     }
    
 }
