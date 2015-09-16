@@ -1,5 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<% int minpermission = 8; 
+<% int minPermission = 8; 
    int tab = 0; %>
 <%@include file = "layout1.jsp"%>
 <br>
@@ -27,6 +27,21 @@
                                 <i class="fa fa-lock form-control-feedback"></i>
                         </div>
                 </div> <br>
+                
+                <div class="form-group has-feedback">
+                    <label class="col-sm-3 control-label">Организация</label>
+                    <div class="col-sm-8">
+                        <select class="form-control" style="width: 100%;">
+                                    <option>Выберите организацию</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                           </select>
+                    </div>
+                </div>
+                
+                <br>
                 
                 <div class="form-group has-feedback">
                         <label class="col-sm-3 control-label">Фамилия </label>

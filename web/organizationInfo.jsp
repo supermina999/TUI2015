@@ -1,14 +1,28 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <% int minPermission = 8; 
-   int tab = 2; %>
+   int tab = 0; %>
 <%@include file = "layout1.jsp"%>
-        <center>
-            <br><h1>Организации</h1><br>
-                <div class="form-group has-feedback" style="width: 60%;">
-                    <div class="gray-bg">
+<br>
+    <div class="form-block center-block" style="width: 50%;">
+        <center><h2 class="title">Название</h2></center>
+        <hr>
+         <form class="form-horizontal">
+        <div class="col-lg-4 col-sm-4">
+                <div class="box-style-1 gray-bg team-member">
+                    <img src="images/old_logo.png" alt="">
+                </div>
+        </div>
+            <div class="form-group col-sm-7">
+                <p style="font-size: 20px;"> <b>Адрес:</b> ляляля </p>
+                <p style="font-size: 20px;"> <b>Вебсайт:</b> thebest.com </p>
+                <p style="font-size: 20px;"> <b>Волонтеры:</b> 17 </p> 
+                    
+            </div>
+            <div class="form-group"></div>
+            <div class="gray-bg">
                         <br>
                         <div class="col-md-8">
-                            <input type="text" class="form-control" placeholder="Название" style="width: 105%;">
+                            <input type="text" class="form-control" placeholder="ФИО" style="width: 105%;">
                             <i class="fa fa-search form-control-feedback"></i>
                         </div>
                         <div class="col-md-4">
@@ -26,9 +40,9 @@
                         <table class="table table-bordered">
                         <thead>
                                 <tr>
-                                    <th style="width: 25%;">Название</th>
-                                        <th style="width: 50%;">Местоположение</th>
-                                        <th style="width: 25%;">Вебсайт</th>
+                                    <th style="width: 50%;">ФИО</th>
+                                        <th style="width: 25%;">Телефон</th>
+                                        <th style="width: 25%;">Email</th>
                                 </tr>
                         </thead>
                         <tbody>
@@ -49,8 +63,8 @@
                                 </tr>
                         </tbody>
                         </table>
-                    <a href="addOrganization.jsp" class="btn btn-default btn-lg">Добавить организацию </a>
-                    <a href="register.jsp" class="btn btn-default btn-lg">Добавить волонтера </a>
-                </div>
-        </center>
+        </form>
+</div>
+
+
 <%@include file = "layout2.jsp"%>
