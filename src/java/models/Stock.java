@@ -70,10 +70,10 @@ public class Stock extends DBModel {
     }
    public int getLocationId()
     {
-        return Integer.parseInt(this.entryes[3].getValue());
+        return Integer.parseInt(this.entryes[2].getValue());
     }
     public void setLocationId(int id)
     {
-        this.entryes[3].setValue(id);
+        this.entryes[2].setValue(id);
     }
 }

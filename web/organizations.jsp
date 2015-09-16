@@ -32,22 +32,16 @@
                                 </tr>
                         </thead>
                         <tbody>
+                            <%
+                            DBModel.init();
+                            Organization[] org = Organization.getAll(null);
+                            for (int i = 0; i < org.length; i++) {%>
                                 <tr>
-                                        <td class="quantity">2 x</td>
-                                        <td class="product"><a href="shop-product.html">Android 4.4 Smartphone</a><span class="small">4.7" Dual Core 1GB</span></td>
-                                        <td class="amount">$199.00</td>
+                                        <td class="quantity"> <%=org[i].getName()%></td>
+                                        <td class="product"><%=org[i].getAddress()%></td>
+                                        <td class="amount"><%=org[i].getWebsite()%></td>
                                 </tr>
-                                <tr>
-                                        <td class="quantity">3 x</td>
-                                        <td class="product"><a href="shop-product.html">Android 4.2 Tablet</a><span class="small">7.3" Quad Core 2GB</span></td>
-                                        <td class="amount">$299.00</td>
-                                </tr>
-                                <tr>
-                                        <td class="quantity">3 x</td>
-                                        <td class="product"><a href="shop-product.html">Desktop PC</a><span class="small">Quad Core 3.2MHz, 8GB RAM, 1TB Hard Disk</span></td>
-                                        <td class="amount">$1499.00</td>
-                                </tr>
-                        </tbody>
+                                <% } %>
                         </table>
                     <a href="addOrganization.jsp" class="btn btn-default btn-lg">Добавить организацию </a>
                     <a href="register.jsp" class="btn btn-default btn-lg">Добавить волонтера </a>

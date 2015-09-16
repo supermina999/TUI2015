@@ -101,7 +101,7 @@ public class DBModel {
     }
     
     
-    public void write() throws ClassNotFoundException, SQLException
+    public void writeToDB() throws ClassNotFoundException, SQLException
     {
         getRealStatics();
         if (DBConnectionHolder.connection == null) DBConnectionHolder.createConnection();
@@ -117,8 +117,9 @@ public class DBModel {
         st.execute(query);
         st.close();
     }
-    public void save() throws ClassNotFoundException, SQLException
+    public void saveChanges() throws ClassNotFoundException, SQLException
     {
+        getRealStatics();
         if (DBConnectionHolder.connection == null) DBConnectionHolder.createConnection();
         Statement st = DBConnectionHolder.connection.createStatement();
         st.execute("use " +DBConnectionHolder.DBName); 

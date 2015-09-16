@@ -1,4 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="models.*"%>
 <!DOCTYPE html>
 <!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
@@ -115,16 +116,21 @@
 											</div>
 
 											<!-- Collect the nav links, forms, and other content for toggling -->
-											<div class="collapse navbar-collapse" id="navbar-collapse-1">
-												<ul class="nav navbar-nav">
+											<div class="collapse navbar-collapse">
+												<ul class="nav navbar-nav navbar-right">
+                                                                                                    
 													<li <% if (tab == 1) { %>class="active" <% } %>>
 														<a href="index.jsp">Главная</a>
 													</li>
                                                                                                         <li <% if (tab == 2) { %>class="active" <% } %>>
 														<a href="organizations.jsp">Организации</a>
 													</li>
-                                                                                                        <li <% if (tab == 3) { %>class="active" <% } %>>
-														<a href="resources.jsp">Ресурсы</a>
+                                                                                                        <li class="dropdown <% if (tab == 3) { %> active <% } %> ">
+														<a class="dropdown-toggle" data-toggle="dropdown">Ресурсы</a>
+                                                                                                                <ul class="dropdown-menu">
+                                                                                                                    <li><a href="availableResources.jsp">В наличии</a></li>
+                                                                                                                    <li><a href="neededResources.jsp">Требующиеся</a></li>
+                                                                                                                </ul>
 													</li>
                                                                                                         <li <% if (tab == 4) { %>class="active" <% } %>>
 														<a href="stocks.jsp">Склады</a>
