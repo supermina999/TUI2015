@@ -62,7 +62,7 @@
 	<body class="front no-trans">
 		<!-- scrollToTop -->
 		<!-- ================ -->
-		<div class="scrollToTop"><i class="icon-up-open-big"></i></div>
+		<div class="scrollToTop scrollToTop-red"><i class="icon-up-open-big"></i></div>
 
 		<!-- page wrapper start -->
 		<!-- ================ -->
@@ -117,7 +117,7 @@
 
 											<!-- Collect the nav links, forms, and other content for toggling -->
 											<div class="collapse navbar-collapse">
-												<ul class="nav navbar-nav navbar-right">
+												<ul class="nav navbar-nav">
                                                                                                     
 													<li <% if (tab == 1) { %>class="active" <% } %>>
 														<a href="index.jsp">Главная</a>

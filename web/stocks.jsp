@@ -33,18 +33,18 @@
                         <table class="table table-bordered">
                             <thead>
                                     <tr>
-                                        <th style="width: 25%;">Название</th>
-                                            <th style="width: 50%;">Организация</th>
-                                            <th style="width: 25%;">Местоположение</th>
+                                        <th style="width: 30%;">Название</th>
+                                            <th style="width: 30%;">Организация</th>
+                                            <th style="width: 40%;">Местоположение</th>
                                     </tr>
                             </thead>
                             <tbody>
                                     <%for (int i = 0; i < stock.length; i++)
                                     {%>
                                         <tr>
-                                                <td class="quantity"><%=i + 1%></td>
-                                                <td class="product"><%=organization[stock[i].getOranizationId()]%></td>
-                                                <td class="amount"><%=location[stock[i].getLocationId()]%></td>
+                                                <td><%=i + 1%></td>
+                                                <td><%=organization[stock[i].getOranizationId()-1].getName()%></td>
+                                                <td><%=location[stock[i].getLocationId()-1].getAddress()%></td>
                                         </tr>
                                     <%}%>
                             </tbody>
