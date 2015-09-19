@@ -24,7 +24,12 @@
     String email = request.getParameter("email");
     String phone = request.getParameter("phone");
     DBModel.init();
+    Person[] all = Person.getAll(null);
+    int prevId;
+    if (all.length == 0) prevId = 0;
+    else prevId = all[all.length-1].getId();
     Person person = new Person();
+    person.setId(prevId+1);
     person.setLogin(login);
     person.setPassword(password1);
     person.setName(name);
@@ -38,16 +43,8 @@
     person.setOrganizationId(Integer.parseInt(organization_id));
     person.writeToDB();
 %>
+    <script>
+        window.location.href = "organizations.jsp";
+    </script>
 
-<%=login%><br>
-<%=password1%><br>
-<%=name%><br>
-<%=surname%><br>
-<%=second_name%><br>
-<%=city_id%><br>
-<%=address%><br>
-<%=email%><br>
-<%=phone%><br>
-<%=permission_id%><br>
-<%=organization_id%><br>
 <%@include file = "layout2.jsp"%>

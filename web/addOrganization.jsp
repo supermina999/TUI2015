@@ -13,14 +13,19 @@
     address = new String(address.getBytes("iso8859-1"), "utf8");
     String website = request.getParameter("website");
     DBModel.init();
+    Organization[] all = Organization.getAll(null);
+    int prevId;
+    if (all.length == 0) prevId = 0;
+    else prevId = all[all.length-1].getId();
     Organization organization = new Organization();
+    organization.setId(prevId+1);
     organization.setName(name);
     organization.setAddress(address);
     organization.setWebsite(website);
     organization.writeToDB();
 %>
+    <script>
+        window.location.href = "organizations.jsp";
+    </script>
 
-<%=name%><br>
-<%=address%><br>
-<%=website%><br>
 <%@include file = "layout2.jsp"%>

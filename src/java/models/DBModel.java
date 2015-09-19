@@ -107,13 +107,12 @@ public class DBModel {
         if (DBConnectionHolder.connection == null) DBConnectionHolder.createConnection();
         Statement st = DBConnectionHolder.connection.createStatement();
         st.execute("use " +DBConnectionHolder.DBName); 
-        String query = "INSERT INTO " + this.tableName + " SET ";
+        String query = "INSERT " + this.tableName + " SET ";
         for(int i = 0; i < entryes.length;i++)
         {
             query += entryes[i].name + " = " + entryes[i].SQLValue();
             if (i+1<entryes.length) query += ", ";
         }
-        query += ';';
         st.execute(query);
         st.close();
     }
