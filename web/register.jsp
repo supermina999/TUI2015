@@ -2,28 +2,34 @@
 <% int minPermission = 8; 
    int tab = 0; %>
 <%@include file = "layout1.jsp"%>
+<%
+    DBModel.init();
+    Organization[] organization = Organization.getAll(null);
+    City[] city = City.getAll(null);
+    Permission[] permission = Permission.getAll(null);
+%>
 <br>
     <div class="form-block center-block">
         <center><h2 class="title">Регистрация</h2></center>
-        <form class="form-horizontal" role="form">
+        <form class="form-horizontal" method="post" action="addUser.jsp">
                 <div class="form-group has-feedback">
                         <label class="col-sm-3 control-label">Логин </label>
                         <div class="col-sm-8">
-                                <input type="text" class="form-control" id="login" required>
+                                <input type="text" class="form-control" name="login" required>
                                 <i class="fa fa-user form-control-feedback"></i>
                         </div>
                 </div>
                 <div class="form-group has-feedback">
                         <label class="col-sm-3 control-label">Пароль </label>
                         <div class="col-sm-8">
-                                <input type="password" class="form-control" id="password1" required>
+                                <input type="password" class="form-control" name="password1" required>
                                 <i class="fa fa-lock form-control-feedback"></i>
                         </div>
                 </div>
                 <div class="form-group has-feedback">
                         <label class="col-sm-3 control-label">Повторите пароль </label>
                         <div class="col-sm-8">
-                                <input type="password" class="form-control" id="password2" required>
+                                <input type="password" class="form-control" name="password2" required>
                                 <i class="fa fa-lock form-control-feedback"></i>
                         </div>
                 </div> <br>
@@ -31,13 +37,25 @@
                 <div class="form-group has-feedback">
                     <label class="col-sm-3 control-label">Организация</label>
                     <div class="col-sm-8">
-                        <select class="form-control" style="width: 100%;">
-                                    <option>Выберите организацию</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
-                           </select>
+                        <select class="form-control" style="width: 100%;" name="organization_id">
+                                <option>Выберите организацию</option>
+                                <%for (int i = 0; i < organization.length; i++)
+                                {%>
+                                    <option value="<%=organization[i].getId()%>"> <%=organization[i].getName()%></option>
+                                <%}%>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group has-feedback">
+                    <label class="col-sm-3 control-label">Должность</label>
+                    <div class="col-sm-8">
+                        <select class="form-control" style="width: 100%;" name="permission_id">
+                                <option>Выберите должность</option>
+                                <%for (int i = 0; i < permission.length; i++)
+                                {%>
+                                    <option value="<%=permission[i].getId()%>"><%=permission[i].getName()%></option>
+                                <%}%>
+                        </select>
                     </div>
                 </div>
                 
@@ -46,42 +64,61 @@
                 <div class="form-group has-feedback">
                         <label class="col-sm-3 control-label">Фамилия </label>
                         <div class="col-sm-8">
-                                <input type="text" class="form-control" id="surname" required>
+                                <input type="text" class="form-control" name="surname" required>
                                 <i class="fa fa-pencil form-control-feedback"></i>
                         </div>
                 </div>
                 <div class="form-group has-feedback">
                         <label class="col-sm-3 control-label">Имя </label>
                         <div class="col-sm-8">
-                                <input type="text" class="form-control" id="name" required>
+                                <input type="text" class="form-control" name="name" required>
                                 <i class="fa fa-pencil form-control-feedback"></i>
                         </div>
                 </div>
                 <div class="form-group has-feedback">
                         <label class="col-sm-3 control-label">Отчество </label>
                         <div class="col-sm-8">
-                                <input type="text" class="form-control" id="secondName" required>
+                                <input type="text" class="form-control" name="second_name" required>
                                 <i class="fa fa-pencil form-control-feedback"></i>
                         </div>
                 </div>
                 <div class="form-group has-feedback">
+                    <label class="col-sm-3 control-label">Город</label>
+                    <div class="col-sm-8">
+                        <select class="form-control" style="width: 100%;" name="city_id">
+                                <option value="7">Выберите город</option>
+                                <%for (int i = 0; i < city.length; i++)
+                                {%>
+                                    <option value="<%=city[i].getId()%>"><%=city[i].getName()%></option>
+                                <%}%>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group has-feedback">
+                    <label class="col-sm-3 control-label">Адрес</label>
+                    <div class="col-sm-8">
+                            <input type="text" class="form-control" required name="address">
+                            <i class="fa fa-map-marker form-control-feedback"></i>
+                    </div>
+                </div>
+                <div class="form-group has-feedback">
                         <label class="col-sm-3 control-label">Email </label>
                         <div class="col-sm-8">
-                                <input type="email" class="form-control" id="inputEmail" required>
+                                <input type="email" class="form-control" name="email" required>
                                 <i class="fa fa-envelope form-control-feedback"></i>
                         </div>
                 </div>
                 <div class="form-group has-feedback">
                         <label class="col-sm-3 control-label">Телефон </label>
                         <div class="col-sm-8">
-                            <input type="number" class="form-control" id="phone" required>
+                            <input type="text" class="form-control" name="phone" required>
                                 <i class="fa fa-phone form-control-feedback"></i>
                         </div>
                 </div>
                 
                 <div class="form-group">
                         <div class="col-sm-offset-3 col-sm-8">
-                                <button type="submit" class="btn btn-block btn-default">Готово</button>
+                                <input class="btn btn-block btn-default" type="submit" name="submit" value="Готово">
                         </div>
                 </div>
             

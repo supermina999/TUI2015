@@ -2,6 +2,11 @@
 <% int minPermission = 8; 
    int tab = 2; %>
 <%@include file = "layout1.jsp"%>
+<%
+    DBModel.init();
+    Organization[] organization = Organization.getAll(null);
+    City[] city = City.getAll(null);
+%>
         <center>
             <br><h1>Организации</h1><br>
                 <div class="form-group has-feedback" style="width: 60%;">
@@ -14,10 +19,10 @@
                         <div class="col-md-4">
                             <select class="form-control" style="width: 100%;">
                                     <option>Выберите город</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
+                                    <%for (int i = 0; i < city.length; i++)
+                                    {%>
+                                        <option><%=city[i].getName()%></option>
+                                    <%}%>
                             </select>
                         </div>
                         <br><br><br>
@@ -32,18 +37,15 @@
                                 </tr>
                         </thead>
                         <tbody>
-                            <%
-                            DBModel.init();
-                            Organization[] org = Organization.getAll(null);
-                            for (int i = 0; i < org.length; i++) {%>
+                            <% for (int i = 0; i < organization.length; i++) {%>
                                 <tr>
-                                        <td class="quantity"> <%=org[i].getName()%></td>
-                                        <td class="product"><%=org[i].getAddress()%></td>
-                                        <td class="amount"><%=org[i].getWebsite()%></td>
+                                        <td class="quantity"> <%=organization[i].getName()%></td>
+                                        <td class="product"><%=organization[i].getAddress()%></td>
+                                        <td class="amount"><%=organization[i].getWebsite()%></td>
                                 </tr>
                                 <% } %>
                         </table>
-                    <a href="addOrganization.jsp" class="btn btn-default btn-lg">Добавить организацию </a>
+                    <a href="newOrganization.jsp" class="btn btn-default btn-lg">Добавить организацию </a>
                     <a href="register.jsp" class="btn btn-default btn-lg">Добавить волонтера </a>
                 </div>
         </center>
