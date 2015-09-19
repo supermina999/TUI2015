@@ -36,7 +36,7 @@
     person.setPhone(phone);
     person.setPermissionId(Integer.parseInt(permission_id));
     person.setOrganizationId(Integer.parseInt(organization_id));
-    //person.writeToDB();
+    person.writeToDB();
 %>
 
 <%=login%><br>
