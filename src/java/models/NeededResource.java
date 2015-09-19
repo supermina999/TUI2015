@@ -26,7 +26,7 @@ public class NeededResource extends DBModel {
     public static void init()
     {
         NeededResource.tableName = "needed_resource";
-        NeededResource.stdEntryes = new DBEntry[5];
+        NeededResource.stdEntryes = new DBEntry[6];
         NeededResource.stdEntryes[0] = new DBEntry();
         NeededResource.stdEntryes[0].name = "id";
         NeededResource.stdEntryes[0].type = EntryType.Int;
@@ -38,10 +38,13 @@ public class NeededResource extends DBModel {
         NeededResource.stdEntryes[2].type = EntryType.Int;
         NeededResource.stdEntryes[3] = new DBEntry();
         NeededResource.stdEntryes[3].name = "number";
-        NeededResource.stdEntryes[3].type = EntryType.Int;    
+        NeededResource.stdEntryes[3].type = EntryType.Int;
         NeededResource.stdEntryes[4] = new DBEntry();
-        NeededResource.stdEntryes[4].name = "emergency";
-        NeededResource.stdEntryes[4].type = EntryType.Int;  
+        NeededResource.stdEntryes[4].name = "measure_id";
+        NeededResource.stdEntryes[4].type = EntryType.Int;
+        NeededResource.stdEntryes[5] = new DBEntry();
+        NeededResource.stdEntryes[5].name = "emergency";
+        NeededResource.stdEntryes[5].type = EntryType.Int;  
     }
      public static NeededResource getOne( DBEntry[] entryes) throws ClassNotFoundException, SQLException
     {
@@ -90,12 +93,20 @@ public class NeededResource extends DBModel {
     {
         this.entryes[3].setValue(number);
     }
-     public int getEmergency()
+    public int getMeasureId()
     {
         return Integer.parseInt(this.entryes[4].getValue());
     }
+    public void setMeasureId(int id)
+    {
+        this.entryes[4].setValue(id);
+    }
+    public int getEmergency()
+    {
+        return Integer.parseInt(this.entryes[5].getValue());
+    }
     public void setEmergency(int emergency)
     {
-        this.entryes[4].setValue(emergency);
+        this.entryes[5].setValue(emergency);
     }
 }

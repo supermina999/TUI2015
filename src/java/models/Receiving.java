@@ -26,7 +26,7 @@ public class Receiving extends DBModel {
     public static void init()
     {
         Receiving.tableName = "receiving";
-        Receiving.stdEntryes = new DBEntry[4];
+        Receiving.stdEntryes = new DBEntry[5];
         Receiving.stdEntryes[0] = new DBEntry();
         Receiving.stdEntryes[0].name = "id";
         Receiving.stdEntryes[0].type = EntryType.Int;
@@ -38,7 +38,11 @@ public class Receiving extends DBModel {
         Receiving.stdEntryes[2].type = EntryType.Int;
         Receiving.stdEntryes[3] = new DBEntry();
         Receiving.stdEntryes[3].name = "number";
-        Receiving.stdEntryes[3].type = EntryType.Int;    
+        Receiving.stdEntryes[3].type = EntryType.Int;
+        Receiving.stdEntryes[4] = new DBEntry();
+        Receiving.stdEntryes[4].name = "measure_id";
+        Receiving.stdEntryes[4].type = EntryType.Int;
+        
     }
      public static Receiving getOne( DBEntry[] entryes) throws ClassNotFoundException, SQLException
     {
@@ -86,5 +90,13 @@ public class Receiving extends DBModel {
     public void setNumber(int number)
     {
         this.entryes[3].setValue(number);
+    }
+    public int getMeasureId()
+    {
+        return Integer.parseInt(this.entryes[4].getValue());
+    }
+    public void setMeasureId(int id)
+    {
+        this.entryes[4].setValue(id);
     }
 }

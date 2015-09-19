@@ -25,7 +25,7 @@ public class AvailableResource extends DBModel {
     public static void init()
     {
         AvailableResource.tableName = "available_resource";
-        AvailableResource.stdEntryes = new DBEntry[4];
+        AvailableResource.stdEntryes = new DBEntry[5];
         AvailableResource.stdEntryes[0] = new DBEntry();
         AvailableResource.stdEntryes[0].name = "id";
         AvailableResource.stdEntryes[0].type = EntryType.Int;
@@ -37,7 +37,10 @@ public class AvailableResource extends DBModel {
         AvailableResource.stdEntryes[2].type = EntryType.Int;
         AvailableResource.stdEntryes[3] = new DBEntry();
         AvailableResource.stdEntryes[3].name = "number";
-        AvailableResource.stdEntryes[3].type = EntryType.Int;    
+        AvailableResource.stdEntryes[3].type = EntryType.Int;
+        AvailableResource.stdEntryes[4] = new DBEntry();
+        AvailableResource.stdEntryes[4].name = "measure_id";
+        AvailableResource.stdEntryes[4].type = EntryType.Int;
     }
     public static AvailableResource getOne( DBEntry[] entryes) throws ClassNotFoundException, SQLException
     {
@@ -70,7 +73,7 @@ public class AvailableResource extends DBModel {
     {
         this.entryes[1].setValue(id);
     }
-   public int getStockId()
+    public int getStockId()
     {
         return Integer.parseInt(this.entryes[2].getValue());
     }
@@ -85,5 +88,13 @@ public class AvailableResource extends DBModel {
     public void setNumber(int number)
     {
         this.entryes[3].setValue(number);
+    }
+    public int getMeasureId()
+    {
+        return Integer.parseInt(this.entryes[4].getValue());
+    }
+    public void setMeasureId(int id)
+    {
+        this.entryes[4].setValue(id);
     }
 }

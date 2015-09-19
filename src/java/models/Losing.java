@@ -26,7 +26,7 @@ public class Losing extends DBModel {
     public static void init()
     {
         Losing.tableName = "losing";
-        Losing.stdEntryes = new DBEntry[4];
+        Losing.stdEntryes = new DBEntry[5];
         Losing.stdEntryes[0] = new DBEntry();
         Losing.stdEntryes[0].name = "id";
         Losing.stdEntryes[0].type = EntryType.Int;
@@ -38,7 +38,10 @@ public class Losing extends DBModel {
         Losing.stdEntryes[2].type = EntryType.Int;
         Losing.stdEntryes[3] = new DBEntry();
         Losing.stdEntryes[3].name = "number";
-        Losing.stdEntryes[3].type = EntryType.Int;    
+        Losing.stdEntryes[3].type = EntryType.Int;
+        Losing.stdEntryes[4] = new DBEntry();
+        Losing.stdEntryes[4].name = "measure_id";
+        Losing.stdEntryes[4].type = EntryType.Int;
     }
      public static Losing getOne( DBEntry[] entryes) throws ClassNotFoundException, SQLException
     {
@@ -86,5 +89,13 @@ public class Losing extends DBModel {
     public void setNumber(int number)
     {
         this.entryes[3].setValue(number);
+    }
+    public int getMeasureId()
+    {
+        return Integer.parseInt(this.entryes[4].getValue());
+    }
+    public void setMeasureId(int id)
+    {
+        this.entryes[4].setValue(id);
     }
 }

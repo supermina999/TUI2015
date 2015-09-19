@@ -46,11 +46,11 @@ public class Person extends DBModel {
         Person.stdEntryes[5].name = "password";
         Person.stdEntryes[5].type = EntryType.String;
         Person.stdEntryes[6] = new DBEntry();
-        Person.stdEntryes[6].name = "age";
+        Person.stdEntryes[6].name = "city_id";
         Person.stdEntryes[6].type = EntryType.Int;
         Person.stdEntryes[7] = new DBEntry();
-        Person.stdEntryes[7].name = "location_id";
-        Person.stdEntryes[7].type = EntryType.Int;
+        Person.stdEntryes[7].name = "address";
+        Person.stdEntryes[7].type = EntryType.String;
         Person.stdEntryes[8] = new DBEntry();
         Person.stdEntryes[8].name = "phone";
         Person.stdEntryes[8].type = EntryType.String;
@@ -128,21 +128,21 @@ public class Person extends DBModel {
     {
         this.entryes[5].setValue(password);
     }
-    public int getAge()
+    public int getCityId()
     {
         return Integer.parseInt(this.entryes[6].getValue());
     }
-    public void setAge(int age)
+    public void setCityId(int id)
     {
-        this.entryes[6].setValue(age);
+        this.entryes[6].setValue(id);
     }
-    public int getLocationId()
+    public String getAddress()
     {
-        return Integer.parseInt(this.entryes[7].getValue());
+        return this.entryes[7].getValue();
     }
-    public void setLocationId(int id)
+    public void setAddress(String address)
     {
-        this.entryes[7].setValue(id);
+        this.entryes[7].setValue(address);
     }
     public String getPhone()
     {

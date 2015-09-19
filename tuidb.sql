@@ -27,6 +27,7 @@ CREATE TABLE `available_resource` (
   `resource_id` int(11) NOT NULL,
   `stock_id` int(11) NOT NULL,
   `number` int(11) NOT NULL,
+  `measure_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -125,6 +126,7 @@ CREATE TABLE `losing` (
   `resource_id` int(10) NOT NULL,
   `station_id` int(10) NOT NULL,
   `number` int(10) NOT NULL,
+  `measure_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -139,6 +141,29 @@ LOCK TABLES `losing` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `measure`
+--
+
+DROP TABLE IF EXISTS `measure`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `measure` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` text NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `losing`
+--
+
+LOCK TABLES `measure` WRITE;
+/*!40000 ALTER TABLE `measure` DISABLE KEYS */;
+/*!40000 ALTER TABLE `measure` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `needed_resource`
 --
 
@@ -150,6 +175,7 @@ CREATE TABLE `needed_resource` (
   `station_id` int(11) NOT NULL,
   `resource_id` int(11) NOT NULL,
   `number` int(11) NOT NULL,
+  `measure_id` int(11) NOT NULL,
   `emergency` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -222,12 +248,12 @@ DROP TABLE IF EXISTS `person`;
 CREATE TABLE `person` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` text NOT NULL,
-  `surname` int(11) NOT NULL,
+  `surname` text NOT NULL,
   `second_name` text NOT NULL,
   `login` text NOT NULL,
   `password` text NOT NULL,
-  `age` int(11) NOT NULL,
-  `location_id` int(11) NOT NULL,
+  `city_id` int(11) NOT NULL,
+  `address` text NOT NULL,
   `phone` text NOT NULL,
   `email` text NOT NULL,
   `permission_id` int(11) NOT NULL,
@@ -257,6 +283,7 @@ CREATE TABLE `receiving` (
   `resource_id` int(10) NOT NULL,
   `stock_id` int(10) NOT NULL,
   `number` int(10) NOT NULL,
+  `measure_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;

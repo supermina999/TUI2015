@@ -64,5 +64,4 @@ public class Permission extends DBModel {
     {
         this.entryes[1].setValue(name);
     }
-    
 }
