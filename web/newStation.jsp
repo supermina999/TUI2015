@@ -6,34 +6,33 @@
 <%
     DBModel.init();
     Organization[] organization = Organization.getAll(null);
+    Location[] location = Location.getAll(null);
 %>
 <br>
     <div class="form-block center-block">
         <center><h2 class="title">Добавить пункт выдачи</h2></center>
         <hr>
-        <form class="form-horizontal">
-                <div class="form-group has-feedback">
-                        <label class="col-sm-3 control-label">Название</label>
-                        <div class="col-sm-8">
-                                <input type="text" class="form-control" id="name" required>
-                                <i class="fa fa-pencil form-control-feedback"></i>
-                        </div>
-                </div>
+        <form class="form-horizontal" method = "post" action = "addStation.jsp">
                 <div class="form-group has-feedback">
                         <label class="col-sm-3 control-label">Адрес</label>
                         <div class="col-sm-8">
-                                <input type="text" class="form-control" id="address" required>
-                                <i class="fa fa-map-marker form-control-feedback"></i>
+                            <select class="form-control" name="address" style="width: 100%;">
+                                    <option>Выберите адрес</option>
+                                    <%for (int i = 0; i < location.length; i++)
+                                    {%>
+                                    <option value="<%=location[i].getId()%>"><%=location[i].getAddress()%></option>
+                                    <%}%>
+                            </select>
                         </div>
                 </div>
                 <div class="form-group has-feedback">
                     <label class="col-sm-3 control-label">Организация</label>
                     <div class="col-sm-8">
-                        <select class="form-control" style="width: 100%;">
+                        <select class="form-control" name="organization" style="width: 100%;">
                                     <option>Выберите организацию</option>
                                     <%for (int i = 0; i < organization.length; i++)
                                     {%>
-                                        <option><%=organization[i].getName()%></option>
+                                    <option value="<%=organization[i].getId()%>"><%=organization[i].getName()%></option>
                                     <%}%>
                         </select>
                     </div>

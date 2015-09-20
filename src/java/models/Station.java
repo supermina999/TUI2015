@@ -64,7 +64,7 @@ public class Station extends DBModel {
     {
         return Integer.parseInt(this.entryes[1].getValue());
     }
-    public void setLoactionId(int id)
+    public void setLocationId(int id)
     {
         this.entryes[1].setValue(id);
     }

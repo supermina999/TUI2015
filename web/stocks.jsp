@@ -15,7 +15,7 @@
                     <div class="gray-bg">
                         <br>
                         <div class="col-md-8">
-                            <input type="text" class="form-control" placeholder="Название" style="width: 105%;">
+                            <input type="text" class="form-control" placeholder="Номер" style="width: 105%;">
                             <i class="fa fa-search form-control-feedback"></i>
                         </div>
                         <div class="col-md-4">
@@ -33,7 +33,7 @@
                         <table class="table table-bordered">
                             <thead>
                                     <tr>
-                                        <th style="width: 30%;">Название</th>
+                                        <th style="width: 30%;">Номер</th>
                                             <th style="width: 30%;">Организация</th>
                                             <th style="width: 40%;">Местоположение</th>
                                     </tr>
@@ -43,7 +43,7 @@
                                     {%>
                                         <tr>
                                                 <td><%=i + 1%></td>
-                                                <td><%=organization[stock[i].getOranizationId()-1].getName()%></td>
+                                                <td><%=organization[stock[i].getOrganizationId()-1].getName()%></td>
                                                 <td><%=location[stock[i].getLocationId()-1].getAddress()%></td>
                                         </tr>
                                     <%}%>
