@@ -8,15 +8,25 @@
     Organization[] organization = Organization.getAll(null);
     Stock[] stock = Stock.getAll(null);
     Location[] location = Location.getAll(null);
+    City[] city = City.getAll(null);
 %>
         <center>
             <br><h1>Склады</h1><br>
                 <div class="form-group has-feedback" style="width: 60%;">
                     <div class="gray-bg">
                         <br>
-                        <div class="col-md-8">
+                        <div class="col-md-4">
                             <input type="text" class="form-control" placeholder="Номер" style="width: 105%;">
                             <i class="fa fa-search form-control-feedback"></i>
+                        </div>
+                        <div class="col-md-4">
+                            <select class="form-control" style="width: 105%;">
+                                    <option>Выберите город</option>
+                                    <%for (int i = 0; i < city.length; i++)
+                                    {%>
+                                        <option><%=city[i].getName()%></option>
+                                    <%}%>
+                            </select>
                         </div>
                         <div class="col-md-4">
                             <select class="form-control" style="width: 100%;">
@@ -44,7 +54,7 @@
                                         <tr>
                                                 <td><%=i + 1%></td>
                                                 <td><%=organization[stock[i].getOrganizationId()-1].getName()%></td>
-                                                <td><%=location[stock[i].getLocationId()-1].getAddress()%></td>
+                                                <td><%=location[stock[i].getLocationId()-1].getAddress()%>, <%=city[location[stock[i].getLocationId() - 1].getCityId() - 1].getName()%></td>
                                         </tr>
                                     <%}%>
                             </tbody>

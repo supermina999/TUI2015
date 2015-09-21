@@ -7,6 +7,7 @@
     DBModel.init();
     Organization[] organization = Organization.getAll(null);
     Location[] location = Location.getAll(null);
+    City[] city = City.getAll(null);
 %>
 <br>
     <div class="form-block center-block">
@@ -15,14 +16,18 @@
         <form class="form-horizontal" method = "post" action = "addStock.jsp">
                 <div class="form-group has-feedback">
                         <label class="col-sm-3 control-label">Адрес</label>
-                        <div class="col-sm-8">
-                                <select class="form-control" name="address" style="width: 100%">
-                                    <option>Выберите адрес</option>
-                                    <%for (int i = 0; i < location.length; i++)
+                        <div class="col-sm-4">
+                                <input type="text" class="form-control" name="address" required>
+                                <i class="fa fa-map-marker form-control-feedback"></i>
+                        </div>
+                        <div class="col-sm-4">
+                            <select class="form-control" name="city" style="width: 100%;">
+                                    <option>Выберите город</option>
+                                    <%for (int i = 0; i < city.length; i++)
                                     {%>
-                                    <option value="<%=location[i].getId()%>"><%=location[i].getAddress()%></option>
+                                    <option value="<%=city[i].getId()%>"><%=city[i].getName()%></option>
                                     <%}%>
-                                </select>
+                            </select>
                         </div>
                 </div>
                 <div class="form-group has-feedback">
@@ -34,7 +39,7 @@
                                     {%>
                                     <option value="<%=organization[i].getId()%>"><%=organization[i].getName()%></option>
                                     <%}%>
-                           </select>
+                        </select>
                     </div>
                 </div>
                 <div class="form-group">

@@ -54,7 +54,7 @@
                                     <tr>
                                             <td><%=i + 1%></td>
                                             <td><%=organization[station[i].getOrganizationId()-1].getName()%></td>
-                                            <td><%=location[station[i].getLocationId()-1].getAddress()%></td>
+                                            <td><%=location[station[i].getLocationId()-1].getAddress()%>, <%=city[location[station[i].getLocationId() - 1].getCityId() - 1].getName()%></td>
                                     </tr>
                                 <%}%>
                         </tbody>
