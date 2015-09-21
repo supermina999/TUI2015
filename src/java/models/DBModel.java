@@ -145,6 +145,7 @@ public class DBModel {
         Organization.init();
         Permission.init();
         Person.init();
+        Resource.init();
         Receiving.init();
         Station.init();
         Stock.init();
@@ -181,6 +182,7 @@ public class DBModel {
     }
     protected static DBModel[] getAll( DBEntry[] entryes, int fl) throws ClassNotFoundException, SQLException
     {
+
         if (DBConnectionHolder.connection == null) DBConnectionHolder.createConnection();
         Statement st = DBConnectionHolder.connection.createStatement();
         st.execute("use " +DBConnectionHolder.DBName); 
