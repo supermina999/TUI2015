@@ -6,7 +6,7 @@
     boolean isOk = user.tryToLogin(request);
     if (isOk) {%>
         <script>
-            window.location.href = "userInfo.jsp?id=<%=user.getId()%>";
+            window.location.href = "userInfo.jsp?id=<%=user.user.getId()%>";
         </script>
     <%} else {%>
         <script>

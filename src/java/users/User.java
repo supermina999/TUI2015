@@ -33,9 +33,4 @@ public class User {
     {
         return user != null;
     }
-    
-    public int getId()
-    {
-        return user.getId();
-    }
 }
