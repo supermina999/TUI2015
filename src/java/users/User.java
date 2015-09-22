@@ -21,4 +21,14 @@ public class User {
         }
         return false;
     }
+    
+    public void exit()
+    {
+        user = new Person();
+    }
+    
+    public boolean getStatus()
+    {
+        return user != null;
+    }
 }

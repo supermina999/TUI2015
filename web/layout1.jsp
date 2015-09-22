@@ -1,5 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="models.*"%>
+<%@page import="users.User"%>
 <!DOCTYPE html>
 <!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
@@ -143,6 +144,12 @@
 													</li>
                                                                                                         <li>
                                                                                                             <div class="btn-group dropdown">
+                                                                                                                <%User user = new User();
+                                                                                                                  boolean isLogin = user.getStatus();
+                                                                                                                  if (isLogin) {%>
+                                                                                                                  <button type="button" class="btn btn-login btn-default" ><i class="fa fa-user"></i> Выход</button>
+                                                                                                                <%} else { %>
+                                                                                                                  
                                                                                                                 <button type="button" class="btn dropdown-toggle btn-login btn-default" data-toggle="dropdown"><i class="fa fa-user"></i> Вход</button>
                                                                                                                 <ul class="dropdown-menu dropdown-menu-right dropdown-animation">
                                                                                                                         <li>
@@ -177,6 +184,7 @@
                                                                                                                                     </form>
                                                                                                                         </li>
                                                                                                                 </ul>
+                                                                                                                <% } %>
                                                                                                             </div>
                                                                                                         </li>
 												</ul>

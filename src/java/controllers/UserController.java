@@ -18,8 +18,7 @@ public class UserController {
         User user = new User();
         return user.tryToLogin(login, password);
     }
-         
-
+    
     public static String add(HttpServletRequest request) throws Exception
     {
         String login = request.getParameter("login");

@@ -164,7 +164,7 @@ public class DBModel {
             for(int i = 0; i < entryes.length; i++)
             {
                 query += entryes[i].name + "=" + entryes[i].SQLValue();
-                if (i+1<entryes.length) query += ", ";
+                if (i+1<entryes.length) query += " AND ";
             }
         }
         DBEntry[] result = new DBEntry[stdEntryes.length];
@@ -197,7 +197,7 @@ public class DBModel {
             for(int i = 0; i < entryes.length; i++)
             {
                 query += entryes[i].name + "=" + entryes[i].SQLValue();
-                if (i+1<entryes.length) query += ", ";
+                if (i+1<entryes.length) query += " AND ";
             }
         }
         DBEntry[] result = new DBEntry[stdEntryes.length];
