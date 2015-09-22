@@ -4,10 +4,21 @@ import java.io.UnsupportedEncodingException;
 import java.sql.SQLException;
 import javax.servlet.http.HttpServletRequest;
 import models.*;
+import users.User;
+
 import sql.Sql;
 
 
 public class UserController {
+    
+    public static boolean login(HttpServletRequest request) throws ClassNotFoundException, SQLException
+    {
+        String login = request.getParameter("login");
+        String password = request.getParameter("password");
+        User user = new User();
+        return user.tryToLogin(login, password);
+    }
+         
     public static void add(HttpServletRequest request) throws ClassNotFoundException, SQLException, UnsupportedEncodingException
     {
         String login = request.getParameter("login");
