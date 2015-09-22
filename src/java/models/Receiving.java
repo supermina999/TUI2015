@@ -97,4 +97,14 @@ public class Receiving extends DBModel {
     {
         this.entryes[4].setValue(id);
     }
+    public String getResourceName() throws Exception
+    {
+        int id = getResourceId();
+        return Resource.getOne(id).getName();
+    }
+    public Location getLocation() throws Exception
+    {
+        int id = getStockId();
+        return Stock.getOne(id).getLocation();
+    }
 }

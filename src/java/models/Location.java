@@ -97,4 +97,14 @@ public class Location extends DBModel {
     {
         this.entryes[4].setValue(id);
     }
+    public String getCountryName() throws Exception
+    {
+        int id = getCityId();
+        return City.getOne(id).getCountryName();
+    }
+    public String getCityName() throws Exception
+    {
+        int id = getCityId();
+        return City.getOne(id).getName();
+    }
 }

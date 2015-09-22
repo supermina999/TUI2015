@@ -87,4 +87,9 @@ public class Transport extends DBModel {
     {
         this.entryes[3].setValue(id);
     }
+    public String getOrganizationName() throws Exception
+    {
+        int id = getOrganizationId();
+        return Organization.getOne(id).getName();
+    }
 }

@@ -160,4 +160,9 @@ public class Person extends DBModel {
     {
         this.entryes[11].setValue(id);
     }
+    public String getOrganizationName() throws Exception
+    {
+        int id = getOrganizationId();
+        return Organization.getOne(id).getName();
+    }
 }

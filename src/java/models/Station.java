@@ -78,5 +78,14 @@ public class Station extends DBModel {
     {
         this.entryes[2].setValue(id);
     }
-   
+    public String getOrganizationName() throws Exception
+    {
+        int id = getOrganizationId();
+        return Organization.getOne(id).getName();
+    }
+    public Location getLocation() throws Exception
+    {
+        int id = getLocationId();
+        return Location.getOne(id);
+    }
 }

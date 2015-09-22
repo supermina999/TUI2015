@@ -105,4 +105,14 @@ public class NeededResource extends DBModel {
     {
         this.entryes[5].setValue(emergency);
     }
+    public String getResourceName() throws Exception
+    {
+        int id = getResourceId();
+        return Resource.getOne(id).getName();
+    }
+    public Location getLocation() throws Exception
+    {
+        int id = getStationId();
+        return Stock.getOne(id).getLocation();
+    }
 }

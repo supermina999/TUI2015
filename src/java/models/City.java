@@ -80,4 +80,9 @@ public class City extends DBModel {
     {
         this.entryes[2].setValue(id);
     }
+    public String getCountryName() throws Exception
+    {
+        int id = getCountryId();
+        return Country.getOne(id).getName();
+    }
 }
