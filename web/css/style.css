@@ -3732,8 +3732,8 @@ a.overlay.small i {
 	content: "\f107";
 	position: absolute;
 	left: auto;
-	top: 15px;
-	right: 6px;
+	top: 23px;
+	right: 0px;
 	line-height: 1;
 	color: #d1d1d1;
 }
