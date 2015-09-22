@@ -1,43 +1,29 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="java.sql.*"%>
+<%@page import="javax.sql.*"%>
+
 <% int minPermission = 8; 
-   int tab = 0; %>
+   int tab = 4; %>
 <%@include file = "layout1.jsp"%>
-<br>
-    <div class="form-block center-block">
-        <center><h2 class="title">Добавить склад</h2></center>
-        <hr>
-        <form class="form-horizontal">
-                <div class="form-group has-feedback">
-                        <label class="col-sm-3 control-label">Название</label>
-                        <div class="col-sm-8">
-                                <input type="text" class="form-control" id="name" required>
-                                <i class="fa fa-pencil form-control-feedback"></i>
-                        </div>
-                </div>
-                <div class="form-group has-feedback">
-                        <label class="col-sm-3 control-label">Адрес</label>
-                        <div class="col-sm-8">
-                                <input type="text" class="form-control" id="address" required>
-                                <i class="fa fa-map-marker form-control-feedback"></i>
-                        </div>
-                </div>
-                <div class="form-group has-feedback">
-                    <label class="col-sm-3 control-label">Организация</label>
-                    <div class="col-sm-8">
-                        <select class="form-control" style="width: 100%;">
-                                    <option>Выберите организацию</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
-                           </select>
-                    </div>
-                </div>
-                <div class="form-group">
-                        <div class="col-sm-offset-3 col-sm-8">					
-                                <button type="submit" class="btn btn-group btn-default btn-block">Готово</button>
-                        </div>
-                </div>
-        </form>
-</div>
+<%
+    String address = request.getParameter("address");
+    String organization_id = request.getParameter("organization");
+    String city_id = request.getParameter("city");
+    DBModel.init();
+    Stock stock = new Stock();
+    Location location = new Location();
+    location.setCityId(Integer.parseInt(city_id));
+    location.setAddress(address);
+    location.setXCoord(1);
+    location.setYCoord(1);
+    location.writeToDB();
+    Location[] all_locations = Location.getAll(null);
+    stock.setLocationId(all_locations.length);
+    stock.setOrganizationId(Integer.parseInt(organization_id));
+    stock.writeToDB();
+%>
+    <script>
+        window.location.href = "stocks.jsp";
+    </script>
+
 <%@include file = "layout2.jsp"%>

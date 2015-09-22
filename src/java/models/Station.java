@@ -15,7 +15,8 @@ public class Station extends DBModel {
     static protected String tableName = "station";
     static protected DBEntry[] stdEntryes = {
         new DBEntry("id", EntryType.Int),
-        new DBEntry("location_id", EntryType.Int)
+        new DBEntry("location_id", EntryType.Int),
+        new DBEntry("organization_id", EntryType.Int)
     };
     
     protected Station(DBEntry[] entryes) {
@@ -27,7 +28,7 @@ public class Station extends DBModel {
     }
     
     public static void init()
-    {        
+    {
     }
      public static Station getOne( DBEntry[] entryes) throws ClassNotFoundException, SQLException
     {
@@ -56,9 +57,17 @@ public class Station extends DBModel {
     {
         return Integer.parseInt(this.entryes[1].getValue());
     }
-    public void setLoactionId(int id)
+    public void setLocationId(int id)
     {
         this.entryes[1].setValue(id);
+    }
+    public int getOrganizationId()
+    {
+        return Integer.parseInt(this.entryes[2].getValue());
+    }
+    public void setOrganizationId(int id)
+    {
+        this.entryes[2].setValue(id);
     }
    
 }

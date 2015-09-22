@@ -108,12 +108,11 @@ public class DBModel {
         Statement st = DBConnectionHolder.connection.createStatement();
         st.execute("use " +DBConnectionHolder.DBName); 
         String query = "INSERT " + this.tableName + " SET ";
-        for(int i = 0; i < entryes.length;i++)
+        for(int i = 1; i < entryes.length;i++)
         {
-            query += entryes[i].name + "=" + entryes[i].SQLValue();
+            query += entryes[i].name + " = " + entryes[i].SQLValue();
             if (i+1<entryes.length) query += ", ";
         }
-        
         st.execute(query);
         st.close();
     }
@@ -146,6 +145,7 @@ public class DBModel {
         Organization.init();
         Permission.init();
         Person.init();
+        Resource.init();
         Receiving.init();
         Station.init();
         Stock.init();
@@ -182,6 +182,7 @@ public class DBModel {
     }
     protected static DBModel[] getAll( DBEntry[] entryes, int fl) throws ClassNotFoundException, SQLException
     {
+
         if (DBConnectionHolder.connection == null) DBConnectionHolder.createConnection();
         Statement st = DBConnectionHolder.connection.createStatement();
         st.execute("use " +DBConnectionHolder.DBName); 

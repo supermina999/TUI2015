@@ -4,3 +4,15 @@
     font-weight: 700;
 }
 
+.scrollToTop-red {
+	background-color: #e84c3d;
+}
+
+.form-text {
+	border: 1px solid #f1f1f1;
+	background-color: #ffffff;
+	padding: 20px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+}

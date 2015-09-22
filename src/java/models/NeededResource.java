@@ -18,6 +18,7 @@ public class NeededResource extends DBModel {
         new DBEntry("resource_id", EntryType.Int),
         new DBEntry("station_id", EntryType.Int),
         new DBEntry("number", EntryType.Int),
+        new DBEntry("measure_id", EntryType.Int),
         new DBEntry("emergency", EntryType.Int)
     };
     
@@ -79,12 +80,20 @@ public class NeededResource extends DBModel {
     {
         this.entryes[3].setValue(number);
     }
-     public int getEmergency()
+    public int getMeasureId()
     {
         return Integer.parseInt(this.entryes[4].getValue());
     }
+    public void setMeasureId(int id)
+    {
+        this.entryes[4].setValue(id);
+    }
+    public int getEmergency()
+    {
+        return Integer.parseInt(this.entryes[5].getValue());
+    }
     public void setEmergency(int emergency)
     {
-        this.entryes[4].setValue(emergency);
+        this.entryes[5].setValue(emergency);
     }
 }

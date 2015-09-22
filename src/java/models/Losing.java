@@ -17,7 +17,8 @@ public class Losing extends DBModel {
         new DBEntry("id", EntryType.Int),
         new DBEntry("resource_id", EntryType.Int),
         new DBEntry("station_id", EntryType.Int),
-        new DBEntry("number", EntryType.Int)
+        new DBEntry("number", EntryType.Int),
+        new DBEntry("measure_id", EntryType.Int)
     };
     protected Losing(DBEntry[] entryes) {
         super(entryes);      
@@ -75,5 +76,13 @@ public class Losing extends DBModel {
     public void setNumber(int number)
     {
         this.entryes[3].setValue(number);
+    }
+    public int getMeasureId()
+    {
+        return Integer.parseInt(this.entryes[4].getValue());
+    }
+    public void setMeasureId(int id)
+    {
+        this.entryes[4].setValue(id);
     }
 }

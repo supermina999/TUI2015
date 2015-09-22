@@ -18,6 +18,7 @@ public class AvailableResource extends DBModel {
             new DBEntry("resource_id",EntryType.Int),
             new DBEntry("stock_id",EntryType.Int),
             new DBEntry("number",EntryType.Int),
+            new DBEntry("measure_id",EntryType.Int)
         };
     protected AvailableResource(DBEntry[] entryes) {
         super(entryes);
@@ -29,9 +30,8 @@ public class AvailableResource extends DBModel {
     }
     public static void init()
     {
-        
-      
     }
+
     public static AvailableResource getOne( DBEntry[] entryes) throws ClassNotFoundException, SQLException
     {
         DBModel.tableName = AvailableResource.tableName;
@@ -63,7 +63,7 @@ public class AvailableResource extends DBModel {
     {
         this.entryes[1].setValue(id);
     }
-   public int getStockId()
+    public int getStockId()
     {
         return Integer.parseInt(this.entryes[2].getValue());
     }
@@ -78,5 +78,13 @@ public class AvailableResource extends DBModel {
     public void setNumber(int number)
     {
         this.entryes[3].setValue(number);
+    }
+    public int getMeasureId()
+    {
+        return Integer.parseInt(this.entryes[4].getValue());
+    }
+    public void setMeasureId(int id)
+    {
+        this.entryes[4].setValue(id);
     }
 }

@@ -54,11 +54,11 @@ public class Stock extends DBModel {
     {
         this.entryes[0].setValue(id);
     }
-    public int getOranizationId()
+    public int getOrganizationId()
     {
         return Integer.parseInt(this.entryes[1].getValue());
     }
-    public void setOranizationId(int id)
+    public void setOrganizationId(int id)
     {
         this.entryes[1].setValue(id);
     }

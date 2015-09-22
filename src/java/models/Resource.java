@@ -62,7 +62,7 @@ public class Resource extends DBModel {
     {
         this.entryes[1].setValue(name);
     }
-    public int getWeigth()
+    public int getWeight()
     {
         return Integer.parseInt(this.entryes[2].getValue());
     }

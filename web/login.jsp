@@ -1,7 +1,4 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<% int minPermission = 8; 
-   int tab = 0; %>
-<%@include file = "layout1.jsp"%>
 <br>
     <div class="form-block center-block">
         <center><h2 class="title">Авторизация</h2></center>
@@ -33,6 +30,3 @@
                 </div>
         </form>
 </div>
-
-
-<%@include file = "layout2.jsp"%>
