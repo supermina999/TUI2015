@@ -4,15 +4,13 @@
 <jsp:useBean id="user" class="users.User" scope="session"/>
 
 <%
-    boolean isOk = UserController.login(request);
+    boolean isOk = user.tryToLogin(request);
     if (isOk) {%>
         <script>
             window.location.href = "userInfo.jsp";
         </script>
     <%} else {%>
         <script>
-            window.location.href = "/"
+            window.history.back();
         </script>
     <%}%>
-        
-<%@include file="layout2.jsp" %>

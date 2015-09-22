@@ -1,6 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="models.*"%>
 <%@page import="users.User"%>
+<jsp:useBean id="user" class="users.User" scope="session"/>
 <!DOCTYPE html>
 <!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
@@ -73,7 +74,7 @@
 				fixed: fixed navigation mode (sticky menu) e.g. <header class="header fixed clearfix">
 				 dark: dark header version e.g. <header class="header dark clearfix">
 			================ -->
-			<header class="header fixed clearfix">
+			<header class="header header-custom fixed clearfix">
 				<div class="container">
 					<div class="row">
 						<div class="col-md-3">
@@ -103,7 +104,7 @@
 
 									<!-- navbar start -->
 									<!-- ================ -->
-									<nav class="navbar navbar-default" role="navigation">
+									<nav class="navbar navbar-default navbar-custom" role="navigation">
 										<div class="container-fluid">
 
 											<!-- Toggle get grouped for better mobile display -->
@@ -143,20 +144,21 @@
 														<a href="reports.jsp">Отчёты</a>
 													</li>
                                                                                                         <li>
-                                                                                                            <div class="btn-group dropdown">
-                                                                                                                <%User user = new User();
+                                                                                                            <div class="btn-group">
+                                                                                                                <%
                                                                                                                   boolean isLogin = user.getStatus();
                                                                                                                   if (isLogin) {%>
-                                                                                                                  <button type="button" class="btn btn-login btn-default" ><i class="fa fa-user"></i> Выход</button>
+                                                                                                                  <a type="button" class="btn btn-login btn-default" href="infoUser.jsp" style="width: 110px;"><i class="fa fa-user"></i> Кабинет</a>
+                                                                                                                  <a type="button" class="btn btn-login btn-default" href="exit.jsp"><i class="fa fa-sign-out"></i></a>
                                                                                                                 <%} else { %>
                                                                                                                   
-                                                                                                                <button type="button" class="btn dropdown-toggle btn-login btn-default" data-toggle="dropdown"><i class="fa fa-user"></i> Вход</button>
+                                                                                                                <button type="button" class="btn dropdown-toggle btn-login btn-default" data-toggle="dropdown" style="width: 165px;"><i class="fa fa-sign-in"></i> Вход</button>
                                                                                                                 <ul class="dropdown-menu dropdown-menu-right dropdown-animation">
                                                                                                                         <li>
                                                                                                                                 <div class="form-block center-block">
                                                                                                                                     <center><h2 class="title">Авторизация</h2></center>
                                                                                                                                     <hr>
-                                                                                                                                    <form class="form-horizontal" method = "post" action = "auth.jsp">>
+                                                                                                                                    <form class="form-horizontal" method = "post" action = "auth.jsp">
                                                                                                                                             <div class="form-group has-feedback">
                                                                                                                                                     <label class="col-sm-3 control-label">Логин</label>
                                                                                                                                                     <div class="col-sm-8">
@@ -178,7 +180,7 @@
                                                                                                                                                                             <input type="checkbox"> Запомнить меня
                                                                                                                                                                     </label>
                                                                                                                                                             </div>											
-                                                                                                                                                            <button type="submit" class="btn btn-group btn-default btn-block">Готово</button>
+                                                                                                                                                            <button type="submit" class="btn btn-group btn-default btn-block">Войти</button>
                                                                                                                                                     </div>
                                                                                                                                             </div>
                                                                                                                                     </form>

@@ -11,14 +11,6 @@ import sql.Sql;
 
 public class UserController {
     
-    public static boolean login(HttpServletRequest request) throws Exception
-    {
-        String login = request.getParameter("login");
-        String password = request.getParameter("password");
-        User user = new User();
-        return user.tryToLogin(login, password);
-    }
-    
     public static String add(HttpServletRequest request) throws Exception
     {
         String login = request.getParameter("login");

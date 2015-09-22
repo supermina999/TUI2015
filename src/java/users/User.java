@@ -7,8 +7,10 @@ import models.*;
 public class User {
     public Person user;
     
-    public boolean tryToLogin(String login, String password) throws Exception
+    public boolean tryToLogin(HttpServletRequest request) throws Exception
     {
+        String login = request.getParameter("login");
+        String password = request.getParameter("password");
         DBEntry[] params = {
             new DBEntry("login", EntryType.String, login),
             new DBEntry("password", EntryType.String, password)
@@ -24,7 +26,7 @@ public class User {
     
     public void exit()
     {
-        user = new Person();
+        user = null;
     }
     
     public boolean getStatus()

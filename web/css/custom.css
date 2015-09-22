@@ -1,18 +1,22 @@
 .btn-login {
-    min-width: 80px;
+    min-width: 50px;
     font-size: 14px;
     font-weight: 700;
 }
 
 .scrollToTop-red {
-	background-color: #e84c3d;
+    background-color: #e84c3d;
 }
 
 .form-text {
-	border: 1px solid #f1f1f1;
-	background-color: #ffffff;
-	padding: 20px;
-	-webkit-border-radius: 10px;
-	-moz-border-radius: 10px;
-	border-radius: 10px;
+    border: 1px solid #f1f1f1;
+    background-color: #ffffff;
+    padding: 20px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.navbar-custom {
+    margin-left: -5% !important; 
 }

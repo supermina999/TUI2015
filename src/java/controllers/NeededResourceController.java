@@ -10,14 +10,10 @@ public class NeededResourceController {
     public static void add(HttpServletRequest request) throws Exception
     {
         String name = request.getParameter("name");
-        name = new String(name.getBytes("iso8859-1"), "utf8");
         String number = request.getParameter("number");
         int weight = Integer.parseInt(number);
         String cityName = request.getParameter("city");
-        cityName = new String(cityName.getBytes("iso8859-1"), "utf8");
         String station = request.getParameter("station");
-        station = new String(station.getBytes("iso8859-1"), "utf8");
-        DBModel.init();
         
         Resource resource = new Resource();
         resource.setName(name);
