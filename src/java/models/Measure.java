@@ -12,8 +12,11 @@ import java.sql.SQLException;
  * @author liza
  */
 public class Measure extends DBModel {
-    static protected String tableName;
-    static protected DBEntry[] stdEntryes;
+    static protected String tableName= "measure";
+    static protected DBEntry[] stdEntryes = {
+        new DBEntry("id",EntryType.Int),
+        new DBEntry("name",EntryType.String)
+    };
     protected Measure(DBEntry[] entryes) {
         super(entryes);
         
@@ -24,14 +27,6 @@ public class Measure extends DBModel {
     }
     public static void init()
     {
-        Measure.tableName = "measure";
-        Measure.stdEntryes = new DBEntry[2];
-        Measure.stdEntryes[0] = new DBEntry();
-        Measure.stdEntryes[0].name = "id";
-        Measure.stdEntryes[0].type = EntryType.Int;
-        Measure.stdEntryes[1] = new DBEntry();
-        Measure.stdEntryes[1].name = "name";
-        Measure.stdEntryes[1].type = EntryType.String;
     }
      public static Measure getOne( DBEntry[] entryes) throws ClassNotFoundException, SQLException
     {
