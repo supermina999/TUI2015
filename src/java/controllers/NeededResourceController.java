@@ -44,7 +44,7 @@ public class NeededResourceController {
         int stationId = 0;
         for (int i = 0;i < allStation.length;i++)
         {
-            if (allLocation[allStation[i].getLocationId()].getAddress() == station) stationId = allStation[i].getId();
+            if (allLocation[allStation[i].getLocationId()-1].getAddress() == station) stationId = allStation[i].getId();
         }
         
         int measureId = 1;

@@ -34,7 +34,9 @@ public class Permission extends DBModel {
     {
         DBModel.tableName = Permission.tableName;
         DBModel.stdEntryes = Permission.stdEntryes;
-        return new Permission(Permission.getOne(entryes, 1).entryes);
+        DBModel buf = Permission.getOne(entryes, 1);
+        if (buf != null) return new Permission(buf.entryes);
+        else return null;
     }
     public static Permission[] getAll( DBEntry[] entryes) throws Exception
     {
@@ -42,7 +44,7 @@ public class Permission extends DBModel {
         DBModel.stdEntryes = Permission.stdEntryes;
         DBModel[] ans1 = Permission.getAll(entryes, 1);
         Permission[] ans2 = new Permission[ans1.length];
-        for(int i=0; i<ans1.length; i++) ans2[i]=new Permission(ans1[i].entryes);
+        for(int i=0; i<ans1.length; i++) if (ans1[i] != null) ans2[i]=new Permission(ans1[i].entryes);
         return ans2;
     }
     public int getId()

@@ -37,7 +37,9 @@ public class AvailableResource extends DBModel {
     {
         DBModel.tableName = AvailableResource.tableName;
         DBModel.stdEntryes = AvailableResource.stdEntryes;
-        return new AvailableResource(AvailableResource.getOne(entryes, 1).entryes);
+        DBModel buf = AvailableResource.getOne(entryes, 1);
+        if (buf != null) return new AvailableResource(buf.entryes);
+        else return null;
     }
     public static AvailableResource[] getAll( DBEntry[] entryes) throws Exception
     {
@@ -45,7 +47,7 @@ public class AvailableResource extends DBModel {
         DBModel.stdEntryes = AvailableResource.stdEntryes;
         DBModel[] ans1 = AvailableResource.getAll(entryes, 1);
         AvailableResource[] ans2 = new AvailableResource[ans1.length];
-        for(int i=0; i<ans1.length; i++) ans2[i]=new AvailableResource(ans1[i].entryes);
+        for(int i=0; i<ans1.length; i++) if (ans1[i]!=null) ans2[i]=new AvailableResource(ans1[i].entryes);
         return ans2;
     }
     public int getId()

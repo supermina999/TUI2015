@@ -34,7 +34,9 @@ public class Losing extends DBModel {
     {
         DBModel.tableName = Losing.tableName;
         DBModel.stdEntryes = Losing.stdEntryes;
-        return new Losing(Losing.getOne(entryes, 1).entryes);
+        DBModel buf = Losing.getOne(entryes, 1);
+        if (buf != null) return new Losing(buf.entryes);
+        return null;
     }
     public static Losing[] getAll( DBEntry[] entryes) throws Exception
     {
@@ -42,7 +44,7 @@ public class Losing extends DBModel {
         DBModel.stdEntryes = Losing.stdEntryes;
         DBModel[] ans1 = Losing.getAll(entryes, 1);
         Losing[] ans2 = new Losing[ans1.length];
-        for(int i=0; i<ans1.length; i++) ans2[i]=new Losing(ans1[i].entryes);
+        for(int i=0; i<ans1.length; i++) if (ans1[i] != null) ans2[i] = new Losing(ans1[i].entryes);
         return ans2;
     }
     public int getId()

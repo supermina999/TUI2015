@@ -35,7 +35,9 @@ public class Organization extends DBModel {
     {
         DBModel.tableName = Organization.tableName;
         DBModel.stdEntryes = Organization.stdEntryes;
-        return new Organization(Organization.getOne(entryes, 1).entryes);
+        DBModel buf = Organization.getOne(entryes, 1);
+        if (buf != null) return new Organization(buf.entryes);
+        else return null;
     }
     public static Organization[] getAll( DBEntry[] entryes) throws Exception
     {

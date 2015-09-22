@@ -36,7 +36,9 @@ public class Transport extends DBModel {
     {
         DBModel.tableName = Transport.tableName;
         DBModel.stdEntryes = Transport.stdEntryes;
-        return new Transport(Transport.getOne(entryes, 1).entryes);
+        DBModel buf = Transport.getOne(entryes, 1);
+        if (buf != null) return new Transport(buf.entryes);
+        else return null;
     }
     public static Transport[] getAll( DBEntry[] entryes) throws Exception
     {

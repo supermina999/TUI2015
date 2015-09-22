@@ -38,7 +38,9 @@ public class Location extends DBModel {
     {
         DBModel.tableName = Location.tableName;
         DBModel.stdEntryes = Location.stdEntryes;
-        return new Location(Location.getOne(entryes, 1).entryes);
+        DBModel buf = Location.getOne(entryes, 1);
+        if (buf != null) return new Location(buf.entryes);
+        else return null;
     }
     public static Location[] getAll( DBEntry[] entryes) throws Exception
     {
@@ -46,7 +48,7 @@ public class Location extends DBModel {
         DBModel.stdEntryes = Location.stdEntryes;
         DBModel[] ans1 = Location.getAll(entryes, 1);
         Location[] ans2 = new Location[ans1.length];
-        for(int i=0; i<ans1.length; i++) ans2[i]=new Location(ans1[i].entryes);
+        for(int i=0; i<ans1.length; i++) if (ans1[i] != null) ans2[i]=new Location(ans1[i].entryes);
         return ans2;
     }
     public int getId()

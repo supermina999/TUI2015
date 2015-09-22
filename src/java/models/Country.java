@@ -35,7 +35,9 @@ public class Country extends DBModel {
     {
         DBModel.tableName = Country.tableName;
         DBModel.stdEntryes = Country.stdEntryes;
-        return new Country(Country.getOne(entryes, 1).entryes);
+        DBModel buf = Country.getOne(entryes, 1);
+        if (buf != null) return new Country(buf.entryes);
+        else return null;
     }
     public static Country[] getAll( DBEntry[] entryes) throws Exception
     {
@@ -43,7 +45,7 @@ public class Country extends DBModel {
         DBModel.stdEntryes = Country.stdEntryes;
         DBModel[] ans1 = Country.getAll(entryes, 1);
         Country[] ans2 = new Country[ans1.length];
-        for(int i=0; i<ans1.length; i++) ans2[i]=new Country(ans1[i].entryes);
+        for(int i=0; i<ans1.length; i++) if (ans1[i] != null) ans2[i]=new Country(ans1[i].entryes);
         return ans2;
     }
     public int getId()

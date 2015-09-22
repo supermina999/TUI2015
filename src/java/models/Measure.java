@@ -32,7 +32,9 @@ public class Measure extends DBModel {
     {
         DBModel.tableName = Measure.tableName;
         DBModel.stdEntryes = Measure.stdEntryes;
-        return new Measure(Measure.getOne(entryes, 1).entryes);
+        DBModel buf = Measure.getOne(entryes, 1);
+        if (buf != null) return new Measure(buf.entryes);
+        else return null;
     }
     public static Measure[] getAll( DBEntry[] entryes) throws Exception
     {
@@ -40,7 +42,7 @@ public class Measure extends DBModel {
         DBModel.stdEntryes = Measure.stdEntryes;
         DBModel[] ans1 = Measure.getAll(entryes, 1);
         Measure[] ans2 = new Measure[ans1.length];
-        for(int i=0; i<ans1.length; i++) ans2[i]=new Measure(ans1[i].entryes);
+        for(int i=0; i<ans1.length; i++) if (ans1[i] != null) ans2[i]=new Measure(ans1[i].entryes);
         return ans2;
     }
     public int getId()

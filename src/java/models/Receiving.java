@@ -37,7 +37,9 @@ public class Receiving extends DBModel {
     {
         DBModel.tableName = Receiving.tableName;
         DBModel.stdEntryes = Receiving.stdEntryes;
-        return new Receiving(Receiving.getOne(entryes, 1).entryes);
+        DBModel buf = Receiving.getOne(entryes, 1);
+        if (buf != null) return new Receiving(buf.entryes);
+        else return null;
     }
     public static Receiving[] getAll( DBEntry[] entryes) throws Exception
     {

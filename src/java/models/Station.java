@@ -34,7 +34,9 @@ public class Station extends DBModel {
     {
         DBModel.tableName = Station.tableName;
         DBModel.stdEntryes = Station.stdEntryes;
-        return new Station(Station.getOne(entryes, 1).entryes);
+        DBModel buf = Station.getOne(entryes, 1);
+        if (buf != null) return new Station(buf.entryes);
+        else return null;
     }
     public static Station[] getAll( DBEntry[] entryes) throws Exception
     {

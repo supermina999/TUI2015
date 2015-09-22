@@ -35,7 +35,9 @@ public class Resource extends DBModel {
     {
         DBModel.tableName = Resource.tableName;
         DBModel.stdEntryes = Resource.stdEntryes;
-        return new Resource(Resource.getOne(entryes, 1).entryes);
+        DBModel buf = Resource.getOne(entryes, 1);
+        if (buf != null) return new Resource(buf.entryes);
+        else return null;
     }
     public static Resource[] getAll( DBEntry[] entryes) throws Exception
     {

@@ -35,7 +35,9 @@ public class Stock extends DBModel {
     {
         DBModel.tableName = Stock.tableName;
         DBModel.stdEntryes = Stock.stdEntryes;
-        return new Stock(Stock.getOne(entryes, 1).entryes);
+        DBModel buf = Stock.getOne(entryes, 1);
+        if (buf != null) return new Stock(buf.entryes);
+        else return null;
     }
     public static Stock[] getAll( DBEntry[] entryes) throws Exception
     {
