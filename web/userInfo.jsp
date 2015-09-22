@@ -35,7 +35,7 @@
 
 <br>
     <div class="form-block center-block" style="width: 50%;">
-        <center><h2 class="title"></h2><%=person.getName()%> <%=person.getSurname()%> <%=person.getSecondName()%></center>
+        <center><h2 class="title"><%=person.getSurname()%> <%=person.getName()%> <%=person.getSecondName()%></h2></center>
         <hr>
          <form class="form-horizontal">
         <div class="col-lg-5 col-sm-5">
@@ -44,7 +44,7 @@
                 </div>
         </div>
             <div class="form-group col-sm-7">
-                <p style="font-size: 15px;"> <b>Организация:</b> <%=org.getName()%> </p>
+                <p style="font-size: 15px;"> <b>Организация:</b> <a href="organizationInfo.jsp?id=<%=org.getId()%>"><%=org.getName()%></a> </p>
                 <p style="font-size: 15px;"> <b>Должность:</b> <%=permission.getName()%> </p>
                 <p style="font-size: 15px;"> <b>Город:</b> <%=city.getName()%> </p>
                 <p style="font-size: 15px;"> <b>Адрес:</b> <%=person.getAddress()%> </p>

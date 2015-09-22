@@ -149,7 +149,7 @@
                                                                                                                   boolean isLogin = user.getStatus();
                                                                                                                   if (isLogin) {
                                                                                                                   %>
-                                                                                                                  <a type="button" class="btn btn-login btn-default" href="userInfo.jsp?id=<%=user.getId()%>" style="width: 110px;"><i class="fa fa-user"></i> Кабинет</a>
+                                                                                                                  <a type="button" class="btn btn-login btn-default" href="userInfo.jsp?id=<%=user.user.getId()%>" style="width: 110px;"><i class="fa fa-user"></i> Кабинет</a>
                                                                                                                   <a type="button" class="btn btn-login btn-default" href="exit.jsp"><i class="fa fa-sign-out"></i></a>
                                                                                                                 <%} else { %>
                                                                                                                   
