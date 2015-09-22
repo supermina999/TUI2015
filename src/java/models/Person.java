@@ -20,7 +20,8 @@ public class Person extends DBModel {
         new DBEntry("second_name", EntryType.String),
         new DBEntry("login", EntryType.String),
         new DBEntry("password", EntryType.String),
-        new DBEntry("location_id", EntryType.Int),
+        new DBEntry("city_id", EntryType.Int),
+        new DBEntry("address", EntryType.String),
         new DBEntry("phone", EntryType.String),
         new DBEntry("email", EntryType.String),
         new DBEntry("permission_id", EntryType.Int),
@@ -38,44 +39,6 @@ public class Person extends DBModel {
     
     public static void init()
     {
-        Person.tableName = "person";
-        Person.stdEntryes = new DBEntry[12];
-        Person.stdEntryes[0] = new DBEntry();
-        Person.stdEntryes[0].name = "id";
-        Person.stdEntryes[0].type = EntryType.Int;
-        Person.stdEntryes[1] = new DBEntry();
-        Person.stdEntryes[1].name = "name";
-        Person.stdEntryes[1].type = EntryType.String;
-        Person.stdEntryes[2] = new DBEntry();
-        Person.stdEntryes[2].name = "surname";
-        Person.stdEntryes[2].type = EntryType.String;
-        Person.stdEntryes[3] = new DBEntry();
-        Person.stdEntryes[3].name = "second_name";
-        Person.stdEntryes[3].type = EntryType.String;
-        Person.stdEntryes[4] = new DBEntry();
-        Person.stdEntryes[4].name = "login";
-        Person.stdEntryes[4].type = EntryType.String;
-        Person.stdEntryes[5] = new DBEntry();
-        Person.stdEntryes[5].name = "password";
-        Person.stdEntryes[5].type = EntryType.String;
-        Person.stdEntryes[6] = new DBEntry();
-        Person.stdEntryes[6].name = "city_id";
-        Person.stdEntryes[6].type = EntryType.Int;
-        Person.stdEntryes[7] = new DBEntry();
-        Person.stdEntryes[7].name = "address";
-        Person.stdEntryes[7].type = EntryType.String;
-        Person.stdEntryes[8] = new DBEntry();
-        Person.stdEntryes[8].name = "phone";
-        Person.stdEntryes[8].type = EntryType.String;
-        Person.stdEntryes[9] = new DBEntry();
-        Person.stdEntryes[9].name = "email";
-        Person.stdEntryes[9].type = EntryType.String;
-        Person.stdEntryes[10] = new DBEntry();
-        Person.stdEntryes[10].name = "permission_id";
-        Person.stdEntryes[10].type = EntryType.Int;
-        Person.stdEntryes[11] = new DBEntry();
-        Person.stdEntryes[11].name = "organization_id";
-        Person.stdEntryes[11].type = EntryType.Int;
     }
     
     public static Person getOne( DBEntry[] entryes) throws ClassNotFoundException, SQLException
