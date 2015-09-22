@@ -5,6 +5,7 @@
  */
 package models;
 
+import java.io.UnsupportedEncodingException;
 import java.sql.SQLException;
 
 /**
@@ -31,7 +32,7 @@ public class City extends DBModel {
     {
            
     }
-     public static City getOne( DBEntry[] entryes) throws ClassNotFoundException, SQLException
+     public static City getOne( DBEntry[] entryes) throws ClassNotFoundException, SQLException, UnsupportedEncodingException
     {
         DBModel.tableName = City.tableName;
         DBModel.stdEntryes = City.stdEntryes;

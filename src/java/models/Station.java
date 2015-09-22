@@ -30,13 +30,13 @@ public class Station extends DBModel {
     public static void init()
     {
     }
-     public static Station getOne( DBEntry[] entryes) throws ClassNotFoundException, SQLException
+     public static Station getOne( DBEntry[] entryes) throws Exception
     {
         DBModel.tableName = Station.tableName;
         DBModel.stdEntryes = Station.stdEntryes;
         return new Station(Station.getOne(entryes, 1).entryes);
     }
-    public static Station[] getAll( DBEntry[] entryes) throws ClassNotFoundException, SQLException
+    public static Station[] getAll( DBEntry[] entryes) throws Exception
     {
         DBModel.tableName = Station.tableName;
         DBModel.stdEntryes = Station.stdEntryes;

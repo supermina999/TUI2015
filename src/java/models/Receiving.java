@@ -33,13 +33,13 @@ public class Receiving extends DBModel {
     {
     }
     
-     public static Receiving getOne( DBEntry[] entryes) throws ClassNotFoundException, SQLException
+     public static Receiving getOne( DBEntry[] entryes) throws Exception
     {
         DBModel.tableName = Receiving.tableName;
         DBModel.stdEntryes = Receiving.stdEntryes;
         return new Receiving(Receiving.getOne(entryes, 1).entryes);
     }
-    public static Receiving[] getAll( DBEntry[] entryes) throws ClassNotFoundException, SQLException
+    public static Receiving[] getAll( DBEntry[] entryes) throws Exception
     {
         DBModel.tableName = Receiving.tableName;
         DBModel.stdEntryes = Receiving.stdEntryes;

@@ -32,13 +32,13 @@ public class Transport extends DBModel {
     {
     }
     
-     public static Transport getOne( DBEntry[] entryes) throws ClassNotFoundException, SQLException
+     public static Transport getOne( DBEntry[] entryes) throws Exception
     {
         DBModel.tableName = Transport.tableName;
         DBModel.stdEntryes = Transport.stdEntryes;
         return new Transport(Transport.getOne(entryes, 1).entryes);
     }
-    public static Transport[] getAll( DBEntry[] entryes) throws ClassNotFoundException, SQLException
+    public static Transport[] getAll( DBEntry[] entryes) throws Exception
     {
         DBModel.tableName = Transport.tableName;
         DBModel.stdEntryes = Transport.stdEntryes;

@@ -31,13 +31,13 @@ public class Organization extends DBModel {
     {
     }
     
-     public static Organization getOne( DBEntry[] entryes) throws ClassNotFoundException, SQLException
+     public static Organization getOne( DBEntry[] entryes) throws Exception
     {
         DBModel.tableName = Organization.tableName;
         DBModel.stdEntryes = Organization.stdEntryes;
         return new Organization(Organization.getOne(entryes, 1).entryes);
     }
-    public static Organization[] getAll( DBEntry[] entryes) throws ClassNotFoundException, SQLException
+    public static Organization[] getAll( DBEntry[] entryes) throws Exception
     {
         DBModel.tableName = Organization.tableName;
         DBModel.stdEntryes = Organization.stdEntryes;

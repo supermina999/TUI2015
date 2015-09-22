@@ -41,13 +41,15 @@ public class Person extends DBModel {
     {
     }
     
-    public static Person getOne( DBEntry[] entryes) throws ClassNotFoundException, SQLException
+    public static Person getOne( DBEntry[] entryes) throws Exception
     {
         DBModel.tableName = Person.tableName;
         DBModel.stdEntryes = Person.stdEntryes;
-        return new Person(Person.getOne(entryes, 1).entryes);
+        DBModel buf = Person.getOne(entryes, 1);
+        if (buf != null) return new Person(buf.entryes);
+        else return null;
     }
-    public static Person[] getAll( DBEntry[] entryes) throws ClassNotFoundException, SQLException
+    public static Person[] getAll( DBEntry[] entryes) throws Exception
     {
         DBModel.tableName = Person.tableName;
         DBModel.stdEntryes = Person.stdEntryes;

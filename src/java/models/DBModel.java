@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package models;
+import java.io.UnsupportedEncodingException;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -101,7 +102,7 @@ public class DBModel {
     }
     
     
-    public void writeToDB() throws ClassNotFoundException, SQLException
+    public void writeToDB() throws Exception
     {
         getRealStatics();
         if (DBConnectionHolder.connection == null) DBConnectionHolder.createConnection();
@@ -116,7 +117,7 @@ public class DBModel {
         st.execute(query);
         st.close();
     }
-    public void saveChanges() throws ClassNotFoundException, SQLException
+    public void saveChanges() throws ClassNotFoundException, SQLException, UnsupportedEncodingException
     {
         getRealStatics();
         if (DBConnectionHolder.connection == null) DBConnectionHolder.createConnection();
@@ -151,7 +152,7 @@ public class DBModel {
         Stock.init();
         Transport.init();
     }
-    protected static DBModel getOne( DBEntry[] entryes, int fl) throws ClassNotFoundException, SQLException
+    protected static DBModel getOne( DBEntry[] entryes, int fl) throws ClassNotFoundException, SQLException, UnsupportedEncodingException
     {
         if (DBConnectionHolder.connection == null) DBConnectionHolder.createConnection();
         Statement st = DBConnectionHolder.connection.createStatement();
@@ -169,18 +170,21 @@ public class DBModel {
         DBEntry[] result = new DBEntry[stdEntryes.length];
         try (ResultSet rs = st.executeQuery(query))
         {
-            rs.next();
-            for(int i = 0; i < stdEntryes.length; i++)
+            if (rs.next())
             {
-               result[i] = new DBEntry();
-               result[i].type = stdEntryes[i].type; 
-               result[i].setValue(rs.getObject(i+1)); 
+                for(int i = 0; i < stdEntryes.length; i++)
+                {
+                   result[i] = new DBEntry();
+                   result[i].type = stdEntryes[i].type; 
+                   result[i].setValue(rs.getObject(i+1)); 
+                }
+                DBModel ans = new DBModel(result);
+                return ans;
             }
-            DBModel ans = new DBModel(result);
-            return ans;
         }
+        return null;
     }
-    protected static DBModel[] getAll( DBEntry[] entryes, int fl) throws ClassNotFoundException, SQLException
+    protected static DBModel[] getAll( DBEntry[] entryes, int fl) throws Exception
     {
 
         if (DBConnectionHolder.connection == null) DBConnectionHolder.createConnection();

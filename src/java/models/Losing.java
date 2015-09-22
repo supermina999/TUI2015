@@ -30,13 +30,13 @@ public class Losing extends DBModel {
     public static void init()
     {
     }
-     public static Losing getOne( DBEntry[] entryes) throws ClassNotFoundException, SQLException
+     public static Losing getOne( DBEntry[] entryes) throws Exception
     {
         DBModel.tableName = Losing.tableName;
         DBModel.stdEntryes = Losing.stdEntryes;
         return new Losing(Losing.getOne(entryes, 1).entryes);
     }
-    public static Losing[] getAll( DBEntry[] entryes) throws ClassNotFoundException, SQLException
+    public static Losing[] getAll( DBEntry[] entryes) throws Exception
     {
         DBModel.tableName = Losing.tableName;
         DBModel.stdEntryes = Losing.stdEntryes;
