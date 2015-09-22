@@ -10,7 +10,6 @@ public class StationController {
         String address = request.getParameter("address");
         String organization_id = request.getParameter("organization");
         String city_id = request.getParameter("city");
-        DBModel.init();
         Station station = new Station();
         Location location = new Location();
         location.setCityId(Integer.parseInt(city_id));

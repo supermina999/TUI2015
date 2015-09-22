@@ -3,13 +3,19 @@
    int tab = 0; %>
 <%@include file = "layout1.jsp"%>
 <%
-    DBModel.init();
     Organization[] organization = Organization.getAll(null);
     City[] city = City.getAll(null);
     Permission[] permission = Permission.getAll(null);
+    String alert = request.getParameter("alert");
 %>
 <br>
     <div class="form-block center-block">
+        <%if (alert != null)
+        {%>
+        <div class="alert alert-warning" role="alert">
+            <center><%=alert%></center>
+        </div>
+        <%}%>
         <center><h2 class="title">Регистрация</h2></center>
         <form class="form-horizontal" method="post" action="addUser.jsp">
                 <div class="form-group has-feedback">

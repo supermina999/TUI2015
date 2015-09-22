@@ -3,8 +3,15 @@
 <%@page import="controllers.UserController"%>
 
 <%
-    UserController.add(request);
+    String result = UserController.add(request);
+    if (result != "OK")
+    {%>
+        <script>
+            window.location.href = "register.jsp?alert=<%=result%>";
+        </script>  
+    <%} else {%>
 %>
     <script>
         window.location.href = "organizations.jsp";
     </script>
+    <% } %>

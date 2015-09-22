@@ -11,7 +11,6 @@ public class StockController
         String address = request.getParameter("address");
         String organization_id = request.getParameter("organization");
         String city_id = request.getParameter("city");
-        DBModel.init();
         Stock stock = new Stock();
         Location location = new Location();
         location.setCityId(Integer.parseInt(city_id));
