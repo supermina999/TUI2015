@@ -24,6 +24,12 @@ public class DBEntry
             this.name = name;
             this.type = type;
         }
+        public DBEntry(String name, EntryType type, Object obj)
+        {
+            this.name = name;
+            this.type = type;
+            this.setValue(obj);
+        }
         public void setValue(Object obj)
         {
             if (type==EntryType.Int) value = ((Integer)obj).toString();
