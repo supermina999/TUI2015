@@ -33,7 +33,13 @@ public class Location extends DBModel {
     public static void init()
     {
     }
-    
+     public static Location getOne(int id) throws Exception
+    {
+        DBEntry[] params = {
+            new DBEntry("id", EntryType.Int, id)
+        };
+        return getOne(params);
+    }
     public static Location getOne( DBEntry[] entryes) throws ClassNotFoundException, SQLException, UnsupportedEncodingException
     {
         DBModel.tableName = Location.tableName;

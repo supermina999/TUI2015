@@ -28,6 +28,13 @@ public class Measure extends DBModel {
     public static void init()
     {
     }
+    public static Measure getOne(int id) throws Exception
+    {
+        DBEntry[] params = {
+            new DBEntry("id", EntryType.Int, id)
+        };
+        return getOne(params);
+    }
      public static Measure getOne( DBEntry[] entryes) throws Exception
     {
         DBModel.tableName = Measure.tableName;

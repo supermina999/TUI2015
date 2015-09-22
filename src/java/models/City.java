@@ -32,6 +32,13 @@ public class City extends DBModel {
     {
            
     }
+     public static City getOne(int id) throws Exception
+    {
+        DBEntry[] params = {
+            new DBEntry("id", EntryType.Int, id)
+        };
+        return getOne(params);
+    }
      public static City getOne( DBEntry[] entryes) throws ClassNotFoundException, SQLException, UnsupportedEncodingException
     {
         DBModel.tableName = City.tableName;

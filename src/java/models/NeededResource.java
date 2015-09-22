@@ -33,6 +33,13 @@ public class NeededResource extends DBModel {
     public static void init()
     {
     }
+     public static NeededResource getOne(int id) throws Exception
+    {
+        DBEntry[] params = {
+            new DBEntry("id", EntryType.Int, id)
+        };
+        return getOne(params);
+    }
      public static NeededResource getOne( DBEntry[] entryes) throws Exception
     {
         DBModel.tableName = NeededResource.tableName;

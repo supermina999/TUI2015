@@ -31,7 +31,13 @@ public class Transport extends DBModel {
     public static void init()
     {
     }
-    
+     public static Transport getOne(int id) throws Exception
+    {
+        DBEntry[] params = {
+            new DBEntry("id", EntryType.Int, id)
+        };
+        return getOne(params);
+    }
      public static Transport getOne( DBEntry[] entryes) throws Exception
     {
         DBModel.tableName = Transport.tableName;

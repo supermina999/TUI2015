@@ -40,7 +40,13 @@ public class Person extends DBModel {
     public static void init()
     {
     }
-    
+    public static Person getOne(int id) throws Exception
+    {
+        DBEntry[] params = {
+            new DBEntry("id", EntryType.Int, id)
+        };
+        return getOne(params);
+    }
     public static Person getOne( DBEntry[] entryes) throws Exception
     {
         DBModel.tableName = Person.tableName;

@@ -30,7 +30,13 @@ public class Country extends DBModel {
     public static void init()
     {
     }
-    
+     public static Country getOne(int id) throws Exception
+    {
+        DBEntry[] params = {
+            new DBEntry("id", EntryType.Int, id)
+        };
+        return getOne(params);
+    }
      public static Country getOne( DBEntry[] entryes) throws ClassNotFoundException, SQLException, UnsupportedEncodingException
     {
         DBModel.tableName = Country.tableName;

@@ -29,7 +29,13 @@ public class Permission extends DBModel {
     public static void init()
     {
     }
-    
+     public static Permission getOne(int id) throws Exception
+    {
+        DBEntry[] params = {
+            new DBEntry("id", EntryType.Int, id)
+        };
+        return getOne(params);
+    }
      public static Permission getOne( DBEntry[] entryes) throws Exception
     {
         DBModel.tableName = Permission.tableName;

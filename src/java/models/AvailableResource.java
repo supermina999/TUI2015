@@ -32,7 +32,13 @@ public class AvailableResource extends DBModel {
     public static void init()
     {
     }
-
+    public static AvailableResource getOne(int id) throws Exception
+    {
+        DBEntry[] params = {
+            new DBEntry("id", EntryType.Int, id)
+        };
+        return getOne(params);
+    }
     public static AvailableResource getOne( DBEntry[] entryes) throws ClassNotFoundException, SQLException, UnsupportedEncodingException
     {
         DBModel.tableName = AvailableResource.tableName;

@@ -30,6 +30,13 @@ public class Losing extends DBModel {
     public static void init()
     {
     }
+     public static Losing getOne(int id) throws Exception
+    {
+        DBEntry[] params = {
+            new DBEntry("id", EntryType.Int, id)
+        };
+        return getOne(params);
+    }
      public static Losing getOne( DBEntry[] entryes) throws Exception
     {
         DBModel.tableName = Losing.tableName;

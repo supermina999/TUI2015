@@ -30,6 +30,13 @@ public class Station extends DBModel {
     public static void init()
     {
     }
+     public static Station getOne(int id) throws Exception
+    {
+        DBEntry[] params = {
+            new DBEntry("id", EntryType.Int, id)
+        };
+        return getOne(params);
+    }
      public static Station getOne( DBEntry[] entryes) throws Exception
     {
         DBModel.tableName = Station.tableName;
