@@ -12,35 +12,26 @@ import java.sql.SQLException;
  * @author roma
  */
 public class Transport extends DBModel {
-    static protected String tableName;
-    static protected DBEntry[] stdEntryes;
+    static protected String tableName = "transport";
+    static protected DBEntry[] stdEntryes = {
+        new DBEntry("id", EntryType.Int),
+        new DBEntry("name", EntryType.String),
+        new DBEntry("max_weight", EntryType.Int),
+        new DBEntry("organization_id", EntryType.Int)
+    };
+    
     protected Transport(DBEntry[] entryes) {
-        super(entryes);
-        
+        super(entryes);        
     }
+    
      public Transport() {
-        super();
-        
+        super();        
     }
     
     public static void init()
     {
-        Transport.tableName = "transport";
-        Transport.stdEntryes = new DBEntry[4];
-        Transport.stdEntryes[0] = new DBEntry();
-        Transport.stdEntryes[0].name = "id";
-        Transport.stdEntryes[0].type = EntryType.Int;
-        Transport.stdEntryes[1] = new DBEntry();
-        Transport.stdEntryes[1].name = "name";
-        Transport.stdEntryes[1].type = EntryType.String;
-        Transport.stdEntryes[2] = new DBEntry();
-        Transport.stdEntryes[2].name = "max_weight";
-        Transport.stdEntryes[2].type = EntryType.Int;
-        Transport.stdEntryes[3] = new DBEntry();
-        Transport.stdEntryes[3].name = "organization_id";
-        Transport.stdEntryes[3].type = EntryType.Int;
-        
     }
+    
      public static Transport getOne( DBEntry[] entryes) throws ClassNotFoundException, SQLException
     {
         DBModel.tableName = Transport.tableName;

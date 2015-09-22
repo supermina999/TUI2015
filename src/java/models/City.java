@@ -12,8 +12,12 @@ import java.sql.SQLException;
  * @author roma
  */
 public class City extends DBModel {
-    static protected String tableName;
-    static protected DBEntry[] stdEntryes;
+    static protected String tableName = "city";
+    static protected DBEntry[] stdEntryes = {
+        new DBEntry("id", EntryType.Int), 
+        new DBEntry("name",EntryType.String),
+        new DBEntry("country_id",EntryType.Int)
+    };
     protected City(DBEntry[] entryes) {
         super(entryes);
         
@@ -25,17 +29,7 @@ public class City extends DBModel {
     
     public static void init()
     {
-        City.tableName = "city";
-        City.stdEntryes = new DBEntry[3];
-        City.stdEntryes[0] = new DBEntry();
-        City.stdEntryes[0].name = "id";
-        City.stdEntryes[0].type = EntryType.Int;
-        City.stdEntryes[1] = new DBEntry();
-        City.stdEntryes[1].name = "name";
-        City.stdEntryes[1].type = EntryType.String;
-        City.stdEntryes[2] = new DBEntry();
-        City.stdEntryes[2].name = "country_id";
-        City.stdEntryes[2].type = EntryType.Int;        
+           
     }
      public static City getOne( DBEntry[] entryes) throws ClassNotFoundException, SQLException
     {

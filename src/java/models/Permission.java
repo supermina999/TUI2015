@@ -12,27 +12,24 @@ import java.sql.SQLException;
  * @author roma
  */
 public class Permission extends DBModel {
-    static protected String tableName;
-    static protected DBEntry[] stdEntryes;
+    static protected String tableName = "permission";
+    static protected DBEntry[] stdEntryes = {
+        new DBEntry("id", EntryType.Int),
+        new DBEntry("name", EntryType.String)
+    };
+    
     protected Permission(DBEntry[] entryes) {
-        super(entryes);
-        
-    }   
+        super(entryes);        
+    } 
+    
      public Permission() {
-        super();
-        
+        super();        
     }
+     
     public static void init()
     {
-        Permission.tableName = "permission";
-        Permission.stdEntryes = new DBEntry[2];
-        Permission.stdEntryes[0] = new DBEntry();
-        Permission.stdEntryes[0].name = "id";
-        Permission.stdEntryes[0].type = EntryType.Int;
-        Permission.stdEntryes[1] = new DBEntry();
-        Permission.stdEntryes[1].name = "name";
-        Permission.stdEntryes[1].type = EntryType.String;
     }
+    
      public static Permission getOne( DBEntry[] entryes) throws ClassNotFoundException, SQLException
     {
         DBModel.tableName = Permission.tableName;

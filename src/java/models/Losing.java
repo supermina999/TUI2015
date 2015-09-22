@@ -12,33 +12,22 @@ import java.sql.SQLException;
  * @author roma
  */
 public class Losing extends DBModel {
-    static protected String tableName;
-    static protected DBEntry[] stdEntryes;
+    static protected String tableName = "losing";
+    static protected DBEntry[] stdEntryes = {
+        new DBEntry("id", EntryType.Int),
+        new DBEntry("resource_id", EntryType.Int),
+        new DBEntry("station_id", EntryType.Int),
+        new DBEntry("number", EntryType.Int)
+    };
     protected Losing(DBEntry[] entryes) {
-        super(entryes);
-        
+        super(entryes);      
     }
      public Losing() {
         super();
-        
     }
     
     public static void init()
     {
-        Losing.tableName = "losing";
-        Losing.stdEntryes = new DBEntry[4];
-        Losing.stdEntryes[0] = new DBEntry();
-        Losing.stdEntryes[0].name = "id";
-        Losing.stdEntryes[0].type = EntryType.Int;
-        Losing.stdEntryes[1] = new DBEntry();
-        Losing.stdEntryes[1].name = "resource_id";
-        Losing.stdEntryes[1].type = EntryType.Int; 
-        Losing.stdEntryes[2] = new DBEntry();
-        Losing.stdEntryes[2].name = "station_id";
-        Losing.stdEntryes[2].type = EntryType.Int;
-        Losing.stdEntryes[3] = new DBEntry();
-        Losing.stdEntryes[3].name = "number";
-        Losing.stdEntryes[3].type = EntryType.Int;    
     }
      public static Losing getOne( DBEntry[] entryes) throws ClassNotFoundException, SQLException
     {

@@ -12,34 +12,26 @@ import java.sql.SQLException;
  * @author roma
  */
 public class Receiving extends DBModel {
-    static protected String tableName;
-    static protected DBEntry[] stdEntryes;
+    static protected String tableName = "receiving";
+    static protected DBEntry[] stdEntryes = { 
+        new DBEntry("id", EntryType.Int),
+        new DBEntry("resource_id", EntryType.Int),
+        new DBEntry("stock_id", EntryType.Int),
+        new DBEntry("number", EntryType.Int)
+    };
+    
     protected Receiving(DBEntry[] entryes) {
-        super(entryes);
-        
+        super(entryes);        
     }
+    
      public Receiving() {
-        super();
-        
+        super();        
     }
     
     public static void init()
     {
-        Receiving.tableName = "receiving";
-        Receiving.stdEntryes = new DBEntry[4];
-        Receiving.stdEntryes[0] = new DBEntry();
-        Receiving.stdEntryes[0].name = "id";
-        Receiving.stdEntryes[0].type = EntryType.Int;
-        Receiving.stdEntryes[1] = new DBEntry();
-        Receiving.stdEntryes[1].name = "resource_id";
-        Receiving.stdEntryes[1].type = EntryType.Int; 
-        Receiving.stdEntryes[2] = new DBEntry();
-        Receiving.stdEntryes[2].name = "stock_id";
-        Receiving.stdEntryes[2].type = EntryType.Int;
-        Receiving.stdEntryes[3] = new DBEntry();
-        Receiving.stdEntryes[3].name = "number";
-        Receiving.stdEntryes[3].type = EntryType.Int;    
     }
+    
      public static Receiving getOne( DBEntry[] entryes) throws ClassNotFoundException, SQLException
     {
         DBModel.tableName = Receiving.tableName;

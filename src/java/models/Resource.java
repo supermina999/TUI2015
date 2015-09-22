@@ -12,31 +12,25 @@ import java.sql.SQLException;
  * @author roma
  */
 public class Resource extends DBModel {
-    static protected String tableName;
-    static protected DBEntry[] stdEntryes;
+    static protected String tableName = "resource";
+    static protected DBEntry[] stdEntryes = {
+        new DBEntry("id", EntryType.Int),
+        new DBEntry("name", EntryType.String),
+        new DBEntry("weight", EntryType.Int)
+    };
+    
     protected Resource(DBEntry[] entryes) {
-        super(entryes);
-        
+        super(entryes);        
     }
+    
     public Resource() {
-        super();
-        
+        super();        
     }
     
     public static void init()
-    {
-        Resource.tableName = "resource";
-        Resource.stdEntryes = new DBEntry[3];
-        Resource.stdEntryes[0] = new DBEntry();
-        Resource.stdEntryes[0].name = "id";
-        Resource.stdEntryes[0].type = EntryType.Int;
-        Resource.stdEntryes[1] = new DBEntry();
-        Resource.stdEntryes[1].name = "name";
-        Resource.stdEntryes[1].type = EntryType.String;
-        Resource.stdEntryes[2] = new DBEntry();
-        Resource.stdEntryes[2].name = "weight";
-        Resource.stdEntryes[2].type = EntryType.Int;        
+    {    
     }
+    
      public static Resource getOne( DBEntry[] entryes) throws ClassNotFoundException, SQLException
     {
         DBModel.tableName = Resource.tableName;

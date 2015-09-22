@@ -12,36 +12,25 @@ import java.sql.SQLException;
  * @author roma
  */
 public class NeededResource extends DBModel {
-    static protected String tableName;
-    static protected DBEntry[] stdEntryes;
+    static protected String tableName = "needed_resource";
+    static protected DBEntry[] stdEntryes = {
+        new DBEntry("id", EntryType.Int),
+        new DBEntry("resource_id", EntryType.Int),
+        new DBEntry("station_id", EntryType.Int),
+        new DBEntry("number", EntryType.Int),
+        new DBEntry("emergency", EntryType.Int)
+    };
+    
     protected NeededResource(DBEntry[] entryes) {
         super(entryes);
-        
     }
+    
     public NeededResource() {
-        super();
-        
+        super();        
     }
     
     public static void init()
     {
-        NeededResource.tableName = "needed_resource";
-        NeededResource.stdEntryes = new DBEntry[5];
-        NeededResource.stdEntryes[0] = new DBEntry();
-        NeededResource.stdEntryes[0].name = "id";
-        NeededResource.stdEntryes[0].type = EntryType.Int;
-        NeededResource.stdEntryes[1] = new DBEntry();
-        NeededResource.stdEntryes[1].name = "resource_id";
-        NeededResource.stdEntryes[1].type = EntryType.Int; 
-        NeededResource.stdEntryes[2] = new DBEntry();
-        NeededResource.stdEntryes[2].name = "station_id";
-        NeededResource.stdEntryes[2].type = EntryType.Int;
-        NeededResource.stdEntryes[3] = new DBEntry();
-        NeededResource.stdEntryes[3].name = "number";
-        NeededResource.stdEntryes[3].type = EntryType.Int;    
-        NeededResource.stdEntryes[4] = new DBEntry();
-        NeededResource.stdEntryes[4].name = "emergency";
-        NeededResource.stdEntryes[4].type = EntryType.Int;  
     }
      public static NeededResource getOne( DBEntry[] entryes) throws ClassNotFoundException, SQLException
     {

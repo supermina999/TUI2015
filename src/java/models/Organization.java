@@ -12,35 +12,25 @@ import java.sql.SQLException;
  * @author roma
  */
 public class Organization extends DBModel {
-    static protected String tableName;
-    static protected DBEntry[] stdEntryes;
+    static protected String tableName = "organization";
+    static protected DBEntry[] stdEntryes = {
+        new DBEntry("id", EntryType.Int),
+        new DBEntry("name", EntryType.String),
+        new DBEntry("address", EntryType.String),
+        new DBEntry("website", EntryType.String)        
+    };
     protected Organization(DBEntry[] entryes) {
-        super(entryes);
-        
+        super(entryes);        
     }
+    
     public Organization() {
-        super();
-        
+        super();        
     }
     
     public static void init()
     {
-        Organization.tableName = "organization";
-        Organization.stdEntryes = new DBEntry[4];
-        Organization.stdEntryes[0] = new DBEntry();
-        Organization.stdEntryes[0].name = "id";
-        Organization.stdEntryes[0].type = EntryType.Int;
-        Organization.stdEntryes[1] = new DBEntry();
-        Organization.stdEntryes[1].name = "name";
-        Organization.stdEntryes[1].type = EntryType.String;
-        Organization.stdEntryes[2] = new DBEntry();
-        Organization.stdEntryes[2].name = "address";
-        Organization.stdEntryes[2].type = EntryType.String;
-        Organization.stdEntryes[3] = new DBEntry();
-        Organization.stdEntryes[3].name = "website";
-        Organization.stdEntryes[3].type = EntryType.String;
-        
     }
+    
      public static Organization getOne( DBEntry[] entryes) throws ClassNotFoundException, SQLException
     {
         DBModel.tableName = Organization.tableName;
