@@ -5,9 +5,12 @@
 <%
     DBModel.init();
     AvailableResource[] availableRes = AvailableResource.getAll(null);
+    /*City[] cityName = City.getAll(null);
+    Stock[] stockLocation = Stock.getAll(null);
+    Location[] stockAddress = Location.getAll(null);*/
+    City[] city = City.getAll(null);
     Stock[] stock = Stock.getAll(null);
     Location[] location = Location.getAll(null);
-    City[] city = City.getAll(null);
 %>
     <center>
         <br><h1>Ресурсы в наличии</h1><br>
@@ -30,10 +33,10 @@
                 <div class="col-md-4">
                     <select class="form-control" style="width: 100%;">
                             <option>Выберите склад</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
+                            <%for (int i = 0;i < stock.length;i++)
+                            {%>
+                                <option><%=location[stock[i].getLocationId() - 1].getAddress()%></option>
+                            <%}%>
                     </select>
                 </div>
                 <br><br><br>
@@ -52,14 +55,14 @@
                     for (int i = 0; i < availableRes.length; i++) {%>
                     <tr>
                         <%
-                            int id = availableRes[i].getResourceId();
-                            DBEntry[] params = {new DBEntry("id", EntryType.Int, id)};
+                            int resourceId = availableRes[i].getResourceId();
+                            DBEntry[] params = {new DBEntry("id", EntryType.Int, resourceId)};
                             Resource resource = Resource.getOne(params);
                         %>
                         <td class="quantity"> <%= resource.getName() %> </td>
                             <td class="product"><%= availableRes[i].getNumber() %></td>
-                            <td class="amount"><%//=city[location[stock[availableRes[i].getStockId() - 1].getLocationId() - 1].getCityId() - 1].getName()%></td>
-                            <td class="product"><%//=location[stock[availableRes[i].getStockId() - 1].getLocationId() - 1].getAddress()%></td>
+                            <td class="amount"><%=city[location[stock[availableRes[i].getStockId() - 1].getLocationId() - 1].getCityId() - 1].getName()%></td>
+                            <td class="product"><%=location[stock[availableRes[i].getStockId() - 1].getLocationId() - 1].getAddress()%></td>
                     </tr>
                     <% } %>
                 </tbody>

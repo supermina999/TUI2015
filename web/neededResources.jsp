@@ -2,6 +2,17 @@
 <% int minPermission = 8; 
    int tab = 3; %>
 <%@include file = "layout1.jsp"%>
+<%
+    DBModel.init();
+    NeededResource[] neededRes = NeededResource.getAll(null);
+    /*City[] cityName = City.getAll(null);
+    Station[] stationLocation = Station.getAll(null);
+    Location[] stationAddress = Location.getAll(null);*/
+    City[] city = City.getAll(null);
+    Station[] station = Station.getAll(null);
+    Location[] location = Location.getAll(null);
+    //Resource[] resource = Resource.getAll(null);
+%>
     <center>
         <br><h1>Требующиеся ресурсы</h1><br>
         <div class="form-group has-feedback" style="width: 60%;">
@@ -14,19 +25,19 @@
                 <div class="col-md-4">
                     <select class="form-control" style="width: 105%;">
                             <option>Выберите город</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
+                            <%for (int i = 0; i < city.length; i++)
+                            {%>
+                                <option><%=city[i].getName()%></option>
+                            <%}%>
                     </select>
                 </div>
                 <div class="col-md-4">
                     <select class="form-control" style="width: 100%;">
                             <option>Выберите пункт выдачи</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
+                            <%for (int i = 0;i < station.length;i++)
+                            {%>
+                                <option><%=location[station[i].getLocationId() - 1].getAddress()%></option>
+                            <%}%>
                     </select>
                 </div>
                 <br><br><br>
@@ -42,14 +53,17 @@
                 </thead>
                 <tbody>
                     <%
-                        DBModel.init();
-                        NeededResource[] neededRes = NeededResource.getAll(null); 
-                        for (int i = 0; i < neededRes.length; i++) {%>
+                    for (int i = 0; i < neededRes.length; i++) {%>
                         <tr>
-                            <td class="quantity"> <%=neededRes[i].getResourceId()%></td>
+                            <%
+                                /*int resourceId = neededRes[i].getResourceId();
+                                DBEntry[] params = {new DBEntry("id", EntryType.Int, resourceId)};
+                                Resource resource = Resource.getOne(params);*/
+                            %>
+                            <td class="quantity"> <%//=resource.getName()%></td>
                             <td class="amount"><%=neededRes[i].getNumber()%></td>
-                            <td class="product"><%=neededRes[i].getStationId()%></td>
-                            <td class="amount"><%=neededRes[i].getStationId()%></td>
+                            <td class="amount"><%//=city[location[station[neededRes[i].getStationId() - 1].getLocationId() - 1].getCityId() - 1].getName()%></td>
+                            <td class="product"><%//=location[station[neededRes[i].getStationId() - 1].getLocationId() - 1].getAddress()%></td>
                             
                         </tr>
                     <% } %>
