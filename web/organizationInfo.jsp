@@ -1,18 +1,27 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <% int minPermission = 8; 
    int tab = 0;
-   int i = Integer.parseInt(request.getParameter("id"));
-   DBEntry[] params = {
-       new DBEntry("id", EntryType.Int, i)
-   };   
-   Organization org = Organization.getOne(params);
-   
-   DBEntry[] personParams = {
-       new DBEntry("organization_id", EntryType.Int, i)
-   };   
-   
-   Person[] persons = Person.getAll(personParams);   
-   City[] city = City.getAll(null);
+   String s = request.getParameter("id");
+   Organization org = new Organization();
+   Person[] persons = null;
+   City[] city = null;
+   if (s == null)
+   {%>
+        <script>
+         window.location.href = "/";
+        </script>
+    <%} else {
+        int i = Integer.parseInt(request.getParameter("id"));
+        DBEntry[] params = {
+            new DBEntry("id", EntryType.Int, i)
+        };   
+        org = Organization.getOne(params);
+        DBEntry[] personParams = {
+            new DBEntry("organization_id", EntryType.Int, i)
+        };   
+        persons = Person.getAll(personParams);   
+        city = City.getAll(null);
+   }
    %>
 <%@include file = "layout1.jsp"%>
 <br>
@@ -53,41 +62,24 @@
                         <table class="table table-bordered">
                         <thead>
                                 <tr>
-                                    <th style="width: 50%;"><%
-                                    for (int j = 0; j < persons.length; j++)
-                                    {%>
-                                        <h4><%=persons[j].getName()+" "+persons[j].getSurname()+" "+persons[j].getSecondName()%></h4>
-                                    <%}%></th>
-                        
-                                    <th style="width: 25%;"><%
-                                    for (int j = 0; j < persons.length; j++)
-                                    {%>
-                                        <h4><%=persons[j].getPhone()%></h4>
-                                    <%}%></th>
-                        
-                                    <th style="width: 25%;"><% 
-                                    for (int j = 0; j < persons.length; j++)
-                                    {%>
-                                        <h4><%=persons[j].getEmail()%></h4>
-                                    <%}%></th>
+                                    <th style="width: 50%;">ФИО</th>
+                                        <th style="width: 25%;">Телефон</th>
+                                        <th style="width: 25%;">Email</th>
                                 </tr>
                         </thead>
                         <tbody>
+                            <%for (int j = 0; j < persons.length; j++)
+                                {%>
                                 <tr>
-                                        <td class="quantity">2 x</td>
-                                        <td class="product"><a href="shop-product.html">Android 4.4 Smartphone</a><span class="small">4.7" Dual Core 1GB</span></td>
-                                        <td class="amount">$199.00</td>
+                                    <td style="width: 50%;">
+                                        <%=persons[j].getName()+" "+persons[j].getSurname()+" "+persons[j].getSecondName()%>
+                                    </td>
+                        
+                                    <td style="width: 25%;"><%=persons[j].getPhone()%></td>
+                        
+                                    <td style="width: 25%;"><%=persons[j].getEmail()%></td>
                                 </tr>
-                                <tr>
-                                        <td class="quantity">3 x</td>
-                                        <td class="product"><a href="shop-product.html">Android 4.2 Tablet</a><span class="small">7.3" Quad Core 2GB</span></td>
-                                        <td class="amount">$299.00</td>
-                                </tr>
-                                <tr>
-                                        <td class="quantity">3 x</td>
-                                        <td class="product"><a href="shop-product.html">Desktop PC</a><span class="small">Quad Core 3.2MHz, 8GB RAM, 1TB Hard Disk</span></td>
-                                        <td class="amount">$1499.00</td>
-                                </tr>
+                                <%}%>
                         </tbody>
                         </table>
         </form>
