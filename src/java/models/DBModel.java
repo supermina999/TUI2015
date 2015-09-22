@@ -161,7 +161,7 @@ public class DBModel {
         if (entryes != null) 
         {
             query += " WHERE ";
-            for(int i = 1; i < entryes.length; i++)
+            for(int i = 0; i < entryes.length; i++)
             {
                 query += entryes[i].name + "=" + entryes[i].SQLValue();
                 if (i+1<entryes.length) query += ", ";
@@ -194,7 +194,7 @@ public class DBModel {
         if (entryes != null) 
         {
             query += " WHERE ";
-            for(int i = 1; i < entryes.length; i++)
+            for(int i = 0; i < entryes.length; i++)
             {
                 query += entryes[i].name + "=" + entryes[i].SQLValue();
                 if (i+1<entryes.length) query += ", ";
