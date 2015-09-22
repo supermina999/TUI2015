@@ -2,14 +2,6 @@
 <% int minPermission = 8; 
    int tab = 3; %>
 <%@include file = "layout1.jsp"%>
-<%
-    DBModel.init();
-    NeededResource[] neededRes = NeededResource.getAll(null);
-    Resource[] resource = Resource.getAll(null);
-    Station[] station = Station.getAll(null);
-    Location[] location = Location.getAll(null);
-    City[] city = City.getAll(null);
-%>
     <center>
         <br><h1>Требующиеся ресурсы</h1><br>
         <div class="form-group has-feedback" style="width: 60%;">
@@ -22,10 +14,10 @@
                 <div class="col-md-4">
                     <select class="form-control" style="width: 105%;">
                             <option>Выберите город</option>
-                            <%for (int i = 0; i < city.length; i++)
-                            {%>
-                                <option><%=city[i].getName()%></option>
-                            <%}%>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
                     </select>
                 </div>
                 <div class="col-md-4">
@@ -50,19 +42,22 @@
                 </thead>
                 <tbody>
                     <%
-                    for (int i = 0; i < neededRes.length; i++) {%>
-                    <tr>
-                            <td class="quantity"> <%=resource[neededRes[i].getResourceId() - 1].getName()%></td>
-                            <td class="product"><%=neededRes[i].getNumber()%></td>
-                            <td class="amount"><%=city[location[station[neededRes[i].getStationId() - 1].getLocationId() - 1].getCityId() - 1].getName()%></td>
-                            <td class="product"><%=location[station[neededRes[i].getStationId() - 1].getLocationId() - 1].getAddress()%></td>
-                    </tr>
+                        DBModel.init();
+                        NeededResource[] neededRes = NeededResource.getAll(null); 
+                        for (int i = 0; i < neededRes.length; i++) {%>
+                        <tr>
+                            <td class="quantity"> <%=neededRes[i].getResourceId()%></td>
+                            <td class="amount"><%=neededRes[i].getNumber()%></td>
+                            <td class="product"><%=neededRes[i].getStationId()%></td>
+                            <td class="amount"><%=neededRes[i].getStationId()%></td>
+                            
+                        </tr>
                     <% } %>
                 </tbody>
             </table>
         
         <a href="transitResource.jsp" class="btn btn-default btn-lg">Перевезти ресурс</a>
-        <a href="addNeededResource.jsp" class="btn btn-default btn-lg">Добавить требующийся ресурс</a>
+        <a href="newNeededResource.jsp" class="btn btn-default btn-lg">Добавить требующийся ресурс</a>
             
         </div>
     </center>

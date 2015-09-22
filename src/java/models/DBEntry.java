@@ -5,6 +5,8 @@
  */
 package models;
 
+import java.io.UnsupportedEncodingException;
+
 /**
  *
  * @author roma
@@ -39,9 +41,9 @@ public class DBEntry
         {
             return value;
         }
-        public String SQLValue()
+        public String SQLValue() throws UnsupportedEncodingException
         {
             if (type == EntryType.Int) return value;
-            else return '"'+value+'"';
+            else return '"'+new String(value.getBytes("iso8859-1"), "utf8")+'"';
         }
     }

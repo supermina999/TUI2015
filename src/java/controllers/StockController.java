@@ -1,16 +1,17 @@
 package controllers;
 
-import models.*;
-import java.sql.*;
+import java.sql.SQLException;
 import javax.servlet.http.HttpServletRequest;
+import models.*;
 
-public class StationController {
+public class StockController
+{
     public static void add(HttpServletRequest request) throws Exception
     {
         String address = request.getParameter("address");
         String organization_id = request.getParameter("organization");
         String city_id = request.getParameter("city");
-        Station station = new Station();
+        Stock stock = new Stock();
         Location location = new Location();
         location.setCityId(Integer.parseInt(city_id));
         location.setAddress(address);
@@ -18,8 +19,8 @@ public class StationController {
         location.setYCoord(1);
         location.writeToDB();
         Location[] all_locations = Location.getAll(null);
-        station.setLocationId(all_locations.length);
-        station.setOrganizationId(Integer.parseInt(organization_id));
-        station.writeToDB();
+        stock.setLocationId(all_locations.length);
+        stock.setOrganizationId(Integer.parseInt(organization_id));
+        stock.writeToDB();
     }
 }

@@ -30,13 +30,13 @@ public class Permission extends DBModel {
     {
     }
     
-     public static Permission getOne( DBEntry[] entryes) throws ClassNotFoundException, SQLException
+     public static Permission getOne( DBEntry[] entryes) throws Exception
     {
         DBModel.tableName = Permission.tableName;
         DBModel.stdEntryes = Permission.stdEntryes;
         return new Permission(Permission.getOne(entryes, 1).entryes);
     }
-    public static Permission[] getAll( DBEntry[] entryes) throws ClassNotFoundException, SQLException
+    public static Permission[] getAll( DBEntry[] entryes) throws Exception
     {
         DBModel.tableName = Permission.tableName;
         DBModel.stdEntryes = Permission.stdEntryes;

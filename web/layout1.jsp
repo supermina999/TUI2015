@@ -1,5 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="models.*"%>
+<%@page import="users.User"%>
 <!DOCTYPE html>
 <!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
@@ -143,24 +144,30 @@
 													</li>
                                                                                                         <li>
                                                                                                             <div class="btn-group dropdown">
+                                                                                                                <%User user = new User();
+                                                                                                                  boolean isLogin = user.getStatus();
+                                                                                                                  if (isLogin) {%>
+                                                                                                                  <button type="button" class="btn btn-login btn-default" ><i class="fa fa-user"></i> Выход</button>
+                                                                                                                <%} else { %>
+                                                                                                                  
                                                                                                                 <button type="button" class="btn dropdown-toggle btn-login btn-default" data-toggle="dropdown"><i class="fa fa-user"></i> Вход</button>
                                                                                                                 <ul class="dropdown-menu dropdown-menu-right dropdown-animation">
                                                                                                                         <li>
                                                                                                                                 <div class="form-block center-block">
                                                                                                                                     <center><h2 class="title">Авторизация</h2></center>
                                                                                                                                     <hr>
-                                                                                                                                    <form class="form-horizontal">
+                                                                                                                                    <form class="form-horizontal" method = "post" action = "auth.jsp">>
                                                                                                                                             <div class="form-group has-feedback">
                                                                                                                                                     <label class="col-sm-3 control-label">Логин</label>
                                                                                                                                                     <div class="col-sm-8">
-                                                                                                                                                            <input type="text" class="form-control" id="login" required>
+                                                                                                                                                            <input type="text" class="form-control" name="login" required>
                                                                                                                                                             <i class="fa fa-user form-control-feedback"></i>
                                                                                                                                                     </div>
                                                                                                                                             </div>
                                                                                                                                             <div class="form-group has-feedback">
                                                                                                                                                     <label class="col-sm-3 control-label">Пароль</label>
                                                                                                                                                     <div class="col-sm-8">
-                                                                                                                                                            <input type="password" class="form-control" id="password"required>
+                                                                                                                                                            <input type="password" class="form-control" name="password"required>
                                                                                                                                                             <i class="fa fa-lock form-control-feedback"></i>
                                                                                                                                                     </div>
                                                                                                                                             </div>
@@ -171,12 +178,13 @@
                                                                                                                                                                             <input type="checkbox"> Запомнить меня
                                                                                                                                                                     </label>
                                                                                                                                                             </div>											
-                                                                                                                                                            <button type="submit" class="btn btn-group btn-default btn-block">Вход</button>
+                                                                                                                                                            <button type="submit" class="btn btn-group btn-default btn-block">Готово</button>
                                                                                                                                                     </div>
                                                                                                                                             </div>
                                                                                                                                     </form>
                                                                                                                         </li>
                                                                                                                 </ul>
+                                                                                                                <% } %>
                                                                                                             </div>
                                                                                                         </li>
 												</ul>

@@ -31,13 +31,13 @@ public class Resource extends DBModel {
     {    
     }
     
-     public static Resource getOne( DBEntry[] entryes) throws ClassNotFoundException, SQLException
+     public static Resource getOne( DBEntry[] entryes) throws Exception
     {
         DBModel.tableName = Resource.tableName;
         DBModel.stdEntryes = Resource.stdEntryes;
         return new Resource(Resource.getOne(entryes, 1).entryes);
     }
-    public static Resource[] getAll( DBEntry[] entryes) throws ClassNotFoundException, SQLException
+    public static Resource[] getAll( DBEntry[] entryes) throws Exception
     {
         DBModel.tableName = Resource.tableName;
         DBModel.stdEntryes = Resource.stdEntryes;

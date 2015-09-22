@@ -28,13 +28,13 @@ public class Measure extends DBModel {
     public static void init()
     {
     }
-     public static Measure getOne( DBEntry[] entryes) throws ClassNotFoundException, SQLException
+     public static Measure getOne( DBEntry[] entryes) throws Exception
     {
         DBModel.tableName = Measure.tableName;
         DBModel.stdEntryes = Measure.stdEntryes;
         return new Measure(Measure.getOne(entryes, 1).entryes);
     }
-    public static Measure[] getAll( DBEntry[] entryes) throws ClassNotFoundException, SQLException
+    public static Measure[] getAll( DBEntry[] entryes) throws Exception
     {
         DBModel.tableName = Measure.tableName;
         DBModel.stdEntryes = Measure.stdEntryes;

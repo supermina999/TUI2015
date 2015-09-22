@@ -9,14 +9,11 @@ import sql.Sql;
 
 public class OrganizationController
 {
-    public static void add(HttpServletRequest request) throws ClassNotFoundException, SQLException, UnsupportedEncodingException
+    public static void add(HttpServletRequest request) throws Exception
     {
             String name = request.getParameter("name");
-            name = new String(name.getBytes("iso8859-1"), "utf8");
             String address = request.getParameter("address");
-            address = new String(address.getBytes("iso8859-1"), "utf8");
-            String website = request.getParameter("website");        
-            DBModel.init();
+            String website = request.getParameter("website");
             Organization organization = new Organization();
             organization.setName(Sql.sql(name));
             organization.setAddress(Sql.sql(address));

@@ -5,7 +5,6 @@
 <%
     DBModel.init();
     AvailableResource[] availableRes = AvailableResource.getAll(null);
-    Resource[] resource = Resource.getAll(null);
     Stock[] stock = Stock.getAll(null);
     Location[] location = Location.getAll(null);
     City[] city = City.getAll(null);
@@ -52,16 +51,21 @@
                     <%
                     for (int i = 0; i < availableRes.length; i++) {%>
                     <tr>
-                            <td class="quantity"> <%=resource[availableRes[i].getResourceId() - 1].getName()%></td>
-                            <td class="product"><%=availableRes[i].getNumber()%></td>
-                            <td class="amount"><%=city[location[stock[availableRes[i].getStockId() - 1].getLocationId() - 1].getCityId() - 1].getName()%></td>
-                            <td class="product"><%=location[stock[availableRes[i].getStockId() - 1].getLocationId() - 1].getAddress()%></td>
+                        <%
+                            int id = availableRes[i].getResourceId();
+                            DBEntry[] params = {new DBEntry("id", EntryType.Int, id)};
+                            Resource resource = Resource.getOne(params);
+                        %>
+                        <td class="quantity"> <%= resource.getName() %> </td>
+                            <td class="product"><%= availableRes[i].getNumber() %></td>
+                            <td class="amount"><%//=city[location[stock[availableRes[i].getStockId() - 1].getLocationId() - 1].getCityId() - 1].getName()%></td>
+                            <td class="product"><%//=location[stock[availableRes[i].getStockId() - 1].getLocationId() - 1].getAddress()%></td>
                     </tr>
                     <% } %>
                 </tbody>
             </table>
         
-        <a href="addResource.jsp" class="btn btn-default btn-lg">Добавить ресурс </a>
+        <a href="newResource.jsp" class="btn btn-default btn-lg">Добавить ресурс </a>
         <a href="transitResource.jsp" class="btn btn-default btn-lg">Перевезти ресурс</a>
             
         </div>

@@ -31,13 +31,13 @@ public class Stock extends DBModel {
     {
     }
     
-     public static Stock getOne( DBEntry[] entryes) throws ClassNotFoundException, SQLException
+     public static Stock getOne( DBEntry[] entryes) throws Exception
     {
         DBModel.tableName = Stock.tableName;
         DBModel.stdEntryes = Stock.stdEntryes;
         return new Stock(Stock.getOne(entryes, 1).entryes);
     }
-    public static Stock[] getAll( DBEntry[] entryes) throws ClassNotFoundException, SQLException
+    public static Stock[] getAll( DBEntry[] entryes) throws Exception
     {
         DBModel.tableName = Stock.tableName;
         DBModel.stdEntryes = Stock.stdEntryes;

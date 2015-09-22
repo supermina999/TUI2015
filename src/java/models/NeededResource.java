@@ -33,13 +33,13 @@ public class NeededResource extends DBModel {
     public static void init()
     {
     }
-     public static NeededResource getOne( DBEntry[] entryes) throws ClassNotFoundException, SQLException
+     public static NeededResource getOne( DBEntry[] entryes) throws Exception
     {
         DBModel.tableName = NeededResource.tableName;
         DBModel.stdEntryes = NeededResource.stdEntryes;
         return new NeededResource(NeededResource.getOne(entryes, 1).entryes);
     }
-    public static NeededResource[] getAll( DBEntry[] entryes) throws ClassNotFoundException, SQLException
+    public static NeededResource[] getAll( DBEntry[] entryes) throws Exception
     {
         DBModel.tableName = NeededResource.tableName;
         DBModel.stdEntryes = NeededResource.stdEntryes;
