@@ -9,7 +9,7 @@ import sql.Sql;
 
 public class organizationController
 {
-    public static void add(HttpServletRequest request) throws ClassNotFoundException, SQLException, UnsupportedEncodingException
+    public static void add(HttpServletRequest request) throws Exception
     {
             String name = request.getParameter("name");
             name = new String(name.getBytes("iso8859-1"), "utf8");

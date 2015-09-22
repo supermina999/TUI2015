@@ -40,7 +40,7 @@ public class Location extends DBModel {
         DBModel.stdEntryes = Location.stdEntryes;
         return new Location(Location.getOne(entryes, 1).entryes);
     }
-    public static Location[] getAll( DBEntry[] entryes) throws ClassNotFoundException, SQLException
+    public static Location[] getAll( DBEntry[] entryes) throws Exception
     {
         DBModel.tableName = Location.tableName;
         DBModel.stdEntryes = Location.stdEntryes;

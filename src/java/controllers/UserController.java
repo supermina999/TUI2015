@@ -11,7 +11,7 @@ import sql.Sql;
 
 public class UserController {
     
-    public static boolean login(HttpServletRequest request) throws ClassNotFoundException, SQLException
+    public static boolean login(HttpServletRequest request) throws Exception
     {
         String login = request.getParameter("login");
         String password = request.getParameter("password");
@@ -19,7 +19,7 @@ public class UserController {
         return user.tryToLogin(login, password);
     }
          
-    public static void add(HttpServletRequest request) throws ClassNotFoundException, SQLException, UnsupportedEncodingException
+    public static void add(HttpServletRequest request) throws Exception
     {
         String login = request.getParameter("login");
         String password1 = request.getParameter("password1");

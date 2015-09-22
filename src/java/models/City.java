@@ -38,7 +38,7 @@ public class City extends DBModel {
         DBModel.stdEntryes = City.stdEntryes;
         return new City(City.getOne(entryes, 1).entryes);
     }
-    public static City[] getAll( DBEntry[] entryes) throws ClassNotFoundException, SQLException
+    public static City[] getAll( DBEntry[] entryes) throws Exception
     {
         DBModel.tableName = City.tableName;
         DBModel.stdEntryes = City.stdEntryes;
@@ -63,11 +63,11 @@ public class City extends DBModel {
     {
         this.entryes[1].setValue(name);
     }
-    public int getCountyId()
+    public int getCountryId()
     {
         return Integer.parseInt(this.entryes[2].getValue());
     }
-    public void setCountyId(int id)
+    public void setCountryId(int id)
     {
         this.entryes[2].setValue(id);
     }

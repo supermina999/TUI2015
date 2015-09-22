@@ -7,7 +7,7 @@ import models.*;
 public class User {
     public Person user;
     
-    public boolean tryToLogin(String login, String password) throws ClassNotFoundException, SQLException
+    public boolean tryToLogin(String login, String password) throws Exception
     {
         DBEntry[] params = {
             new DBEntry("login", EntryType.String, login),

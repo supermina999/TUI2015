@@ -5,7 +5,7 @@ import java.sql.*;
 import javax.servlet.http.HttpServletRequest;
 
 public class StationController {
-    public static void add(HttpServletRequest request) throws ClassNotFoundException, SQLException
+    public static void add(HttpServletRequest request) throws Exception
     {
         String address = request.getParameter("address");
         String organization_id = request.getParameter("organization");

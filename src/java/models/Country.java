@@ -37,7 +37,7 @@ public class Country extends DBModel {
         DBModel.stdEntryes = Country.stdEntryes;
         return new Country(Country.getOne(entryes, 1).entryes);
     }
-    public static Country[] getAll( DBEntry[] entryes) throws ClassNotFoundException, SQLException
+    public static Country[] getAll( DBEntry[] entryes) throws Exception
     {
         DBModel.tableName = Country.tableName;
         DBModel.stdEntryes = Country.stdEntryes;
