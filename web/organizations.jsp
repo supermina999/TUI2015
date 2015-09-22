@@ -37,9 +37,10 @@
                                 </tr>
                         </thead>
                         <tbody>
-                            <% for (int i = 0; i < organization.length; i++) {%>
+                            <% for (int i = 0; i < organization.length; i++) 
+                                {%>
                                 <tr>
-                                        <td class="quantity"> <%=organization[i].getName()%></td>
+                                    <td class="quantity"><a href ="organizationInfo.jsp?id=<%=i%>"> <%=organization[i].getName()%></a></td>
                                         <td class="product"><%=organization[i].getAddress()%></td>
                                         <td class="amount"><%=organization[i].getWebsite()%></td>
                                 </tr>

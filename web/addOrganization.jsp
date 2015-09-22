@@ -1,9 +1,9 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="models.*"%>
-<%@page import="controllers.organizationController"%>
+<%@page import="controllers.OrganizationController"%>
 
 <%
-    organizationController.add(request);
+    OrganizationController.add(request);
 %>
     <script>
         window.location.href = "organizations.jsp";

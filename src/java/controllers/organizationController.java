@@ -7,7 +7,7 @@ import models.*;
 import sql.Sql;
 
 
-public class organizationController
+public class OrganizationController
 {
     public static void add(HttpServletRequest request) throws ClassNotFoundException, SQLException, UnsupportedEncodingException
     {
