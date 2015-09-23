@@ -47,7 +47,7 @@
                                             <th style="width: 50%;">Местоположение</th>
                                     </tr>
                             </thead>
-                            <tbody id="stockTable">
+                            <tbody id="searchTable">
                                     <%for (int i = 0; i < stock.length; i++)
                                     {%>
                                         <tr>
