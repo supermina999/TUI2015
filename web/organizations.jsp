@@ -40,7 +40,7 @@
                             <% for (int i = 0; i < organization.length; i++) 
                                 {%>
                                 <tr>
-                                    <td class="quantity idSearch"><a href ="organizationInfo.jsp?id=<%=organization[i].getId()%>"> <%=organization[i].getName()%></a></td>
+                                    <td class="quantity idSearch"><a href ="organizationInfo.jsp?id=<%=organization[i].getId()%>"><%=organization[i].getName()%></a></td>
                                         <td class="product"><%=organization[i].getAddress()%></td>
                                         <td class="amount"><%=organization[i].getWebsite()%></td>
                                 </tr>
@@ -50,5 +50,5 @@
                     <a href="register.jsp" class="btn btn-default btn-lg">Добавить волонтера </a>
                 </div>
         </center>
-<script src="js/searchStock.js"></script>
+<script src="js/search.js"></script>
 <%@include file = "layout2.jsp"%>
