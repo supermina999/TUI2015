@@ -4,7 +4,11 @@
    String s = request.getParameter("id");
    Stock stock = new Stock();
    AvailableResource[] availableRes = AvailableResource.getAll(null);
-   Resource[] resource = Resource.getAll(null);
+   DBEntry[] params = {
+       new DBEntry("stock_id", EntryType.Int, Integer.parseInt(s))
+   }; 
+   AvailableResource[] availableRes = AvailableResource.getAll(params);
+   Resource[] resource = Resource.getAll(params);
    if (s == null)
    {%>
         <script>
@@ -65,6 +69,4 @@
                         </table>
         </form>
 </div>
-
-
 <%@include file = "layout2.jsp"%>
