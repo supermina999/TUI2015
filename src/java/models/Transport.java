@@ -38,15 +38,30 @@ public class Transport extends DBModel {
         };
         return getOne(params);
     }
-     public static Transport getOne( DBEntry[] entryes) throws Exception
+     public static Transport getOne(DBEntry[] entryes) throws Exception
     {
         DBModel.tableName = Transport.tableName;
         DBModel.stdEntryes = Transport.stdEntryes;
         DBModel buf = Transport.getOne(entryes, 1);
         if (buf != null) return new Transport(buf.entryes);
         else return null;
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+         
     }
-    public static Transport[] getAll( DBEntry[] entryes) throws Exception
+    public static Transport[] getAll(DBEntry[] entryes) throws Exception
     {
         DBModel.tableName = Transport.tableName;
         DBModel.stdEntryes = Transport.stdEntryes;
