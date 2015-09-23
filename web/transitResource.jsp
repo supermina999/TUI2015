@@ -2,6 +2,14 @@
 <% int minPermission = 8; 
    int tab = 3; %>
 <%@include file = "layout1.jsp"%>
+<%
+    DBModel.init();
+    NeededResource[] neededRes = NeededResource.getAll(null);
+    City[] city = City.getAll(null);
+    Station[] station = Station.getAll(null);
+    Stock[] stock = Stock.getAll(null);
+    Location[] location = Location.getAll(null);
+%>
 <br>
     <div class="form-block center-block">
         <center><h2 class="title">Перевезти ресурс</h2></center>
@@ -25,10 +33,10 @@
                     <div class="col-sm-8">
                         <select class="form-control" style="width: 100%;">
                                     <option>Выберите город</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
+                                    <%for (int i = 0; i < city.length; i++)
+                                    {%>
+                                        <option><%=city[i].getName()%></option>
+                                    <%}%>
                            </select>
                     </div>
                 </div>
@@ -37,10 +45,10 @@
                     <div class="col-sm-8">
                         <select class="form-control" style="width: 100%;">
                                     <option>Выберите склад</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
+                                    <%for (int i = 0;i < stock.length;i++)
+                                    {%>
+                                        <option><%=location[stock[i].getLocationId() - 1].getAddress()%></option>
+                                    <%}%>
                            </select>
                     </div>
                 </div>
@@ -51,10 +59,10 @@
                     <div class="col-sm-8">
                         <select class="form-control" style="width: 100%;">
                                     <option>Выберите город</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
+                                    <%for (int i = 0; i < city.length; i++)
+                                    {%>
+                                        <option><%=city[i].getName()%></option>
+                                    <%}%>
                            </select>
                     </div>
                 </div>
@@ -63,10 +71,10 @@
                     <div class="col-sm-8">
                         <select class="form-control" style="width: 100%;">
                                     <option>Выберите пункт выдачи</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
+                                    <%for (int i = 0;i < station.length;i++)
+                                    {%>
+                                        <option><%=location[station[i].getLocationId() - 1].getAddress()%></option>
+                                    <%}%>
                            </select>
                     </div>
                 </div>
