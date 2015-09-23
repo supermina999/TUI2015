@@ -20,3 +20,7 @@
 .navbar-custom {
     margin-left: -5% !important; 
 }
+
+.hidden {
+    visibility: hidden;
+}

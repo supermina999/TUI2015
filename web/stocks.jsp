@@ -16,27 +16,28 @@
                     <div class="gray-bg">
                         <br>
                         <div class="col-md-4">
-                            <input type="text" class="form-control" placeholder="Номер" style="width: 105%;">
+                            <input type="text" class="form-control" placeholder="Номер" style="width: 105%;" name="id" id="searchInput">
                             <i class="fa fa-search form-control-feedback"></i>
                         </div>
                         <div class="col-md-4">
-                            <select class="form-control" style="width: 105%;">
+                            <select class="form-control" style="width: 100%;" name="city">
                                     <option>Выберите город</option>
                                     <%for (int i = 0; i < city.length; i++)
                                     {%>
-                                        <option><%=city[i].getName()%></option>
+                                    <option value="<%=city[i].getId()%>"><%=city[i].getName()%></option>
                                     <%}%>
                             </select>
                         </div>
                         <div class="col-md-4">
-                            <select class="form-control" style="width: 100%;">
+                            <select class="form-control" style="width: 100%;" name="organization">
                                     <option>Выберите организацию</option>
                                     <%for (int i = 0; i < organization.length; i++)
                                     {%>
-                                        <option><%=organization[i].getName()%></option>
+                                    <option value="<%=organization[i].getId()%>"><%=organization[i].getName()%></option>
                                     <%}%>
                             </select>
                         </div>
+                            
                         <br><br><br>
                     </div>
                     <br>
@@ -48,11 +49,11 @@
                                             <th style="width: 40%;">Местоположение</th>
                                     </tr>
                             </thead>
-                            <tbody>
+                            <tbody id="stockTable">
                                     <%for (int i = 0; i < stock.length; i++)
                                     {%>
                                         <tr>
-                                                <td><%=i + 1%></td>
+                                                <td class="stockId"><%=i + 1%></td>
                                                 <td><%=organization[stock[i].getOrganizationId()-1].getName()%></td>
                                                 <td><%=location[stock[i].getLocationId()-1].getAddress()%>, <%=city[location[stock[i].getLocationId() - 1].getCityId() - 1].getName()%></td>
                                         </tr>
@@ -62,4 +63,5 @@
                     <a href="newStock.jsp" class="btn btn-default btn-lg">Добавить склад</a>
                 </div>
         </center>
+<script src="js/searchStock.js"></script>
 <%@include file = "layout2.jsp"%>

@@ -1,7 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-			
-				<!-- .subfooter start -->
+							<!-- .subfooter start -->
 				<!-- ================ -->
 				<div class="subfooter default-bg">
 					<div class="container">
@@ -19,7 +17,6 @@
 		<!-- JavaScript files placed at the end of the document so the pages load faster
 		================================================== -->
 		<!-- Jquery and Bootstap core js files -->
-		<script type="text/javascript" src="plugins/jquery.min.js"></script>
 		<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
 
 		<!-- Modernizr javascript -->
