@@ -72,7 +72,7 @@
                                 {%>
                                 <tr>
                                     <td style="width: 50%;">
-                                        <%=persons[j].getName()+" "+persons[j].getSurname()+" "+persons[j].getSecondName()%>
+                                        <a href="userInfo.jsp?id=<%=persons[j].getId()%>"><%=persons[j].getSurname()+" "+persons[j].getName()+" "+persons[j].getSecondName()%></a>
                                     </td>
                         
                                     <td style="width: 25%;"><%=persons[j].getPhone()%></td>

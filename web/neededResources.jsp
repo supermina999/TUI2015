@@ -5,13 +5,9 @@
 <%
     DBModel.init();
     NeededResource[] neededRes = NeededResource.getAll(null);
-    /*City[] cityName = City.getAll(null);
-    Station[] stationLocation = Station.getAll(null);
-    Location[] stationAddress = Location.getAll(null);*/
     City[] city = City.getAll(null);
     Station[] station = Station.getAll(null);
     Location[] location = Location.getAll(null);
-    //Resource[] resource = Resource.getAll(null);
 %>
     <center>
         <br><h1>Требующиеся ресурсы</h1><br>
@@ -55,15 +51,10 @@
                     <%
                     for (int i = 0; i < neededRes.length; i++) {%>
                         <tr>
-                            <%
-                                /*int resourceId = neededRes[i].getResourceId();
-                                DBEntry[] params = {new DBEntry("id", EntryType.Int, resourceId)};
-                                Resource resource = Resource.getOne(params);*/
-                            %>
-                            <td class="quantity"> <%//=resource.getName()%></td>
+                            <td class="quantity"> <%=neededRes[i].getResourceName()%></td>
                             <td class="amount"><%=neededRes[i].getNumber()%></td>
-                            <td class="amount"><%//=city[location[station[neededRes[i].getStationId() - 1].getLocationId() - 1].getCityId() - 1].getName()%></td>
-                            <td class="product"><%//=location[station[neededRes[i].getStationId() - 1].getLocationId() - 1].getAddress()%></td>
+                            <td class="amount"><%=city[location[station[neededRes[i].getStationId() - 1].getLocationId() - 1].getCityId() - 1].getName()%></td>
+                            <td class="product"><%=location[station[neededRes[i].getStationId() - 1].getLocationId() - 1].getAddress()%></td>
                             
                         </tr>
                     <% } %>

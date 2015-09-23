@@ -24,27 +24,12 @@ public class AvailableResourceController {
         if (allRes.length == 0) resourceId = 0;
         else resourceId = allRes[allRes.length-1].getId();
         
-        City[] allCity = City.getAll(null);
-        int cityId = -1;
-        for (int i = 0; i < allCity.length; i++)
-        {
-            if (allCity[i].getName() == cityName) cityId = allCity[i].getId();
-        }
-        if (cityId == -1) 
-        {
-            cityId = allCity.length + 1;
-            City city = new City();
-            city.setName(cityName);
-            city.setCountryId(1);
-            city.writeToDB();
-        }
-        
         Location[] allLocation = Location.getAll(null);
         Stock[] allStock = Stock.getAll(null);
         int stockId = 0;
         for (int i = 0;i < allStock.length;i++)
         {
-            if (allLocation[allStock[i].getLocationId()].getAddress() == stock) stockId = allStock[i].getId();
+            if (allLocation[allStock[i].getLocationId()].getAddress().equals(stock)) stockId = allStock[i].getId();
         }
         
         int measureId = 1;

@@ -38,6 +38,8 @@ CREATE TABLE `available_resource` (
 
 LOCK TABLES `available_resource` WRITE;
 /*!40000 ALTER TABLE `available_resource` DISABLE KEYS */;
+INSERT INTO `available_resource` (`id`, `resource_id`, `stock_id`, `number`, `measure_id`) VALUES
+(1, 1, 1, 12, 1);
 /*!40000 ALTER TABLE `available_resource` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -62,6 +64,9 @@ CREATE TABLE `city` (
 
 LOCK TABLES `city` WRITE;
 /*!40000 ALTER TABLE `city` DISABLE KEYS */;
+INSERT INTO `city` (`id`, `name`, `country_id`) VALUES
+(1, 'Харьков', 1),
+(2, 'Киев', 1);
 /*!40000 ALTER TABLE `city` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -85,6 +90,8 @@ CREATE TABLE `country` (
 
 LOCK TABLES `country` WRITE;
 /*!40000 ALTER TABLE `country` DISABLE KEYS */;
+INSERT INTO `country` (`id`, `name`) VALUES
+(1, 'Украина');
 /*!40000 ALTER TABLE `country` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -111,6 +118,10 @@ CREATE TABLE `location` (
 
 LOCK TABLES `location` WRITE;
 /*!40000 ALTER TABLE `location` DISABLE KEYS */;
+INSERT INTO `location` (`id`, `city_id`, `address`, `x_coord`, `y_coord`) VALUES
+(1, 1, 'Ул. Тобольская, 46-а', 1, 1),
+(2, 2, 'Ул. Хрещатик, 3', 5, 5),
+(3, 1, 'Ул. Мирная, 2', 0, 0);
 /*!40000 ALTER TABLE `location` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -137,6 +148,8 @@ CREATE TABLE `losing` (
 
 LOCK TABLES `losing` WRITE;
 /*!40000 ALTER TABLE `losing` DISABLE KEYS */;
+INSERT INTO `losing` (`id`, `resource_id`, `station_id`, `number`, `measure_id`) VALUES
+(1, 1, 1, 15, 1);
 /*!40000 ALTER TABLE `losing` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -155,11 +168,15 @@ CREATE TABLE `measure` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `losing`
+-- Dumping data for table `measure`
 --
 
 LOCK TABLES `measure` WRITE;
 /*!40000 ALTER TABLE `measure` DISABLE KEYS */;
+INSERT INTO `measure` (`id`, `name`) VALUES
+(1, 'кг'),
+(2, 'м'),
+(3, 'шт');
 /*!40000 ALTER TABLE `measure` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -187,6 +204,8 @@ CREATE TABLE `needed_resource` (
 
 LOCK TABLES `needed_resource` WRITE;
 /*!40000 ALTER TABLE `needed_resource` DISABLE KEYS */;
+INSERT INTO `needed_resource` (`id`, `station_id`, `resource_id`, `number`, `measure_id`, `emergency`) VALUES
+(1, 1, 1, 6, 1, 4);
 /*!40000 ALTER TABLE `needed_resource` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -212,6 +231,10 @@ CREATE TABLE `organization` (
 
 LOCK TABLES `organization` WRITE;
 /*!40000 ALTER TABLE `organization` DISABLE KEYS */;
+INSERT INTO `organization` (`id`, `name`, `address`, `website`) VALUES
+(1, 'Красный крест', 'Ул. Мирная, 23', 'redkross.help.ua'),
+(2, 'Рука помощи', 'Ул. Зеленая, 6', 'thehandofhelp.org'),
+(3, 'Мирное небо', 'Бульварный переулок, 2', 'peaceinthesky.org.ua');
 /*!40000 ALTER TABLE `organization` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -235,6 +258,8 @@ CREATE TABLE `permission` (
 
 LOCK TABLES `permission` WRITE;
 /*!40000 ALTER TABLE `permission` DISABLE KEYS */;
+INSERT INTO `permission` (`id`, `name`) VALUES
+(1, 'Волонтёр');
 /*!40000 ALTER TABLE `permission` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -268,6 +293,13 @@ CREATE TABLE `person` (
 
 LOCK TABLES `person` WRITE;
 /*!40000 ALTER TABLE `person` DISABLE KEYS */;
+INSERT INTO `person` (`id`, `name`, `surname`, `second_name`, `login`, `password`, `city_id`, `address`, `phone`, `email`, `permission_id`, `organization_id`) VALUES
+(1, 'Елизавета', 'Попова', 'Олеговна', 'liza', '1', 1, 'Ул. Астрономическая, д. 47', '3150897', 'lizapopova@yandex.ru', 1, 1),
+(2, 'Станислав', 'Минаков', 'Сергеевич', 'stas', '2', 1, 'Ул. 23 Августа, 16', '3568790', 'supermina999@gmail.com', 1, 1),
+(3, 'Роман', 'Скурихин', 'Владимирович', 'roma', '3', 1, 'Ул. Розы Люксембург, 4', '3780987', 'romasku135@gmail.com', 1, 2),
+(4, 'София', 'Уфимцева', 'Игоревна', 'sofy', '4', 2, 'Ул. Тобольская, 78Б', '9007865', 'sonya.uf@gmail.com', 1, 2),
+(5, 'Артем', 'Пайвин', 'Юрьевич', 'artem', '5', 2, 'Ул. Деревянко, 6', '2346789', 'payvinartem@gmail.com', 1, 3),
+(6, 'Мария', 'Солодова', 'Константиновна', 'masha', '6', 1, 'Ул. Фееричная, 45', '456790', 'masha.solodova1@gmail.com', 1, 3);
 /*!40000 ALTER TABLE `person` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -294,6 +326,8 @@ CREATE TABLE `receiving` (
 
 LOCK TABLES `receiving` WRITE;
 /*!40000 ALTER TABLE `receiving` DISABLE KEYS */;
+INSERT INTO `receiving` (`id`, `resource_id`, `stock_id`, `number`, `measure_id`) VALUES
+(1, 1, 1, 10, 1);
 /*!40000 ALTER TABLE `receiving` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -318,6 +352,9 @@ CREATE TABLE `resource` (
 
 LOCK TABLES `resource` WRITE;
 /*!40000 ALTER TABLE `resource` DISABLE KEYS */;
+INSERT INTO `resource` (`id`, `name`, `weight`) VALUES
+(1, 'Медикаменты', 0),
+(2, 'Одежда', 0);
 /*!40000 ALTER TABLE `resource` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -342,6 +379,10 @@ CREATE TABLE `station` (
 
 LOCK TABLES `station` WRITE;
 /*!40000 ALTER TABLE `station` DISABLE KEYS */;
+INSERT INTO `station` (`id`, `location_id`, `organization_id`) VALUES
+(1, 1, 1),
+(2, 2, 2),
+(3, 3, 3);
 /*!40000 ALTER TABLE `station` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -367,6 +408,10 @@ CREATE TABLE `stock` (
 
 LOCK TABLES `stock` WRITE;
 /*!40000 ALTER TABLE `stock` DISABLE KEYS */;
+INSERT INTO `stock` (`id`, `organization_id`, `location_id`) VALUES
+(1, 1, 1),
+(2, 2, 2),
+(3, 3, 3);
 /*!40000 ALTER TABLE `stock` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -392,6 +437,8 @@ CREATE TABLE `transport` (
 
 LOCK TABLES `transport` WRITE;
 /*!40000 ALTER TABLE `transport` DISABLE KEYS */;
+INSERT INTO `transport` (`id`, `name`, `max_weight`, `organization_id`) VALUES
+(1, 'Грузовик', 120, 1);
 /*!40000 ALTER TABLE `transport` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;

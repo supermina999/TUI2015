@@ -53,8 +53,8 @@
                                     <%for (int i = 0; i < stock.length; i++)
                                     {%>
                                         <tr>
-                                                <td class="stockId"><%=i + 1%></td>
-                                                <td><%=organization[stock[i].getOrganizationId()-1].getName()%></td>
+                                                <td><%=i + 1%></td>
+                                                <td><a href="organizationInfo.jsp?id=<%=organization[stock[i].getOrganizationId()-1].getId()%>"><%=organization[stock[i].getOrganizationId()-1].getName()%></a></td>
                                                 <td><%=location[stock[i].getLocationId()-1].getAddress()%>, <%=city[location[stock[i].getLocationId() - 1].getCityId() - 1].getName()%></td>
                                         </tr>
                                     <%}%>

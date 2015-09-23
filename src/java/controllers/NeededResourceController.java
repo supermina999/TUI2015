@@ -24,36 +24,23 @@ public class NeededResourceController {
         if (allRes.length == 0) resourceId = 0;
         else resourceId = allRes[allRes.length-1].getId();
         
-        City[] allCity = City.getAll(null);
-        int cityId = -1;
-        for (int i = 0; i < allCity.length; i++)
-        {
-            if (allCity[i].getName() == cityName) cityId = allCity[i].getId();
-        }
-        if (cityId == -1) 
-        {
-            cityId = allCity.length + 1;
-            City city = new City();
-            city.setName(cityName);
-            city.setCountryId(1);
-            city.writeToDB();
-        }
-        
         Location[] allLocation = Location.getAll(null);
         Station[] allStation = Station.getAll(null);
         int stationId = 0;
         for (int i = 0;i < allStation.length;i++)
         {
-            if (allLocation[allStation[i].getLocationId()-1].getAddress() == station) stationId = allStation[i].getId();
+            if (allLocation[allStation[i].getLocationId()-1].getAddress().equals(station)) stationId = allStation[i].getId();
         }
         
         int measureId = 1;
+        int emergency = 1;
         
         NeededResource neededResource = new NeededResource();
         neededResource.setResourceId(resourceId);
         neededResource.setStationId(stationId);
         neededResource.setNumber(weight);
         neededResource.setMeasureId(measureId);
+        neededResource.setEmergency(emergency);
         neededResource.writeToDB();
     }
     
