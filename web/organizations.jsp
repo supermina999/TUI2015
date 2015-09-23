@@ -13,7 +13,7 @@
                     <div class="gray-bg">
                         <br>
                         <div class="col-md-8">
-                            <input type="text" class="form-control" placeholder="Название" style="width: 105%;">
+                            <input type="text" class="form-control" placeholder="Название" style="width: 105%;" id="searchIdInput">
                             <i class="fa fa-search form-control-feedback"></i>
                         </div>
                         <div class="col-md-4">
@@ -36,11 +36,11 @@
                                         <th style="width: 25%;">Вебсайт</th>
                                 </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="searchTable">
                             <% for (int i = 0; i < organization.length; i++) 
                                 {%>
                                 <tr>
-                                    <td class="quantity"><a href ="organizationInfo.jsp?id=<%=organization[i].getId()%>"> <%=organization[i].getName()%></a></td>
+                                    <td class="quantity idSearch"><a href ="organizationInfo.jsp?id=<%=organization[i].getId()%>"> <%=organization[i].getName()%></a></td>
                                         <td class="product"><%=organization[i].getAddress()%></td>
                                         <td class="amount"><%=organization[i].getWebsite()%></td>
                                 </tr>
@@ -50,4 +50,5 @@
                     <a href="register.jsp" class="btn btn-default btn-lg">Добавить волонтера </a>
                 </div>
         </center>
+<script src="js/searchStock.js"></script>
 <%@include file = "layout2.jsp"%>
