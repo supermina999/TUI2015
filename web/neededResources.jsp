@@ -36,7 +36,7 @@
                             <option>Выберите пункт выдачи</option>
                             <%for (int i = 0;i < station.length;i++)
                             {%>
-                                <option><%=location[station[i].getLocationId() - 1].getAddress()%></option>
+                                <option><%=station[i].getLocation().getAddress()%></option>
                             <%}%>
                     </select>
                 </div>

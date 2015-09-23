@@ -59,7 +59,7 @@
                             DBEntry[] params = {new DBEntry("id", EntryType.Int, resourceId)};
                             Resource resource = Resource.getOne(params);
                         %>
-                        <td class="quantity"> <%= resource.getName() %> </td>
+                        <td class="quantity"> <%= availableRes[i].getResourceName() %> </td>
                             <td class="product"><%= availableRes[i].getNumber() %></td>
                             <td class="amount"><%=city[location[stock[availableRes[i].getStockId() - 1].getLocationId() - 1].getCityId() - 1].getName()%></td>
                             <td class="product"><%=location[stock[availableRes[i].getStockId() - 1].getLocationId() - 1].getAddress()%></td>
