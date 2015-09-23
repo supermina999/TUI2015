@@ -106,4 +106,10 @@ public class AvailableResource extends DBModel {
         int id = getStockId();
         return Stock.getOne(id).getLocation();
     }
+    
+    public String getMeasureName() throws Exception
+    {
+        int id = getResourceId();
+        return Measure.getOne(id).getName();
+    }
 }

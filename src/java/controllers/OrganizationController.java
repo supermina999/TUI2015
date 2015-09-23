@@ -20,5 +20,5 @@ public class OrganizationController
             organization.setWebsite(Sql.sql(website));
             organization.writeToDB();
     }
+    
 }
-
