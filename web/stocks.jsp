@@ -14,7 +14,7 @@
                     <div class="gray-bg">
                         <br>
                         <div class="col-md-4">
-                            <input type="text" class="form-control" placeholder="Номер" style="width: 105%;" name="id" id="searchIdInput">
+                            <input type="text" class="form-control" placeholder="Номер" style="width: 100%;" name="id" id="searchIdInput">
                             <i class="fa fa-search form-control-feedback"></i>
                         </div>
                         <div class="col-md-4">
@@ -52,7 +52,7 @@
                                     {%>
                                         <tr>
 
-                                            <td class="stockId" ><center><a href="stockInfo.jsp?id=<%=stock[i].getId()%>"><%=i + 1%></a></center></td>
+                                            <td class="idSearch" ><center><a href="stockInfo.jsp?id=<%=stock[i].getId()%>"><%=i + 1%></a></center></td>
                                                 <td><a href="organizationInfo.jsp?id=<%=stock[i].getOrganizationId()%>"><%=stock[i].getOrganizationName()%></a></td>
                                                 <td><%=stock[i].getLocation().getAddress()%>, <%=stock[i].getLocation().getCityName()%>, <%=stock[i].getLocation().getCountryName()%></td>
                                         </tr>
