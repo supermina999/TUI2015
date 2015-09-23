@@ -1,4 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="models.*"%>
+<%@page import="controllers.OrganizationController"%>
+
 <% int minPermission = 8; 
    int tab = 0;
    String s = request.getParameter("id");
@@ -11,16 +14,10 @@
          window.location.href = "/";
         </script>
     <%} else {
-        int i = Integer.parseInt(request.getParameter("id"));
-        DBEntry[] params = {
-            new DBEntry("id", EntryType.Int, i)
-        };   
-        org = Organization.getOne(params);
-        DBEntry[] personParams = {
-            new DBEntry("organization_id", EntryType.Int, i)
-        };   
-        persons = Person.getAll(personParams);   
+        int i = Integer.parseInt(s);
+        org = Organization.getOne(i);
         city = City.getAll(null);
+        persons = OrganizationController.getPersons(i);
    }
    %>
 <%@include file = "layout1.jsp"%>

@@ -40,7 +40,7 @@
                             <% for (int i = 0; i < organization.length; i++) 
                                 {%>
                                 <tr>
-                                    <td class="quantity idSearch"><a href ="organizationInfo.jsp?id=<%=organization[i].getId()%>"> <%=organization[i].getName()%></a></td>
+                                    <td class="quantity idSearch"><a href ="organizationInfo.jsp?id=<%=organization[i].getId()%>"><%=organization[i].getName()%></a></td>
                                         <td class="product"><%=organization[i].getAddress()%></td>
                                         <td class="amount"><%=organization[i].getWebsite()%></td>
                                 </tr>

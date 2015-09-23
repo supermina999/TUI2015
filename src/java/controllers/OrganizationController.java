@@ -20,5 +20,13 @@ public class OrganizationController
             organization.setWebsite(Sql.sql(website));
             organization.writeToDB();
     }
-    
+    public static Person[] getPersons(int id) throws Exception
+    {
+        DBEntry[] personParams = {
+            new DBEntry("organization_id", EntryType.Int, id)
+        }; 
+        Person[] persons = Person.getAll(personParams); 
+        return persons;
+    }
+   
 }
