@@ -165,4 +165,14 @@ public class Person extends DBModel {
         int id = getOrganizationId();
         return Organization.getOne(id).getName();
     }
+    public String getPermissionName() throws Exception
+    {
+        int id = getPermissionId();
+        return Permission.getOne(id).getName();
+    }
+    public String getCityName() throws Exception
+    {
+        int id = getCityId();
+        return City.getOne(id).getName();
+    }
 }

@@ -3,33 +3,15 @@
    int tab = 0;
    String s = request.getParameter("id");
    Person person = new Person();
-   Organization org = new Organization();
-   City city = new City();
-   Permission permission = new Permission();
    if (s == null)
    {%>
         <script>
          window.location.href = "/";
         </script>
-   <%} else {
-        int i = Integer.parseInt(s);
-        DBEntry[] paramsPerson = {
-            new DBEntry("id", EntryType.Int, i)
-        };   
-        person = Person.getOne(paramsPerson);
-        DBEntry[] paramsOrg = {
-            new DBEntry("id", EntryType.Int, person.getOrganizationId())
-        };  
-        org = Organization.getOne(paramsOrg);
-        DBEntry[] paramsCity = {
-            new DBEntry("id", EntryType.Int, person.getCityId())
-        };  
-        city = City.getOne(paramsCity);
-        DBEntry[] paramsPermission = {
-            new DBEntry("id", EntryType.Int, person.getPermissionId())
-        };  
-        permission = Permission.getOne(paramsPermission);
-    }
+   <% 
+   } else {
+     person = Person.getOne(Integer.parseInt(s));
+   }
 %>
 <%@include file = "layout1.jsp"%>
 
@@ -44,9 +26,9 @@
                 </div>
         </div>
             <div class="form-group col-sm-7">
-                <p style="font-size: 15px;"> <b>Организация:</b> <a href="organizationInfo.jsp?id=<%=org.getId()%>"><%=org.getName()%></a> </p>
-                <p style="font-size: 15px;"> <b>Должность:</b> <%=permission.getName()%> </p>
-                <p style="font-size: 15px;"> <b>Город:</b> <%=city.getName()%> </p>
+                <p style="font-size: 15px;"> <b>Организация:</b> <a href="organizationInfo.jsp?id=<%=person.getOrganizationId()%>"><%=person.getOrganizationName()%></a> </p>
+                <p style="font-size: 15px;"> <b>Должность:</b> <%=person.getPermissionName()%> </p>
+                <p style="font-size: 15px;"> <b>Город:</b> <%=person.getCityName()%> </p>
                 <p style="font-size: 15px;"> <b>Адрес:</b> <%=person.getAddress()%> </p>
                 <p style="font-size: 15px;"> <b>Телефон:</b> <%=person.getPhone()%> </p>
                 <p style="font-size: 15px;"> <b>Email:</b> <%=person.getEmail()%> </p>
