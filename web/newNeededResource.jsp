@@ -7,7 +7,6 @@
     NeededResource[] neededRes = NeededResource.getAll(null);
     City[] city = City.getAll(null);
     Station[] station = Station.getAll(null);
-    Location[] location = Location.getAll(null);
 %>
 <br>
     <div class="form-block center-block">
@@ -41,11 +40,11 @@
                 <div class="form-group has-feedback">
                     <label class="col-sm-3 control-label">Пункт выдачи</label>
                     <div class="col-sm-8">
-                        <select class="form-control" style="width: 100%;" name="station">
+                        <select class="form-control" style="width: 100%;" name="stationId">
                                     <option>Выберите пункт выдачи</option>
                                     <%for (int i = 0;i < station.length;i++)
                                     {%>
-                                        <option><%=location[station[i].getLocationId() - 1].getAddress()%></option>
+                                        <option value="<%=station[i].getId()%>"><%=station[i].getLocation().getAddress()%></option>
                                     <%}%>
                            </select>
                     </div>
