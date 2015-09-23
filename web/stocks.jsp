@@ -4,10 +4,8 @@
    int tab = 4; %>
 <%@include file = "layout1.jsp"%>
 <%
-    DBModel.init();
     Organization[] organization = Organization.getAll(null);
     Stock[] stock = Stock.getAll(null);
-    Location[] location = Location.getAll(null);
     City[] city = City.getAll(null);
 %>
         <center>
@@ -44,18 +42,18 @@
                         <table class="table table-bordered">
                             <thead>
                                     <tr>
-                                        <th style="width: 30%;">Номер</th>
-                                            <th style="width: 30%;">Организация</th>
-                                            <th style="width: 40%;">Местоположение</th>
+                                        <th style="width: 10%;">Номер</th>
+                                            <th style="width: 40%;">Организация</th>
+                                            <th style="width: 50%;">Местоположение</th>
                                     </tr>
                             </thead>
                             <tbody id="stockTable">
                                     <%for (int i = 0; i < stock.length; i++)
                                     {%>
                                         <tr>
-                                                <td class="stockId"><%=i + 1%></td>
-                                                <td><a href="organizationInfo.jsp?id=<%=organization[stock[i].getOrganizationId()-1].getId()%>"><%=organization[stock[i].getOrganizationId()-1].getName()%></a></td>
-                                                <td><%=location[stock[i].getLocationId()-1].getAddress()%>, <%=city[location[stock[i].getLocationId() - 1].getCityId() - 1].getName()%></td>
+                                            <td class="stockId" ><center><a href="stockInfo.jsp?id=<%=stock[i].getId()%>"><%=i + 1%></a></center></td>
+                                                <td><a href="organizationInfo.jsp?id=<%=stock[i].getOrganizationId()%>"><%=stock[i].getOrganizationName()%></a></td>
+                                                <td><%=stock[i].getLocation().getAddress()%>, <%=stock[i].getLocation().getCityName()%>, <%=stock[i].getLocation().getCountryName()%></td>
                                         </tr>
                                     <%}%>
                             </tbody>

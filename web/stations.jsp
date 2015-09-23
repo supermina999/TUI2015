@@ -50,7 +50,7 @@
                                 <%for (int i = 0; i < station.length; i++)
                                 {%>
                                     <tr>
-                                            <td><%=i + 1%></td>
+                                            <td class="stockId" ><center><a href="stationInfo.jsp?id=<%=station[i].getId()%>"><%=i + 1%></a></center></td>
                                             <td><a href="organizationInfo.jsp?id=<%=station[i].getOrganizationId()%>"><%=station[i].getOrganizationName()%></a></td>
                                             <td><%=station[i].getLocation().getAddress()%>, <%=station[i].getLocation().getCityName()%>, <%=station[i].getLocation().getCountryName()%></td>
                                     </tr>
