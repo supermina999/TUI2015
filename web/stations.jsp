@@ -1,5 +1,3 @@
-<%@page import="models.*"%>
-<%@page import="java.sql.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <% int minPermission = 8; 
    int tab = 5; %>
@@ -15,7 +13,7 @@
                     <div class="gray-bg">
                         <br>
                         <div class="col-md-4">
-                            <input type="text" class="form-control" placeholder="Номер" style="width: 105%;">
+                            <input type="text" class="form-control" placeholder="Номер" style="width: 105%;" id="searchIdInput">
                             <i class="fa fa-search form-control-feedback"></i>
                         </div>
                         <div class="col-md-4">
@@ -46,11 +44,11 @@
                                         <th style="width: 50%;">Местоположение</th>
                                 </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="stockTable">
                                 <%for (int i = 0; i < station.length; i++)
                                 {%>
                                     <tr>
-                                            <td class="stockId" ><center><a href="stationInfo.jsp?id=<%=station[i].getId()%>"><%=i + 1%></a></center></td>
+                                            <td class="idSearch" ><center><a href="stationInfo.jsp?id=<%=station[i].getId()%>"><%=i + 1%></a></center></td>
                                             <td><a href="organizationInfo.jsp?id=<%=station[i].getOrganizationId()%>"><%=station[i].getOrganizationName()%></a></td>
                                             <td><%=station[i].getLocation().getAddress()%>, <%=station[i].getLocation().getCityName()%>, <%=station[i].getLocation().getCountryName()%></td>
                                     </tr>
@@ -60,4 +58,5 @@
                     <a href="newStation.jsp" class="btn btn-default btn-lg">Добавить пункт выдачи</a>
                 </div>
         </center>
+<script src="js/searchStock.js"></script>
 <%@include file = "layout2.jsp"%>

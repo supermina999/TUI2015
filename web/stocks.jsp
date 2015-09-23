@@ -14,11 +14,11 @@
                     <div class="gray-bg">
                         <br>
                         <div class="col-md-4">
-                            <input type="text" class="form-control" placeholder="Номер" style="width: 100%;" name="id" id="searchIdInput">
+                            <input type="text" class="form-control" placeholder="Номер" style="width: 105%;" id="searchIdInput">
                             <i class="fa fa-search form-control-feedback"></i>
                         </div>
                         <div class="col-md-4">
-                            <select class="form-control" style="width: 100%;" name="city">
+                            <select class="form-control" style="width: 105%;" name="city">
                                     <option>Выберите город</option>
                                     <%for (int i = 0; i < city.length; i++)
                                     {%>
