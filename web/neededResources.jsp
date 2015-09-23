@@ -15,7 +15,7 @@
             <div class="gray-bg">
                 <br>
                 <div class="col-md-4">
-                    <input type="text" class="form-control" placeholder="Название" style="width: 105%;">
+                    <input type="text" class="form-control" placeholder="Название" style="width: 105%;" id="searchIdInput">
                     <i class="fa fa-search form-control-feedback"></i>
                 </div>
                 <div class="col-md-4">
@@ -47,11 +47,11 @@
                         <th style="width: 25%;">Пункт выдачи</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody id="searchTable">
                     <%
                     for (int i = 0; i < neededRes.length; i++) {%>
                         <tr>
-                            <td class="quantity"> <%=neededRes[i].getResourceName()%></td>
+                            <td class="quantity idSearch"> <%=neededRes[i].getResourceName()%></td>
                             <td class="amount"><%=neededRes[i].getNumber()%></td>
                             <td class="amount"><%=city[location[station[neededRes[i].getStationId() - 1].getLocationId() - 1].getCityId() - 1].getName()%></td>
                             <td class="product"><%=location[station[neededRes[i].getStationId() - 1].getLocationId() - 1].getAddress()%></td>
@@ -66,5 +66,5 @@
             
         </div>
     </center>
-    
+<script src="js/search.js"></script>     
 <%@include file = "layout2.jsp"%>

@@ -35,7 +35,7 @@
             <div class="gray-bg">
                         <br>
                         <div class="col-md-11">
-                            <input type="text" class="form-control" placeholder="Наименование" style="width: 110%;">
+                            <input type="text" class="form-control" placeholder="Наименование" style="width: 110%;" id="searchIdInput">
                             <i class="fa fa-search form-control-feedback" style="padding-left: 100%;"></i>
                         </div>
                         <br><br><br>
@@ -49,11 +49,11 @@
                                         <th style="width: 25%;">Единица измерения</th>
                                 </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="searchTable">
                             <%for (int j = 0; j < availableRes.length; j++)
                                 {%>
                                 <tr>
-                                    <td style="width: 50%;">
+                                    <td style="width: 50%;" class="idSearch">
                                         <%=availableRes[j].getResourceName()%></a>
                                     </td>
                                     <td style="width: 25%;">
@@ -68,4 +68,5 @@
                         </table>
         </form>
 </div>
+<script src="js/search.js"></script>
 <%@include file = "layout2.jsp"%>
