@@ -5,11 +5,9 @@
    int tab = 5; %>
 <%@include file = "layout1.jsp"%>
 <%
-    DBModel.init();
     Station[] station = Station.getAll(null);
     City[] city = City.getAll(null);
     Organization[] organization = Organization.getAll(null);
-    Location[] location = Location.getAll(null);
 %>
         <center>
             <br><h1>Пункты выдачи</h1><br>
@@ -43,9 +41,9 @@
                         <table class="table table-bordered">
                         <thead>
                                 <tr>
-                                    <th style="width: 30%;">Номер</th>
-                                        <th style="width: 30%;">Организация</th>
-                                        <th style="width: 40%;">Местоположение</th>
+                                    <th style="width: 10%;">Номер</th>
+                                        <th style="width: 40%;">Организация</th>
+                                        <th style="width: 50%;">Местоположение</th>
                                 </tr>
                         </thead>
                         <tbody>
@@ -53,8 +51,8 @@
                                 {%>
                                     <tr>
                                             <td><%=i + 1%></td>
-                                            <td><a href="organizationInfo.jsp?id=<%=organization[station[i].getOrganizationId()-1].getId()%>"><%=organization[station[i].getOrganizationId()-1].getName()%></a></td>
-                                            <td><%=location[station[i].getLocationId()-1].getAddress()%>, <%=city[location[station[i].getLocationId() - 1].getCityId() - 1].getName()%></td>
+                                            <td><a href="organizationInfo.jsp?id=<%=station[i].getOrganizationId()%>"><%=station[i].getOrganizationName()%></a></td>
+                                            <td><%=station[i].getLocation().getAddress()%>, <%=station[i].getLocation().getCityName()%>, <%=station[i].getLocation().getCountryName()%></td>
                                     </tr>
                                 <%}%>
                         </tbody>
