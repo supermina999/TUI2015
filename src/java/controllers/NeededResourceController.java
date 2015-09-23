@@ -13,23 +13,21 @@ public class NeededResourceController {
         String number = request.getParameter("number");
         int weight = Integer.parseInt(number);
         String cityName = request.getParameter("city");
-        String station = request.getParameter("station");
+        String station = request.getParameter("stationId");
+        int stationId = Integer.parseInt(station);
         
-        Resource resource = new Resource();
-        resource.setName(name);
-        resource.setWeight(weight);
-        resource.writeToDB();
-        Resource[] allRes = Resource.getAll(null);
-        int resourceId;
-        if (allRes.length == 0) resourceId = 0;
-        else resourceId = allRes[allRes.length-1].getId();
-        
-        Location[] allLocation = Location.getAll(null);
-        Station[] allStation = Station.getAll(null);
-        int stationId = 0;
-        for (int i = 0;i < allStation.length;i++)
+        Resource[] allResource = Resource.getAll(null);
+        int resourceId = -1;
+        for (int i = 0;i < allResource.length;i++)
         {
-            if (allLocation[allStation[i].getLocationId()-1].getAddress().equals(station)) stationId = allStation[i].getId();
+            if (allResource[i].getName().equals(name)) resourceId = allResource[i].getId();
+        }
+        if (resourceId == -1)
+        {
+            Resource resource = new Resource();
+            resource.setName(name);
+            resource.setWeight(weight);
+            resource.writeToDB();
         }
         
         int measureId = 1;

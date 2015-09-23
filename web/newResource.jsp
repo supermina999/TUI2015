@@ -6,7 +6,6 @@
 <%
     City[] city = City.getAll(null);
     Stock[] stock = Stock.getAll(null);
-    Location[] location = Location.getAll(null);
 %>
 <br>
     <div class="form-block center-block">
@@ -40,11 +39,11 @@
                 <div class="form-group has-feedback">
                     <label class="col-sm-3 control-label">Склад</label>
                     <div class="col-sm-8">
-                        <select class="form-control" style="width: 100%;" name="stock">
+                        <select class="form-control" style="width: 100%;" name="stockId">
                                     <option>Выберите склад</option>
                                     <%for (int i = 0;i < stock.length;i++)
                                     {%>
-                                        <option><%=location[stock[i].getLocationId() - 1].getAddress()%></option>
+                                        <option value="<%=stock[i].getId()%>"><%=stock[i].getLocation().getAddress()%></option>
                                     <%}%>
                         </select>
                     </div>

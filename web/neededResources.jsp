@@ -7,7 +7,6 @@
     NeededResource[] neededRes = NeededResource.getAll(null);
     City[] city = City.getAll(null);
     Station[] station = Station.getAll(null);
-    Location[] location = Location.getAll(null);
 %>
     <center>
         <br><h1>Требующиеся ресурсы</h1><br>
@@ -32,7 +31,7 @@
                             <option>Выберите пункт выдачи</option>
                             <%for (int i = 0;i < station.length;i++)
                             {%>
-                                <option><%=location[station[i].getLocationId() - 1].getAddress()%></option>
+                                <option><%=station[i].getLocation().getAddress()%></option>
                             <%}%>
                     </select>
                 </div>
@@ -53,8 +52,8 @@
                         <tr>
                             <td class="quantity idSearch"> <%=neededRes[i].getResourceName()%></td>
                             <td class="amount"><%=neededRes[i].getNumber()%></td>
-                            <td class="amount"><%=city[location[station[neededRes[i].getStationId() - 1].getLocationId() - 1].getCityId() - 1].getName()%></td>
-                            <td class="product"><%=location[station[neededRes[i].getStationId() - 1].getLocationId() - 1].getAddress()%></td>
+                            <td class="amount"><%=neededRes[i].getLocation().getCityName()%></td>
+                            <td class="product"><%=neededRes[i].getLocation().getAddress()%></td>
                             
                         </tr>
                     <% } %>
