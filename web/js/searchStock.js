@@ -1,4 +1,4 @@
-$('#searchIdInput').change(function() {
+$('#searchIdInput').keyup(function() {
     var s = $('#searchIdInput').val();
     var $rows = $(document).find("#stockTable").find("tr");
     $.each($rows, function() {
