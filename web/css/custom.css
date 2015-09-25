@@ -24,3 +24,21 @@
 .hidden {
     visibility: hidden;
 }
+
+.btn-toggle {
+    min-width: 90px !important;
+    background-color: transparent !important;
+    color: #666666 !important;
+    font-weight: 700 !important;
+    border-color: transparent !important;
+    padding: 11px 10px 12px 10px !important;
+}
+
+.btn-toggle-active {
+    min-width: 90px !important;
+    background-color: transparent !important;
+    color: #e84c3d !important;
+    font-weight: 700 !important;
+    border-color: transparent !important;
+    padding: 11px 10px 12px 10px !important
+}
