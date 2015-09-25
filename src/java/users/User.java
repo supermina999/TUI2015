@@ -33,4 +33,9 @@ public class User {
     {
         return user != null;
     }
+    
+    public boolean checkPermission(int minPermission)
+    {
+        return user.getPermissionId() <= minPermission;
+    }
 }
