@@ -47,7 +47,7 @@
                                         <th style="width: 50%;">Местоположение</th>
                                 </tr>
                         </thead>
-                        <tbody id="stockTable">
+                        <tbody id="searchTable">
                                 <%for (int i = 0; i < station.length; i++)
                                 {%>
                                     <tr>
@@ -61,5 +61,5 @@
                     <a href="newStation.jsp" class="btn btn-default btn-lg">Добавить пункт выдачи</a>
                 </div>
         </center>
-<script src="js/searchStock.js"></script>
+<script src="js/search.js"></script>
 <%@include file = "layout2.jsp"%>

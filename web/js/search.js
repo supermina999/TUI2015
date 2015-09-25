@@ -5,8 +5,9 @@ $('#searchIdInput').keyup(function() {
     var $rows = $(document).find("#searchTable").find("tr");
     console.log(s);
     $.each($rows, function() {
-        var t = $($(this).find(".idSearch")[0]).text();
+        var t = $(this).text();
         t = t.toLowerCase();
+        console.log(t);
         if (t.contains(s)) $(this).removeClass("hidden");
         else $(this).addClass("hidden"); 
     });

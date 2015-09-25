@@ -64,5 +64,5 @@
                     <a href="newStock.jsp" class="btn btn-default btn-lg">Добавить склад</a>
                 </div>
         </center>
-<script src="js/searchStock.js"></script>
+<script src="js/search.js"></script>
 <%@include file = "layout2.jsp"%>
