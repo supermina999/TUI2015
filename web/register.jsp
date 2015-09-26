@@ -6,16 +6,9 @@
     Organization[] organization = Organization.getAll(null);
     City[] city = City.getAll(null);
     Permission[] permission = Permission.getAll(null);
-    String alert = request.getParameter("alert");
 %>
 <br>
     <div class="form-block center-block">
-        <%if (alert != null)
-        {%>
-        <div class="alert alert-warning" role="alert">
-            <center><%=alert%></center>
-        </div>
-        <%}%>
         <center><h2 class="title">Регистрация</h2></center>
         <form class="form-horizontal" method="post" action="addUser.jsp">
                 <div class="form-group has-feedback">
@@ -27,15 +20,15 @@
                 </div>
                 <div class="form-group has-feedback">
                         <label class="col-sm-3 control-label">Пароль </label>
-                        <div class="col-sm-8">
-                                <input type="password" class="form-control" name="password1" required>
+                        <div class="col-sm-8" id="divPass1">
+                                <input type="password" class="form-control" name="pass1" id="password1" required>
                                 <i class="fa fa-lock form-control-feedback"></i>
                         </div>
                 </div>
                 <div class="form-group has-feedback">
                         <label class="col-sm-3 control-label">Повторите пароль </label>
-                        <div class="col-sm-8">
-                                <input type="password" class="form-control" name="password2" required>
+                        <div class="col-sm-8" id="divPass2">
+                                <input type="password" class="form-control" name="pass2" id="password2" required>
                                 <i class="fa fa-lock form-control-feedback"></i>
                         </div>
                 </div> <br>
@@ -44,7 +37,7 @@
                     <label class="col-sm-3 control-label">Организация</label>
                     <div class="col-sm-8">
                         <select class="form-control" style="width: 100%;" name="organization_id">
-                                <option>Выберите организацию</option>
+                                <option value="-1">Выберите организацию</option>
                                 <%for (int i = 0; i < organization.length; i++)
                                 {%>
                                     <option value="<%=organization[i].getId()%>"> <%=organization[i].getName()%></option>
@@ -56,7 +49,7 @@
                     <label class="col-sm-3 control-label">Должность</label>
                     <div class="col-sm-8">
                         <select class="form-control" style="width: 100%;" name="permission_id">
-                                <option>Выберите должность</option>
+                                <option value="-1">Выберите должность</option>
                                 <%for (int i = 0; i < permission.length; i++)
                                 {%>
                                     <option value="<%=permission[i].getId()%>"><%=permission[i].getName()%></option>
@@ -130,4 +123,5 @@
             
             </form>
         </div>
+<script src="js/checker.js"></script>
 <%@include file = "layout2.jsp"%>

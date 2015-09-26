@@ -21,7 +21,7 @@
 
 <br>
     <div class="form-block center-block" style="width: 50%;">
-        <center><h2 class="title">Пункты выдачи № <%=Integer.parseInt(s)%></h2></center>
+        <center><h2 class="title">Пункт выдачи № <%=Integer.parseInt(s)%></h2></center>
         <hr>
          <form class="form-horizontal">
         

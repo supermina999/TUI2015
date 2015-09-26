@@ -26,8 +26,8 @@
                                     <%}%>
                             </select>
                         </div>
-                        <div class="col-md-3">
-                            <select class="form-control" style="width: 130%;" name="organization">
+                        <div class="col-md-4">
+                            <select class="form-control" style="width: 100%;" name="organization">
                                     <option>Выберите организацию</option>
                                     <%for (int i = 0; i < organization.length; i++)
                                     {%>
@@ -35,9 +35,6 @@
                                     <%}%>
                             </select>
                         </div>
-                            <div class="col-md-1">
-                                <i class="fa fa-search form-control-feedback"></i>
-                            </div>
                         <br><br><br>
                     </div>
                     <br>

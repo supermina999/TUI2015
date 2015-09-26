@@ -3,7 +3,6 @@
    int tab = 3; %>
 <%@include file = "layout1.jsp"%>
 <%
-    DBModel.init();
     AvailableResource[] availableRes = AvailableResource.getAll(null);
     City[] city = City.getAll(null);
     Stock[] stock = Stock.getAll(null);
@@ -31,7 +30,7 @@
                             <option>Выберите склад</option>
                             <%for (int i = 0;i < stock.length;i++)
                             {%>
-                                <option><%=stock[i].getLocation().getAddress()%></option>
+                                <option>№<%=stock[i].getId()%>, <%=stock[i].getLocation().getAddress()%></option>
                             <%}%>
                     </select>
                 </div>

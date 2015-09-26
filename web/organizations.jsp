@@ -3,7 +3,6 @@
    int tab = 2; %>
 <%@include file = "layout1.jsp"%>
 <%
-    DBModel.init();
     Organization[] organization = Organization.getAll(null);
     City[] city = City.getAll(null);
 %>

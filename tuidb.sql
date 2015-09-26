@@ -232,9 +232,9 @@ CREATE TABLE `organization` (
 LOCK TABLES `organization` WRITE;
 /*!40000 ALTER TABLE `organization` DISABLE KEYS */;
 INSERT INTO `organization` (`id`, `name`, `address`, `website`) VALUES
-(1, 'Красный крест', 'Ул. Мирная, 23', 'redkross.help.ua'),
+(1, 'Красный крест', 'Ул. Мирная, 23', 'redcross.help.ua'),
 (2, 'Рука помощи', 'Ул. Зеленая, 6', 'thehandofhelp.org'),
-(3, 'Мирное небо', 'Бульварный переулок, 2', 'peaceinthesky.org.ua');
+(3, 'Мирное небо', 'Бульварный переулок, 2', 'peacefulsky.org.ua');
 /*!40000 ALTER TABLE `organization` ENABLE KEYS */;
 UNLOCK TABLES;
 
