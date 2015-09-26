@@ -4,13 +4,12 @@
    int tab = 4; %>
 <%@include file = "layout1.jsp"%>
 <%
-    DBModel.init();
     Organization[] organization = Organization.getAll(null);
     Location[] location = Location.getAll(null);
     City[] city = City.getAll(null);
 %>
 <br>
-    <div class="form-block center-block">
+    <div class="form-block center-block" style="width: 50%;">
         <center><h2 class="title">Добавить склад</h2></center>
         <hr>
         <form class="form-horizontal" method = "post" action = "addStock.jsp">

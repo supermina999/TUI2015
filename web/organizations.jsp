@@ -27,21 +27,25 @@
                         <br><br><br>
                     </div>
                     <br>
-                        <table class="table table-bordered">
+                        <table class="table">
                         <thead>
                                 <tr>
                                     <th style="width: 25%;">Название</th>
-                                        <th style="width: 50%;">Местоположение</th>
-                                        <th style="width: 25%;">Вебсайт</th>
+                                    <th style="width: 40%;">Местоположение</th>
+                                    <th style="width: 25%;">Вебсайт</th>
+                                    <th style="width: 5%;"></th>
+                                    <th style="width: 5%;"></th>
                                 </tr>
                         </thead>
                         <tbody id="searchTable">
                             <% for (int i = 0; i < organization.length; i++) 
                                 {%>
                                 <tr>
-                                    <td class="quantity idSearch"><a href ="organizationInfo.jsp?id=<%=organization[i].getId()%>"><%=organization[i].getName()%></a></td>
-                                        <td class="product"><%=organization[i].getAddress()%></td>
-                                        <td class="amount"><%=organization[i].getWebsite()%></td>
+                                    <td class="idSearch"><a href ="organizationInfo.jsp?id=<%=organization[i].getId()%>"><%=organization[i].getName()%></a></td>
+                                    <td><%=organization[i].getAddress()%></td>
+                                    <td><%=organization[i].getWebsite()%></td>
+                                    <td><a href="changeOrganizationInfo.jsp?id=<%=organization[i].getId()%>"><i class="fa fa-edit"></i></a></td>
+                                    <td><i class="fa fa-close"></i></td>
                                 </tr>
                                 <% } %>
                         </table>

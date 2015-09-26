@@ -28,5 +28,17 @@ public class OrganizationController
         Person[] persons = Person.getAll(personParams); 
         return persons;
     }
+    public static void update(HttpServletRequest request) throws Exception
+    {
+            String id = request.getParameter("id");
+            String name = request.getParameter("name");
+            String address = request.getParameter("address");
+            String website = request.getParameter("website");
+            Organization organization = Organization.getOne(Integer.parseInt(id));
+            organization.setName(Sql.sql(name));
+            organization.setAddress(Sql.sql(address));
+            organization.setWebsite(Sql.sql(website));
+            organization.saveChanges();
+    }
    
 }

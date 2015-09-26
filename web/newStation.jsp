@@ -10,7 +10,7 @@
     City[] city = City.getAll(null);
 %>
 <br>
-    <div class="form-block center-block">
+    <div class="form-block center-block" style="width: 50%;">
         <center><h2 class="title">Добавить пункт выдачи</h2></center>
         <hr>
         <form class="form-horizontal" method = "post" action = "addStation.jsp">
