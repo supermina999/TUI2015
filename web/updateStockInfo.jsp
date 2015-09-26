@@ -6,5 +6,5 @@
     StockController.update(request);
 %>
     <script>
-        window.location.href = "stocks.jsp";
+        window.location.href = "stockInfo.jsp?id=<%=request.getParameter("id")%>";
     </script>

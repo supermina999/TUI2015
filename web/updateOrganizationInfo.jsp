@@ -6,5 +6,5 @@
     OrganizationController.update(request);
 %>
     <script>
-        window.location.href = "organizations.jsp";
+        window.location.href = "organizationInfo.jsp?id=<%=request.getParameter("id")%>";
     </script>

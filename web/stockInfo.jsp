@@ -1,6 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <% int minPermission = 8; 
-   int tab = 0;
+   int tab = 4;
    String s = request.getParameter("id");
    Stock stock = new Stock();
    AvailableResource[] availableRes = AvailableResource.getAll(null);
@@ -21,6 +21,7 @@
 
 <br>
     <div class="form-block center-block" style="width: 50%;">
+        <div style="margin-left: 95%;"><p style="font-size: 25px;"><a href="changeStockInfo.jsp?id=<%=stock.getId()%>"><i class="fa fa-edit"></i></a><p></div>
         <center><h2 class="title">Склад № <%=Integer.parseInt(s)%></h2></center>
         <hr>
          <form class="form-horizontal">
