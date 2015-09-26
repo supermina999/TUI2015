@@ -14,7 +14,7 @@
                     <div class="gray-bg">
                         <br>
                         <div class="col-md-4">
-                            <input type="text" class="form-control" placeholder="Номер" style="width: 105%;" id="searchIdInput">
+                            <input type="text" class="form-control" placeholder="Поиск" style="width: 105%;" id="searchIdInput">
                             <i class="fa fa-search form-control-feedback"></i>
                         </div>
                         <div class="col-md-4">
@@ -38,22 +38,25 @@
                         <br><br><br>
                     </div>
                     <br>
-                        <table class="table table-bordered">
+                        <table class="table">
                             <thead>
                                     <tr>
                                         <th style="width: 10%;">Номер</th>
                                             <th style="width: 40%;">Организация</th>
-                                            <th style="width: 50%;">Местоположение</th>
+                                            <th style="width: 40%;">Местоположение</th>
+                                            <th style="width: 5%;"></th>
+                                            <th style="width: 5%;"></th>
                                     </tr>
                             </thead>
                             <tbody id="searchTable">
                                     <%for (int i = 0; i < stock.length; i++)
                                     {%>
                                         <tr>
-
                                             <td class="idSearch" ><center><a href="stockInfo.jsp?id=<%=stock[i].getId()%>"><%=i + 1%></a></center></td>
-                                                <td><a href="organizationInfo.jsp?id=<%=stock[i].getOrganizationId()%>"><%=stock[i].getOrganizationName()%></a></td>
-                                                <td><%=stock[i].getLocation().getAddress()%>, <%=stock[i].getLocation().getCityName()%>, <%=stock[i].getLocation().getCountryName()%></td>
+                                            <td><a href="organizationInfo.jsp?id=<%=stock[i].getOrganizationId()%>"><%=stock[i].getOrganizationName()%></a></td>
+                                            <td><%=stock[i].getLocation().getAddress()%>, <%=stock[i].getLocation().getCityName()%>, <%=stock[i].getLocation().getCountryName()%></td>
+                                            <td><a href="changeStockInfo.jsp?id=<%=stock[i].getId()%>"><i class="fa fa-edit"></i></a></td>
+                                            <td><i class="fa fa-close"></i></td>
                                         </tr>
                                     <%}%>
                             </tbody>

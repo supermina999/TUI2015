@@ -34,7 +34,8 @@ public class OrganizationController
             String name = request.getParameter("name");
             String address = request.getParameter("address");
             String website = request.getParameter("website");
-            Organization organization = Organization.getOne(Integer.parseInt(id));
+            Organization organization = new Organization();
+            organization.setId(Integer.parseInt(id));
             organization.setName(Sql.sql(name));
             organization.setAddress(Sql.sql(address));
             organization.setWebsite(Sql.sql(website));

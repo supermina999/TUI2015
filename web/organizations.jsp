@@ -12,7 +12,7 @@
                     <div class="gray-bg">
                         <br>
                         <div class="col-md-8">
-                            <input type="text" class="form-control" placeholder="Название" style="width: 105%;" id="searchIdInput">
+                            <input type="text" class="form-control" placeholder="Поиск" style="width: 105%;" id="searchIdInput">
                             <i class="fa fa-search form-control-feedback"></i>
                         </div>
                         <div class="col-md-4">
