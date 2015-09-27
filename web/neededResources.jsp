@@ -14,11 +14,11 @@
             <div class="gray-bg">
                 <br>
                 <div class="col-md-4">
-                    <input type="text" class="form-control" placeholder="Название" style="width: 105%;" id="searchIdInput">
+                    <input type="text" class="form-control searchInput" placeholder="Название" style="width: 105%;" >
                     <i class="fa fa-search form-control-feedback"></i>
                 </div>
                 <div class="col-md-4">
-                    <select class="form-control" style="width: 105%;">
+                    <select class="form-control searchInput" style="width: 105%;">
                             <option>Выберите город</option>
                             <%for (int i = 0; i < city.length; i++)
                             {%>
@@ -27,7 +27,7 @@
                     </select>
                 </div>
                 <div class="col-md-4">
-                    <select class="form-control" style="width: 100%;">
+                    <select class="form-control searchInput" style="width: 100%;">
                             <option>Выберите пункт выдачи</option>
                             <%for (int i = 0;i < station.length;i++)
                             {%>
@@ -50,7 +50,7 @@
                     <%
                     for (int i = 0; i < neededRes.length; i++) {%>
                         <tr>
-                            <td class="quantity idSearch"> <%=neededRes[i].getResourceName()%></td>
+                            <td class="quantity"> <%=neededRes[i].getResourceName()%></td>
                             <td class="amount"><%=neededRes[i].getNumber()%></td>
                             <td class="amount"><%=neededRes[i].getLocation().getCityName()%></td>
                             <td class="product"><%=neededRes[i].getLocation().getAddress()%></td>

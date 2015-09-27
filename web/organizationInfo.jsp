@@ -41,11 +41,11 @@
             <div class="gray-bg">
                         <br>
                         <div class="col-md-8">
-                            <input type="text" class="form-control" placeholder="ФИО" style="width: 105%;">
+                            <input type="text" class="form-control searchInput" placeholder="ФИО" style="width: 105%;">
                             <i class="fa fa-search form-control-feedback"></i>
                         </div>
                         <div class="col-md-4">
-                            <select class="form-control" style="width: 100%;">
+                            <select class="form-control searchInput" style="width: 100%;">
                                     <option>Выберите город</option>
                                    <%for (int j = 0; j < city.length; j++)
                                     {%>
@@ -64,7 +64,7 @@
                                         <th style="width: 25%;">Email</th>
                                 </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="searchTable">
                             <%for (int j = 0; j < persons.length; j++)
                                 {%>
                                 <tr>
@@ -82,5 +82,5 @@
         </form>
 </div>
 
-
+<script src="js/search.js"></script>
 <%@include file = "layout2.jsp"%>

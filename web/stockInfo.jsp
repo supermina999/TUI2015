@@ -35,7 +35,7 @@
             <div class="gray-bg">
                         <br>
                         <div class="col-md-11">
-                            <input type="text" class="form-control" placeholder="Наименование" style="width: 110%;" id="searchIdInput">
+                            <input type="text" class="form-control searchInput" placeholder="Наименование" style="width: 110%;" >
                             <i class="fa fa-search form-control-feedback" style="padding-left: 100%;"></i>
                         </div>
                         <br><br><br>
@@ -53,7 +53,7 @@
                             <%for (int j = 0; j < availableRes.length; j++)
                                 {%>
                                 <tr>
-                                    <td style="width: 50%;" class="idSearch">
+                                    <td style="width: 50%;">
                                         <%=availableRes[j].getResourceName()%></a>
                                     </td>
                                     <td style="width: 25%;">

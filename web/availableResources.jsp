@@ -14,11 +14,11 @@
             <div class="gray-bg">
                 <br>
                 <div class="col-md-4">
-                    <input type="text" class="form-control" placeholder="Название" style="width: 105%;" id="searchIdInput">
+                    <input type="text" class="form-control searchInput" placeholder="Название" style="width: 105%;">
                     <i class="fa fa-search form-control-feedback"></i>
                 </div>
                 <div class="col-md-4">
-                    <select class="form-control" style="width: 105%;" name = "city">
+                    <select class="form-control searchInput city" style="width: 105%;" name = "city">
                             <option>Выберите город</option>
                             <%for (int i = 0; i < city.length; i++)
                             {%>
@@ -27,7 +27,7 @@
                     </select>
                 </div>
                 <div class="col-md-4">
-                    <select class="form-control" style="width: 100%;" name = "stock">
+                    <select class="form-control searchInput" style="width: 100%;" name = "stock">
                             <option>Выберите склад</option>
                             <%for (int i = 0;i < stock.length;i++)
                             {%>

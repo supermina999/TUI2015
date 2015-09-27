@@ -13,11 +13,11 @@
                     <div class="gray-bg">
                         <br>
                         <div class="col-md-4">
-                            <input type="text" class="form-control" placeholder="Номер" style="width: 105%;" id="searchIdInput">
+                            <input type="text" class="form-control searchInput" placeholder="Номер" style="width: 105%;" >
                             <i class="fa fa-search form-control-feedback"></i>
                         </div>
                         <div class="col-md-4">
-                            <select class="form-control" style="width: 105%;">
+                            <select class="form-control searchInput city" style="width: 105%;">
                                     <option>Выберите город</option>
                                     <%for (int i = 0; i < city.length; i++)
                                     {%>
@@ -26,7 +26,7 @@
                             </select>
                         </div>
                         <div class="col-md-3">
-                            <select class="form-control" style="width: 130%;">
+                            <select class="form-control searchInput" style="width: 130%;">
                                     <option>Выберите организацию</option>
                                     <%for (int i = 0; i < organization.length; i++)
                                     {%>
@@ -51,7 +51,7 @@
                                 <%for (int i = 0; i < station.length; i++)
                                 {%>
                                     <tr>
-                                            <td class="idSearch" ><center><a href="stationInfo.jsp?id=<%=station[i].getId()%>"><%=i + 1%></a></center></td>
+                                            <td><center><a href="stationInfo.jsp?id=<%=station[i].getId()%>"><%=i + 1%></a></center></td>
                                             <td><a href="organizationInfo.jsp?id=<%=station[i].getOrganizationId()%>"><%=station[i].getOrganizationName()%></a></td>
                                             <td><%=station[i].getLocation().getAddress()%>, <%=station[i].getLocation().getCityName()%>, <%=station[i].getLocation().getCountryName()%></td>
                                     </tr>
