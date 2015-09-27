@@ -21,8 +21,11 @@
 
 <br>
     <div class="form-block center-block" style="width: 50%;">
-        <div style="margin-left: 95%;"><p style="font-size: 25px;"><a href="changeStationInfo.jsp?id=<%=station.getId()%>"><i class="fa fa-edit"></i></a><p></div>
-        <center><h2 class="title">Пункт выдачи № <%=Integer.parseInt(s)%></h2></center>
+        <div style="margin-left: 90%;">
+            <p style="font-size: 25px;"><a href="changeStationInfo.jsp?id=<%=station.getId()%>"><i class="fa fa-edit"></i></a>
+            <a href="deleteStation.jsp?id=<%=station.getId()%>"><i class="fa fa-close"></i></a></p>
+        </div>
+            <center><h2 class="title">Пункт выдачи № <%=Integer.parseInt(s)%></h2></center>
         <hr>
          <form class="form-horizontal">
         
