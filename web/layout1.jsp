@@ -2,6 +2,7 @@
 <%@page import="models.*"%>
 <%@page import="users.User"%>
 <jsp:useBean id="user" class="users.User" scope="session"/>
+<% boolean isLogin = user.getStatus(); %>
 <!DOCTYPE html>
 <!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
@@ -122,12 +123,12 @@
 											<!-- Collect the nav links, forms, and other content for toggling -->
 											<div class="collapse navbar-collapse">
 												<ul class="nav navbar-nav">
-                                                                                                    
+                                                                                                        <% if (isLogin) { %>
 													<li <% if (tab == 1) { %>class="active" <% } %>>
 														<a href="index.jsp">Главная</a>
 													</li>
                                                                                                         <li <% if (tab == 2) { %>class="active" <% } %>>
-														<a href="organizations.jsp">Организации</a>
+														<a href="organizations.jsp">Организации</a>  
 													</li>
                                                                                                         <li>
 														<a type="button" class="btn btn-toggle <% if (tab == 3) { %>btn-toggle-active <% }%>" data-toggle="dropdown">Ресурсы</a>
@@ -141,16 +142,13 @@
 													</li>
                                                                                                         <li <% if (tab == 5) { %>class="active" <% } %>>
 														<a href="stations.jsp">Пункты выдачи</a>
-													</li>
+													</li><%}%>
                                                                                                         <li <% if (tab == 6) { %>class="active" <% } %>>
-														<a href="reports.jsp">Отчёты</a>
+                                                                                                            <a href="reports.jsp" <%if(!isLogin){%> style="margin-left: 620px;"<%}%>>Отчёты</a>
 													</li>
                                                                                                         <li>
                                                                                                             <div class="btn-group">
-                                                                                                                <%
-                                                                                                                  boolean isLogin = user.getStatus();
-                                                                                                                  if (isLogin) {
-                                                                                                                  %>
+                                                                                                                <% if (isLogin) { %>
                                                                                                                   <a type="button" class="btn btn-login btn-default" href="userInfo.jsp?id=<%=user.user.getId()%>" style="width: 110px;"><i class="fa fa-user"></i> Кабинет</a>
                                                                                                                   <a type="button" class="btn btn-login btn-default" href="exit.jsp"><i class="fa fa-sign-out"></i></a>
                                                                                                                 <%} else { %>

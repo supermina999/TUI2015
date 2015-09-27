@@ -25,8 +25,8 @@
                                     <%}%>
                             </select>
                         </div>
-                        <div class="col-md-3">
-                            <select class="form-control searchInput" style="width: 130%;">
+                        <div class="col-md-4">
+                            <select class="form-control searchInput" style="width: 100%;">
                                     <option>Выберите организацию</option>
                                     <%for (int i = 0; i < organization.length; i++)
                                     {%>
@@ -34,17 +34,16 @@
                                     <%}%>
                             </select>
                         </div>
-                        <div class="col-md-1">
-                            <i class="fa fa-search form-control-feedback"></i>
-                        </div>
                         <br><br><br>
                     </div> <br>
-                        <table class="table table-bordered">
+                        <table class="table">
                         <thead>
                                 <tr>
                                     <th style="width: 10%;">Номер</th>
                                         <th style="width: 40%;">Организация</th>
-                                        <th style="width: 50%;">Местоположение</th>
+                                        <th style="width: 40%;">Местоположение</th>
+                                        <th style="width: 5%;"></th>
+                                        <th style="width: 5%;"></th>
                                 </tr>
                         </thead>
                         <tbody id="searchTable">
@@ -54,6 +53,8 @@
                                             <td><center><a href="stationInfo.jsp?id=<%=station[i].getId()%>"><%=i + 1%></a></center></td>
                                             <td><a href="organizationInfo.jsp?id=<%=station[i].getOrganizationId()%>"><%=station[i].getOrganizationName()%></a></td>
                                             <td><%=station[i].getLocation().getAddress()%>, <%=station[i].getLocation().getCityName()%>, <%=station[i].getLocation().getCountryName()%></td>
+                                            <td><a href="changeStationInfo.jsp?id=<%=station[i].getId()%>"><i class="fa fa-edit"></i></a></td>
+                                            <td><i class="fa fa-close"></i></td>
                                     </tr>
                                 <%}%>
                         </tbody>

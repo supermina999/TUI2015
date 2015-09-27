@@ -1,30 +1,40 @@
 <%@page import="models.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <% int minPermission = 8; 
-   int tab = 4; %>
-<%@include file = "layout1.jsp"%>
-<%
-    Organization[] organization = Organization.getAll(null);
-    Location[] location = Location.getAll(null);
-    City[] city = City.getAll(null);
+   int tab = 4;
+   Organization[] organization = Organization.getAll(null);
+   Location[] location = Location.getAll(null);
+   City[] city = City.getAll(null);
+   String s = request.getParameter("id");
+   Stock stock = new Stock();
+   if (s == null)
+   {%>
+        <script>
+         window.location.href = "/";
+        </script>
+    <%} else {
+        int i = Integer.parseInt(s);
+        stock = Stock.getOne(i);
+   }
 %>
+
+<%@include file = "layout1.jsp"%>
 <br>
     <div class="form-block center-block" style="width: 50%;">
-        <center><h2 class="title">Добавить склад</h2></center>
+        <center><h2 class="title">Изменить информацию о складе</h2></center>
         <hr>
-        <form class="form-horizontal" method = "post" action = "addStock.jsp">
+        <form class="form-horizontal" method = "post" action = "updateStockInfo.jsp?id=<%=Integer.parseInt(s)%>">
                 <div class="form-group has-feedback">
                         <label class="col-sm-3 control-label">Адрес</label>
                         <div class="col-sm-4">
-                                <input type="text" class="form-control" name="address" required>
+                                <input type="text" class="form-control" name="address" value="<%=stock.getLocation().getAddress()%>"required>
                                 <i class="fa fa-map-marker form-control-feedback"></i>
                         </div>
                         <div class="col-sm-4">
                             <select class="form-control" name="city" style="width: 100%;">
-                                    <option>Выберите город</option>
                                     <%for (int i = 0; i < city.length; i++)
                                     {%>
-                                    <option value="<%=city[i].getId()%>"><%=city[i].getName()%></option>
+                                    <option value="<%=city[i].getId()%>" <% if (stock.getLocation().getCityId() == i+1) {%> selected <% } %>><%=city[i].getName()%></option>
                                     <%}%>
                             </select>
                         </div>
@@ -33,10 +43,9 @@
                     <label class="col-sm-3 control-label">Организация</label>
                     <div class="col-sm-8">
                         <select class="form-control" name="organization" style="width: 100%;">
-                                    <option>Выберите организацию</option>
                                     <%for (int i = 0; i < organization.length; i++)
                                     {%>
-                                    <option value="<%=organization[i].getId()%>"><%=organization[i].getName()%></option>
+                                    <option value="<%=organization[i].getId()%>" <% if (stock.getOrganizationId() == i+1) {%> selected <% } %>><%=organization[i].getName()%></option>
                                     <%}%>
                         </select>
                     </div>

@@ -3,7 +3,6 @@
    int tab = 2; %>
 <%@include file = "layout1.jsp"%>
 <%
-    DBModel.init();
     Organization[] organization = Organization.getAll(null);
     City[] city = City.getAll(null);
 %>
@@ -13,7 +12,7 @@
                     <div class="gray-bg">
                         <br>
                         <div class="col-md-8">
-                            <input type="text" class="form-control searchInput" placeholder="Название" style="width: 105%;">
+                            <input type="text" class="form-control searchInput" placeholder="Поиск" style="width: 105%;">
                             <i class="fa fa-search form-control-feedback"></i>
                         </div>
                         <div class="col-md-4">
@@ -28,21 +27,25 @@
                         <br><br><br>
                     </div>
                     <br>
-                        <table class="table table-bordered">
+                        <table class="table">
                         <thead>
                                 <tr>
                                     <th style="width: 25%;">Название</th>
-                                        <th style="width: 50%;">Местоположение</th>
-                                        <th style="width: 25%;">Вебсайт</th>
+                                    <th style="width: 40%;">Местоположение</th>
+                                    <th style="width: 25%;">Вебсайт</th>
+                                    <th style="width: 5%;"></th>
+                                    <th style="width: 5%;"></th>
                                 </tr>
                         </thead>
                         <tbody id="searchTable">
                             <% for (int i = 0; i < organization.length; i++) 
                                 {%>
                                 <tr>
-                                    <td class="quantity idSearch"><a href ="organizationInfo.jsp?id=<%=organization[i].getId()%>"><%=organization[i].getName()%></a></td>
-                                        <td class="product"><%=organization[i].getAddress()%></td>
-                                        <td class="amount"><%=organization[i].getWebsite()%></td>
+                                    <td class="idSearch"><a href ="organizationInfo.jsp?id=<%=organization[i].getId()%>"><%=organization[i].getName()%></a></td>
+                                    <td><%=organization[i].getAddress()%></td>
+                                    <td><%=organization[i].getWebsite()%></td>
+                                    <td><a href="changeOrganizationInfo.jsp?id=<%=organization[i].getId()%>"><i class="fa fa-edit"></i></a></td>
+                                    <td><i class="fa fa-close"></i></td>
                                 </tr>
                                 <% } %>
                         </table>

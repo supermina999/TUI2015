@@ -1,6 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <% int minPermission = 8; 
-   int tab = 0;
+   int tab = 5;
    String s = request.getParameter("id");
    Station station = new Station();
    DBEntry[] params = {
@@ -21,7 +21,8 @@
 
 <br>
     <div class="form-block center-block" style="width: 50%;">
-        <center><h2 class="title">Пункты выдачи № <%=Integer.parseInt(s)%></h2></center>
+        <div style="margin-left: 95%;"><p style="font-size: 25px;"><a href="changeStationInfo.jsp?id=<%=station.getId()%>"><i class="fa fa-edit"></i></a><p></div>
+        <center><h2 class="title">Пункт выдачи № <%=Integer.parseInt(s)%></h2></center>
         <hr>
          <form class="form-horizontal">
         
