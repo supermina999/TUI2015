@@ -130,7 +130,22 @@ public class DBModel {
             if (i+1<entryes.length) query += ", ";
         }
         query += " WHERE " + entryes[0].name + "=" + entryes[0].SQLValue();
-        System.out.println(query);
+        st.execute(query);
+        st.close();
+    }
+    
+    public void delete() throws ClassNotFoundException, SQLException, UnsupportedEncodingException
+    {
+        getRealStatics();
+        if (DBConnectionHolder.connection == null) DBConnectionHolder.createConnection();
+        Statement st = DBConnectionHolder.connection.createStatement();
+        st.execute("use " +DBConnectionHolder.DBName); 
+        String query = "DELETE FROM " + this.tableName + " WHERE ";
+        for(int i = 0; i < entryes.length;i++)
+        {
+            query += entryes[i].name + "=" + entryes[i].SQLValue();
+            if (i+1<entryes.length) query += " AND ";
+        }
         st.execute(query);
         st.close();
     }
