@@ -56,7 +56,7 @@
                                             <td><a href="organizationInfo.jsp?id=<%=stock[i].getOrganizationId()%>"><%=stock[i].getOrganizationName()%></a></td>
                                             <td><%=stock[i].getLocation().getAddress()%>, <%=stock[i].getLocation().getCityName()%>, <%=stock[i].getLocation().getCountryName()%></td>
                                             <td><a href="changeStockInfo.jsp?id=<%=stock[i].getId()%>"><i class="fa fa-edit"></i></a></td>
-                                            <td><i class="fa fa-close"></i></td>
+                                            <td><a href="deleteStock.jsp?id=<%=stock[i].getId()%>"><i class="fa fa-close"></i></a></td>
                                         </tr>
                                     <%}%>
                             </tbody>

@@ -32,6 +32,8 @@ public class Organization extends DBModel {
     }
      public static Organization getOne(int id) throws Exception
     {
+        DBModel.tableName = Organization.tableName;
+        DBModel.stdEntryes = Organization.stdEntryes;
         DBEntry[] params = {
             new DBEntry("id", EntryType.Int, id)
         };

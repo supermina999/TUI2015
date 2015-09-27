@@ -17,8 +17,8 @@ public class StationController {
         location.setXCoord(1);
         location.setYCoord(1);
         location.writeToDB();
-        Location[] all_locations = Location.getAll(null);
-        station.setLocationId(all_locations.length);
+        Location[] allLocations = Location.getAll(null);
+        station.setLocationId(allLocations[allLocations.length-1].getId());
         station.setOrganizationId(Integer.parseInt(organization_id));
         station.writeToDB();
     }
@@ -42,5 +42,25 @@ public class StationController {
         station.setLocationId(locationId);
         station.setOrganizationId(Integer.parseInt(organization_id));
         station.saveChanges();
+    }
+    
+    public static void delete(HttpServletRequest request) throws Exception
+    {
+        String id = request.getParameter("id");
+        Station data = Station.getOne(Integer.parseInt(id));
+        int locationId = data.getLocationId();
+        Location location = new Location();
+        location.setId(locationId);
+        location.setCityId(data.getLocation().getCityId());
+        location.setId(locationId);
+        location.setAddress(data.getLocation().getAddress());
+        location.setXCoord(1);
+        location.setYCoord(1);
+        location.delete();
+        Station station = new Station();
+        station.setId(data.getId());
+        station.setLocationId(locationId);
+        station.setOrganizationId(data.getOrganizationId());
+        station.delete();
     }
 }

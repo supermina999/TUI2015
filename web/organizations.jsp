@@ -45,7 +45,7 @@
                                     <td><%=organization[i].getAddress()%></td>
                                     <td><%=organization[i].getWebsite()%></td>
                                     <td><a href="changeOrganizationInfo.jsp?id=<%=organization[i].getId()%>"><i class="fa fa-edit"></i></a></td>
-                                    <td><i class="fa fa-close"></i></td>
+                                    <td><a href="deleteOrganization.jsp?id=<%=organization[i].getId()%>"><i class="fa fa-close"></i></a></td>
                                 </tr>
                                 <% } %>
                         </table>

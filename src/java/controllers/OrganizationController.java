@@ -41,5 +41,17 @@ public class OrganizationController
             organization.setWebsite(Sql.sql(website));
             organization.saveChanges();
     }
+    
+    public static void delete(HttpServletRequest request) throws Exception
+    {
+            String id = request.getParameter("id");
+            Organization organization = new Organization();
+            Organization org = Organization.getOne(Integer.parseInt(id));
+            organization.setName(org.getName());
+            organization.setId(Integer.parseInt(id));
+            organization.setAddress(org.getAddress());
+            organization.setWebsite(org.getWebsite());
+            organization.delete();
+    }
    
 }
