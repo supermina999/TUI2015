@@ -51,18 +51,12 @@
                                     <%for (int i = 0; i < stock.length; i++)
                                     {%>
                                         <tr>
-<<<<<<< HEAD
 
-                                                <td><center><a href="stockInfo.jsp?id=<%=stock[i].getId()%>"><%=i + 1%></a></center></td>
-                                                <td><a href="organizationInfo.jsp?id=<%=stock[i].getOrganizationId()%>"><%=stock[i].getOrganizationName()%></a></td>
-                                                <td><%=stock[i].getLocation().getAddress()%>, <%=stock[i].getLocation().getCityName()%>, <%=stock[i].getLocation().getCountryName()%></td>
-=======
                                             <td class="idSearch" ><center><a href="stockInfo.jsp?id=<%=stock[i].getId()%>"><%=i + 1%></a></center></td>
                                             <td><a href="organizationInfo.jsp?id=<%=stock[i].getOrganizationId()%>"><%=stock[i].getOrganizationName()%></a></td>
                                             <td><%=stock[i].getLocation().getAddress()%>, <%=stock[i].getLocation().getCityName()%>, <%=stock[i].getLocation().getCountryName()%></td>
                                             <td><a href="changeStockInfo.jsp?id=<%=stock[i].getId()%>"><i class="fa fa-edit"></i></a></td>
                                             <td><i class="fa fa-close"></i></td>
->>>>>>> efb273c6209495af0aa59599fb5fdfc69829a227
                                         </tr>
                                     <%}%>
                             </tbody>
