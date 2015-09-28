@@ -18,8 +18,8 @@ public class StockController
         location.setXCoord(1);
         location.setYCoord(1);
         location.writeToDB();
-        Location[] all_locations = Location.getAll(null);
-        stock.setLocationId(all_locations.length);
+        Location[] allLocations = Location.getAll(null);
+        stock.setLocationId(allLocations[allLocations.length-1].getId());
         stock.setOrganizationId(Integer.parseInt(organization_id));
         stock.writeToDB();
     }
@@ -43,5 +43,25 @@ public class StockController
         stock.setLocationId(locationId);
         stock.setOrganizationId(Integer.parseInt(organization_id));
         stock.saveChanges();
+    }
+    
+    public static void delete(HttpServletRequest request) throws Exception
+    {
+        String id = request.getParameter("id");
+        Stock data = Stock.getOne(Integer.parseInt(id));
+        int locationId = data.getLocationId();
+        Location location = new Location();
+        location.setId(locationId);
+        location.setCityId(data.getLocation().getCityId());
+        location.setId(locationId);
+        location.setAddress(data.getLocation().getAddress());
+        location.setXCoord(1);
+        location.setYCoord(1);
+        location.delete();
+        Stock stock = new Stock();
+        stock.setId(data.getId());
+        stock.setLocationId(locationId);
+        stock.setOrganizationId(data.getOrganizationId());
+        stock.delete();
     }
 }

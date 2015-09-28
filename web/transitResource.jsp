@@ -18,7 +18,7 @@
                         <label class="col-sm-3 control-label">Наименование</label>
                         <div class="col-sm-8">
                             <select class="form-control" style="width: 100%;" name="resourceId">
-                                <option>Выберите город</option>
+                                <option>Выберите наименование</option>
                                 <%for (int i = 0; i < availableRes.length; i++)
                                 {%>
                                 <option value="<%=availableRes[i].getResourceId()%>"><%=availableRes[i].getResourceName()%></option>

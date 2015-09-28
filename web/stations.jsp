@@ -50,11 +50,11 @@
                                 <%for (int i = 0; i < station.length; i++)
                                 {%>
                                     <tr>
-                                            <td><center><a href="stationInfo.jsp?id=<%=station[i].getId()%>"><%=i + 1%></a></center></td>
+                                            <td><center><a href="stationInfo.jsp?id=<%=station[i].getId()%>"><%=station[i].getId()%></a></center></td>
                                             <td><a href="organizationInfo.jsp?id=<%=station[i].getOrganizationId()%>"><%=station[i].getOrganizationName()%></a></td>
                                             <td><%=station[i].getLocation().getAddress()%>, <%=station[i].getLocation().getCityName()%>, <%=station[i].getLocation().getCountryName()%></td>
                                             <td><a href="changeStationInfo.jsp?id=<%=station[i].getId()%>"><i class="fa fa-edit"></i></a></td>
-                                            <td><i class="fa fa-close"></i></td>
+                                            <td><a href="deleteStation.jsp?id=<%=station[i].getId()%>"><i class="fa fa-close"></i></a></td>
                                     </tr>
                                 <%}%>
                         </tbody>
