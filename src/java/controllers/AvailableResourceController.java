@@ -15,6 +15,7 @@ public class AvailableResourceController {
         String cityName = request.getParameter("city");
         String stock = request.getParameter("stockId");
         int stockId = Integer.parseInt(stock);
+        int measureId = 1;
         
         Resource[] allResource = Resource.getAll(null);
         int resourceId = -1;
@@ -28,16 +29,43 @@ public class AvailableResourceController {
             resource.setName(name);
             resource.setWeight(weight);
             resource.writeToDB();
+            Resource[] allRes = Resource.getAll(null);
+            resourceId = allRes[allRes.length - 1].getId();
+            AvailableResource availableResource = new AvailableResource();
+            availableResource.setResourceId(resourceId);
+            availableResource.setStockId(stockId);
+            availableResource.setNumber(weight);
+            availableResource.setMeasureId(measureId);
+            availableResource.writeToDB();
         }
-        
-        int measureId = 1;
-        
-        AvailableResource availableResource = new AvailableResource();
-        availableResource.setResourceId(resourceId);
-        availableResource.setStockId(stockId);
-        availableResource.setNumber(weight);
-        availableResource.setMeasureId(measureId);
-        availableResource.writeToDB();
+        else
+        {
+            AvailableResource[] availableRes = AvailableResource.getAll(null);
+            int id = -1;
+            for (int i = 0;i < availableRes.length;i++)
+            {
+                if (availableRes[i].getResourceId() == resourceId) id = i;
+            }
+            if (id == -1)
+            {
+                AvailableResource availableResource = new AvailableResource();
+                availableResource.setResourceId(resourceId);
+                availableResource.setStockId(stockId);
+                availableResource.setNumber(weight);
+                availableResource.setMeasureId(measureId);
+                availableResource.writeToDB();
+            }
+            else
+            {
+                AvailableResource availableResource = new AvailableResource();
+                availableResource.setId(availableRes[id].getId());
+                availableResource.setResourceId(resourceId);
+                availableResource.setStockId(stockId);
+                availableResource.setNumber(weight + availableRes[id].getNumber());
+                availableResource.setMeasureId(measureId);
+                availableResource.saveChanges();
+            }
+        }
     }
     
 }

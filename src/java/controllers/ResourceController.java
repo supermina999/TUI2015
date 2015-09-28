@@ -42,12 +42,25 @@ public class ResourceController {
         }
         oldNumber = neededRes[resId].getNumber();
         currentNumber = oldNumber - number;
-        NeededResource neededResource = new NeededResource();
-        neededResource.setId(neededRes[resId].getId());
-        neededResource.setResourceId(resourceId);
-        neededResource.setStationId(neededRes[resId].getStationId());
-        neededResource.setNumber(currentNumber);
-        neededResource.setMeasureId(1);
-        neededResource.saveChanges();
+        if (currentNumber == 0)
+        {
+            NeededResource neededResource = new NeededResource();
+            neededResource.setId(neededRes[resId].getId());
+            neededResource.setResourceId(resourceId);
+            neededResource.setStationId(neededRes[resId].getStationId());
+            neededResource.setNumber(neededRes[resId].getNumber());
+            neededResource.setMeasureId(neededRes[resId].getMeasureId());
+            neededResource.delete();
+        }
+        else
+        {
+            NeededResource neededResource = new NeededResource();
+            neededResource.setId(neededRes[resId].getId());
+            neededResource.setResourceId(resourceId);
+            neededResource.setStationId(neededRes[resId].getStationId());
+            neededResource.setNumber(currentNumber);
+            neededResource.setMeasureId(neededRes[resId].getMeasureId());
+            neededResource.saveChanges();
+        }
     }
 }
