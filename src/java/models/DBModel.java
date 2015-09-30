@@ -107,7 +107,8 @@ public class DBModel {
         getRealStatics();
         if (DBConnectionHolder.connection == null) DBConnectionHolder.createConnection();
         Statement st = DBConnectionHolder.connection.createStatement();
-        st.execute("use " +DBConnectionHolder.DBName); 
+        st.execute("use " +DBConnectionHolder.DBName);  
+        st.execute("SET NAMES utf8");
         String query = "INSERT " + this.tableName + " SET ";
         for(int i = 1; i < entryes.length;i++)
         {
@@ -123,6 +124,7 @@ public class DBModel {
         if (DBConnectionHolder.connection == null) DBConnectionHolder.createConnection();
         Statement st = DBConnectionHolder.connection.createStatement();
         st.execute("use " +DBConnectionHolder.DBName); 
+        st.execute("SET NAMES utf8");
         String query = "UPDATE " + this.tableName + " SET ";
         for(int i = 1; i < entryes.length;i++)
         {
@@ -140,6 +142,7 @@ public class DBModel {
         if (DBConnectionHolder.connection == null) DBConnectionHolder.createConnection();
         Statement st = DBConnectionHolder.connection.createStatement();
         st.execute("use " +DBConnectionHolder.DBName); 
+        st.execute("SET NAMES utf8");
         String query = "DELETE FROM " + this.tableName + " WHERE ";
         for(int i = 0; i < entryes.length;i++)
         {
@@ -172,6 +175,7 @@ public class DBModel {
         if (DBConnectionHolder.connection == null) DBConnectionHolder.createConnection();
         Statement st = DBConnectionHolder.connection.createStatement();
         st.execute("use " +DBConnectionHolder.DBName); 
+        st.execute("SET NAMES utf8");
         String query = "SELECT * FROM " + tableName;
         if (entryes != null) 
         {
@@ -206,6 +210,7 @@ public class DBModel {
         if (DBConnectionHolder.connection == null) DBConnectionHolder.createConnection();
         Statement st = DBConnectionHolder.connection.createStatement();
         st.execute("use " +DBConnectionHolder.DBName); 
+        st.execute("SET NAMES utf8");
         String query = "SELECT * FROM " + tableName ;
         if (entryes != null) 
         {

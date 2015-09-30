@@ -93,20 +93,6 @@ public class UserController {
     public static void delete(HttpServletRequest request) throws Exception
     {
         String id = request.getParameter("id");
-        Person user = Person.getOne(Integer.parseInt(id));
-        Person person = new Person();
-        person.setId(user.getId());
-        person.setLogin(user.getLogin());
-        person.setPassword(user.getPassword());
-        person.setName(user.getName());
-        person.setSurname(user.getSurname());
-        person.setSecondName(user.getSecondName());
-        person.setCityId(user.getCityId());
-        person.setAddress(user.getAddress());
-        person.setEmail(user.getEmail());
-        person.setPhone(user.getPhone());
-        person.setPermissionId(user.getPermissionId());
-        person.setOrganizationId(user.getOrganizationId());
-        person.delete();
+        Person.getOne(Integer.parseInt(id)).delete();       
     }
 }
