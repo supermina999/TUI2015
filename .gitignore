@@ -3,3 +3,4 @@ target/
 src/.DS_Store
 src/main/.DS_Store
 src/main/webapp/.DS_Store
+nb-configuration.xml
