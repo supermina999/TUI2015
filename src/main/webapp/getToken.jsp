@@ -5,7 +5,9 @@
     {           
        String token = user.user.getName() + Calendar.getInstance().getTimeInMillis();
        token = Sql.md5(token);
-       %><%=token%><%
+       %><%=token%>
+<%=user.user.getId()%>
+        <%
     }
     else
     {

@@ -9,6 +9,7 @@
 <%=person.getAddress()%>
 <%=person.getCityName()%>
 <%=person.getEmail()%>
+<%=person.getPhone()%>
 <%=person.getPermissionName()%>
 <%=person.getOrganizationName()%><%
     }
