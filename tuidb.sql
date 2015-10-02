@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.7.8-rc, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 5.5.44, for debian-linux-gnu (x86_64)
 --
 -- Host: localhost    Database: tuidb
 -- ------------------------------------------------------
--- Server version	5.7.8-rc-log
+-- Server version	5.5.44-0ubuntu0.14.04.1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -29,7 +29,7 @@ CREATE TABLE `available_resource` (
   `number` int(11) NOT NULL,
   `measure_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -38,8 +38,7 @@ CREATE TABLE `available_resource` (
 
 LOCK TABLES `available_resource` WRITE;
 /*!40000 ALTER TABLE `available_resource` DISABLE KEYS */;
-INSERT INTO `available_resource` (`id`, `resource_id`, `stock_id`, `number`, `measure_id`) VALUES
-(1, 1, 1, 12, 1);
+INSERT INTO `available_resource` VALUES (1,1,1,12,1);
 /*!40000 ALTER TABLE `available_resource` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -55,7 +54,7 @@ CREATE TABLE `city` (
   `name` text NOT NULL,
   `country_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -64,9 +63,7 @@ CREATE TABLE `city` (
 
 LOCK TABLES `city` WRITE;
 /*!40000 ALTER TABLE `city` DISABLE KEYS */;
-INSERT INTO `city` (`id`, `name`, `country_id`) VALUES
-(1, 'Харьков', 1),
-(2, 'Киев', 1);
+INSERT INTO `city` VALUES (1,'Харьков',1),(2,'Киев',1);
 /*!40000 ALTER TABLE `city` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -81,7 +78,7 @@ CREATE TABLE `country` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -90,8 +87,7 @@ CREATE TABLE `country` (
 
 LOCK TABLES `country` WRITE;
 /*!40000 ALTER TABLE `country` DISABLE KEYS */;
-INSERT INTO `country` (`id`, `name`) VALUES
-(1, 'Украина');
+INSERT INTO `country` VALUES (1,'Украина');
 /*!40000 ALTER TABLE `country` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -109,7 +105,7 @@ CREATE TABLE `location` (
   `x_coord` int(11) NOT NULL,
   `y_coord` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -118,10 +114,7 @@ CREATE TABLE `location` (
 
 LOCK TABLES `location` WRITE;
 /*!40000 ALTER TABLE `location` DISABLE KEYS */;
-INSERT INTO `location` (`id`, `city_id`, `address`, `x_coord`, `y_coord`) VALUES
-(1, 1, 'Ул. Тобольская, 46-а', 1, 1),
-(2, 2, 'Ул. Хрещатик, 3', 5, 5),
-(3, 1, 'Ул. Мирная, 2', 0, 0);
+INSERT INTO `location` VALUES (1,1,'Ул. Тобольская, 46-а',1,1),(2,2,'Ул. Хрещатик, 3',5,5),(3,1,'Ул. Мирная, 2',0,0);
 /*!40000 ALTER TABLE `location` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -139,7 +132,7 @@ CREATE TABLE `losing` (
   `number` int(10) NOT NULL,
   `measure_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -148,8 +141,7 @@ CREATE TABLE `losing` (
 
 LOCK TABLES `losing` WRITE;
 /*!40000 ALTER TABLE `losing` DISABLE KEYS */;
-INSERT INTO `losing` (`id`, `resource_id`, `station_id`, `number`, `measure_id`) VALUES
-(1, 1, 1, 15, 1);
+INSERT INTO `losing` VALUES (1,1,1,15,1);
 /*!40000 ALTER TABLE `losing` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -164,7 +156,7 @@ CREATE TABLE `measure` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -173,10 +165,7 @@ CREATE TABLE `measure` (
 
 LOCK TABLES `measure` WRITE;
 /*!40000 ALTER TABLE `measure` DISABLE KEYS */;
-INSERT INTO `measure` (`id`, `name`) VALUES
-(1, 'кг'),
-(2, 'м'),
-(3, 'шт');
+INSERT INTO `measure` VALUES (1,'кг'),(2,'м'),(3,'шт');
 /*!40000 ALTER TABLE `measure` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -195,7 +184,7 @@ CREATE TABLE `needed_resource` (
   `measure_id` int(11) NOT NULL,
   `emergency` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -204,8 +193,7 @@ CREATE TABLE `needed_resource` (
 
 LOCK TABLES `needed_resource` WRITE;
 /*!40000 ALTER TABLE `needed_resource` DISABLE KEYS */;
-INSERT INTO `needed_resource` (`id`, `station_id`, `resource_id`, `number`, `measure_id`, `emergency`) VALUES
-(1, 1, 1, 6, 1, 4);
+INSERT INTO `needed_resource` VALUES (1,1,1,6,1,4);
 /*!40000 ALTER TABLE `needed_resource` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -222,7 +210,7 @@ CREATE TABLE `organization` (
   `address` text NOT NULL,
   `website` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -231,10 +219,7 @@ CREATE TABLE `organization` (
 
 LOCK TABLES `organization` WRITE;
 /*!40000 ALTER TABLE `organization` DISABLE KEYS */;
-INSERT INTO `organization` (`id`, `name`, `address`, `website`) VALUES
-(1, 'Красный крест', 'Ул. Мирная, 23', 'redcross.help.ua'),
-(2, 'Рука помощи', 'Ул. Зеленая, 6', 'thehandofhelp.org'),
-(3, 'Мирное небо', 'Бульварный переулок, 2', 'peacefulsky.org.ua');
+INSERT INTO `organization` VALUES (1,'Красный крест','Ул. Мирная, 23','redcross.help.ua'),(2,'Рука помощи','Ул. Зеленая, 6','thehandofhelp.org'),(3,'Мирное небо','Бульварный переулок, 2','peacefulsky.org.ua');
 /*!40000 ALTER TABLE `organization` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -249,7 +234,7 @@ CREATE TABLE `permission` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -258,8 +243,7 @@ CREATE TABLE `permission` (
 
 LOCK TABLES `permission` WRITE;
 /*!40000 ALTER TABLE `permission` DISABLE KEYS */;
-INSERT INTO `permission` (`id`, `name`) VALUES
-(1, 'Волонтёр');
+INSERT INTO `permission` VALUES (1,'Волонтёр');
 /*!40000 ALTER TABLE `permission` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -283,8 +267,9 @@ CREATE TABLE `person` (
   `email` text NOT NULL,
   `permission_id` int(11) NOT NULL,
   `organization_id` int(11) NOT NULL,
+  `date` date NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -293,13 +278,7 @@ CREATE TABLE `person` (
 
 LOCK TABLES `person` WRITE;
 /*!40000 ALTER TABLE `person` DISABLE KEYS */;
-INSERT INTO `person` (`id`, `name`, `surname`, `second_name`, `login`, `password`, `city_id`, `address`, `phone`, `email`, `permission_id`, `organization_id`) VALUES
-(1, 'Елизавета', 'Попова', 'Олеговна', 'liza', '1', 1, 'Ул. Астрономическая, д. 47', '3150897', 'lizapopova@yandex.ru', 1, 1),
-(2, 'Станислав', 'Минаков', 'Сергеевич', 'stas', '2', 1, 'Ул. 23 Августа, 16', '3568790', 'supermina999@gmail.com', 1, 1),
-(3, 'Роман', 'Скурихин', 'Владимирович', 'roma', '3', 1, 'Ул. Розы Люксембург, 4', '3780987', 'romasku135@gmail.com', 1, 2),
-(4, 'София', 'Уфимцева', 'Игоревна', 'sofy', '4', 2, 'Ул. Тобольская, 78Б', '9007865', 'sonya.uf@gmail.com', 1, 2),
-(5, 'Артем', 'Пайвин', 'Юрьевич', 'artem', '5', 2, 'Ул. Деревянко, 6', '2346789', 'payvinartem@gmail.com', 1, 3),
-(6, 'Мария', 'Солодова', 'Константиновна', 'masha', '6', 1, 'Ул. Фееричная, 45', '456790', 'masha.solodova1@gmail.com', 1, 3);
+INSERT INTO `person` VALUES (1,'Елизавета','Попова','Олеговна','liza','1',1,'Ул. Астрономическая, д. 47','3150897','lizapopova@yandex.ru',1,1,'2015-09-17'),(2,'Станислав','Минаков','Сергеевич','stas','2',1,'Ул. 23 Августа, 16','3568790','supermina999@gmail.com',1,1,'2015-09-17'),(3,'Роман','Скурихин','Владимирович','roma','3',1,'Ул. Розы Люксембург, 4','3780987','romasku135@gmail.com',1,2,'2015-09-17'),(4,'София','Уфимцева','Игоревна','sofy','4',2,'Ул. Тобольская, 78Б','9007865','sonya.uf@gmail.com',1,2,'2015-09-17'),(5,'?????','??????','???????','artem','5',1,'??. ?????????, 6','2346789','payvinartem@gmail.com',1,3,'2015-09-17'),(6,'Мария','Солодова','Константиновна','masha','6',1,'Ул. Фееричная, 45','456790','masha.solodova1@gmail.com',1,3,'2015-09-17');
 /*!40000 ALTER TABLE `person` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -326,8 +305,7 @@ CREATE TABLE `receiving` (
 
 LOCK TABLES `receiving` WRITE;
 /*!40000 ALTER TABLE `receiving` DISABLE KEYS */;
-INSERT INTO `receiving` (`id`, `resource_id`, `stock_id`, `number`, `measure_id`) VALUES
-(1, 1, 1, 10, 1);
+INSERT INTO `receiving` VALUES (1,1,1,10,1);
 /*!40000 ALTER TABLE `receiving` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -343,7 +321,7 @@ CREATE TABLE `resource` (
   `name` text NOT NULL,
   `weight` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -352,9 +330,7 @@ CREATE TABLE `resource` (
 
 LOCK TABLES `resource` WRITE;
 /*!40000 ALTER TABLE `resource` DISABLE KEYS */;
-INSERT INTO `resource` (`id`, `name`, `weight`) VALUES
-(1, 'Медикаменты', 0),
-(2, 'Одежда', 0);
+INSERT INTO `resource` VALUES (1,'Медикаменты',0),(2,'Одежда',0);
 /*!40000 ALTER TABLE `resource` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -370,7 +346,7 @@ CREATE TABLE `station` (
   `location_id` int(11) NOT NULL,
   `organization_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -379,10 +355,7 @@ CREATE TABLE `station` (
 
 LOCK TABLES `station` WRITE;
 /*!40000 ALTER TABLE `station` DISABLE KEYS */;
-INSERT INTO `station` (`id`, `location_id`, `organization_id`) VALUES
-(1, 1, 1),
-(2, 2, 2),
-(3, 3, 3);
+INSERT INTO `station` VALUES (1,1,1),(2,2,2),(3,3,3);
 /*!40000 ALTER TABLE `station` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -399,7 +372,7 @@ CREATE TABLE `stock` (
   `location_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `id` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -408,10 +381,7 @@ CREATE TABLE `stock` (
 
 LOCK TABLES `stock` WRITE;
 /*!40000 ALTER TABLE `stock` DISABLE KEYS */;
-INSERT INTO `stock` (`id`, `organization_id`, `location_id`) VALUES
-(1, 1, 1),
-(2, 2, 2),
-(3, 3, 3);
+INSERT INTO `stock` VALUES (1,1,1),(2,2,2),(3,3,3);
 /*!40000 ALTER TABLE `stock` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -428,7 +398,7 @@ CREATE TABLE `transport` (
   `max_weight` int(11) NOT NULL,
   `organization_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -437,8 +407,7 @@ CREATE TABLE `transport` (
 
 LOCK TABLES `transport` WRITE;
 /*!40000 ALTER TABLE `transport` DISABLE KEYS */;
-INSERT INTO `transport` (`id`, `name`, `max_weight`, `organization_id`) VALUES
-(1, 'Грузовик', 120, 1);
+INSERT INTO `transport` VALUES (1,'Грузовик',120,1);
 /*!40000 ALTER TABLE `transport` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -451,4 +420,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-09-04 22:44:44
+-- Dump completed on 2015-10-03  1:45:20

@@ -6,6 +6,7 @@
 package models;
 import java.io.UnsupportedEncodingException;
 import java.sql.*;
+import java.text.ParseException;
 import java.util.ArrayList;
 
 /**
@@ -112,14 +113,18 @@ public class DBModel {
         String query = "INSERT " + this.tableName + " SET ";
         for(int i = 1; i < entryes.length;i++)
         {
-            query += entryes[i].name + " = " + entryes[i].SQLValue();
+            if (entryes[i].name.equals("date")) {
+                query += entryes[i].name + "=CURDATE()";
+            }
+            else {
+                query += entryes[i].name + "=" + entryes[i].SQLValue();
+            }
             if (i+1<entryes.length) query += ", ";
         }
         st.execute(query);
         st.close();
     }
-    public void saveChanges() throws ClassNotFoundException, SQLException, UnsupportedEncodingException
-    {
+    public void saveChanges() throws ClassNotFoundException, SQLException, UnsupportedEncodingException, ParseException {
         getRealStatics();
         if (DBConnectionHolder.connection == null) DBConnectionHolder.createConnection();
         Statement st = DBConnectionHolder.connection.createStatement();
@@ -128,7 +133,8 @@ public class DBModel {
         String query = "UPDATE " + this.tableName + " SET ";
         for(int i = 1; i < entryes.length;i++)
         {
-            query += entryes[i].name + "=" + entryes[i].SQLValue();
+
+            query += entryes[i].name + " = " + entryes[i].SQLValue();
             if (i+1<entryes.length) query += ", ";
         }
         query += " WHERE " + entryes[0].name + "=" + entryes[0].SQLValue();
@@ -136,8 +142,7 @@ public class DBModel {
         st.close();
     }
     
-    public void delete() throws ClassNotFoundException, SQLException, UnsupportedEncodingException
-    {
+    public void delete() throws ClassNotFoundException, SQLException, UnsupportedEncodingException, ParseException {
         getRealStatics();
         if (DBConnectionHolder.connection == null) DBConnectionHolder.createConnection();
         Statement st = DBConnectionHolder.connection.createStatement();
@@ -170,8 +175,7 @@ public class DBModel {
         Stock.init();
         Transport.init();
     }
-    protected static DBModel getOne( DBEntry[] entryes, int fl) throws ClassNotFoundException, SQLException, UnsupportedEncodingException
-    {
+    protected static DBModel getOne( DBEntry[] entryes, int fl) throws ClassNotFoundException, SQLException, UnsupportedEncodingException, ParseException {
         if (DBConnectionHolder.connection == null) DBConnectionHolder.createConnection();
         Statement st = DBConnectionHolder.connection.createStatement();
         st.execute("use " +DBConnectionHolder.DBName); 

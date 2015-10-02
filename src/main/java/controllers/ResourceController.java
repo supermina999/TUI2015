@@ -20,8 +20,8 @@ public class ResourceController {
     }
      public static void change(HttpServletRequest request) throws Exception
     {
-        String resouce = request.getParameter("resourceId");
-        int resourceId = Integer.parseInt(resource);
+        String resource_id = request.getParameter("resourceId");
+        int resourceId = Integer.parseInt(resource_id);
         String number = request.getParameter("weight");
         int weight = Integer.parseInt(number);
         

@@ -7,6 +7,7 @@ package models;
 
 import java.io.UnsupportedEncodingException;
 import java.sql.SQLException;
+import java.text.ParseException;
 
 /**
  *
@@ -39,8 +40,7 @@ public class City extends DBModel {
         };
         return getOne(params);
     }
-     public static City getOne( DBEntry[] entryes) throws ClassNotFoundException, SQLException, UnsupportedEncodingException
-    {
+     public static City getOne( DBEntry[] entryes) throws ClassNotFoundException, SQLException, UnsupportedEncodingException, ParseException {
         DBModel.tableName = City.tableName;
         DBModel.stdEntryes = City.stdEntryes;
         DBModel buf = City.getOne(entryes, 1);
