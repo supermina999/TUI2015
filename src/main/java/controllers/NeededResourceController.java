@@ -42,32 +42,12 @@ public class NeededResourceController {
         }
         else
         {
-            NeededResource[] neededRes = NeededResource.getAll(null);
-            int id = -1;
-            for (int i = 0;i < neededRes.length;i++)
-            {
-                if (neededRes[i].getResourceId() == resourceId) id = i;
-            }
-            if (id == -1)
-            {
-                NeededResource neededResource = new NeededResource();
-                neededResource.setResourceId(resourceId);
-                neededResource.setStationId(stationId);
-                neededResource.setMeasureId(measureId);
-                neededResource.setEmergency(emergency);
-                neededResource.writeToDB();
-            }
-            else
-            {
-                NeededResource neededResource = new NeededResource();
-                neededResource.setId(neededRes[id].getId());
-                neededResource.setResourceId(resourceId);
-                neededResource.setStationId(stationId);
-                neededResource.setNumber(weight + neededRes[id].getNumber());
-                neededResource.setMeasureId(measureId);
-                neededResource.setEmergency(emergency);
-                neededResource.saveChanges();
-            }
+            NeededResource neededResource = new NeededResource();
+            neededResource.setResourceId(resourceId);
+            neededResource.setStationId(stationId);
+            neededResource.setMeasureId(measureId);
+            neededResource.setEmergency(emergency);
+            neededResource.writeToDB();
         }
     }
     

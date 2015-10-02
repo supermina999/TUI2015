@@ -7,6 +7,17 @@ import models.*;
 import sql.Sql;
 
 public class ResourceController {
+     public static void add(HttpServletRequest request) throws Exception
+    {
+        String name = request.getParameter("name");
+        String number = request.getParameter("weight");
+        int weight = Integer.parseInt(number);
+        
+        Resource resource = new Resource();
+        resource.setName(name);
+        resource.setWeight(weight);
+        resource.writeToDB();
+    }
     public static void transit(HttpServletRequest request) throws Exception
     {
         String resource = request.getParameter("resourceId");
@@ -27,13 +38,21 @@ public class ResourceController {
         }
         int oldNumber = availableRes[resId].getNumber();
         int currentNumber = oldNumber - number;
-        AvailableResource availableResource = new AvailableResource();
-        availableResource.setId(availableRes[resId].getId());
-        availableResource.setResourceId(resourceId);
-        availableResource.setStockId(availableRes[resId].getStockId());
-        availableResource.setNumber(currentNumber);
-        availableResource.setMeasureId(1);
-        availableResource.saveChanges();
+        if (currentNumber == 0)
+        {
+            AvailableResource availableResource = new AvailableResource();
+            availableResource.setId(availableRes[resId].getId());
+            availableResource.setResourceId(resourceId);
+            availableResource.setStockId(availableRes[resId].getStockId());
+            availableResource.setNumber(availableRes[resId].getNumber());
+            availableResource.setMeasureId(availableRes[resId].getMeasureId());
+            availableResource.delete();
+        }
+        else
+        {
+            availableRes[resId].setNumber(currentNumber);
+            availableRes[resId].saveChanges();
+        }
         
         NeededResource[] neededRes = NeededResource.getAll(null);
         for (int i = 0;i < neededRes.length;i++)
@@ -41,26 +60,8 @@ public class ResourceController {
             if (neededRes[i].getResourceId() == resourceId) resId = i;
         }
         oldNumber = neededRes[resId].getNumber();
-        currentNumber = oldNumber - number;
-        if (currentNumber == 0)
-        {
-            NeededResource neededResource = new NeededResource();
-            neededResource.setId(neededRes[resId].getId());
-            neededResource.setResourceId(resourceId);
-            neededResource.setStationId(neededRes[resId].getStationId());
-            neededResource.setNumber(neededRes[resId].getNumber());
-            neededResource.setMeasureId(neededRes[resId].getMeasureId());
-            neededResource.delete();
-        }
-        else
-        {
-            NeededResource neededResource = new NeededResource();
-            neededResource.setId(neededRes[resId].getId());
-            neededResource.setResourceId(resourceId);
-            neededResource.setStationId(neededRes[resId].getStationId());
-            neededResource.setNumber(currentNumber);
-            neededResource.setMeasureId(neededRes[resId].getMeasureId());
-            neededResource.saveChanges();
-        }
+        currentNumber = oldNumber + number;
+        neededRes[resId].setNumber(currentNumber);
+        neededRes[resId].saveChanges();
     }
 }

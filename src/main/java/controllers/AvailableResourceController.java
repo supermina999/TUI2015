@@ -57,13 +57,8 @@ public class AvailableResourceController {
             }
             else
             {
-                AvailableResource availableResource = new AvailableResource();
-                availableResource.setId(availableRes[id].getId());
-                availableResource.setResourceId(resourceId);
-                availableResource.setStockId(stockId);
-                availableResource.setNumber(weight + availableRes[id].getNumber());
-                availableResource.setMeasureId(measureId);
-                availableResource.saveChanges();
+                availableRes[id].setNumber(weight + availableRes[id].getNumber());
+                availableRes[id].saveChanges();
             }
         }
     }
