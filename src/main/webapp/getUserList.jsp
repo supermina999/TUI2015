@@ -39,6 +39,7 @@
 <%=res[i].getAddress()%>
 <%=res[i].getCityName()%>
 <%=res[i].getEmail()%>
+<%=res[i].getPhone()%>
 <%=res[i].getPermissionName()%>
 <%=res[i].getOrganizationName()%>
 <%
