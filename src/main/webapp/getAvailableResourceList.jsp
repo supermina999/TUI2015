@@ -22,17 +22,14 @@
     if (params.size() == 0) paramsM = null;
     AvailableResource[] res = AvailableResource.getAll(paramsM);
     int n = res.length;
-    %><%=n%>
-<%
     for (int i = 0; i < n; i++)
-    {       
-   %><%=res[i].getId()%>
+    {      
+        if (i!=0) {%><%="////"%><%}%><%=res[i].getId()%>
 <%=res[i].getResourceName()%>
 <%=res[i].getNumber()%>
 <%=Stock.getOne(res[i].getStockId()).getOrganizationName()%>
 <%=res[i].getLocation().getAddress()%>
 <%=res[i].getLocation().getCityName()%>
-<%=res[i].getLocation().getCountryName()%>
-<%
+<%=res[i].getLocation().getCountryName()%><%
     }
 %>

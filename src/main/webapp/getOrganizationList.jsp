@@ -1,5 +1,5 @@
 <%@page import="models.*, java.util.*"%><%@page contentType="text/plain" pageEncoding="UTF-8"%><%
-    ArrayList<DBEntry> params = new ArrayList<>();
+    ArrayList<DBEntry> params = new ArrayList<DBEntry>();
     DBEntry[] stdEntryes = {
         new DBEntry("id", EntryType.Int),
         new DBEntry("name", EntryType.String),
@@ -21,12 +21,10 @@
     if (params.size() == 0) paramsM = null;
     Organization[] res = Organization.getAll(paramsM);
     int n = res.length;
-    %><%=n%>
-<%
     for (int i = 0; i < n; i++)
-    {       
-  %><%=res[i].getId()%>
-<%=res[i].getName()%>
+    {   
+        if (i!=0) {%><%="////"%><%}%><%=res[i].getId()%>
+<%=res[i].getName()%> 
 <%=res[i].getAddress()%>
 <%=res[i].getWebsite()%>
 <%

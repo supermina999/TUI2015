@@ -20,11 +20,9 @@
     if (params.size() == 0) paramsM = null;
     Stock[] res = Stock.getAll(paramsM);
     int n = res.length;
-    %><%=n%>
-<%
     for (int i = 0; i < n; i++)
-    {       
-  %><%=res[i].getId()%>
+    {      
+        if (i!=0) {%><%="////"%><%}%><%=res[i].getId()%>
 <%=res[i].getOrganizationName()%>
 <%=res[i].getLocation().getAddress()%>
 <%=res[i].getLocation().getCityName()%>
