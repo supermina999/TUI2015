@@ -3,7 +3,8 @@
     Organization organization = Organization.getOne(id);
     if (organization != null)
     {
-        %><%=organization.getName()%>
+        %><%=organization.getId()%>
+<%=organization.getName()%>
 <%=organization.getAddress()%>
 <%=organization.getWebsite()%><%
     }
