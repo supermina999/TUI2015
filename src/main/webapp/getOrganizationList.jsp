@@ -1,9 +1,10 @@
 <%@page import="models.*, java.util.*"%><%@page contentType="text/plain" pageEncoding="UTF-8"%><%
-    ArrayList<DBEntry> params = new ArrayList<>();
+    ArrayList<DBEntry> params = new ArrayList<DBEntry>();
     DBEntry[] stdEntryes = {
         new DBEntry("id", EntryType.Int),
-        new DBEntry("organization_id", EntryType.Int),
-        new DBEntry("location_id", EntryType.Int)
+        new DBEntry("name", EntryType.String),
+        new DBEntry("address", EntryType.String),
+        new DBEntry("website", EntryType.String)        
     };
     for (int i = 0; i < stdEntryes.length; i++)
     {
@@ -18,15 +19,14 @@
     }
     DBEntry[] paramsM = params.toArray(new DBEntry[params.size()]);
     if (params.size() == 0) paramsM = null;
-    Stock[] res = Stock.getAll(paramsM);
+    Organization[] res = Organization.getAll(paramsM);
     int n = res.length;
     for (int i = 0; i < n; i++)
-    {      
+    {   
         if (i!=0) {%><%="////"%><%}%><%=res[i].getId()%>
-<%=res[i].getOrganizationName()%>
-<%=res[i].getLocation().getAddress()%>
-<%=res[i].getLocation().getCityName()%>
-<%=res[i].getLocation().getCountryName()%>
+<%=res[i].getName()%> 
+<%=res[i].getAddress()%>
+<%=res[i].getWebsite()%>
 <%
     }
 %>

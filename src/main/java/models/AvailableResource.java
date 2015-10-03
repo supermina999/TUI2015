@@ -40,7 +40,7 @@ public class AvailableResource extends DBModel {
         };
         return getOne(params);
     }
-    public static AvailableResource getOne( DBEntry[] entryes) throws ClassNotFoundException, SQLException, UnsupportedEncodingException, ParseException {
+    public static AvailableResource getOne( DBEntry[] entryes) throws Exception {
         DBModel.tableName = AvailableResource.tableName;
         DBModel.stdEntryes = AvailableResource.stdEntryes;
         DBModel buf = AvailableResource.getOne(entryes, 1);

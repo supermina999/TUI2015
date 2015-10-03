@@ -40,7 +40,7 @@ public class City extends DBModel {
         };
         return getOne(params);
     }
-     public static City getOne( DBEntry[] entryes) throws ClassNotFoundException, SQLException, UnsupportedEncodingException, ParseException {
+     public static City getOne( DBEntry[] entryes) throws Exception {
         DBModel.tableName = City.tableName;
         DBModel.stdEntryes = City.stdEntryes;
         DBModel buf = City.getOne(entryes, 1);

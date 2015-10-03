@@ -41,7 +41,7 @@ public class Location extends DBModel {
         };
         return getOne(params);
     }
-    public static Location getOne( DBEntry[] entryes) throws ClassNotFoundException, SQLException, UnsupportedEncodingException, ParseException {
+    public static Location getOne( DBEntry[] entryes) throws Exception {
         DBModel.tableName = Location.tableName;
         DBModel.stdEntryes = Location.stdEntryes;
         DBModel buf = Location.getOne(entryes, 1);

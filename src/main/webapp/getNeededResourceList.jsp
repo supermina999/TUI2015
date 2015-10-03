@@ -22,11 +22,9 @@
     if (params.size() == 0) paramsM = null;
     NeededResource[] res = NeededResource.getAll(paramsM);
     int n = res.length;
-    %><%=n%>
-<%
     for (int i = 0; i < n; i++)
     {       
-   %><%=res[i].getId()%>
+        if (i!=0) {%><%="////"%><%}%><%=res[i].getId()%>
 <%=res[i].getResourceName()%>
 <%=res[i].getNumber()%>
 <%=Station.getOne(res[i].getStationId()).getOrganizationName()%>

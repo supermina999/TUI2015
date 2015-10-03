@@ -38,7 +38,7 @@ public class Country extends DBModel {
         };
         return getOne(params);
     }
-     public static Country getOne( DBEntry[] entryes) throws ClassNotFoundException, SQLException, UnsupportedEncodingException, ParseException {
+     public static Country getOne( DBEntry[] entryes) throws Exception {
         DBModel.tableName = Country.tableName;
         DBModel.stdEntryes = Country.stdEntryes;
         DBModel buf = Country.getOne(entryes, 1);

@@ -29,11 +29,10 @@
     if (params.size() == 0) paramsM = null;
     Person[] res = Person.getAll(paramsM);
     int n = res.length;
-    %><%=n%>
-<%
     for (int i = 0; i < n; i++)
     {       
-   %><%=res[i].getName()%>
+        if (i!=0) {%><%="////"%><%}%><%=res[i].getId()%>
+<%=res[i].getName()%>
 <%=res[i].getSurname()%>
 <%=res[i].getSecondName()%>
 <%=res[i].getAddress()%>
