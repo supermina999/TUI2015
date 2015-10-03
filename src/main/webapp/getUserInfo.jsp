@@ -3,7 +3,7 @@
     Person person = Person.getOne(id);
     if (person != null)
     {
-        %><%=res[i].getId()%>
+        %><%=person.getId()%>
 <%=person.getName()%>
 <%=person.getSurname()%>
 <%=person.getSecondName()%>
