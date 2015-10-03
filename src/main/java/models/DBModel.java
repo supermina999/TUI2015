@@ -105,7 +105,7 @@ public class DBModel {
     public void writeToDB() throws Exception
     {
         getRealStatics();
-        if (DBConnectionHolder.connection == null) DBConnectionHolder.createConnection();
+        if (DBConnectionHolder.connection == null || DBConnectionHolder.connection.isClosed()) DBConnectionHolder.createConnection();
         Statement st = DBConnectionHolder.connection.createStatement();
         st.execute("use " +DBConnectionHolder.DBName);  
         st.execute("SET NAMES utf8");
@@ -121,7 +121,7 @@ public class DBModel {
     public void saveChanges() throws ClassNotFoundException, SQLException, UnsupportedEncodingException
     {
         getRealStatics();
-        if (DBConnectionHolder.connection == null) DBConnectionHolder.createConnection();
+        if (DBConnectionHolder.connection == null || DBConnectionHolder.connection.isClosed()) DBConnectionHolder.createConnection();
         Statement st = DBConnectionHolder.connection.createStatement();
         st.execute("use " +DBConnectionHolder.DBName); 
         st.execute("SET NAMES utf8");
@@ -139,7 +139,7 @@ public class DBModel {
     public void delete() throws ClassNotFoundException, SQLException, UnsupportedEncodingException
     {
         getRealStatics();
-        if (DBConnectionHolder.connection == null) DBConnectionHolder.createConnection();
+        if (DBConnectionHolder.connection == null || DBConnectionHolder.connection.isClosed()) DBConnectionHolder.createConnection();
         Statement st = DBConnectionHolder.connection.createStatement();
         st.execute("use " +DBConnectionHolder.DBName); 
         st.execute("SET NAMES utf8");
@@ -172,7 +172,7 @@ public class DBModel {
     }
     protected static DBModel getOne( DBEntry[] entryes, int fl) throws ClassNotFoundException, SQLException, UnsupportedEncodingException
     {
-        if (DBConnectionHolder.connection == null) DBConnectionHolder.createConnection();
+        if (DBConnectionHolder.connection == null || DBConnectionHolder.connection.isClosed()) DBConnectionHolder.createConnection();
         Statement st = DBConnectionHolder.connection.createStatement();
         st.execute("use " +DBConnectionHolder.DBName); 
         st.execute("SET NAMES utf8");
@@ -207,7 +207,7 @@ public class DBModel {
     protected static DBModel[] getAll( DBEntry[] entryes, int fl) throws Exception
     {
 
-        if (DBConnectionHolder.connection == null) DBConnectionHolder.createConnection();
+        if (DBConnectionHolder.connection == null || DBConnectionHolder.connection.isClosed()) DBConnectionHolder.createConnection();
         Statement st = DBConnectionHolder.connection.createStatement();
         st.execute("use " +DBConnectionHolder.DBName); 
         st.execute("SET NAMES utf8");
