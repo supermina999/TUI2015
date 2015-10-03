@@ -34,7 +34,7 @@ public class Sql {
     public static String sql(String s)
     {
         if (s == null) return "";
-        return s.replace("\\", "\\\\").replace("'", "\\'");
+        return s.replace("\\", "\\\\").replace("\"", "\\\"");
     }
     
     public static boolean isInt(String s)
