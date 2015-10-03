@@ -42,3 +42,10 @@
     border-color: transparent !important;
     padding: 11px 10px 12px 10px !important
 }
+
+.btn-main {
+    min-width: 500px;
+    font-size: 20px;
+    font-weight: 700;
+    min-height: 30px;
+}

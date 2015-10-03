@@ -277,6 +277,7 @@
                                             </form>
                                         </div>
                                         <div class="col-md-6">
+                                           <% if (!isLogin) {%>
                                            <div class="form-block center-block">
                                                 <center><h2 class="title">Авторизация</h2></center>
                                                 <hr>
@@ -307,6 +308,13 @@
                                                         </div>
                                                        </form>
                                                 </div> 
+                                           <% } else { %>
+                                           <center>
+                                                <h2>Добро пожаловать,<br> <%=user.user.getName()%> <%=user.user.getSecondName()%>!</h2>
+                                                <a type="button" class="btn btn-login btn-default btn-main" href="userInfo.jsp?id=<%=user.user.getId()%>"><i class="fa fa-user"></i> Кабинет</a>
+                                                <a type="button" class="btn btn-login btn-default btn-main" href="exit.jsp"><i class="fa fa-sign-out"></i> Выйти</a>
+                                           </center>
+                                           <% } %>
                                         </div>
                                     </div>
                                 </div>

@@ -9,7 +9,7 @@
    if (s == null)
    {%>
         <script>
-         window.location.href = "/";
+         window.location.href = "index.jsp";
         </script>
     <%} else {
         int i = Integer.parseInt(s);

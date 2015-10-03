@@ -10,7 +10,7 @@
    if (s == null)
    {%>
         <script>
-         window.location.href = "/";
+         window.location.href = "index.jsp";
         </script>
     <%} else {
         int i = Integer.parseInt(s);
@@ -20,7 +20,7 @@
 
 <%@include file = "layout1.jsp"%>
 <br>
-    <div class="form-block center-block" style="width: 50%;">
+    <div class="form-block center-block" style="width: 50%; min-height: 700px;">
         <center><h2 class="title">Изменить информацию о складе</h2></center>
         <hr>
         <form class="form-horizontal" method = "post" action = "updateStockInfo.jsp?id=<%=Integer.parseInt(s)%>">
