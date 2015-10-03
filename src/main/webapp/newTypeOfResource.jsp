@@ -8,7 +8,7 @@
     Stock[] stock = Stock.getAll(null);
 %>
 <br>
-    <div class="form-block center-block">
+    <div class="form-block center-block" style="min-height: 700px;">
         <center><h2 class="title">Добавить вид ресурса</h2></center>
         <hr>
         <form class="form-horizontal" method="post" action="addTypeOfResource.jsp">

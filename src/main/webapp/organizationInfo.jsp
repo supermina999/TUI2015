@@ -22,7 +22,7 @@
    %>
 <%@include file = "layout1.jsp"%>
 <br>
-    <div class="form-block center-block" style="width: 50%;">
+    <div class="form-block center-block" style="width: 50%; min-height: 700px;">
         <div style="margin-left: 90%;">
             <p style="font-size: 25px;"><a href="changeOrganizationInfo.jsp?id=<%=org.getId()%>"><i class="fa fa-edit"></i></a>
             <a href="deleteOrganization.jsp?id=<%=org.getId()%>"><i class="fa fa-close"></i></a></p>

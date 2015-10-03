@@ -7,7 +7,7 @@
 %>
     <center>
             <br><h1>Виды ресурсов</h1><br>
-            <div class="form-group has-feedback" style="width: 60%;">
+            <div class="form-group has-feedback" style="width: 60%; min-height: 600px;">
             <div class="gray-bg">
                 <br>
                 <div class="col-md-4">
