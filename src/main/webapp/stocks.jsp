@@ -7,6 +7,15 @@
     Stock[] stock = Stock.getAll(null);
     City[] city = City.getAll(null);
 %>
+<script>
+    function confirmDelete() {
+        if (confirm("Вы уверены, что хотите удалить склад?")) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+</script>
         <center>
             <br><h1>Склады</h1><br>
                 <div class="form-group has-feedback" style="width: 60%; min-height: 600px;">
@@ -56,7 +65,7 @@
                                             <td><a href="organizationInfo.jsp?id=<%=stock[i].getOrganizationId()%>"><%=stock[i].getOrganizationName()%></a></td>
                                             <td><%=stock[i].getLocation().getAddress()%>, <%=stock[i].getLocation().getCityName()%>, <%=stock[i].getLocation().getCountryName()%></td>
                                             <td><a href="changeStockInfo.jsp?id=<%=stock[i].getId()%>"><i class="fa fa-edit"></i></a></td>
-                                            <td><a href="deleteStock.jsp?id=<%=stock[i].getId()%>"><i class="fa fa-close"></i></a></td>
+                                            <td><a href="deleteStock.jsp?id=<%=stock[i].getId()%>" onclick="return confirmDelete();"><i class="fa fa-close"></i></a></td>
                                         </tr>
                                     <%}%>
                             </tbody>

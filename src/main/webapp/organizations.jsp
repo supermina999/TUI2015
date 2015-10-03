@@ -6,6 +6,15 @@
     Organization[] organization = Organization.getAll(null);
     City[] city = City.getAll(null);
 %>
+<script>
+    function confirmDelete() {
+        if (confirm("Вы уверены, что хотите удалить организацию?")) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+</script>
         <center>
             <br><h1>Организации</h1><br>
                 <div class="form-group has-feedback" style="width: 60%; min-height: 600px;">
@@ -45,7 +54,7 @@
                                     <td><%=organization[i].getAddress()%></td>
                                     <td><%=organization[i].getWebsite()%></td>
                                     <td><a href="changeOrganizationInfo.jsp?id=<%=organization[i].getId()%>"><i class="fa fa-edit"></i></a></td>
-                                    <td><a href="deleteOrganization.jsp?id=<%=organization[i].getId()%>"><i class="fa fa-close"></i></a></td>
+                                    <td><a href="deleteOrganization.jsp?id=<%=organization[i].getId()%>" onclick="return confirmDelete();"><i class="fa fa-close"></i></a></td>
                                 </tr>
                                 <% } %>
                         </table>

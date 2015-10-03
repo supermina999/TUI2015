@@ -18,12 +18,21 @@
    }
 %>
 <%@include file = "layout1.jsp"%>
+<script>
+    function confirmDelete() {
+        if (confirm("Вы уверены, что хотите удалить склад?")) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+</script>
 
 <br>
     <div class="form-block center-block" style="width: 50%; min-height: 700px;">
         <div style="margin-left: 90%;">
             <p style="font-size: 25px;"><a href="changeStockInfo.jsp?id=<%=stock.getId()%>"><i class="fa fa-edit"></i></a>
-            <a href="deleteStock.jsp?id=<%=stock.getId()%>"><i class="fa fa-close"></i></a></p>
+            <a href="deleteStock.jsp?id=<%=stock.getId()%>" onclick="return confirmDelete();"><i class="fa fa-close"></i></a></p>
         </div>
         <center><h2 class="title">Склад № <%=Integer.parseInt(s)%></h2></center>
         <hr>

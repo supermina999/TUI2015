@@ -14,12 +14,20 @@
    }
 %>
 <%@include file = "layout1.jsp"%>
-
+<script>
+    function confirmDelete() {
+        if (confirm("Вы уверены, что хотите удалить пользователя?")) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+</script>
 <br>
-    <div class="form-block center-block" style="width: 50%;">
+    <div class="form-block center-block" style="width: 50%; min-height: 700px;">
         <div style="margin-left: 90%;">
             <p style="font-size: 25px;"><a href="changeUserInfo.jsp?id=<%=person.getId()%>"><i class="fa fa-edit"></i></a>
-            <a href="deleteUser.jsp?id=<%=person.getId()%>"><i class="fa fa-close"></i></a></p>
+            <a href="deleteUser.jsp?id=<%=person.getId()%>" onclick="return confirmDelete();"><i class="fa fa-close"></i></a></p>
         </div>
         <center><h2 class="title"><%=person.getSurname()%> <%=person.getName()%> <%=person.getSecondName()%></h2></center>
         <hr>
