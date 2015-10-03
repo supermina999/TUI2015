@@ -5,6 +5,9 @@ import javax.servlet.http.HttpServletRequest;
 import models.*;
 
 import sql.Sql;
+import java.util.Date;
+
+import java.text.SimpleDateFormat;
 
 
 public class UserController {
@@ -52,6 +55,7 @@ public class UserController {
         String id = request.getParameter("id");
         String login = request.getParameter("login");
         Person user = Person.getOne(Integer.parseInt(id));
+        Date date = user.getDate();
         String passwordOld = request.getParameter("passwordOld");
         if (!passwordOld.equals(user.getPassword())) return "Старый пароль неправильный";
         String password1 = request.getParameter("password1");
@@ -86,6 +90,7 @@ public class UserController {
         person.setPhone(Sql.sql(phone));
         person.setPermissionId(Integer.parseInt(permission_id));
         person.setOrganizationId(Integer.parseInt(organization_id));
+        person.setDate(date);
         person.saveChanges();
         return "OK";
     }

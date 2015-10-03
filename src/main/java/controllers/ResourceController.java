@@ -18,6 +18,17 @@ public class ResourceController {
         resource.setWeight(weight);
         resource.writeToDB();
     }
+     public static void change(HttpServletRequest request) throws Exception
+    {
+        String resource_id = request.getParameter("resourceId");
+        int resourceId = Integer.parseInt(resource_id);
+        String number = request.getParameter("weight");
+        int weight = Integer.parseInt(number);
+        
+        Resource resource = Resource.getOne(resourceId);
+        resource.setWeight(weight);
+        resource.saveChanges();
+    }
     public static void transit(HttpServletRequest request) throws Exception
     {
         String resource = request.getParameter("resourceId");

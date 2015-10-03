@@ -6,6 +6,9 @@
 package models;
 
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  *
@@ -25,7 +28,8 @@ public class Person extends DBModel {
         new DBEntry("phone", EntryType.String),
         new DBEntry("email", EntryType.String),
         new DBEntry("permission_id", EntryType.Int),
-        new DBEntry("organization_id", EntryType.Int)
+        new DBEntry("organization_id", EntryType.Int),
+        new DBEntry("date", EntryType.Date)
     };
     
     public Person()
@@ -175,5 +179,12 @@ public class Person extends DBModel {
         int id = getCityId();
         return City.getOne(id).getName();
     }
-  
+    public Date getDate() throws ParseException
+    {
+        return new SimpleDateFormat("yyyy-MM-dd").parse(this.entryes[12].getValue());
+    }
+    public void setDate(Date date)
+    {
+        this.entryes[12].setValue(date);
+    }
 }

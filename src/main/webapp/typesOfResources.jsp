@@ -35,6 +35,7 @@
             </table>
         
         <a href="newTypeOfResource.jsp" class="btn btn-default btn-lg">Добавить вид ресурса</a>
+        <a href="changeTypeOfResource.jsp" class="btn btn-default btn-lg">Изменить вид ресурса</a>
         </div>
     </center>
 <script src="js/search.js"></script>   

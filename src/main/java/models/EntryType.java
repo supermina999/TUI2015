@@ -9,4 +9,4 @@ package models;
  *
  * @author roma
  */
-public enum EntryType{String, Int};
+public enum EntryType{String, Int, Date};
