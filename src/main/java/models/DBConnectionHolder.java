@@ -19,6 +19,4 @@ public class DBConnectionHolder
         con = DriverManager.getConnection(url, login, password);
         DBConnectionHolder.connection = con;
     }
-    
-    
 }

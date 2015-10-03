@@ -113,12 +113,7 @@ public class DBModel {
         String query = "INSERT " + this.tableName + " SET ";
         for(int i = 1; i < entryes.length;i++)
         {
-            if (entryes[i].name.equals("date")) {
-                query += entryes[i].name + "=CURDATE()";
-            }
-            else {
-                query += entryes[i].name + "=" + entryes[i].SQLValue();
-            }
+            query += entryes[i].name + "=" + entryes[i].SQLValue();
             if (i+1<entryes.length) query += ", ";
         }
         st.execute(query);

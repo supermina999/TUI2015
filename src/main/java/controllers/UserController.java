@@ -34,6 +34,7 @@ public class UserController {
         String email = request.getParameter("email");
         String phone = request.getParameter("phone");
         if (!Sql.isInt(phone)) return "Неправильный формат номера. Он должен содержать только цифры и состоять не более чем из 9 символов.";
+        Date date = new Date();
         Person person = new Person();
         person.setLogin(Sql.sql(login));
         person.setPassword(Sql.sql(password1));
@@ -46,6 +47,7 @@ public class UserController {
         person.setPhone(Sql.sql(phone));
         person.setPermissionId(Integer.parseInt(permission_id));
         person.setOrganizationId(Integer.parseInt(organization_id));
+        person.setDate(date);
         person.writeToDB();
         return "OK";
     }

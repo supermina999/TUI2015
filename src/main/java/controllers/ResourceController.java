@@ -2,6 +2,7 @@ package controllers;
 
 import java.io.UnsupportedEncodingException;
 import java.sql.SQLException;
+import java.util.Date;
 import javax.servlet.http.HttpServletRequest;
 import models.*;
 import sql.Sql;
@@ -12,7 +13,7 @@ public class ResourceController {
         String name = request.getParameter("name");
         String number = request.getParameter("weight");
         int weight = Integer.parseInt(number);
-        
+
         Resource resource = new Resource();
         resource.setName(name);
         resource.setWeight(weight);
