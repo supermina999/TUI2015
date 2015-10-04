@@ -25,6 +25,7 @@
         if (i!=0) {%><%="////"%><%}%><%=res[i].getId()%>
 <%=res[i].getOrganizationId()%>
 <%=res[i].getLocation().getCityId()%>
+<%=res[i].getLocation().getCountryId()%>
 <%=res[i].getOrganizationName()%>
 <%=res[i].getLocation().getAddress()%>
 <%=res[i].getLocation().getCityName()%>
