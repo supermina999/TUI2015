@@ -6,6 +6,7 @@
         %><%=station.getId()%>
 <%=station.getOrganizationId()%>
 <%=station.getLocation().getCityId()%>
+<%=station.getLocation().getCountryId()%>
 <%=station.getOrganizationName()%>
 <%=station.getLocation().getAddress()%>
 <%=station.getLocation().getCityName()%>

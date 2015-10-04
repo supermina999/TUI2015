@@ -6,6 +6,7 @@
         %><%=stock.getId()%>
 <%=stock.getOrganizationId()%>
 <%=stock.getLocation().getCityId()%>
+<%=stock.getLocation().getCountryId()%>
 <%=stock.getOrganizationName()%>
 <%=stock.getLocation().getAddress()%>
 <%=stock.getLocation().getCityName()%>
