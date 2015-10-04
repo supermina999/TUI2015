@@ -41,6 +41,10 @@
 <%=res[i].getPhone()%>
 <%=res[i].getPermissionName()%>
 <%=res[i].getOrganizationName()%>
+<%=res[i].getOrganizationId()%>
+<%=res[i].getPermissionId()%>
+<%=res[i].getCityId()%>
+<%=City.getOne(res[i].getCityId()).getCountryId()%>
 <%
     }
 %>
