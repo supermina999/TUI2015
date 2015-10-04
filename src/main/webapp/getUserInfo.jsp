@@ -16,7 +16,8 @@
 <%=person.getOrganizationId()%>
 <%=person.getPermissionId()%>
 <%=person.getCityId()%>
-<%=City.getOne(person.getCityId()).getCountryId()%><%
+<%=City.getOne(person.getCityId()).getCountryId()%>
+<%=person.getLogin()%><%
     }
     else 
     {

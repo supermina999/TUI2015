@@ -45,6 +45,7 @@
 <%=res[i].getPermissionId()%>
 <%=res[i].getCityId()%>
 <%=City.getOne(res[i].getCityId()).getCountryId()%>
+<%=res[i].getLogin()%>
 <%
     }
 %>
