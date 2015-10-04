@@ -144,10 +144,10 @@ public class DBModel {
         st.execute("use " +DBConnectionHolder.DBName); 
         st.execute("SET NAMES utf8");
         String query = "DELETE FROM " + this.tableName + " WHERE ";
-        for(int i = 0; i < entryes.length;i++)
+        for(int i = 0; i < 1;i++)
         {
             query += entryes[i].name + "=" + entryes[i].SQLValue();
-            if (i+1<entryes.length) query += " AND ";
+            //if (i+1<entryes.length) query += " AND ";
         }
         st.execute(query);
         st.close();
