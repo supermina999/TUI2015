@@ -4,6 +4,8 @@
     if (station != null)
     {
         %><%=station.getId()%>
+<%=station.getOrganizationId()%>
+<%=station.getLocation().getCityId()%>
 <%=station.getOrganizationName()%>
 <%=station.getLocation().getAddress()%>
 <%=station.getLocation().getCityName()%>

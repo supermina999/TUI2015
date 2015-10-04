@@ -4,6 +4,8 @@
     if (stock != null)
     {
         %><%=stock.getId()%>
+<%=stock.getOrganizationId()%>
+<%=stock.getLocation().getCityId()%>
 <%=stock.getOrganizationName()%>
 <%=stock.getLocation().getAddress()%>
 <%=stock.getLocation().getCityName()%>

@@ -23,6 +23,8 @@
     for (int i = 0; i < n; i++)
     {   
         if (i!=0) {%><%="////"%><%}%><%=res[i].getId()%>
+<%=res[i].getOrganizationId()%>
+<%=res[i].getLocation().getCityId()%>
 <%=res[i].getOrganizationName()%>
 <%=res[i].getLocation().getAddress()%>
 <%=res[i].getLocation().getCityName()%>
