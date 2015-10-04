@@ -26,7 +26,13 @@ public class ResourceController {
         String number = request.getParameter("weight");
         int weight = Integer.parseInt(number);
         
-        Resource resource = Resource.getOne(resourceId);
+        //Resource resource = Resource.getOne(resourceId);
+        Resource[] allRes = Resource.getAll(null);
+        Resource resource = new Resource();
+        for (int i = 0;i < allRes.length;i++) 
+        {
+            if (allRes[i].getId() == resourceId) resource = allRes[i];
+        }
         resource.setWeight(weight);
         resource.saveChanges();
     }

@@ -6,5 +6,5 @@
     ResourceController.change(request);
 %>
 <script>
-        window.location.href = "typeOfResources.jsp";
+        window.location.href = "typesOfResources.jsp";
 </script>
