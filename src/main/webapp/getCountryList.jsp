@@ -21,7 +21,7 @@
     int n = res.length;
     for (int i = 0; i < n; i++)
     {       
-        if (i!=0) {%>%=res[i].getId()%>
+        if (i!=0) {%><%="////"%><%}%><%=res[i].getId()%>
 <%=res[i].getName()%>
 <%
     }
