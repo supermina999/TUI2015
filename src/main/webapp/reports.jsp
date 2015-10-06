@@ -22,8 +22,8 @@
 <div class="vertical" style="margin-left: 10%;">
     <ul class="nav nav-tabs" role="tablist">
         <li class><a href="#vtab0" role="tab" data-toggle="tab" aria-expanded="true">Пользователи</a> </li>
-        <li class><a href="#vtab1" role="tab" data-toggle="dropdown" aria-expanded="false" class="btn"> Ресурсы</a> 
-            <ul class="dropdown-menu dropdown-animation" role="tablist">
+        <li class><a role="tab" data-toggle="dropdown" aria-expanded="false" class="btn"> Ресурсы</a> 
+            <ul class="dropdown-menu dropdown-animation">
                 <%
                     for (int i = 0; i < resource.length; i++)
                     {
