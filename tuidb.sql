@@ -28,6 +28,7 @@ CREATE TABLE `available_resource` (
   `stock_id` int(11) NOT NULL,
   `number` int(11) NOT NULL,
   `measure_id` int(11) NOT NULL,
+  `date` date NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -38,7 +39,7 @@ CREATE TABLE `available_resource` (
 
 LOCK TABLES `available_resource` WRITE;
 /*!40000 ALTER TABLE `available_resource` DISABLE KEYS */;
-INSERT INTO `available_resource` VALUES (1,1,1,12,1);
+INSERT INTO `available_resource` VALUES (1,1,1,12,1,'2015-09-17');
 /*!40000 ALTER TABLE `available_resource` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -183,6 +184,7 @@ CREATE TABLE `needed_resource` (
   `number` int(11) NOT NULL,
   `measure_id` int(11) NOT NULL,
   `emergency` int(11) NOT NULL,
+  `date` date NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -193,7 +195,7 @@ CREATE TABLE `needed_resource` (
 
 LOCK TABLES `needed_resource` WRITE;
 /*!40000 ALTER TABLE `needed_resource` DISABLE KEYS */;
-INSERT INTO `needed_resource` VALUES (1,1,1,6,1,4);
+INSERT INTO `needed_resource` VALUES (1,1,1,6,1,4,'2015-09-17');
 /*!40000 ALTER TABLE `needed_resource` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -269,7 +271,7 @@ CREATE TABLE `person` (
   `organization_id` int(11) NOT NULL,
   `date` date NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -278,7 +280,7 @@ CREATE TABLE `person` (
 
 LOCK TABLES `person` WRITE;
 /*!40000 ALTER TABLE `person` DISABLE KEYS */;
-INSERT INTO `person` VALUES (1,'Елизавета','Попова','Олеговна','liza','1',1,'Ул. Астрономическая, д. 47','3150897','lizapopova@yandex.ru',1,1,'2015-09-17'),(2,'Станислав','Минаков','Сергеевич','stas','2',1,'Ул. 23 Августа, 16','3568790','supermina999@gmail.com',1,1,'2015-09-17'),(3,'Роман','Скурихин','Владимирович','roma','3',1,'Ул. Розы Люксембург, 4','3780987','romasku135@gmail.com',1,2,'2015-09-17'),(4,'София','Уфимцева','Игоревна','sofy','4',2,'Ул. Тобольская, 78Б','9007865','sonya.uf@gmail.com',1,2,'2015-09-17'),(5,'?????','??????','???????','artem','5',1,'??. ?????????, 6','2346789','payvinartem@gmail.com',1,3,'2015-09-17'),(6,'Мария','Солодова','Константиновна','masha','6',1,'Ул. Фееричная, 45','456790','masha.solodova1@gmail.com',1,3,'2015-09-17');
+INSERT INTO `person` VALUES (1,'Елизавета','Попова','Олеговна','liza','1',1,'Ул. Астрономическая, д. 47','3150897','lizapopova@yandex.ru',1,1,'2015-09-17'),(2,'Станислав','Минаков','Сергеевич','stas','2',1,'Ул. 23 Августа, 16','3568790','supermina999@gmail.com',1,1,'2015-09-17'),(3,'Роман','Скурихин','Владимирович','roma','3',1,'Ул. Розы Люксембург, 4','3780987','romasku135@gmail.com',1,2,'2015-09-17'),(4,'София','Уфимцева','Игоревна','sofy','4',2,'Ул. Тобольская, 78Б','9007865','sonya.uf@gmail.com',1,2,'2015-09-17'),(5,'?????','??????','???????','artem','5',1,'??. ?????????, 6','2346789','payvinartem@gmail.com',1,2,'2015-09-17'),(6,'Мария','Солодова','Константиновна','masha','6',1,'Ул. Фееричная, 45','456790','masha.solodova1@gmail.com',1,3,'2015-09-17'),(8,'?????','?????????','????????','alina','alina',1,'??. ???????? 10','0993838383','alina@gmail.com',1,3,'2015-10-03'),(9,'w','w','w','w','w',1,'w','97755789','w@w',1,1,'2015-10-06');
 /*!40000 ALTER TABLE `person` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -320,6 +322,7 @@ CREATE TABLE `resource` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` text NOT NULL,
   `weight` int(11) NOT NULL,
+  `date` date NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -330,7 +333,7 @@ CREATE TABLE `resource` (
 
 LOCK TABLES `resource` WRITE;
 /*!40000 ALTER TABLE `resource` DISABLE KEYS */;
-INSERT INTO `resource` VALUES (1,'Медикаменты',0),(2,'Одежда',0);
+INSERT INTO `resource` VALUES (1,'Медикаменты',0,'2015-09-17'),(2,'Одежда',0,'2015-09-17');
 /*!40000 ALTER TABLE `resource` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -420,4 +423,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-10-03  1:45:20
+-- Dump completed on 2015-10-06 14:24:13
