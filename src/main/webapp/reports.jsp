@@ -16,31 +16,28 @@
     Losing[] los = Losing.getAll(null);
     Receiving[] rec = Receiving.getAll(null);
 %>
-<center>
-        <br><h1>Отчёты</h1><br>
-</center>
-<div class="vertical" style="margin-left: 10%;">
+
+<center><br><h1>Отчёты</h1><br>
+
+<div style="min-height: 700px; width: 80%;">
+<div class="vertical">
     <ul class="nav nav-tabs" role="tablist">
         <li class><a href="#vtab0" role="tab" data-toggle="tab" aria-expanded="true">Пользователи</a> </li>
-        <li class><a role="tab" data-toggle="dropdown" aria-expanded="false" class="btn"> Ресурсы</a> 
-            <ul class="dropdown-menu dropdown-animation">
-                <%
-                    for (int i = 0; i < resource.length; i++)
-                    {
-                        %><li href="#vtab<%=i + 2%>"><a><%=resource[i].getName()%></a></li><%
-                    }
-                %>
-            </ul>
+        <li class><a id="tabRes" style="cursor: pointer;"> Ресурсы</a> 
+        <% for (int i = 0; i < resource.length; i++) { %>
+        <li href="#vtab<%=i + 2%>"><a id="res<%=i%>" style="cursor: pointer;" class="hidden"><%=resource[i].getName()%></a></li>
+        <% } %>
     </ul>
-    <div class="tab-content">
+    <div class="tab-content" style="width: 100%;">
         <div class="tab-pane fade in active" id="vtab0">
-            <canvas id="myChart" width="1200" height="600"></canvas>
+            <canvas id="myChart"></canvas>
         </div>
         <div class="tab-pane fade" id="vtab1">
             
         </div>
     </div>
 </div>
+</div> </center>
     <%
         Vector<String> graph_date = new Vector<String>();
         Vector<Integer> number = new Vector<Integer>();
@@ -93,4 +90,5 @@
     };
 </script>
 </center>
+<script src="js/charts.js"></script>
 <%@include file = "layout2.jsp"%>

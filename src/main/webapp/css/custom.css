@@ -49,3 +49,8 @@
     font-weight: 700;
     min-height: 30px;
 }
+
+.temp {
+    background-color: #e84c3d;
+    font-weight: 700 !important;
+}
