@@ -28,7 +28,6 @@ CREATE TABLE `available_resource` (
   `stock_id` int(11) NOT NULL,
   `number` int(11) NOT NULL,
   `measure_id` int(11) NOT NULL,
-  `date` date NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -39,7 +38,7 @@ CREATE TABLE `available_resource` (
 
 LOCK TABLES `available_resource` WRITE;
 /*!40000 ALTER TABLE `available_resource` DISABLE KEYS */;
-INSERT INTO `available_resource` VALUES (1,1,1,12,1,'2015-09-17');
+INSERT INTO `available_resource` VALUES (1,1,1,12,1);
 /*!40000 ALTER TABLE `available_resource` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -132,6 +131,7 @@ CREATE TABLE `losing` (
   `station_id` int(10) NOT NULL,
   `number` int(10) NOT NULL,
   `measure_id` int(11) NOT NULL,
+  `date` date NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -142,7 +142,7 @@ CREATE TABLE `losing` (
 
 LOCK TABLES `losing` WRITE;
 /*!40000 ALTER TABLE `losing` DISABLE KEYS */;
-INSERT INTO `losing` VALUES (1,1,1,15,1);
+INSERT INTO `losing` VALUES (1,1,1,15,1,'2015-10-07');
 /*!40000 ALTER TABLE `losing` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -184,7 +184,6 @@ CREATE TABLE `needed_resource` (
   `number` int(11) NOT NULL,
   `measure_id` int(11) NOT NULL,
   `emergency` int(11) NOT NULL,
-  `date` date NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -195,7 +194,7 @@ CREATE TABLE `needed_resource` (
 
 LOCK TABLES `needed_resource` WRITE;
 /*!40000 ALTER TABLE `needed_resource` DISABLE KEYS */;
-INSERT INTO `needed_resource` VALUES (1,1,1,6,1,4,'2015-09-17');
+INSERT INTO `needed_resource` VALUES (1,1,1,6,1,4);
 /*!40000 ALTER TABLE `needed_resource` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -211,6 +210,7 @@ CREATE TABLE `organization` (
   `name` text NOT NULL,
   `address` text NOT NULL,
   `website` text NOT NULL,
+  `date` date NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -221,7 +221,7 @@ CREATE TABLE `organization` (
 
 LOCK TABLES `organization` WRITE;
 /*!40000 ALTER TABLE `organization` DISABLE KEYS */;
-INSERT INTO `organization` VALUES (1,'Красный крест','Ул. Мирная, 23','redcross.help.ua'),(2,'Рука помощи','Ул. Зеленая, 6','thehandofhelp.org'),(3,'Мирное небо','Бульварный переулок, 2','peacefulsky.org.ua');
+INSERT INTO `organization` VALUES (1,'Красный крест','Ул. Мирная, 23','redcross.help.ua','2015-09-23'),(2,'Рука помощи','Ул. Зеленая, 6','thehandofhelp.org','2015-09-23'),(3,'Мирное небо','Бульварный переулок, 2','peacefulsky.org.ua','2015-09-23');
 /*!40000 ALTER TABLE `organization` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -297,6 +297,7 @@ CREATE TABLE `receiving` (
   `stock_id` int(10) NOT NULL,
   `number` int(10) NOT NULL,
   `measure_id` int(11) NOT NULL,
+  `date` date NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -307,7 +308,7 @@ CREATE TABLE `receiving` (
 
 LOCK TABLES `receiving` WRITE;
 /*!40000 ALTER TABLE `receiving` DISABLE KEYS */;
-INSERT INTO `receiving` VALUES (1,1,1,10,1);
+INSERT INTO `receiving` VALUES (1,1,1,10,1,'2015-10-07');
 /*!40000 ALTER TABLE `receiving` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -348,6 +349,7 @@ CREATE TABLE `station` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `location_id` int(11) NOT NULL,
   `organization_id` int(11) NOT NULL,
+  `date` date NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -358,7 +360,7 @@ CREATE TABLE `station` (
 
 LOCK TABLES `station` WRITE;
 /*!40000 ALTER TABLE `station` DISABLE KEYS */;
-INSERT INTO `station` VALUES (1,1,1),(2,2,2),(3,3,3);
+INSERT INTO `station` VALUES (1,1,1,'2015-09-23'),(2,2,2,'2015-09-23'),(3,3,3,'2015-09-23');
 /*!40000 ALTER TABLE `station` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -373,6 +375,7 @@ CREATE TABLE `stock` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `organization_id` int(11) NOT NULL,
   `location_id` int(11) NOT NULL,
+  `date` date NOT NULL,
   PRIMARY KEY (`id`),
   KEY `id` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
@@ -384,7 +387,7 @@ CREATE TABLE `stock` (
 
 LOCK TABLES `stock` WRITE;
 /*!40000 ALTER TABLE `stock` DISABLE KEYS */;
-INSERT INTO `stock` VALUES (1,1,1),(2,2,2),(3,3,3);
+INSERT INTO `stock` VALUES (1,1,1,'2015-09-23'),(2,2,2,'2015-09-23'),(3,3,3,'2015-09-23');
 /*!40000 ALTER TABLE `stock` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -423,4 +426,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-10-06 14:24:13
+-- Dump completed on 2015-10-09  1:00:32

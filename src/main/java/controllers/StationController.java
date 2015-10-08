@@ -3,6 +3,7 @@ package controllers;
 import models.*;
 import java.sql.*;
 import javax.servlet.http.HttpServletRequest;
+import java.util.Date;
 
 public class StationController {
     public static void add(HttpServletRequest request) throws Exception
@@ -12,6 +13,7 @@ public class StationController {
         String city_id = request.getParameter("city");
         Station station = new Station();
         Location location = new Location();
+        Date date = new Date();
         location.setCityId(Integer.parseInt(city_id));
         location.setAddress(address);
         location.setXCoord(1);
@@ -20,6 +22,7 @@ public class StationController {
         Location[] allLocations = Location.getAll(null);
         station.setLocationId(allLocations[allLocations.length-1].getId());
         station.setOrganizationId(Integer.parseInt(organization_id));
+        station.setDate(date);
         station.writeToDB();
     }
     
@@ -29,7 +32,8 @@ public class StationController {
         String address = request.getParameter("address");
         String organization_id = request.getParameter("organization");
         String city_id = request.getParameter("city");
-        int locationId = Stock.getOne(Integer.parseInt(id)).getLocationId();
+        int locationId = Station.getOne(Integer.parseInt(id)).getLocationId();
+        Date date = Station.getOne(Integer.parseInt(id)).getDate();
         Location location = new Location();
         location.setCityId(Integer.parseInt(city_id));
         location.setId(locationId);
@@ -41,6 +45,7 @@ public class StationController {
         station.setId(Integer.parseInt(id));
         station.setLocationId(locationId);
         station.setOrganizationId(Integer.parseInt(organization_id));
+        station.setDate(date);
         station.saveChanges();
     }
     

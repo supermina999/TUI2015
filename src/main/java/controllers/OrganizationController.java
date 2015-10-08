@@ -2,6 +2,7 @@ package controllers;
 
 import java.io.UnsupportedEncodingException;
 import java.sql.SQLException;
+import java.util.Date;
 import javax.servlet.http.HttpServletRequest;
 import models.*;
 import sql.Sql;
@@ -14,10 +15,12 @@ public class OrganizationController
             String name = request.getParameter("name");
             String address = request.getParameter("address");
             String website = request.getParameter("website");
+            Date date = new Date();
             Organization organization = new Organization();
             organization.setName(Sql.sql(name));
             organization.setAddress(Sql.sql(address));
             organization.setWebsite(Sql.sql(website));
+            organization.setDate(date);
             organization.writeToDB();
     }
     public static Person[] getPersons(int id) throws Exception
@@ -34,11 +37,13 @@ public class OrganizationController
             String name = request.getParameter("name");
             String address = request.getParameter("address");
             String website = request.getParameter("website");
+            Date date = Organization.getOne(Integer.parseInt(id)).getDate();
             Organization organization = new Organization();
             organization.setId(Integer.parseInt(id));
             organization.setName(Sql.sql(name));
             organization.setAddress(Sql.sql(address));
             organization.setWebsite(Sql.sql(website));
+            organization.setDate(date);
             organization.saveChanges();
     }
     

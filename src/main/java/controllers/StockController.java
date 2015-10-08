@@ -1,6 +1,7 @@
 package controllers;
 
 import java.sql.SQLException;
+import java.util.Date;
 import javax.servlet.http.HttpServletRequest;
 import models.*;
 
@@ -12,6 +13,7 @@ public class StockController
         String organization_id = request.getParameter("organization");
         String city_id = request.getParameter("city");
         Stock stock = new Stock();
+        Date date = new Date();
         Location location = new Location();
         location.setCityId(Integer.parseInt(city_id));
         location.setAddress(address);
@@ -21,6 +23,7 @@ public class StockController
         Location[] allLocations = Location.getAll(null);
         stock.setLocationId(allLocations[allLocations.length-1].getId());
         stock.setOrganizationId(Integer.parseInt(organization_id));
+        stock.setDate(date);
         stock.writeToDB();
     }
     
@@ -31,6 +34,7 @@ public class StockController
         String organization_id = request.getParameter("organization");
         String city_id = request.getParameter("city");
         int locationId = Stock.getOne(Integer.parseInt(id)).getLocationId();
+        Date date = Stock.getOne(Integer.parseInt(id)).getDate();
         Location location = new Location();
         location.setCityId(Integer.parseInt(city_id));
         location.setId(locationId);
@@ -42,6 +46,7 @@ public class StockController
         stock.setId(Integer.parseInt(id));
         stock.setLocationId(locationId);
         stock.setOrganizationId(Integer.parseInt(organization_id));
+        stock.setDate(date);
         stock.saveChanges();
     }
     

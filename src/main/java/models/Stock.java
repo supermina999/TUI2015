@@ -6,6 +6,9 @@
 package models;
 
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  *
@@ -16,7 +19,8 @@ public class Stock extends DBModel {
     static protected DBEntry[] stdEntryes = {
         new DBEntry("id", EntryType.Int),
         new DBEntry("organization_id", EntryType.Int),
-        new DBEntry("location_id", EntryType.Int)
+        new DBEntry("location_id", EntryType.Int),
+        new DBEntry("date", EntryType.Date)
     };
     
     protected Stock(DBEntry[] entryes) {
@@ -87,5 +91,13 @@ public class Stock extends DBModel {
     {
         int id = getLocationId();
         return Location.getOne(id);
+    }
+    public Date getDate() throws ParseException
+    {
+        return new SimpleDateFormat("yyyy-MM-dd").parse(this.entryes[3].getValue());
+    }
+    public void setDate(Date date)
+    {
+        this.entryes[3].setValue(date);
     }
 }
