@@ -4,29 +4,32 @@
    int tab = 3; %>
 <%@include file = "layout1.jsp"%>
 <%
-   Resource[] recource = Resource.getAll(null);
+    String s = request.getParameter("id");
+    int id = Integer.parseInt(s);
+    Resource resource = new Resource();
+    resource = Resource.getOne(id);
 %>
 <br>
     <div class="form-block center-block" style="min-height: 700px;">
         <center><h2 class="title">Изменить вид ресурса</h2></center>
         <hr>
-        <form class="form-horizontal" method="post" action="doChangeTypeOfResource.jsp">
+        <form class="form-horizontal" method="post" action="updateTypeOfResource.jsp?resourceId=<%=id%>">
                 <div class="form-group">
                         <label class="col-sm-3 control-label">Наименование</label>
                         <div class="col-sm-8">
-                            <select class="form-control" style="width: 100%;" name="resourceId">
-                                <option>Выберите наименование</option>
-                                <%for (int i = 0; i < recource.length; i++)
-                                {%>
-                                <option value="<%=recource[i].getId()%>"><%=recource[i].getName()%></option>
-                                <%}%>
-                            </select>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" name="name" value="<%=resource.getName()%>" required>
+                                <i class="fa fa-pencil form-control-feedback"></i>
+                            </div>
                         </div>
                 </div>
                 <div class="form-group">
                         <label class="col-sm-3 control-label">Вес</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" name="weight">
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" name="weight" value="<%=resource.getWeight()%>" required>
+                                <i class="fa fa-pencil form-control-feedback"></i>
+                            </div>
                         </div>
                 </div>
                 <div class="form-group">

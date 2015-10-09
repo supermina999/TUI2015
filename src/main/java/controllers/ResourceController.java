@@ -23,6 +23,7 @@ public class ResourceController {
     {
         String resource_id = request.getParameter("resourceId");
         int resourceId = Integer.parseInt(resource_id);
+        String name = request.getParameter("name");
         String number = request.getParameter("weight");
         int weight = Integer.parseInt(number);
         
@@ -33,6 +34,7 @@ public class ResourceController {
         {
             if (allRes[i].getId() == resourceId) resource = allRes[i];
         }
+        resource.setName(name);
         resource.setWeight(weight);
         resource.saveChanges();
     }

@@ -16,11 +16,13 @@
                 </div>
             <br><br><br>
             </div> <br>
-            <table class="table table-bordered">
+            <table class="table">
                 <thead>
                     <tr>
                         <th style="width: 25%;">Название</th>
                         <th style="width: 25%;">Вес</th>
+                        <th style="width: 5%;"></th>
+                        <th style="width: 5%;"></th>
                     </tr>
                 </thead>
                 <tbody id="searchTable">
@@ -29,13 +31,12 @@
                     <tr>
                         <td class="quantity idSearch"> <%= resource[i].getName() %> </td>
                         <td class="product"><%= resource[i].getWeight() %></td>
+                        <td><a href="changeTypeOfResource.jsp?id=<%=resource[i].getId()%>"><i class="fa fa-edit"></i></a></td>
+                        <td><a href="deleteTypeOfResource.jsp?id=<%=resource[i].getId()%>" onclick="return confirmDelete();"><i class="fa fa-close"></i></a></td>
                     </tr>
                     <% } %>
                 </tbody>
             </table>
-        
-        <a href="newTypeOfResource.jsp" class="btn btn-default btn-lg">Добавить вид ресурса</a>
-        <a href="changeTypeOfResource.jsp" class="btn btn-default btn-lg">Изменить вид ресурса</a>
         </div>
     </center>
 <script src="js/search.js"></script>   
