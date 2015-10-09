@@ -94,4 +94,20 @@ public class ResourceController {
         neededRes[resId].setNumber(currentNumber);
         neededRes[resId].saveChanges();
     }
+    public static void withdraw(HttpServletRequest request) throws Exception
+    {
+        String resource_id = request.getParameter("resourceId");
+        int resourceId = Integer.parseInt(resource_id);
+        String name = request.getParameter("name");
+        String number = request.getParameter("weight");
+        int weight = Integer.parseInt(number);
+        String cityId = request.getParameter("cityId");
+        String stockId = request.getParameter("stockId");
+        
+        Resource resource = new Resource();
+        resource = Resource.getOne(resourceId);
+        weight = resource.getWeight() - weight;
+        resource.setWeight(weight);
+        resource.saveChanges();
+    }
 }

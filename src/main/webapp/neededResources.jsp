@@ -62,7 +62,6 @@
         
         <a href="transitResource.jsp" class="btn btn-default btn-lg">Перевезти ресурс</a>
         <a href="newNeededResource.jsp" class="btn btn-default btn-lg">Добавить требующийся ресурс</a>
-            
         </div>
     </center>
 <script src="js/search.js"></script>     

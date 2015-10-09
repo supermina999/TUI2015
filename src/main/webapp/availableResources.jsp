@@ -60,7 +60,7 @@
         
         <a href="newResource.jsp" class="btn btn-default btn-lg">Добавить ресурс </a>
         <a href="transitResource.jsp" class="btn btn-default btn-lg">Перевезти ресурс</a>
-            
+        <a href="withdrawResource.jsp" class="btn btn-default btn-lg">Забрать ресурс</a>
         </div>
     </center>
 <script src="js/search.js"></script>   

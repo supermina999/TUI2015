@@ -1,45 +1,45 @@
-<%@page import="models.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <% int minPermission = 8; 
    int tab = 3; %>
 <%@include file = "layout1.jsp"%>
 <%
+    DBModel.init();
     City[] city = City.getAll(null);
     Stock[] stock = Stock.getAll(null);
-    Resource[] resource = Resource.getAll(null);
+    AvailableResource[] availableRes = AvailableResource.getAll(null);
 %>
 <br>
     <div class="form-block center-block" style="min-height: 700px;">
-        <center><h2 class="title">Добавить ресурс</h2></center>
+        <center><h2 class="title">Перевезти ресурс</h2></center>
         <hr>
-        <form class="form-horizontal" method="post" action="addResource.jsp">
-                <div class="form-group has-feedback">
+        <form class="form-horizontal" method="post" action="doWithdrawResource.jsp">
+                <div class="form-group">
                         <label class="col-sm-3 control-label">Наименование</label>
                         <div class="col-sm-8">
-                        <select class="form-control" style="width: 100%;" name="resourceId"> 
-                            <option>Выберите наименование</option>
-                            <%for (int i = 0; i < resource.length; i++)
-                            {%>
-                                <option value="<%=resource[i].getId()%>"><%=resource[i].getName()%></option>
-                            <%}%>
-                        </select>
+                            <select class="form-control" style="width: 100%;" name="resourceId">
+                                <option>Выберите наименование</option>
+                                <%for (int i = 0; i < availableRes.length; i++)
+                                {%>
+                                <option value="<%=availableRes[i].getResourceId()%>"><%=availableRes[i].getResourceName()%></option>
+                                <%}%>
+                            </select>
                         </div>
                 </div>
                 <div class="form-group">
                         <label class="col-sm-3 control-label">Количество</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" name="number">
+                                <input type="text" class="form-control" name="number">
                         </div>
                 </div>
                 <div class="form-group has-feedback">
                     <label class="col-sm-3 control-label">Город</label>
                     <div class="col-sm-8">
-                        <select class="form-control" style="width: 100%;" name="cityId"> 
-                            <option>Выберите город</option>
-                            <%for (int i = 0; i < city.length; i++)
-                            {%>
-                                <option value="<%=city[i].getId()%>"><%=city[i].getName()%></option>
-                            <%}%>
+                        <select class="form-control" style="width: 100%;" name="cityId">
+                                    <option>Выберите город</option>
+                                    <%for (int i = 0; i < city.length; i++)
+                                    {%>
+                                        <option><%=city[i].getName()%></option>
+                                    <%}%>
                         </select>
                     </div>
                 </div>
@@ -55,10 +55,9 @@
                         </select>
                     </div>
                 </div>
-            
                 <div class="form-group">
-                        <div class="col-sm-offset-3 col-sm-8">
-                                <input class="btn btn-block btn-default" type="submit" name="submit" value="Готово">
+                        <div class="col-sm-offset-3 col-sm-8">					
+                                <button type="submit" class="btn btn-group btn-default btn-block">Готово</button>
                         </div>
                 </div>
         </form>
