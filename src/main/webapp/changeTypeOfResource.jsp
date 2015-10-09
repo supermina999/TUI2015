@@ -4,7 +4,7 @@
    int tab = 3; %>
 <%@include file = "layout1.jsp"%>
 <%
-    String s = request.getParameter("id");
+    String s = request.getParameter("resourceId");
     int id = Integer.parseInt(s);
     Resource resource = new Resource();
     resource = Resource.getOne(id);
@@ -14,22 +14,18 @@
         <center><h2 class="title">Изменить вид ресурса</h2></center>
         <hr>
         <form class="form-horizontal" method="post" action="updateTypeOfResource.jsp?resourceId=<%=id%>">
-                <div class="form-group">
+                <div class="form-group has-feedback">
                         <label class="col-sm-3 control-label">Наименование</label>
                         <div class="col-sm-8">
-                            <div class="col-sm-8">
-                                <input type="text" class="form-control" name="name" value="<%=resource.getName()%>" required>
-                                <i class="fa fa-pencil form-control-feedback"></i>
-                            </div>
+                            <input type="text" class="form-control" name="name" value="<%=resource.getName()%>" required>
+                            <i class="fa fa-pencil form-control-feedback"></i>
                         </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group has-feedback">
                         <label class="col-sm-3 control-label">Вес</label>
                         <div class="col-sm-8">
-                            <div class="col-sm-8">
-                                <input type="text" class="form-control" name="weight" value="<%=resource.getWeight()%>" required>
-                                <i class="fa fa-pencil form-control-feedback"></i>
-                            </div>
+                            <input type="text" class="form-control" name="weight" value="<%=resource.getWeight()%>" required>
+                            <i class="fa fa-pencil form-control-feedback"></i>
                         </div>
                 </div>
                 <div class="form-group">

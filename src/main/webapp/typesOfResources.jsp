@@ -5,6 +5,15 @@
 <%
     Resource[] resource = Resource.getAll(null);
 %>
+<script>
+    function confirmDelete() {
+        if (confirm("Вы уверены, что хотите удалить вид ресурса?")) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+</script>
     <center>
             <br><h1>Виды ресурсов</h1><br>
             <div class="form-group has-feedback" style="width: 60%; min-height: 600px;">
@@ -31,12 +40,13 @@
                     <tr>
                         <td class="quantity idSearch"> <%= resource[i].getName() %> </td>
                         <td class="product"><%= resource[i].getWeight() %></td>
-                        <td><a href="changeTypeOfResource.jsp?id=<%=resource[i].getId()%>"><i class="fa fa-edit"></i></a></td>
-                        <td><a href="deleteTypeOfResource.jsp?id=<%=resource[i].getId()%>" onclick="return confirmDelete();"><i class="fa fa-close"></i></a></td>
+                        <td><a href="changeTypeOfResource.jsp?resourceId=<%=resource[i].getId()%>"><i class="fa fa-edit"></i></a></td>
+                        <td><a href="deleteTypeOfResource.jsp?resourceId=<%=resource[i].getId()%>" onclick="return confirmDelete();"><i class="fa fa-close"></i></a></td>
                     </tr>
                     <% } %>
                 </tbody>
             </table>
+            <a href="newTypeOfResource.jsp" class="btn btn-default btn-lg">Добавить вид ресурса</a>
         </div>
     </center>
 <script src="js/search.js"></script>   
