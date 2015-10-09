@@ -106,7 +106,7 @@ public class Base extends DBModel {
     {
          this.entryes[4].setValue(1);       
     }
-    public void unmakeStationk()
+    public void unmakeStation()
     {
          this.entryes[4].setValue(0);       
     }
