@@ -6,7 +6,7 @@
         %><%=res.getId()%>
 <%=res.getResourceName()%>
 <%=res.getNumber()%>
-<%=Stock.getOne(res.getStockId()).getOrganizationName()%>
+<%=Stock.getOne(res.getBaseId()).getOrganizationName()%>
 <%=res.getLocation().getAddress()%>
 <%=res.getLocation().getCityName()%>
 <%=res.getLocation().getCountryName()%><%

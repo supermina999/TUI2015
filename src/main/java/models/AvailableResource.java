@@ -18,7 +18,7 @@ public class AvailableResource extends DBModel {
     static protected DBEntry[] stdEntryes = {
             new DBEntry("id",EntryType.Int),
             new DBEntry("resource_id",EntryType.Int),
-            new DBEntry("stock_id",EntryType.Int),
+            new DBEntry("base_id",EntryType.Int),
             new DBEntry("number",EntryType.Int),
             new DBEntry("measure_id",EntryType.Int)
         };
@@ -72,11 +72,11 @@ public class AvailableResource extends DBModel {
     {
         this.entryes[1].setValue(id);
     }
-    public int getStockId()
+    public int getBaseId()
     {
         return Integer.parseInt(this.entryes[2].getValue());
     }
-    public void setStockId(int id)
+    public void setBaseId(int id)
     {
         this.entryes[2].setValue(id);
     }
@@ -103,7 +103,7 @@ public class AvailableResource extends DBModel {
     }
     public Location getLocation() throws Exception
     {
-        int id = getStockId();
+        int id = getBaseId();
         return Stock.getOne(id).getLocation();
     }
     

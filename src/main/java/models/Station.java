@@ -8,14 +8,17 @@ package models;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 
 /**
  *
  * @author roma
  */
 public class Station extends DBModel {
-    static protected String tableName = "station";
+    static protected String tableName = "bases";
     static protected DBEntry[] stdEntryes = {
         new DBEntry("id", EntryType.Int),
         new DBEntry("location_id", EntryType.Int),
@@ -28,7 +31,13 @@ public class Station extends DBModel {
     }
     
     public Station() {
-        super();        
+        super();    
+        List<DBEntry> params;
+        if (entryes == null) params = new ArrayList<>();
+        else params = Arrays.asList(entryes);
+        params = new ArrayList<>(params);
+        params.add(new DBEntry("is_station", EntryType.Int, 1));
+        entryes = params.toArray(new DBEntry[params.size()]);
     }
     
     public static void init()
@@ -45,6 +54,12 @@ public class Station extends DBModel {
     {
         DBModel.tableName = Station.tableName;
         DBModel.stdEntryes = Station.stdEntryes;
+        List<DBEntry> params;
+        if (entryes == null) params = new ArrayList<>();
+        else params = Arrays.asList(entryes);
+        params = new ArrayList<>(params);
+        params.add(new DBEntry("is_station", EntryType.Int, 1));
+        entryes = params.toArray(new DBEntry[params.size()]);
         DBModel buf = Station.getOne(entryes, 1);
         if (buf != null) return new Station(buf.entryes);
         else return null;
@@ -53,6 +68,12 @@ public class Station extends DBModel {
     {
         DBModel.tableName = Station.tableName;
         DBModel.stdEntryes = Station.stdEntryes;
+        List<DBEntry> params;
+        if (entryes == null) params = new ArrayList<>();
+        else params = Arrays.asList(entryes);
+        params = new ArrayList<>(params);
+        params.add(new DBEntry("is_station", EntryType.Int, 1));
+        entryes = params.toArray(new DBEntry[params.size()]);
         DBModel[] ans1 = Station.getAll(entryes, 1);
         Station[] ans2 = new Station[ans1.length];
         for(int i=0; i<ans1.length; i++) ans2[i]=new Station(ans1[i].entryes);

@@ -29,7 +29,7 @@ public class AvailableResourceController {
         {
             AvailableResource availableResource = new AvailableResource();
             availableResource.setResourceId(resourceId);
-            availableResource.setStockId(stockId);
+            availableResource.setBaseId(stockId);
             availableResource.setNumber(weight);
             availableResource.setMeasureId(measureId);
             availableResource.writeToDB();

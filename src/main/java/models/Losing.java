@@ -74,7 +74,7 @@ public class Losing extends DBModel {
     {
         return Integer.parseInt(this.entryes[2].getValue());
     }
-    public void setStationId(int id)
+    public void setBaseId(int id)
     {
         this.entryes[2].setValue(id);
     }

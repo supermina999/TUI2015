@@ -8,18 +8,21 @@ package models;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 
 /**
  *
  * @author roma
  */
 public class Stock extends DBModel {
-    static protected String tableName = "stock";
+    static protected String tableName = "bases";
     static protected DBEntry[] stdEntryes = {
         new DBEntry("id", EntryType.Int),
-        new DBEntry("organization_id", EntryType.Int),
         new DBEntry("location_id", EntryType.Int),
+        new DBEntry("organization_id", EntryType.Int),
         new DBEntry("date", EntryType.Date)
     };
     
@@ -28,7 +31,13 @@ public class Stock extends DBModel {
     }
     
      public Stock() {
-        super();        
+        super();      
+        List<DBEntry> params;
+        if (entryes == null) params = new ArrayList<>();
+        else params = Arrays.asList(entryes);
+        params = new ArrayList<>(params);
+        params.add(new DBEntry("is_stock", EntryType.Int, 1));
+        entryes = params.toArray(new DBEntry[params.size()]);
     }
     
     public static void init()
@@ -45,6 +54,12 @@ public class Stock extends DBModel {
     {
         DBModel.tableName = Stock.tableName;
         DBModel.stdEntryes = Stock.stdEntryes;
+        List<DBEntry> params;
+        if (entryes == null) params = new ArrayList<>();
+        else params = Arrays.asList(entryes);
+        params = new ArrayList<>(params);
+        params.add(new DBEntry("is_stock", EntryType.Int, 1));
+        entryes = params.toArray(new DBEntry[params.size()]);
         DBModel buf = Stock.getOne(entryes, 1);
         if (buf != null) return new Stock(buf.entryes);
         else return null;
@@ -53,6 +68,12 @@ public class Stock extends DBModel {
     {
         DBModel.tableName = Stock.tableName;
         DBModel.stdEntryes = Stock.stdEntryes;
+        List<DBEntry> params;
+        if (entryes == null) params = new ArrayList<>();
+        else params = Arrays.asList(entryes);
+        params = new ArrayList<>(params);
+        params.add(new DBEntry("is_stock", EntryType.Int, 1));
+        entryes = params.toArray(new DBEntry[params.size()]);
         DBModel[] ans1 = Stock.getAll(entryes, 1);
         Stock[] ans2 = new Stock[ans1.length];
         for(int i=0; i<ans1.length; i++) ans2[i]=new Stock(ans1[i].entryes);
@@ -68,19 +89,19 @@ public class Stock extends DBModel {
     }
     public int getOrganizationId()
     {
-        return Integer.parseInt(this.entryes[1].getValue());
+        return Integer.parseInt(this.entryes[2].getValue());
     }
     public void setOrganizationId(int id)
     {
-        this.entryes[1].setValue(id);
+        this.entryes[2].setValue(id);
     }
    public int getLocationId()
     {
-        return Integer.parseInt(this.entryes[2].getValue());
+        return Integer.parseInt(this.entryes[1].getValue());
     }
     public void setLocationId(int id)
     {
-        this.entryes[2].setValue(id);
+        this.entryes[1].setValue(id);
     }
     public String getOrganizationName() throws Exception
     {

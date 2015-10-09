@@ -73,7 +73,7 @@ public class ResourceController {
             AvailableResource availableResource = new AvailableResource();
             availableResource.setId(availableRes[resId].getId());
             availableResource.setResourceId(resourceId);
-            availableResource.setStockId(availableRes[resId].getStockId());
+            availableResource.setBaseId(availableRes[resId].getBaseId());
             availableResource.setNumber(availableRes[resId].getNumber());
             availableResource.setMeasureId(availableRes[resId].getMeasureId());
             availableResource.delete();

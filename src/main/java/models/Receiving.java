@@ -73,11 +73,11 @@ public class Receiving extends DBModel {
     {
         this.entryes[1].setValue(id);
     }
-   public int getStockId()
+   public int getBaseId()
     {
         return Integer.parseInt(this.entryes[2].getValue());
     }
-    public void setStockId(int id)
+    public void setBaseId(int id)
     {
         this.entryes[2].setValue(id);
     }
@@ -104,7 +104,7 @@ public class Receiving extends DBModel {
     }
     public Location getLocation() throws Exception
     {
-        int id = getStockId();
+        int id = getBaseId();
         return Stock.getOne(id).getLocation();
     }
 }

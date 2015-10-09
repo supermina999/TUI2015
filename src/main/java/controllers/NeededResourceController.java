@@ -34,7 +34,7 @@ public class NeededResourceController {
             resourceId = allRes[allRes.length - 1].getId();
             NeededResource neededResource = new NeededResource();
             neededResource.setResourceId(resourceId);
-            neededResource.setStationId(stationId);
+            neededResource.setBaseId(stationId);
             neededResource.setNumber(weight);
             neededResource.setMeasureId(measureId);
             neededResource.setEmergency(emergency);
@@ -44,7 +44,7 @@ public class NeededResourceController {
         {
             NeededResource neededResource = new NeededResource();
             neededResource.setResourceId(resourceId);
-            neededResource.setStationId(stationId);
+            neededResource.setBaseId(stationId);
             neededResource.setMeasureId(measureId);
             neededResource.setEmergency(emergency);
             neededResource.writeToDB();

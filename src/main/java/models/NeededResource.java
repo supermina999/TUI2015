@@ -73,11 +73,11 @@ public class NeededResource extends DBModel {
     {
         this.entryes[1].setValue(id);
     }
-   public int getStationId()
+   public int getBaseId()
     {
         return Integer.parseInt(this.entryes[2].getValue());
     }
-    public void setStationId(int id)
+    public void setBaseId(int id)
     {
         this.entryes[2].setValue(id);
     }
@@ -112,7 +112,7 @@ public class NeededResource extends DBModel {
     }
     public Location getLocation() throws Exception
     {
-        int id = getStationId();
+        int id = getBaseId();
         return Stock.getOne(id).getLocation();
     }
 }

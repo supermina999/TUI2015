@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.5.44, for debian-linux-gnu (x86_64)
+-- MySQL dump 10.13  Distrib 5.6.26, for osx10.8 (x86_64)
 --
 -- Host: localhost    Database: tuidb
 -- ------------------------------------------------------
--- Server version	5.5.44-0ubuntu0.14.04.1
+-- Server version	5.6.26
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -40,6 +40,34 @@ LOCK TABLES `available_resource` WRITE;
 /*!40000 ALTER TABLE `available_resource` DISABLE KEYS */;
 INSERT INTO `available_resource` VALUES (1,1,1,12,1);
 /*!40000 ALTER TABLE `available_resource` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `bases`
+--
+
+DROP TABLE IF EXISTS `bases`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `bases` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `location_id` int(11) NOT NULL,
+  `organization_id` int(11) NOT NULL,
+  `date` date NOT NULL,
+  `is_station` tinyint(1) DEFAULT NULL,
+  `is_stock` tinyint(1) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `bases`
+--
+
+LOCK TABLES `bases` WRITE;
+/*!40000 ALTER TABLE `bases` DISABLE KEYS */;
+INSERT INTO `bases` VALUES (1,1,1,'2015-09-23',1,1),(2,2,2,'2015-09-23',1,1),(3,3,3,'2015-09-23',1,1);
+/*!40000 ALTER TABLE `bases` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -105,7 +133,7 @@ CREATE TABLE `location` (
   `x_coord` int(11) NOT NULL,
   `y_coord` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -338,59 +366,6 @@ INSERT INTO `resource` VALUES (1,'Медикаменты',0),(2,'Одежда',0
 UNLOCK TABLES;
 
 --
--- Table structure for table `station`
---
-
-DROP TABLE IF EXISTS `station`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `station` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `location_id` int(11) NOT NULL,
-  `organization_id` int(11) NOT NULL,
-  `date` date NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `station`
---
-
-LOCK TABLES `station` WRITE;
-/*!40000 ALTER TABLE `station` DISABLE KEYS */;
-INSERT INTO `station` VALUES (1,1,1,'2015-09-23'),(2,2,2,'2015-09-23'),(3,3,3,'2015-09-23');
-/*!40000 ALTER TABLE `station` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `stock`
---
-
-DROP TABLE IF EXISTS `stock`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `stock` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `organization_id` int(11) NOT NULL,
-  `location_id` int(11) NOT NULL,
-  `date` date NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `id` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `stock`
---
-
-LOCK TABLES `stock` WRITE;
-/*!40000 ALTER TABLE `stock` DISABLE KEYS */;
-INSERT INTO `stock` VALUES (1,1,1,'2015-09-23'),(2,2,2,'2015-09-23'),(3,3,3,'2015-09-23');
-/*!40000 ALTER TABLE `stock` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `transport`
 --
 
@@ -425,4 +400,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-10-09 10:41:11
+-- Dump completed on 2015-10-09 22:48:28

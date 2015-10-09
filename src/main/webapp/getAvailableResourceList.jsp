@@ -27,7 +27,7 @@
         if (i!=0) {%><%="////"%><%}%><%=res[i].getId()%>
 <%=res[i].getResourceName()%>
 <%=res[i].getNumber()%>
-<%=Stock.getOne(res[i].getStockId()).getOrganizationName()%>
+<%=Stock.getOne(res[i].getBaseId()).getOrganizationName()%>
 <%=res[i].getLocation().getAddress()%>
 <%=res[i].getLocation().getCityName()%>
 <%=res[i].getLocation().getCountryName()%><%
