@@ -128,7 +128,7 @@
 									data-speed="600"
 									data-start="2700"
 									data-end="9400"
-									data-endspeed="600"><img src="images/slider-1-layer-1.png" alt="">
+									data-endspeed="600"><img src="images/slider-1-layer.png" alt="">
 								</div>
 
 								</li>

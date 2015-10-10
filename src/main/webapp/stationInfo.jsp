@@ -29,7 +29,7 @@
 </script>
 
 <br>
-    <div class="form-block center-block" style="width: 50%; min-height: 700px;">
+    <div class="form-block center-block" style="width: 50%; min-height: 900px;">
         <div style="margin-left: 90%;">
             <p style="font-size: 25px;"><a href="changeStationInfo.jsp?id=<%=station.getId()%>"><i class="fa fa-edit"></i></a>
             <a href="deleteStation.jsp?id=<%=station.getId()%>" onclick="return confirmDelete();"><i class="fa fa-close"></i></a></p>
@@ -54,26 +54,22 @@
                         <br><br><br>
                     </div>
                     <br>
-                        <table class="table table-bordered">
+                        <table class="table">
                         <thead>
                                 <tr>
-                                    <th style="width: 50%;">Наименование</th>
-                                        <th style="width: 25%;">Количество</th>
-                                        <th style="width: 25%;">Единица измерения</th>
+                                    <th style="width: 80%;">Наименование</th>
+                                    <th style="width: 20%;">Количество</th>
                                 </tr>
                         </thead>
                         <tbody id="searchTable">
                             <%for (int j = 0; j < availableRes.length; j++)
                                 {%>
                                 <tr>
-                                    <td style="width: 50%;" class="idSearch">
+                                    <td class="idSearch">
                                         <%=availableRes[j].getResourceName()%></a>
                                     </td>
-                                    <td style="width: 25%;">
-                                        <%=availableRes[j].getNumber()%></a>
-                                    </td>
-                                    <td style="width: 25%;">
-                                        <%=availableRes[j].getMeasureName()%></a>
+                                    <td class="text-center">
+                                        <%=availableRes[j].getNumber()%> <%=availableRes[j].getMeasureName()%></a>
                                     </td>
                                 </tr>
                                 <%}%>

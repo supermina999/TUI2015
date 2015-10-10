@@ -34,7 +34,7 @@
          <form class="form-horizontal">
         <div class="col-lg-5 col-sm-5">
                 <div class="box-style-1 gray-bg team-member">
-                    <img src="images/team-member-2.jpg" alt="">
+                    <img src="images/avatar2.jpg" alt="">
                 </div>
         </div>
             <div class="form-group col-sm-7">

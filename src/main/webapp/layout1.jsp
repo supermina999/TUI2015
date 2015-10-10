@@ -19,7 +19,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 		<!-- Favicon -->
-		<link rel="shortcut icon" href="images/favicon.ico">
+		<link rel="shortcut icon" href="images/icon.png">
 
 		<!-- Web Fonts -->
 		<link href='../../../../../fonts.googleapis.com/css_6EE468F4' rel='stylesheet' type='text/css'>

@@ -36,23 +36,21 @@
                 </div>
                 <br><br><br>
             </div> <br>
-            <table class="table table-bordered">
+            <table class="table">
                 <thead>
                     <tr>
-                        <th style="width: 25%;">Название</th>
-                        <th style="width: 25%;">Количество</th>
-                        <th style="width: 25%;">Город</th>
-                        <th style="width: 25%;">Склад</th>
+                        <th style="width: 40%;">Название</th>
+                        <th style="width: 50%;">Склад</th>
+                        <th style="width: 10%;">Количество</th>
                     </tr>
                 </thead>
                 <tbody id="searchTable">
                     <%
                     for (int i = 0; i < availableRes.length; i++) {%>
                     <tr>
-                        <td class="quantity idSearch"> <%= availableRes[i].getResourceName() %> </td>
-                            <td class="product"><%= availableRes[i].getNumber() %></td>
-                            <td class="amount"><%=availableRes[i].getLocation().getCityName()%></td>
-                            <td class="product"><%=availableRes[i].getLocation().getAddress()%></td>
+                        <td class="idSearch"><%=availableRes[i].getResourceName() %> </td>
+                        <td class="idSearch">№<%=availableRes[i].getBaseId()%>, <%=availableRes[i].getLocation().getAddress()%>, <%=availableRes[i].getLocation().getCityName()%>, <%=availableRes[i].getLocation().getCountryName()%> </td>
+                        <td class="idSearch"><%=availableRes[i].getNumber()%> <%=availableRes[i].getMeasureName()%></td>
                     </tr>
                     <% } %>
                 </tbody>

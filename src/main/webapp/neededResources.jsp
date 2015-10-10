@@ -30,31 +30,28 @@
                             <option>Выберите пункт выдачи</option>
                             <%for (int i = 0;i < station.length;i++)
                             {%>
-                                <option><%=station[i].getLocation().getAddress()%></option>
+                                <option>№<%=station[i].getId()%>, <%=station[i].getLocation().getAddress()%></option>
                             <%}%>
                     </select>
                 </div>
                 <br><br><br>
             </div> <br>
-            <table class="table table-bordered">
+            <table class="table">
                 <thead>
                     <tr>
-                        <th style="width: 25%;">Название</th>
-                        <th style="width: 25%;">Количество</th>
-                        <th style="width: 25%;">Город</th>
-                        <th style="width: 25%;">Пункт выдачи</th>
+                        <th style="width: 40%;">Название</th>
+                        <th style="width: 50%;">Пункт выдачи</th>
+                        <th style="width: 10%;">Количество</th>
                     </tr>
                 </thead>
                 <tbody id="searchTable">
                     <%
                     for (int i = 0; i < neededRes.length; i++) {%>
-                        <tr>
-                            <td class="quantity"> <%=neededRes[i].getResourceName()%></td>
-                            <td class="amount"><%=neededRes[i].getNumber()%></td>
-                            <td class="amount"><%=neededRes[i].getLocation().getCityName()%></td>
-                            <td class="product"><%=neededRes[i].getLocation().getAddress()%></td>
-                            
-                        </tr>
+                    <tr>
+                        <td class="idSearch"><%=neededRes[i].getResourceName() %> </td>
+                        <td class="idSearch">№<%=neededRes[i].getBaseId()%>, <%=neededRes[i].getLocation().getAddress()%>, <%=neededRes[i].getLocation().getCityName()%>, <%=neededRes[i].getLocation().getCountryName()%> </td>
+                        <td class="idSearch"><%=neededRes[i].getNumber()%> <%=neededRes[i].getMeasureName()%></td>
+                    </tr>
                     <% } %>
                 </tbody>
             </table>

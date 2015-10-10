@@ -115,4 +115,9 @@ public class NeededResource extends DBModel {
         int id = getBaseId();
         return Stock.getOne(id).getLocation();
     }
+    public String getMeasureName() throws Exception
+    {
+        int id = getResourceId();
+        return Measure.getOne(id).getName();
+    }
 }
