@@ -19,8 +19,8 @@ public class Location extends DBModel {
         new DBEntry("id", EntryType.Int),
         new DBEntry("city_id", EntryType.Int),
         new DBEntry("address", EntryType.String),
-        new DBEntry("x_coord", EntryType.Int),
-        new DBEntry("y_coord", EntryType.Int)        
+        new DBEntry("x_coord", EntryType.Double),
+        new DBEntry("y_coord", EntryType.Double)        
     };
     
     protected Location(DBEntry[] entryes) {
@@ -81,19 +81,19 @@ public class Location extends DBModel {
     {
         this.entryes[2].setValue(adress);
     }
-   public int getXCoord()
+   public double getXCoord()
     {
-        return Integer.parseInt(this.entryes[3].getValue());
+        return Double.parseDouble(this.entryes[3].getValue());
     }
-    public void setXCoord(int x)
+    public void setXCoord(double x)
     {
         this.entryes[3].setValue(x);
     }
-    public int getYCoord()
+    public double getYCoord()
     {
-        return Integer.parseInt(this.entryes[4].getValue());
+        return Double.parseDouble(this.entryes[4].getValue());
     }
-    public void setYCoord(int id)
+    public void setYCoord(double id)
     {
         this.entryes[4].setValue(id);
     }

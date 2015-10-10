@@ -37,7 +37,8 @@ public class DBEntry
         }
         public void setValue(Object obj)
         {
-            if (type==EntryType.Int) value = ((Integer)obj).toString();
+            if (type == EntryType.Int) value = ((Integer)obj).toString();
+            else if (type == EntryType.Double) value = ((Double)obj).toString();
             else if (type == EntryType.Date)
             {
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
@@ -51,6 +52,7 @@ public class DBEntry
         }
         public String SQLValue() throws UnsupportedEncodingException, ParseException {
             if (type == EntryType.Int) return value;
+            else if (type == EntryType.Double) return value;
             else if (type == EntryType.Date) {
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
                 Date date = sdf.parse(value);
