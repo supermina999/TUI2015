@@ -98,16 +98,19 @@ public class ResourceController {
     {
         String resource_id = request.getParameter("resourceId");
         int resourceId = Integer.parseInt(resource_id);
-        String name = request.getParameter("name");
-        String number = request.getParameter("weight");
-        int weight = Integer.parseInt(number);
+        String weight = request.getParameter("number");
+        int number = Integer.parseInt(weight);
         String cityId = request.getParameter("cityId");
         String stockId = request.getParameter("stockId");
         
-        Resource resource = new Resource();
-        resource = Resource.getOne(resourceId);
-        weight = resource.getWeight() - weight;
-        resource.setWeight(weight);
-        resource.saveChanges();
+        AvailableResource[] availableRes = AvailableResource.getAll(null);
+        int availableResId = 0;
+        for (int i = 0;i < availableRes.length;i++)
+        {
+            if (availableRes[i].getResourceId() == resourceId) availableResId = i;
+        }
+        number = availableRes[availableResId].getNumber() - number;
+        availableRes[availableResId].setNumber(number);
+        availableRes[availableResId].saveChanges();
     }
 }
