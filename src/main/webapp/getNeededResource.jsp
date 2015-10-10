@@ -6,10 +6,12 @@
         %><%=res.getId()%>
 <%=res.getResourceName()%>
 <%=res.getNumber()%>
-<%=Station.getOne(res.getStationId()).getOrganizationName()%>
+<%=Station.getOne(res.getBaseId()).getOrganizationName()%>
 <%=res.getLocation().getAddress()%>
 <%=res.getLocation().getCityName()%>
-<%=res.getLocation().getCountryName()%><%
+<%=res.getLocation().getCountryName()%>
+<%=res.getBaseId()%>
+<%=res.getMeasureId()%><%
     }
     else 
     {

@@ -13,7 +13,7 @@ import java.sql.SQLException;
  */
 public class Transport extends DBModel {
     static protected String tableName = "transport";
-    static protected DBEntry[] stdEntryes = {
+    static public DBEntry[] stdEntryes = {
         new DBEntry("id", EntryType.Int),
         new DBEntry("name", EntryType.String),
         new DBEntry("max_weight", EntryType.Int),

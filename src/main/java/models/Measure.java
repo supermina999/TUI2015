@@ -13,7 +13,7 @@ import java.sql.SQLException;
  */
 public class Measure extends DBModel {
     static protected String tableName= "measure";
-    static protected DBEntry[] stdEntryes = {
+    static public DBEntry[] stdEntryes = {
         new DBEntry("id",EntryType.Int),
         new DBEntry("name",EntryType.String)
     };

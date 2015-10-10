@@ -13,7 +13,7 @@ import java.sql.SQLException;
  */
 public class NeededResource extends DBModel {
     static protected String tableName = "needed_resource";
-    static protected DBEntry[] stdEntryes = {
+    static public DBEntry[] stdEntryes = {
         new DBEntry("id", EntryType.Int),
         new DBEntry("resource_id", EntryType.Int),
         new DBEntry("station_id", EntryType.Int),

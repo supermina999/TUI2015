@@ -12,7 +12,7 @@ import java.util.Date;
 
 public class Base extends DBModel {
     static protected String tableName = "bases";
-    static protected DBEntry[] stdEntryes = {
+    static public DBEntry[] stdEntryes = {
         new DBEntry("id", EntryType.Int),
         new DBEntry("location_id", EntryType.Int),
         new DBEntry("organization_id", EntryType.Int),

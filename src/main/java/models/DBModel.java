@@ -16,7 +16,7 @@ import java.util.ArrayList;
 public class DBModel {    
     protected DBEntry[] entryes; //First element always ID
     static protected String tableName;
-    static protected DBEntry[] stdEntryes;
+    static public DBEntry[] stdEntryes;
     
     public DBModel()
     {
@@ -32,6 +32,16 @@ public class DBModel {
     protected DBModel(DBEntry[] entryes)
     {
         this.entryes = entryes;
+    }
+    public void updateEntry (DBEntry entry)
+    {
+        for (DBEntry upEntry: entryes)
+        {
+            if (upEntry.name.equals(entry.name))
+            {
+                upEntry = entry;
+            }
+        }
     }
     private void getRealStatics()
     {

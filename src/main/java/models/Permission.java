@@ -13,7 +13,7 @@ import java.sql.SQLException;
  */
 public class Permission extends DBModel {
     static protected String tableName = "permission";
-    static protected DBEntry[] stdEntryes = {
+    static public DBEntry[] stdEntryes = {
         new DBEntry("id", EntryType.Int),
         new DBEntry("name", EntryType.String)
     };

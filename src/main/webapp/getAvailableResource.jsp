@@ -9,7 +9,9 @@
 <%=Stock.getOne(res.getBaseId()).getOrganizationName()%>
 <%=res.getLocation().getAddress()%>
 <%=res.getLocation().getCityName()%>
-<%=res.getLocation().getCountryName()%><%
+<%=res.getLocation().getCountryName()%>
+<%=res.getBaseId()%>
+<%=res.getMeasureId()%><%
     }
     else 
     {

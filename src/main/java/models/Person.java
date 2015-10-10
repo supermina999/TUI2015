@@ -16,7 +16,7 @@ import java.util.Date;
  */
 public class Person extends DBModel {
     static protected String tableName = "person";
-    static protected DBEntry[] stdEntryes = {
+    static public DBEntry[] stdEntryes = {
         new DBEntry("id", EntryType.Int),
         new DBEntry("name", EntryType.String),
         new DBEntry("surname", EntryType.String),

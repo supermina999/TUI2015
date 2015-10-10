@@ -50,5 +50,32 @@ public class NeededResourceController {
             neededResource.writeToDB();
         }
     }
+    public static void update(HttpServletRequest request) throws Exception
+    {   
+        String idS;
+        if ((idS = request.getParameter("id")) != null)
+        {
+            int id = Integer.parseInt(idS);
+            NeededResource res = NeededResource.getOne(id);
+            for (DBEntry entry : NeededResource.stdEntryes)
+            {
+                String val = null;
+                if ( (val = request.getParameter(entry.name)) != null)
+                    {
+                        res.updateEntry(entry);
+                    }
+            }
+            res.saveChanges();
+        }
+    }
+    public static void delete(HttpServletRequest request) throws Exception
+    {
+        String idS;
+        if ((idS = request.getParameter("id")) != null)
+        {
+            int id = Integer.parseInt(idS);
+            NeededResource.getOne(id).delete();
+        }
+    }
     
 }

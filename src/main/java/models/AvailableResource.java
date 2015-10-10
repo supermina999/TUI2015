@@ -15,7 +15,7 @@ import java.text.ParseException;
  */
 public class AvailableResource extends DBModel {
     static protected String tableName = "available_resource";
-    static protected DBEntry[] stdEntryes = {
+    static public DBEntry[] stdEntryes = {
             new DBEntry("id",EntryType.Int),
             new DBEntry("resource_id",EntryType.Int),
             new DBEntry("base_id",EntryType.Int),

@@ -15,7 +15,7 @@ import java.text.ParseException;
  */
 public class Location extends DBModel {
     static protected String tableName  = "location";
-    static protected DBEntry[] stdEntryes ={
+    static public DBEntry[] stdEntryes ={
         new DBEntry("id", EntryType.Int),
         new DBEntry("city_id", EntryType.Int),
         new DBEntry("address", EntryType.String),
