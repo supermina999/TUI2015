@@ -10,6 +10,7 @@ public class NeededResourceController {
     public static void add(HttpServletRequest request) throws Exception
     {
         String name = request.getParameter("name");
+        String resourceIdString = request.getParameter("resourceId");
         String number = request.getParameter("number");
         int weight = Integer.parseInt(number);
         String cityName = request.getParameter("city");
@@ -24,6 +25,7 @@ public class NeededResourceController {
         {
             if (allResource[i].getName().equals(name)) resourceId = allResource[i].getId();
         }
+        if (resourceIdString != null) resourceId = Integer.parseInt(resourceIdString);
         if (resourceId == -1)
         {
             Resource resource = new Resource();
