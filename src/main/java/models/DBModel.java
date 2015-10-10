@@ -33,13 +33,13 @@ public class DBModel {
     {
         this.entryes = entryes;
     }
-    public void updateEntry (DBEntry entry)
+    public void updateEntry (DBEntry entry, String val)
     {
-        for (DBEntry upEntry: entryes)
+        for (int i = 0; i < entryes.length; i++ )
         {
-            if (upEntry.name.equals(entry.name))
+            if (entryes[i].name.equals(entry.name))
             {
-                upEntry = entry;
+                entryes[i].setValue( (entry.type == EntryType.Int) ? Integer.parseInt(val) : val);
             }
         }
     }
