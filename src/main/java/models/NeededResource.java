@@ -16,7 +16,7 @@ public class NeededResource extends DBModel {
     static public DBEntry[] stdEntryes = {
         new DBEntry("id", EntryType.Int),
         new DBEntry("resource_id", EntryType.Int),
-        new DBEntry("station_id", EntryType.Int),
+        new DBEntry("base_id", EntryType.Int),
         new DBEntry("number", EntryType.Int),
         new DBEntry("measure_id", EntryType.Int),
         new DBEntry("emergency", EntryType.Int)

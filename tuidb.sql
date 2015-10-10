@@ -25,7 +25,7 @@ DROP TABLE IF EXISTS `available_resource`;
 CREATE TABLE `available_resource` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `resource_id` int(11) NOT NULL,
-  `stock_id` int(11) NOT NULL,
+  `base_id` int(11) DEFAULT NULL,
   `number` int(11) NOT NULL,
   `measure_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
@@ -207,7 +207,7 @@ DROP TABLE IF EXISTS `needed_resource`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `needed_resource` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `station_id` int(11) NOT NULL,
+  `base_id` int(11) DEFAULT NULL,
   `resource_id` int(11) NOT NULL,
   `number` int(11) NOT NULL,
   `measure_id` int(11) NOT NULL,
@@ -400,4 +400,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-10-09 22:48:28
+-- Dump completed on 2015-10-10 10:45:40
