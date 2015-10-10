@@ -15,8 +15,8 @@ public class NeededResource extends DBModel {
     static protected String tableName = "needed_resource";
     static public DBEntry[] stdEntryes = {
         new DBEntry("id", EntryType.Int),
-        new DBEntry("resource_id", EntryType.Int),
         new DBEntry("base_id", EntryType.Int),
+        new DBEntry("resource_id", EntryType.Int),
         new DBEntry("number", EntryType.Int),
         new DBEntry("measure_id", EntryType.Int),
         new DBEntry("emergency", EntryType.Int)
@@ -67,19 +67,19 @@ public class NeededResource extends DBModel {
     }
     public int getResourceId()
     {
-        return Integer.parseInt(this.entryes[1].getValue());
+        return Integer.parseInt(this.entryes[2].getValue());
     }
     public void setResourceId(int id)
     {
-        this.entryes[1].setValue(id);
+        this.entryes[2].setValue(id);
     }
    public int getBaseId()
     {
-        return Integer.parseInt(this.entryes[2].getValue());
+        return Integer.parseInt(this.entryes[1].getValue());
     }
     public void setBaseId(int id)
     {
-        this.entryes[2].setValue(id);
+        this.entryes[1].setValue(id);
     }
     public int getNumber()
     {
