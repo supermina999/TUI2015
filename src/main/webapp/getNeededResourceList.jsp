@@ -27,10 +27,11 @@
         if (i!=0) {%><%="////"%><%}%><%=res[i].getId()%>
 <%=res[i].getResourceName()%>
 <%=res[i].getNumber()%>
-<%=Station.getOne(res[i].getStationId()).getOrganizationName()%>
+<%=Station.getOne(res[i].getBaseId()).getOrganizationName()%>
 <%=res[i].getLocation().getAddress()%>
 <%=res[i].getLocation().getCityName()%>
 <%=res[i].getLocation().getCountryName()%>
+<%=res[i].getBaseId()%>
 <%
     }
 %>

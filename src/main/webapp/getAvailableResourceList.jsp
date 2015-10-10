@@ -30,6 +30,8 @@
 <%=Stock.getOne(res[i].getBaseId()).getOrganizationName()%>
 <%=res[i].getLocation().getAddress()%>
 <%=res[i].getLocation().getCityName()%>
-<%=res[i].getLocation().getCountryName()%><%
+<%=res[i].getLocation().getCountryName()%>
+<%=res[i].getBaseId()%>
+<%
     }
 %>
