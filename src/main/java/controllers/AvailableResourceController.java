@@ -52,7 +52,7 @@ public class AvailableResourceController {
                 String val = null;
                 if ( (val = request.getParameter(entry.name)) != null)
                     {
-                        res.updateEntry(entry);
+                        res.updateEntry(entry, val);
                     }
             }
             res.saveChanges();
