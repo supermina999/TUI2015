@@ -33,6 +33,7 @@
 <%=res[i].getLocation().getCountryName()%>
 <%=res[i].getBaseId()%>
 <%=res[i].getMeasureId()%>
+<%=res[i].getResourceId()%>
 <%
     }
 %>

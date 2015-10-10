@@ -11,7 +11,8 @@
 <%=res.getLocation().getCityName()%>
 <%=res.getLocation().getCountryName()%>
 <%=res.getBaseId()%>
-<%=res.getMeasureId()%><%
+<%=res.getMeasureId()%>
+<%=res.getResourceId()%><%
     }
     else 
     {
