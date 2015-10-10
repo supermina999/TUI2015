@@ -3,7 +3,7 @@
 <%@page import="controllers.UserController"%>
 
 <%
-    String result = UserController.update(request);
+    String result = UserController.updatePassword(request);
     if (!result.equals("OK")) {%>
 <center><h2><%=result%></h2></center>
         <%} else {%>

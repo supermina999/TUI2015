@@ -3,7 +3,7 @@
     AvailableResource res = AvailableResource.getOne(id);
     if (res != null)
     {
-        %><%=res.getId()%>
+%><%=res.getId()%>
 <%=res.getResourceName()%>
 <%=res.getNumber()%>
 <%=Stock.getOne(res.getBaseId()).getOrganizationName()%>
@@ -16,6 +16,6 @@
     }
     else 
     {
-        %><%="error"%><%
+%><%="error"%><%
     }
 %>

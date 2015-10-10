@@ -5,6 +5,6 @@
 <%
     UserController.delete(request);
 %>
-    <script>
-        window.location.href = "index.jsp";
-    </script>
+<script>
+    window.location.href = "index.jsp";
+</script>

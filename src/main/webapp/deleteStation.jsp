@@ -5,6 +5,6 @@
 <%
     StationController.delete(request);
 %>
-    <script>
-        window.location.href = "stations.jsp";
-    </script>
+<script>
+    window.location.href = "stations.jsp";
+</script>

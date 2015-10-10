@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package models;
+
 import java.io.UnsupportedEncodingException;
 import java.sql.*;
 import java.text.ParseException;
@@ -13,158 +14,147 @@ import java.util.ArrayList;
  *
  * @author roma
  */
-public class DBModel {    
+public class DBModel {
+
     protected DBEntry[] entryes; //First element always ID
     static protected String tableName;
     static public DBEntry[] stdEntryes;
-    
-    public DBModel()
-    {
+
+    public DBModel() {
         this.getRealStatics();
         entryes = new DBEntry[DBModel.stdEntryes.length];
-        for(int i = 0; i < entryes.length; i++)
-        {
+        for (int i = 0; i < entryes.length; i++) {
             entryes[i] = new DBEntry();
             entryes[i].name = DBModel.stdEntryes[i].name;
             entryes[i].type = DBModel.stdEntryes[i].type;
         }
     }
-    protected DBModel(DBEntry[] entryes)
-    {
+
+    protected DBModel(DBEntry[] entryes) {
         this.entryes = entryes;
     }
-    public void updateEntry (DBEntry entry, String val)
-    {
-        for (int i = 0; i < entryes.length; i++ )
-        {
-            if (entryes[i].name.equals(entry.name))
-            {
-                entryes[i].setValue( (entry.type == EntryType.Int) ? Integer.parseInt(val) : val);
+
+    public void updateEntry(DBEntry entry, String val) {
+        for (int i = 0; i < entryes.length; i++) {
+            if (entryes[i].name.equals(entry.name)) {
+                entryes[i].setValue((entry.type == EntryType.Int) ? Integer.parseInt(val) : (entry.type == EntryType.Double) ? Double.parseDouble(val) : val);
             }
         }
     }
-    private void getRealStatics()
-    {
-        if (this.getClass() == Person.class) 
-        {
+
+    private void getRealStatics() {
+        if (this.getClass() == Person.class) {
             DBModel.tableName = Person.tableName;
             DBModel.stdEntryes = Person.stdEntryes;
         }
-        if (this.getClass() == AvailableResource.class) 
-        {
+        if (this.getClass() == AvailableResource.class) {
             DBModel.tableName = AvailableResource.tableName;
             DBModel.stdEntryes = AvailableResource.stdEntryes;
         }
-        if (this.getClass() == Country.class) 
-        {
+        if (this.getClass() == Country.class) {
             DBModel.tableName = Country.tableName;
             DBModel.stdEntryes = Country.stdEntryes;
         }
-        if (this.getClass() == Location.class) 
-        {
+        if (this.getClass() == Location.class) {
             DBModel.tableName = Location.tableName;
             DBModel.stdEntryes = Location.stdEntryes;
         }
-        if (this.getClass() == Losing.class) 
-        {
+        if (this.getClass() == Losing.class) {
             DBModel.tableName = Losing.tableName;
             DBModel.stdEntryes = Losing.stdEntryes;
         }
-        if (this.getClass() == NeededResource.class) 
-        {
+        if (this.getClass() == NeededResource.class) {
             DBModel.tableName = NeededResource.tableName;
             DBModel.stdEntryes = NeededResource.stdEntryes;
         }
-        if (this.getClass() == Organization.class) 
-        {
+        if (this.getClass() == Organization.class) {
             DBModel.tableName = Organization.tableName;
             DBModel.stdEntryes = Organization.stdEntryes;
         }
-        if (this.getClass() == Permission.class) 
-        {
+        if (this.getClass() == Permission.class) {
             DBModel.tableName = Permission.tableName;
             DBModel.stdEntryes = Permission.stdEntryes;
         }
-        if (this.getClass() == Receiving.class) 
-        {
+        if (this.getClass() == Receiving.class) {
             DBModel.tableName = Receiving.tableName;
             DBModel.stdEntryes = Receiving.stdEntryes;
         }
-        if (this.getClass() == Resource.class) 
-        {
+        if (this.getClass() == Resource.class) {
             DBModel.tableName = Resource.tableName;
             DBModel.stdEntryes = Resource.stdEntryes;
         }
-        if (this.getClass() == Station.class) 
-        {
+        if (this.getClass() == Station.class) {
             DBModel.tableName = Station.tableName;
             DBModel.stdEntryes = Station.stdEntryes;
         }
-        if (this.getClass() == Stock.class) 
-        {
+        if (this.getClass() == Stock.class) {
             DBModel.tableName = Stock.tableName;
             DBModel.stdEntryes = Stock.stdEntryes;
         }
-        if (this.getClass() == Transport.class) 
-        {
+        if (this.getClass() == Transport.class) {
             DBModel.tableName = Transport.tableName;
             DBModel.stdEntryes = Transport.stdEntryes;
         }
     }
-    
-    
-    public void writeToDB() throws Exception
-    {
+
+    public void writeToDB() throws Exception {
         getRealStatics();
-        if (DBConnectionHolder.connection == null || DBConnectionHolder.connection.isClosed()) DBConnectionHolder.createConnection();
+        if (DBConnectionHolder.connection == null || DBConnectionHolder.connection.isClosed()) {
+            DBConnectionHolder.createConnection();
+        }
         Statement st = DBConnectionHolder.connection.createStatement();
-        st.execute("use " +DBConnectionHolder.DBName);  
+        st.execute("use " + DBConnectionHolder.DBName);
         st.execute("SET NAMES utf8");
         String query = "INSERT " + this.tableName + " SET ";
-        for(int i = 1; i < entryes.length;i++)
-        {
+        for (int i = 1; i < entryes.length; i++) {
             query += entryes[i].name + "=" + entryes[i].SQLValue();
-            if (i+1<entryes.length) query += ", ";
+            if (i + 1 < entryes.length) {
+                query += ", ";
+            }
         }
         st.execute(query);
         st.close();
     }
+
     public void saveChanges() throws ClassNotFoundException, SQLException, UnsupportedEncodingException, ParseException {
         getRealStatics();
-        if (DBConnectionHolder.connection == null || DBConnectionHolder.connection.isClosed()) DBConnectionHolder.createConnection();
+        if (DBConnectionHolder.connection == null || DBConnectionHolder.connection.isClosed()) {
+            DBConnectionHolder.createConnection();
+        }
         Statement st = DBConnectionHolder.connection.createStatement();
-        st.execute("use " +DBConnectionHolder.DBName); 
+        st.execute("use " + DBConnectionHolder.DBName);
         st.execute("SET NAMES utf8");
         String query = "UPDATE " + this.tableName + " SET ";
-        for(int i = 1; i < entryes.length;i++)
-        {
+        for (int i = 1; i < entryes.length; i++) {
 
             query += entryes[i].name + " = " + entryes[i].SQLValue();
-            if (i+1<entryes.length) query += ", ";
+            if (i + 1 < entryes.length) {
+                query += ", ";
+            }
         }
         query += " WHERE " + entryes[0].name + "=" + entryes[0].SQLValue();
         st.execute(query);
         st.close();
     }
-    
+
     public void delete() throws ClassNotFoundException, SQLException, UnsupportedEncodingException, ParseException {
         getRealStatics();
-        if (DBConnectionHolder.connection == null || DBConnectionHolder.connection.isClosed()) DBConnectionHolder.createConnection();
+        if (DBConnectionHolder.connection == null || DBConnectionHolder.connection.isClosed()) {
+            DBConnectionHolder.createConnection();
+        }
         Statement st = DBConnectionHolder.connection.createStatement();
-        st.execute("use " +DBConnectionHolder.DBName); 
+        st.execute("use " + DBConnectionHolder.DBName);
         st.execute("SET NAMES utf8");
         String query = "DELETE FROM " + this.tableName + " WHERE ";
-        for(int i = 0; i < 1;i++)
-        {
+        for (int i = 0; i < 1; i++) {
             query += entryes[i].name + "=" + entryes[i].SQLValue();
             //if (i+1<entryes.length) query += " AND ";
         }
         st.execute(query);
         st.close();
     }
-    
-    public static void init()
-    {
+
+    public static void init() {
         AvailableResource.init();
         City.init();
         Country.init();
@@ -180,34 +170,32 @@ public class DBModel {
         Stock.init();
         Transport.init();
     }
-    
-    protected static DBModel getOne( DBEntry[] entryes, int fl) throws Exception
-    {
-        if (DBConnectionHolder.connection == null || DBConnectionHolder.connection.isClosed()) DBConnectionHolder.createConnection();
+
+    protected static DBModel getOne(DBEntry[] entryes, int fl) throws Exception {
+        if (DBConnectionHolder.connection == null || DBConnectionHolder.connection.isClosed()) {
+            DBConnectionHolder.createConnection();
+        }
         Statement st = DBConnectionHolder.connection.createStatement();
-        st.execute("use " +DBConnectionHolder.DBName); 
+        st.execute("use " + DBConnectionHolder.DBName);
         st.execute("SET NAMES utf8");
         String query = "SELECT * FROM " + tableName;
-        if (entryes != null) 
-        {
+        if (entryes != null) {
             query += " WHERE ";
-            for(int i = 0; i < entryes.length; i++)
-            {
+            for (int i = 0; i < entryes.length; i++) {
                 query += entryes[i].name + "=" + entryes[i].SQLValue();
-                if (i+1<entryes.length) query += " AND ";
+                if (i + 1 < entryes.length) {
+                    query += " AND ";
+                }
             }
         }
         DBEntry[] result = new DBEntry[stdEntryes.length];
-        try (ResultSet rs = st.executeQuery(query))
-        {
-            if (rs.next())
-            {
-                for(int i = 0; i < stdEntryes.length; i++)
-                {
-                   result[i] = new DBEntry();
-                   result[i].type = stdEntryes[i].type; 
-                   result[i].name = stdEntryes[i].name;
-                   result[i].setValue(rs.getObject(i+1)); 
+        try (ResultSet rs = st.executeQuery(query)) {
+            if (rs.next()) {
+                for (int i = 0; i < stdEntryes.length; i++) {
+                    result[i] = new DBEntry();
+                    result[i].type = stdEntryes[i].type;
+                    result[i].name = stdEntryes[i].name;
+                    result[i].setValue(rs.getObject(i + 1));
                 }
                 DBModel ans = new DBModel(result);
                 return ans;
@@ -215,36 +203,35 @@ public class DBModel {
         }
         return null;
     }
-    protected static DBModel[] getAll( DBEntry[] entryes, int fl) throws Exception
-    {
 
-        if (DBConnectionHolder.connection == null || DBConnectionHolder.connection.isClosed()) DBConnectionHolder.createConnection();
+    protected static DBModel[] getAll(DBEntry[] entryes, int fl) throws Exception {
+
+        if (DBConnectionHolder.connection == null || DBConnectionHolder.connection.isClosed()) {
+            DBConnectionHolder.createConnection();
+        }
         Statement st = DBConnectionHolder.connection.createStatement();
-        st.execute("use " +DBConnectionHolder.DBName); 
+        st.execute("use " + DBConnectionHolder.DBName);
         st.execute("SET NAMES utf8");
-        String query = "SELECT * FROM " + tableName ;
-        if (entryes != null) 
-        {
+        String query = "SELECT * FROM " + tableName;
+        if (entryes != null) {
             query += " WHERE ";
-            for(int i = 0; i < entryes.length; i++)
-            {
+            for (int i = 0; i < entryes.length; i++) {
                 query += entryes[i].name + "=" + entryes[i].SQLValue();
-                if (i+1<entryes.length) query += " AND ";
+                if (i + 1 < entryes.length) {
+                    query += " AND ";
+                }
             }
         }
         DBEntry[] result = new DBEntry[stdEntryes.length];
-        try (ResultSet rs = st.executeQuery(query))
-        {
+        try (ResultSet rs = st.executeQuery(query)) {
             ArrayList<DBModel> ans = new ArrayList<DBModel>();
-            while (rs.next())
-            {
+            while (rs.next()) {
                 result = new DBEntry[stdEntryes.length];
-                for(int i = 0; i < stdEntryes.length; i++)
-                {
+                for (int i = 0; i < stdEntryes.length; i++) {
                     result[i] = new DBEntry();
-                    result[i].type = stdEntryes[i].type; 
+                    result[i].type = stdEntryes[i].type;
                     result[i].name = stdEntryes[i].name;
-                    result[i].setValue(rs.getObject(i+1)); 
+                    result[i].setValue(rs.getObject(i + 1));
                 }
                 ans.add(new DBModel(result));
             }

@@ -6,5 +6,5 @@
     ResourceController.withdraw(request);
 %>
 <script>
-        window.location.href = "availableResources.jsp";
+    window.location.href = "availableResources.jsp";
 </script>

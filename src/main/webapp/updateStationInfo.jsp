@@ -5,6 +5,6 @@
 <%
     StationController.update(request);
 %>
-    <script>
-        window.location.href = "stationInfo.jsp?id=<%=request.getParameter("id")%>";
-    </script>
+<script>
+    window.location.href = "stationInfo.jsp?id=<%=request.getParameter("id")%>";
+</script>

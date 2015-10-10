@@ -1,7 +1,8 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
-<% int minPermission = 8; 
-   int tab = 3; %>
+<% int minPermission = 8;
+    int tab = 3;
+   %>
 <%@include file = "layout1.jsp"%>
 <br>
 <div class="form-block center-block" style="min-height: 900px;"> 
@@ -25,17 +26,17 @@
     <button id="button4" class="btn btn-default btn-block">Добавить подвижные метки</button>
     <button id="button5" class="btn btn-default btn-block hidden">Проложить путь между подвижными метками</button><br>
     <table class="table" id="table">
-    <thead>
+        <thead>
             <tr>
                 <th style="width: 50%;">Адрес</th>
                 <th style="width: 25%;">Широта</th>
                 <th style="width: 25%;">Долгота</th>
             </tr>
-    </thead>
-    <tbody>
+        </thead>
+        <tbody>
     </table>
 </div>
 
 <script src="js/map.js"></script>
-    
+
 <%@include file = "layout2.jsp"%>

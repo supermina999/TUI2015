@@ -5,6 +5,6 @@
 <%
     AvailableResourceController.delete(request);
 %>
-    <script>
-        window.location.href = "availableResources.jsp";
-    </script>
+<script>
+    window.location.href = "availableResources.jsp";
+</script>

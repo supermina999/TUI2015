@@ -6,5 +6,5 @@
     NeededResourceController.add(request);
 %>
 <script>
-        window.location.href = "neededResources.jsp";
+    window.location.href = "neededResources.jsp";
 </script>

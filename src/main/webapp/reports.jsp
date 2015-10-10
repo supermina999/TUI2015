@@ -5,8 +5,9 @@
 <%@page import="java.util.Date"%>
 <%@page import="java.util.Calendar"%>
 <%@ page import="java.text.SimpleDateFormat" %>
-<% int minPermission = 8; 
-   int tab = 6; %>
+<% int minPermission = 8;
+    int tab = 6;
+   %>
 <%@include file = "layout1.jsp"%>
 <script src="plugins/charts/Chart.js"></script>  
 <%
@@ -19,31 +20,31 @@
 <center><br><h1>Отчёты</h1><br>
 
 
-<div style="min-height: 700px; width: 80%;">
-<div class="vertical">
-    <ul class="nav nav-tabs" role="tablist">
-        <li class><a href="#vtab1" role="tab" data-toggle="tab" aria-expanded="false">Пользователи</a></li>
-        <li class><a href="#vtab2" role="tab" data-toggle="tab" aria-expanded="false">Организации</a></li>
-        <li class><a href="#vtab3" role="tab" data-toggle="tab" aria-expanded="false">Склады</a></li>
-        <li class><a href="#vtab4" role="tab" data-toggle="tab" aria-expanded="false">Пункты выдачи</a></li>
-        
-    </ul>
-    <div class="tab-content" style="width: 80%;">
-        <div class="tab-pane fade active in" id="vtab1">
-            <canvas class="graph-line" id="myChart1"></canvas>
+    <div style="min-height: 700px; width: 80%;">
+        <div class="vertical">
+            <ul class="nav nav-tabs" role="tablist">
+                <li class><a href="#vtab1" role="tab" data-toggle="tab" aria-expanded="false">Пользователи</a></li>
+                <li class><a href="#vtab2" role="tab" data-toggle="tab" aria-expanded="false">Организации</a></li>
+                <li class><a href="#vtab3" role="tab" data-toggle="tab" aria-expanded="false">Склады</a></li>
+                <li class><a href="#vtab4" role="tab" data-toggle="tab" aria-expanded="false">Пункты выдачи</a></li>
+
+            </ul>
+            <div class="tab-content" style="width: 80%;">
+                <div class="tab-pane fade active in" id="vtab1">
+                    <canvas class="graph-line" id="myChart1"></canvas>
+                </div>
+                <div class="tab-pane fade active in" id="vtab2">
+                    <canvas class="graph-line" id="myChart2"></canvas>
+                </div>
+                <div class="tab-pane fade active in" id="vtab3">
+                    <canvas class="graph-line" id="myChart3"></canvas>
+                </div>
+                <div class="tab-pane fade active in" id="vtab4">
+                    <canvas class="graph-line" id="myChart4"></canvas>
+                </div>
+            </div>
         </div>
-        <div class="tab-pane fade active in" id="vtab2">
-            <canvas class="graph-line" id="myChart2"></canvas>
-        </div>
-        <div class="tab-pane fade active in" id="vtab3">
-            <canvas class="graph-line" id="myChart3"></canvas>
-        </div>
-        <div class="tab-pane fade active in" id="vtab4">
-            <canvas class="graph-line" id="myChart4"></canvas>
-        </div>
-    </div>
-</div>
-</div></center>
+    </div></center>
     <%
         Vector<String> graph_date1 = new Vector<String>();
         Vector<Integer> number1 = new Vector<Integer>();
@@ -62,16 +63,15 @@
         cal.setTime(date);
         cal.add(Calendar.DATE, -1);
         date = sdf.parse(sdf.format(cal.getTime()));
-        while (!date.after(date_end))
-        {
+        while (!date.after(date_end)) {
             graph_date1.add(new SimpleDateFormat("dd.MM.yyyy").format(date));
             String dr = sdf.format(person[i].getDate());
-            while(sdf.format(date).equals(dr) && i < person.length)
-            {
+            while (sdf.format(date).equals(dr) && i < person.length) {
                 i++;
                 d++;
-                if (i < person.length)
+                if (i < person.length) {
                     dr = sdf.format(person[i].getDate());
+                }
             }
             number1.add(d);
             cal.add(Calendar.DATE, 1);
@@ -85,16 +85,15 @@
         cal.setTime(date);
         cal.add(Calendar.DATE, -1);
         date = sdf.parse(sdf.format(cal.getTime()));
-        while (!date.after(date_end))
-        {
+        while (!date.after(date_end)) {
             graph_date2.add(new SimpleDateFormat("dd.MM.yyyy").format(date));
             String dr = sdf.format(organization[i].getDate());
-            while(sdf.format(date).equals(dr) && i < organization.length)
-            {
+            while (sdf.format(date).equals(dr) && i < organization.length) {
                 i++;
                 d++;
-                if (i < organization.length)
+                if (i < organization.length) {
                     dr = sdf.format(organization[i].getDate());
+                }
             }
             number2.add(d);
             cal.add(Calendar.DATE, 1);
@@ -108,16 +107,15 @@
         cal.setTime(date);
         cal.add(Calendar.DATE, -1);
         date = sdf.parse(sdf.format(cal.getTime()));
-        while (!date.after(date_end))
-        {
+        while (!date.after(date_end)) {
             graph_date3.add(new SimpleDateFormat("dd.MM.yyyy").format(date));
             String dr = sdf.format(stock[i].getDate());
-            while(sdf.format(date).equals(dr) && i < stock.length)
-            {
+            while (sdf.format(date).equals(dr) && i < stock.length) {
                 i++;
                 d++;
-                if (i < stock.length)
+                if (i < stock.length) {
                     dr = sdf.format(stock[i].getDate());
+                }
             }
             number3.add(d);
             cal.add(Calendar.DATE, 1);
@@ -131,16 +129,15 @@
         cal.setTime(date);
         cal.add(Calendar.DATE, -1);
         date = sdf.parse(sdf.format(cal.getTime()));
-        while (!date.after(date_end))
-        {
+        while (!date.after(date_end)) {
             graph_date4.add(new SimpleDateFormat("dd.MM.yyyy").format(date));
             String dr = sdf.format(station[i].getDate());
-            while(sdf.format(date).equals(dr) && i < station.length)
-            {
+            while (sdf.format(date).equals(dr) && i < station.length) {
                 i++;
                 d++;
-                if (i < station.length)
+                if (i < station.length) {
                     dr = sdf.format(station[i].getDate());
+                }
             }
             number4.add(d);
             cal.add(Calendar.DATE, 1);
@@ -148,77 +145,75 @@
         }
     %>
 <script>
-    var data1 = {
-        labels: ["<%=graph_date1.elementAt(0)%>"<%for (i = 1; i < graph_date1.size(); i++){%>, "<%=graph_date1.elementAt(i)%>"<%}%>],
-        datasets: [
-            {
-                label: "My First dataset",
-                fillColor: "rgba(220,220,220,0.2)",
-                strokeColor: "rgba(220,220,220,1)",
-                pointColor: "rgba(220,220,220,1)",
-                pointStrokeColor: "#fff",
-                pointHighlightFill: "#fff",
-                pointHighlightStroke: "rgba(220,220,220,1)",
-                data: [<%=number1.elementAt(0)%><%for (i = 1; i < number1.size(); i++){%>, <%=number1.elementAt(i)%><%}%>]
-            }
-        ]
-    };
-    var data2 = {
-        labels: ["<%=graph_date2.elementAt(0)%>"<%for (i = 1; i < graph_date2.size(); i++){%>, "<%=graph_date2.elementAt(i)%>"<%}%>],
-        datasets: [
-            {
-                label: "Организации",
-                fillColor: "rgba(220,220,220,0.2)",
-                strokeColor: "rgba(220,220,220,1)",
-                pointColor: "rgba(220,220,220,1)",
-                pointStrokeColor: "#fff",
-                pointHighlightFill: "#fff",
-                pointHighlightStroke: "rgba(220,220,220,1)",
-                data: [<%=number2.elementAt(0)%><%for (i = 1; i < number2.size(); i++){%>, <%=number2.elementAt(i)%><%}%>]
-            }
-        ]
-    };
-    var data3 = {
-        labels: ["<%=graph_date3.elementAt(0)%>"<%for (i = 1; i < graph_date3.size(); i++){%>, "<%=graph_date3.elementAt(i)%>"<%}%>],
-        datasets: [
-            {
-                label: "My First dataset",
-                fillColor: "rgba(220,220,220,0.2)",
-                strokeColor: "rgba(220,220,220,1)",
-                pointColor: "rgba(220,220,220,1)",
-                pointStrokeColor: "#fff",
-                pointHighlightFill: "#fff",
-                pointHighlightStroke: "rgba(220,220,220,1)",
-                data: [<%=number3.elementAt(0)%><%for (i = 1; i < number3.size(); i++){%>, <%=number3.elementAt(i)%><%}%>]
-            }
-        ]
-    };
-    var data4 = {
-        labels: ["<%=graph_date4.elementAt(0)%>"<%for (i = 1; i < graph_date4.size(); i++){%>, "<%=graph_date4.elementAt(i)%>"<%}%>],
-        datasets: [
-            {
-                label: "My First dataset",
-                fillColor: "rgba(220,220,220,0.2)",
-                strokeColor: "rgba(220,220,220,1)",
-                pointColor: "rgba(220,220,220,1)",
-                pointStrokeColor: "#fff",
-                pointHighlightFill: "#fff",
-                pointHighlightStroke: "rgba(220,220,220,1)",
-                data: [<%=number4.elementAt(0)%><%for (i = 1; i < number4.size(); i++){%>, <%=number4.elementAt(i)%><%}%>]
-            }
-        ]
-    };
-    window.onload = function() {
+            var data1 = {
+            labels: ["<%=graph_date1.elementAt(0)%>"<%for (i = 1; i < graph_date1.size(); i++) {%>, "<%=graph_date1.elementAt(i)%>"<%}%>],
+                    datasets: [
+                    {
+                    label: "My First dataset",
+                            fillColor: "rgba(220,220,220,0.2)",
+                            strokeColor: "rgba(220,220,220,1)",
+                            pointColor: "rgba(220,220,220,1)",
+                            pointStrokeColor: "#fff",
+                            pointHighlightFill: "#fff",
+                            pointHighlightStroke: "rgba(220,220,220,1)",
+                            data: [<%=number1.elementAt(0)%><%for (i = 1; i < number1.size(); i++) {%>, <%=number1.elementAt(i)%><%}%>]
+                    }
+                    ]
+            };
+            var data2 = {
+            labels: ["<%=graph_date2.elementAt(0)%>"<%for (i = 1; i < graph_date2.size(); i++) {%>, "<%=graph_date2.elementAt(i)%>"<%}%>],
+                    datasets: [
+                    {
+                    label: "Организации",
+                            fillColor: "rgba(220,220,220,0.2)",
+                            strokeColor: "rgba(220,220,220,1)",
+                            pointColor: "rgba(220,220,220,1)",
+                            pointStrokeColor: "#fff",
+                            pointHighlightFill: "#fff",
+                            pointHighlightStroke: "rgba(220,220,220,1)",
+                            data: [<%=number2.elementAt(0)%><%for (i = 1; i < number2.size(); i++) {%>, <%=number2.elementAt(i)%><%}%>]
+                    }
+                    ]
+            };
+            var data3 = {
+            labels: ["<%=graph_date3.elementAt(0)%>"<%for (i = 1; i < graph_date3.size(); i++) {%>, "<%=graph_date3.elementAt(i)%>"<%}%>],
+                    datasets: [
+                    {
+                    label: "My First dataset",
+                            fillColor: "rgba(220,220,220,0.2)",
+                            strokeColor: "rgba(220,220,220,1)",
+                            pointColor: "rgba(220,220,220,1)",
+                            pointStrokeColor: "#fff",
+                            pointHighlightFill: "#fff",
+                            pointHighlightStroke: "rgba(220,220,220,1)",
+                            data: [<%=number3.elementAt(0)%><%for (i = 1; i < number3.size(); i++) {%>, <%=number3.elementAt(i)%><%}%>]
+                    }
+                    ]
+            };
+            var data4 = {
+            labels: ["<%=graph_date4.elementAt(0)%>"<%for (i = 1; i < graph_date4.size(); i++) {%>, "<%=graph_date4.elementAt(i)%>"<%}%>],
+                    datasets: [
+                    {
+                    label: "My First dataset",
+                            fillColor: "rgba(220,220,220,0.2)",
+                            strokeColor: "rgba(220,220,220,1)",
+                            pointColor: "rgba(220,220,220,1)",
+                            pointStrokeColor: "#fff",
+                            pointHighlightFill: "#fff",
+                            pointHighlightStroke: "rgba(220,220,220,1)",
+                            data: [<%=number4.elementAt(0)%><%for (i = 1; i < number4.size(); i++) {%>, <%=number4.elementAt(i)%><%}%>]
+                    }
+                    ]
+            };
+            window.onload = function() {
             var ctx = document.getElementById("myChart1").getContext("2d");
-            window.myNewChart = new Chart(ctx).Line(data1, {responsive: true});
-            var ctx = document.getElementById("myChart2").getContext("2d");
-            window.myNewChart = new Chart(ctx).Line(data2, {responsive: true});
-            var ctx = document.getElementById("myChart3").getContext("2d");
-            window.myNewChart = new Chart(ctx).Line(data3, {responsive: true});
-            var ctx = document.getElementById("myChart4").getContext("2d");
-            window.myNewChart = new Chart(ctx).Line(data4, {responsive: true});
-            
-        };
-</script>
+                    window.myNewChart = new Chart(ctx).Line(data1, {responsive: true});
+                    var ctx = document.getElementById("myChart2").getContext("2d");
+                    window.myNewChart = new Chart(ctx).Line(data2, {responsive: true});
+                    var ctx = document.getElementById("myChart3").getContext("2d");
+                    window.myNewChart = new Chart(ctx).Line(data3, {responsive: true});
+                    var ctx = document.getElementById("myChart4").getContext("2d");
+                    window.myNewChart = new Chart(ctx).Line(data4, {responsive: true});
+            };</script>
 <script src="js/charts.js"></script>
 <%@include file = "layout2.jsp"%>

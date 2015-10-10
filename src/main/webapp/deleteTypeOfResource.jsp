@@ -6,5 +6,5 @@
     ResourceController.delete(request);
 %>
 <script>
-        window.location.href = "typesOfResources.jsp";
+    window.location.href = "typesOfResources.jsp";
 </script>

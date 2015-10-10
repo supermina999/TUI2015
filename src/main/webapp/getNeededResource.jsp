@@ -1,9 +1,8 @@
 <%@page import="models.*"%><%@page contentType="text/plain" pageEncoding="UTF-8"%><%
     int id = Integer.parseInt(request.getParameter("id"));
     NeededResource res = NeededResource.getOne(id);
-    if (res != null)
-    {
-        %><%=res.getId()%>
+    if (res != null) {
+%><%=res.getId()%>
 <%=res.getResourceName()%>
 <%=res.getNumber()%>
 <%=Station.getOne(res.getBaseId()).getOrganizationName()%>
@@ -13,9 +12,7 @@
 <%=res.getBaseId()%>
 <%=res.getMeasureId()%>
 <%=res.getResourceId()%><%
-    }
-    else 
-    {
-        %><%="error"%><%
-    }
+} else {
+%><%="error"%><%
+            }
 %>

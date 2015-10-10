@@ -4,6 +4,6 @@
 <%
     StockController.add(request);
 %>
-    <script>
-        window.location.href = "stocks.jsp";
-    </script>
+<script>
+    window.location.href = "stocks.jsp";
+</script>

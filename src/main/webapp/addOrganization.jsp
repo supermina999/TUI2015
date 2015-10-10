@@ -5,6 +5,6 @@
 <%
     OrganizationController.add(request);
 %>
-    <script>
-        window.location.href = "organizations.jsp";
-    </script>
+<script>
+    window.location.href = "organizations.jsp";
+</script>

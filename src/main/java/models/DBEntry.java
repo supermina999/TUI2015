@@ -51,8 +51,7 @@ public class DBEntry
             return value;
         }
         public String SQLValue() throws UnsupportedEncodingException, ParseException {
-            if (type == EntryType.Int) return value;
-            else if (type == EntryType.Double) return value;
+            if (type == EntryType.Int || type == EntryType.Double) return value;
             else if (type == EntryType.Date) {
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
                 Date date = sdf.parse(value);
