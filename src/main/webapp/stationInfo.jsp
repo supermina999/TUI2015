@@ -4,9 +4,9 @@
     String s = request.getParameter("id");
     Station station = new Station();
     DBEntry[] params = {
-        new DBEntry("stock_id", EntryType.Int, Integer.parseInt(s))
+        new DBEntry("base_id", EntryType.Int, Integer.parseInt(s))
     };
-    AvailableResource[] availableRes = AvailableResource.getAll(null);
+    AvailableResource[] availableRes = AvailableResource.getAll(params);
     Resource[] resource = Resource.getAll(null);
     if (s == null) {%>
 <script>

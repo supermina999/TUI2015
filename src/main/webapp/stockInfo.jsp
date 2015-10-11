@@ -5,7 +5,7 @@
     Stock stock = new Stock();
     AvailableResource[] availableRes = AvailableResource.getAll(null);
     DBEntry[] params = {
-        new DBEntry("stock_id", EntryType.Int, Integer.parseInt(s))
+        new DBEntry("base_id", EntryType.Int, Integer.parseInt(s))
     };
     availableRes = AvailableResource.getAll(params);
     if (s == null) {%>
