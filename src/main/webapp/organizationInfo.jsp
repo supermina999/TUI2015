@@ -1,3 +1,7 @@
+<%@page import="java.util.Calendar"%>
+<%@page import="java.util.Date"%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.Vector"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="models.*"%>
 <%@page import="controllers.OrganizationController"%>
@@ -20,6 +24,7 @@
     }
 %>
 <%@include file = "layout1.jsp"%>
+<script src="plugins/charts/Chart.js"></script>  
 <script>
     function confirmDelete() {
         if (confirm("Вы уверены, что хотите удалить организацию?")) {
@@ -90,7 +95,62 @@
             </tbody>
         </table>
     </form>
+    <div style="width: 80%">
+        <center>
+            <h2 class="title">Кол-во пользователей</h2>
+            <canvas class="graph-line" id="myChart"> </canvas>
+        </center>>
+    </div>
+    <%
+        Vector<String> graph_date = new Vector<String>();
+        Vector<Integer> number = new Vector<Integer>();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        int i = 0;
+        int d = 0;
+        Date date = persons[0].getDate();
+        Date date_end = persons[persons.length - 1].getDate();
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        cal.add(Calendar.DATE, -1);
+        date = sdf.parse(sdf.format(cal.getTime()));
+        while (!date.after(date_end)) {
+            graph_date.add(new SimpleDateFormat("dd.MM.yyyy").format(date));
+            String dr = sdf.format(persons[i].getDate());
+            while (sdf.format(date).equals(dr) && i < persons.length) {
+                i++;
+                d++;
+                if (i < persons.length) {
+                    dr = sdf.format(persons[i].getDate());
+                }
+            }
+            number.add(d);
+            cal.add(Calendar.DATE, 1);
+            date = sdf.parse(sdf.format(cal.getTime()));
+        }
+    %>
+<script>
+        var data1 = {
+            labels: ["<%=graph_date.elementAt(0)%>"<%for (i = 1; i < graph_date.size(); i++) {%>, "<%=graph_date.elementAt(i)%>"<%}%>],
+                    datasets: [
+                    {
+                            label: "My First dataset",
+                            fillColor: "rgba(220,220,220,0.2)",
+                            strokeColor: "rgba(220,220,220,1)",
+                            pointColor: "rgba(220,220,220,1)",
+                            pointStrokeColor: "#fff",
+                            pointHighlightFill: "#fff",
+                            pointHighlightStroke: "rgba(220,220,220,1)",
+                            data: [<%=number.elementAt(0)%><%for (i = 1; i < number.size(); i++) {%>, <%=number.elementAt(i)%><%}%>]
+                    }
+                    ]
+            };
+        window.onload = function() 
+        {
+            var ctx = document.getElementById("myChart").getContext("2d");
+            window.myNewChart = new Chart(ctx).Line(data1, {responsive: true});
+        };
+</script>
 </div>
-
+<script src="js/charts.js"></script>
 <script src="js/search.js"></script>
 <%@include file = "layout2.jsp"%>

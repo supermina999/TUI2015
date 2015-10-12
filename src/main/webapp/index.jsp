@@ -325,7 +325,7 @@
             <div class="box-style-1">
                 <h2 class="title">Организации</h2>
                 <i class="fa fa-briefcase"></i>
-                <span class="stat-num" data-to="152" data-speed="3000">0</span>
+                <span class="stat-num" data-to="152000" data-speed="3000">0</span>
             </div>
         </div>
         <div class="col-md-3 col-sm-6">
