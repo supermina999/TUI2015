@@ -274,7 +274,7 @@
         <div class="row">
             <div class="col-md-5">
                 <form class="form-text center-block" style="margin-top: 0px;">
-                    <p style="font-size: 18px; margin-bottom: 10px;"> <strong> Команда XLV volunteering </strong>, представляющая Харьковский УВК №45 "Академическая гимназия", разработала и реализовала инструмент, который позволит вести базы данных волонтеров, имеющихся ресурсов и потребностей в этих ресурсах, будет включать в себя систему эффективного управления запасами, распределения ресурсов, автоматического определения оптимальных маршрутов в динамике.</p>
+                    <p style="font-size: 18px;"> <strong> Команда XLV volunteering </strong>, представляющая Харьковский УВК №45 "Академическая гимназия", разработала и реализовала инструмент, который позволит вести базы данных волонтеров, имеющихся ресурсов и потребностей в этих ресурсах, будет включать в себя систему эффективного управления запасами, распределения ресурсов, автоматического определения оптимальных маршрутов в динамике.</p>
                 </form>
             </div>
             <div class="col-md-6">
@@ -298,12 +298,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <div class="col-sm-offset-3 col-sm-8">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox"> Запомнить меня
-                                    </label>
-                                </div>											
+                            <div class="col-sm-offset-3 col-sm-8">											
                                 <button type="submit" class="btn btn-group btn-default btn-block">Войти</button>
                             </div>
                         </div>

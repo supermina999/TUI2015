@@ -12,6 +12,7 @@ public class StockController
         String address = request.getParameter("address");
         String organization_id = request.getParameter("organization");
         String city_id = request.getParameter("city");
+        String test = request.getParameter("test");
         Stock stock = new Stock();
         Date date = new Date();
         Location location = new Location();

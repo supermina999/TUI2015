@@ -177,12 +177,7 @@
                                                                                 </div>
                                                                             </div>
                                                                             <div class="form-group">
-                                                                                <div class="col-sm-offset-3 col-sm-8">
-                                                                                    <div class="checkbox">
-                                                                                        <label>
-                                                                                            <input type="checkbox"> Запомнить меня
-                                                                                        </label>
-                                                                                    </div>											
+                                                                                <div class="col-sm-offset-3 col-sm-8">										
                                                                                     <button type="submit" class="btn btn-group btn-default btn-block">Войти</button>
                                                                                 </div>
                                                                             </div>

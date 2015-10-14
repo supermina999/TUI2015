@@ -1,83 +1,99 @@
 ymaps.ready(init);
 var myMap, start, finish;
 
-function init() { 
+function init() {
     myMap = new ymaps.Map("map", {
-        center: [50.034581, 36.224968],
-        zoom: 15
-    }); 
+        center: [48.463629, 31.685961],
+        zoom: 6
+    });
+    addBases();
 }
 
-function addPlacemark (address) {
+function addPlacemark(address) {
     var myGeocoder = ymaps.geocode(
-        address, {
-            results: 1
-        }
+            address, {
+                results: 1
+            }
     );
     myGeocoder.then(
-        function (res) {
-           if (res.geoObjects.getLength()) {
-            var point = res.geoObjects.get(0);
-            addToTable(address, point.geometry.getCoordinates()[0].toString(), point.geometry.getCoordinates()[1].toString());
-            myMap.geoObjects.add(point);
-            myMap.panTo(point.geometry.getCoordinates());
-           }
-        }
+            function (res) {
+                if (res.geoObjects.getLength()) {
+                    var point = res.geoObjects.get(0);
+                    myMap.geoObjects.add(point);
+                }
+            }
     );
 }
 
-function addRoute (address1, address2) {
+function showPlacemark(address) {
+    var myGeocoder = ymaps.geocode(
+            address, {
+                results: 1
+            }
+    );
+    myMap.setZoom(18);
+    myGeocoder.then(
+            function (res) {
+                if (res.geoObjects.getLength()) {
+                    var point = res.geoObjects.get(0);
+                    myMap.panTo(point.geometry.getCoordinates());
+                }
+            }
+    );
+}
+
+function addRoute(address1, address2) {
     var startGeocoder = ymaps.geocode(
-        address1, {
-            results: 1
-        }
+            address1, {
+                results: 1
+            }
     );
     var finishGeocoder = ymaps.geocode(
-        address2, {
-            results: 1
-        }
+            address2, {
+                results: 1
+            }
     );
     startGeocoder.then(
-        function (res) {
-           if (res.geoObjects.getLength()) {
-            var point = res.geoObjects.get(0);
-            addToTable(address1, point.geometry.getCoordinates()[0].toString(), point.geometry.getCoordinates()[1].toString());
-           }
-        }
+            function (res) {
+                if (res.geoObjects.getLength()) {
+                    var point = res.geoObjects.get(0);
+                    addToTable(address1, point.geometry.getCoordinates()[0].toString(), point.geometry.getCoordinates()[1].toString());
+                }
+            }
     );
     finishGeocoder.then(
-        function (res) {
-           if (res.geoObjects.getLength()) {
-            var point = res.geoObjects.get(0);
-            addToTable(address2, point.geometry.getCoordinates()[0].toString(), point.geometry.getCoordinates()[1].toString());
-           }
-        }
+            function (res) {
+                if (res.geoObjects.getLength()) {
+                    var point = res.geoObjects.get(0);
+                    addToTable(address2, point.geometry.getCoordinates()[0].toString(), point.geometry.getCoordinates()[1].toString());
+                }
+            }
     );
-    var myRouter = ymaps.route([address1, address2], { 
+    var myRouter = ymaps.route([address1, address2], {
         mapStateAutoApply: true
     });
-    myRouter.then(function(route) {
+    myRouter.then(function (route) {
         myMap.geoObjects.add(route);
     });
 }
 
-function getCoords (address) {
+function getCoords(address) {
     var myGeocoder = ymaps.geocode(
-        address, {
-            results: 1
-        }
+            address, {
+                results: 1
+            }
     );
     myGeocoder.then(
-        function (res) {
-           if (res.geoObjects.getLength()) {
-            var point = res.geoObjects.get(0);
-            addToTable(address, point.geometry.getCoordinates()[0].toString(), point.geometry.getCoordinates()[1].toString());
-           }
-        }
+            function (res) {
+                if (res.geoObjects.getLength()) {
+                    var point = res.geoObjects.get(0);
+                    addToTable(address, point.geometry.getCoordinates()[0].toString(), point.geometry.getCoordinates()[1].toString());
+                }
+            }
     );
 }
 
-function addCustomPlacemarks () {
+function addCustomPlacemarks() {
     start = new ymaps.GeoObject({
         geometry: {
             type: "Point",
@@ -108,35 +124,44 @@ function addCustomPlacemarks () {
     $('#button5').removeClass("hidden");
 }
 
-function addCustomRoute () {
-    var myRouter = ymaps.route([start.geometry.getCoordinates(), finish.geometry.getCoordinates()], { 
+function addCustomRoute() {
+    var myRouter = ymaps.route([start.geometry.getCoordinates(), finish.geometry.getCoordinates()], {
         mapStateAutoApply: true
     });
-    myRouter.then(function(route) {
+    myRouter.then(function (route) {
         myMap.geoObjects.add(route);
     });
 }
 
-function addToTable (address, x, y) {
-    $('#table > tbody:last').append('<tr><th>' + address + '</th><th>' + x + '</th><th>' + y +'</th></tr>');
+function addToTable(address, x, y) {
+    $('#table > tbody:last').append('<tr><th>' + address + '</th><th>' + x + '</th><th>' + y + '</th></tr>');
 }
 
-$("#button1").click(function() {
-    addPlacemark($('#address1').val());
-});
+function addBases() {
+    $('#tableBases tr td:nth-child(3)').each(function () {
+        var address = $(this).text();
+        if (!$(this).hasClass("hidden")) {
+            addPlacemark(address);
+        }
+    });
+}
 
-$("#button2").click(function() {
-    addRoute($('#address2').val(),$('#address3').val());
-});
-
-$("#button3").click(function() {
-    getCoords($('#address4').val());
-});
-
-$("#button4").click(function() {
-    addCustomPlacemarks();
-});
-
-$("#button5").click(function() {
-    addCustomRoute();
-});
+/*$("#button1").click(function() {
+ addPlacemark($('#address1').val());
+ });
+ 
+ $("#button2").click(function() {
+ addRoute($('#address2').val(),$('#address3').val());
+ });
+ 
+ $("#button3").click(function() {
+ getCoords($('#address4').val());
+ });
+ 
+ $("#button4").click(function() {
+ addCustomPlacemarks();
+ });
+ 
+ $("#button5").click(function() {
+ addCustomRoute();
+ });*/
