@@ -11,13 +11,15 @@ public class StationController {
         String address = request.getParameter("address");
         String organization_id = request.getParameter("organization");
         String city_id = request.getParameter("city");
+        String lon = request.getParameter("lon");
+        String lat = request.getParameter("lat");
         Station station = new Station();
         Location location = new Location();
         Date date = new Date();
         location.setCityId(Integer.parseInt(city_id));
         location.setAddress(address);
-        location.setXCoord(1);
-        location.setYCoord(1);
+        location.setXCoord(Double.parseDouble(lon));
+        location.setYCoord(Double.parseDouble(lat));
         location.writeToDB();
         Location[] allLocations = Location.getAll(null);
         station.setLocationId(allLocations[allLocations.length-1].getId());

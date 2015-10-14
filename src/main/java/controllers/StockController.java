@@ -12,14 +12,15 @@ public class StockController
         String address = request.getParameter("address");
         String organization_id = request.getParameter("organization");
         String city_id = request.getParameter("city");
-        String test = request.getParameter("test");
+        String lon = request.getParameter("lon");
+        String lat = request.getParameter("lat");
         Stock stock = new Stock();
         Date date = new Date();
         Location location = new Location();
         location.setCityId(Integer.parseInt(city_id));
         location.setAddress(address);
-        location.setXCoord(1);
-        location.setYCoord(1);
+        location.setXCoord(Double.parseDouble(lon));
+        location.setYCoord(Double.parseDouble(lat));
         location.writeToDB();
         Location[] allLocations = Location.getAll(null);
         stock.setLocationId(allLocations[allLocations.length-1].getId());
