@@ -35,14 +35,16 @@ public class StockController
         String address = request.getParameter("address");
         String organization_id = request.getParameter("organization");
         String city_id = request.getParameter("city");
+        String lon = request.getParameter("lon");
+        String lat = request.getParameter("lat");
         int locationId = Stock.getOne(Integer.parseInt(id)).getLocationId();
         Date date = Stock.getOne(Integer.parseInt(id)).getDate();
         Location location = new Location();
         location.setCityId(Integer.parseInt(city_id));
         location.setId(locationId);
         location.setAddress(address);
-        location.setXCoord(1);
-        location.setYCoord(1);
+        location.setXCoord(Double.parseDouble(lon));
+        location.setYCoord(Double.parseDouble(lat));
         location.saveChanges();
         Stock stock = new Stock();
         stock.setId(Integer.parseInt(id));

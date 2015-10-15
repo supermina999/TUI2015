@@ -16,27 +16,47 @@
         stock = Stock.getOne(i);
     }
 %>
-
 <%@include file = "layout1.jsp"%>
+
 <br>
 <div class="form-block center-block" style="width: 50%; min-height: 700px;">
-    <center><h2 class="title">Изменить информацию о складе</h2></center>
+    <center><h2 class="title">Изменить информацию о складе №<%=stock.getId()%></h2></center>
     <hr>
     <form class="form-horizontal" method = "post" action = "updateStockInfo.jsp?id=<%=Integer.parseInt(s)%>">
         <div class="form-group has-feedback">
-            <label class="col-sm-3 control-label">Адрес</label>
+            <label class="col-sm-3 control-label">Город</label>
             <div class="col-sm-4">
-                <input type="text" class="form-control" name="address" value="<%=stock.getLocation().getAddress()%>"required>
-                <i class="fa fa-map-marker form-control-feedback"></i>
-            </div>
-            <div class="col-sm-4">
-                <select class="form-control" name="city" style="width: 100%;">
+                <select class="form-control" name="city" id="city" style="width: 100%; padding-right: 0">
                     <%for (int i = 0; i < city.length; i++) {%>
                     <option value="<%=city[i].getId()%>" <% if (stock.getLocation().getCityId() == i + 1) {%> selected <% }%>><%=city[i].getName()%></option>
                     <%}%>
                 </select>
             </div>
+            <div class="col-sm-4">
+                <select class="form-control" name="type" id="type" style="width: 100%; padding-right: 0">
+                    <option selected id="1">ПО АДРЕСУ</option>
+                    <option>НА КАРТЕ</option>
+                </select>
+            </div>
         </div>
+        <div class="form-group has-feedback">
+            <label class="col-sm-3 control-label">Адрес</label>
+            <div class="col-sm-8">
+                <input type="text" class="form-control" name="address" id="address" required value="<%=stock.getLocation().getAddress()%>">
+                <i class="fa fa-map-marker form-control-feedback"></i>
+            </div>
+        </div>
+        <div class="form-group has-feedback" id="coords">
+            <label class="col-sm-3 control-label">Широта</label>
+            <div class="col-sm-3">
+                <input type="text" class="form-control" name="lat" id="lat" style="padding-right: 0">
+            </div>
+            <label class="col-sm-2 control-label">Долгота:</label>
+            <div class="col-sm-3">
+                <input type="text" class="form-control" name="lon" id="lon" style="padding-right: 0">
+            </div>
+        </div><br>
+        <div id="map" style="width: 100%; height: 300px"></div><br>
         <div class="form-group has-feedback">
             <label class="col-sm-3 control-label">Организация</label>
             <div class="col-sm-8">
@@ -54,4 +74,5 @@
         </div>
     </form>
 </div>
+<script src="js/base.js"></script>
 <%@include file = "layout2.jsp"%>

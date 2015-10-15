@@ -8,6 +8,7 @@ function init() {
         zoom: 15
     });
     setCenter($("#city option:selected").text());
+    update();
 }
 
 function setCenter(address) {
