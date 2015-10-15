@@ -41,7 +41,8 @@ class Mark implements Comparable<Mark> {
 public class Algo {
 
     int n;
-    int start = 0, finish = 22;
+    //int start = 0, finish = 22;
+    double ans = 0.0;
 
     ArrayList<Point> nodes = new ArrayList<>();
     HashMap<Point, Integer> index = new HashMap<>();
@@ -80,11 +81,14 @@ public class Algo {
         }
     }
 
-    public static void main(String[] args) throws FileNotFoundException {
-        new Algo();
+    public double countDistance(Point a, Point b) throws FileNotFoundException {
+        int s = index.get(a);
+        int f = index.get(b);
+        Algo algo = new Algo(s,f);
+        return ans;
     }
 
-    Algo() throws FileNotFoundException {
+    Algo(int start, int finish) throws FileNotFoundException {
         init();
         used.set(start, 1);
         parent.set(start,start);
@@ -94,7 +98,6 @@ public class Algo {
             parent.set(v, start);
             dist.set(v, getDistance(nodes.get(start),nodes.get(v)));
             markSet.add(new Mark(v, dist.get(v) + getDistance(nodes.get(v), nodes.get(finish))));
-            
         }
         while (!markSet.isEmpty()) {
             Mark mark = markSet.pollFirst();
@@ -117,14 +120,15 @@ public class Algo {
                 }
             }
         }
-        System.out.println(dist.get(finish));
-        int t = finish;
+        ans = dist.get(finish);
+        //System.out.println(dist.get(finish));
+        /*int t = finish;
         while (t != start) {
             System.out.print(t);
             System.out.print(" ");
             t = parent.get(t);
         }
-        System.out.print(start);
+        System.out.print(start);*/
     }
 
 }

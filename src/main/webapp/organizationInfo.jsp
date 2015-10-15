@@ -95,11 +95,11 @@
             </tbody>
         </table>
     </form>
-    <div style="width: 80%">
+    <div style="width: 100%">
         <center>
-            <h2 class="title">Кол-во пользователей</h2>
+            <h2 class="title">Количество пользователей</h2>
             <canvas class="graph-line" id="myChart"> </canvas>
-        </center>>
+        </center>
     </div>
     <%
         Vector<String> graph_date = new Vector<String>();
