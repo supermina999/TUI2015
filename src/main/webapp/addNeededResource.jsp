@@ -3,8 +3,10 @@
 <%@page import="controllers.NeededResourceController"%>
 
 <%
-    NeededResourceController.add(request);
+    NeededResource res = NeededResourceController.add(request);
+    int base_id = res.getBaseId();
+    String isStock = Base.getOne(base_id).isStock() ? "true" : "false";
 %>
 <script>
-    window.location.href = "neededResources.jsp";
+    window.location.href = "baseResources.jsp?is_needed=false&id=<%=base_id%>&is_stock=<%=isStock%>";
 </script>

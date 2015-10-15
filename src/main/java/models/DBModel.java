@@ -95,6 +95,10 @@ public class DBModel {
             DBModel.tableName = Transport.tableName;
             DBModel.stdEntryes = Transport.stdEntryes;
         }
+        if (this.getClass() == Base.class) {
+            DBModel.tableName = Base.tableName;
+            DBModel.stdEntryes = Base.stdEntryes;
+        }
     }
 
     public void writeToDB() throws Exception {

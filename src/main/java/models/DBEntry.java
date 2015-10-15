@@ -37,6 +37,8 @@ public class DBEntry
         }
         public void setValue(Object obj)
         {
+            if (obj.getClass() == Boolean.class)
+                obj = new Integer((Boolean)obj ? 1 : 0);
             if (type == EntryType.Int) value = ((Integer)obj).toString();
             else if (type == EntryType.Double) value = ((Double)obj).toString();
             else if (type == EntryType.Date)

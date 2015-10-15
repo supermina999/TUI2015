@@ -24,6 +24,9 @@
 .hidden {
     visibility: hidden;
 }
+.dissabled {
+    display: none;
+}
 
 .btn-toggle {
     min-width: 90px !important;

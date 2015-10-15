@@ -54,45 +54,36 @@ public class ResourceController {
         int resourceId = Integer.parseInt(resource);
         String weight = request.getParameter("number");
         int number = Integer.parseInt(weight);
-        String cityName = request.getParameter("city");
-        String stock = request.getParameter("stockId");
-        int stockId = Integer.parseInt(stock);
-        String station = request.getParameter("stationId");
-        int stationId = Integer.parseInt(station);
+        String baseIdToS = request.getParameter("baseIdTo");
+        int baseIdTo = Integer.parseInt(baseIdToS);
         
-        AvailableResource[] availableRes = AvailableResource.getAll(null);
-        int resId = 0;
-        for (int i = 0;i < availableRes.length;i++)
-        {
-            if (availableRes[i].getResourceId() == resourceId) resId = i;
-        }
-        int oldNumber = availableRes[resId].getNumber();
-        int currentNumber = oldNumber - number;
-        if (currentNumber == 0)
-        {
-            AvailableResource availableResource = new AvailableResource();
-            availableResource.setId(availableRes[resId].getId());
-            availableResource.setResourceId(resourceId);
-            availableResource.setBaseId(availableRes[resId].getBaseId());
-            availableResource.setNumber(availableRes[resId].getNumber());
-            availableResource.setMeasureId(availableRes[resId].getMeasureId());
-            availableResource.delete();
-        }
-        else
-        {
-            availableRes[resId].setNumber(currentNumber);
-            availableRes[resId].saveChanges();
-        }
+        AvailableResource res = AvailableResource.getOne(resourceId);
+        int resType = res.getResourceId();
         
-        NeededResource[] neededRes = NeededResource.getAll(null);
-        for (int i = 0;i < neededRes.length;i++)
+        if (res.getNumber() - number > 0)
         {
-            if (neededRes[i].getResourceId() == resourceId) resId = i;
+            res.setNumber( res.getNumber() - number);
+            res.saveChanges();
+            DBEntry[] params = {
+                new DBEntry("resource_id", EntryType.Int,resType),
+                new DBEntry("base_id", EntryType.Int, baseIdTo)
+            };
+            AvailableResource nRes = AvailableResource.getOne(params);
+            if (nRes == null)
+            {
+                nRes = new AvailableResource();
+                nRes.setBaseId(baseIdTo);
+                nRes.setMeasureId(1);
+                nRes.setNumber(number);
+                nRes.setResourceId(resType);
+                nRes.writeToDB();
+            }
+            else
+            {
+                nRes.setNumber(nRes.getNumber() + number);
+                nRes.saveChanges();   
+            }
         }
-        oldNumber = neededRes[resId].getNumber();
-        currentNumber = oldNumber + number;
-        neededRes[resId].setNumber(currentNumber);
-        neededRes[resId].saveChanges();
     }
     public static void withdraw(HttpServletRequest request) throws Exception
     {

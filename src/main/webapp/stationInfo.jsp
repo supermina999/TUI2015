@@ -28,7 +28,7 @@
 </script>
 
 <br>
-<div class="form-block center-block" style="width: 50%; min-height: 900px;">
+<div class="form-block center-block" style="width: 50%; min-height: 500px;">
     <div style="margin-left: 90%;">
         <p style="font-size: 25px;"><a href="changeStationInfo.jsp?id=<%=station.getId()%>"><i class="fa fa-edit"></i></a>
             <a href="deleteStation.jsp?id=<%=station.getId()%>" onclick="return confirmDelete();"><i class="fa fa-close"></i></a></p>
@@ -44,35 +44,10 @@
 
         </div>
         <div class="form-group"></div>
-        <div class="gray-bg">
-            <br>
-            <div class="col-md-11">
-                <input type="text" class="form-control searchInput" placeholder="Наименование" style="width: 110%;">
-                <i class="fa fa-search form-control-feedback" style="padding-left: 100%;"></i>
-            </div>
-            <br><br><br>
-        </div>
-        <br>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th style="width: 80%;">Наименование</th>
-                    <th style="width: 20%;">Количество</th>
-                </tr>
-            </thead>
-            <tbody id="searchTable">
-                <%for (int j = 0; j < availableRes.length; j++) {%>
-                <tr>
-                    <td class="idSearch">
-                        <%=availableRes[j].getResourceName()%></a>
-                    </td>
-                    <td class="text-center">
-                        <%=availableRes[j].getNumber()%> <%=availableRes[j].getMeasureName()%></a>
-                    </td>
-                </tr>
-                <%}%>
-            </tbody>
-        </table>
+        <a href="baseResources.jsp?id=<%=station.getId() + "&is_stock=false&is_needed=false"%>" 
+           class="btn btn-default btn-lg" style="width: 45%;">Ресурсы в наличии</a>
+        <a href="baseResources.jsp?id=<%=station.getId() + "&is_stock=false&is_needed=true"%>" 
+           class="btn btn-default btn-lg" style="width: 45%;">Необходимые ресурсы</a>
     </form>
 </div>
 <script src="js/search.js"></script>

@@ -7,38 +7,23 @@ import models.*;
 import sql.Sql;
 
 public class AvailableResourceController {
-    public static void add(HttpServletRequest request) throws Exception
+    public static AvailableResource add(HttpServletRequest request) throws Exception
     {
         String resource_id = request.getParameter("resourceId");
         int resourceId = Integer.parseInt(resource_id);
         String number = request.getParameter("number");
         int weight = Integer.parseInt(number);
-        String city = request.getParameter("cityId");
-        int cityId = Integer.parseInt(city);
-        String stock = request.getParameter("stockId");
-        int stockId = Integer.parseInt(stock);
+        String baseIdS = request.getParameter("baseId");
+        int baseId = Integer.parseInt(baseIdS);
         int measureId = 1;
         
-        AvailableResource[] availableRes = AvailableResource.getAll(null);
-        int id = -1;
-        for (int i = 0;i < availableRes.length;i++)
-        {
-            if (availableRes[i].getResourceId() == resourceId) id = i;
-        }
-        if (id == -1)
-        {
-            AvailableResource availableResource = new AvailableResource();
-            availableResource.setResourceId(resourceId);
-            availableResource.setBaseId(stockId);
-            availableResource.setNumber(weight);
-            availableResource.setMeasureId(measureId);
-            availableResource.writeToDB();
-        }
-        else
-        {
-            availableRes[id].setNumber(weight + availableRes[id].getNumber());
-            availableRes[id].saveChanges();
-        }
+        AvailableResource res = new AvailableResource();
+        res.setBaseId(baseId);
+        res.setNumber(weight);
+        res.setResourceId(resourceId);
+        res.setMeasureId(measureId);
+        res.writeToDB();
+        return res;
     }
     public static void update(HttpServletRequest request) throws Exception
     {   
@@ -58,14 +43,17 @@ public class AvailableResourceController {
             res.saveChanges();
         }
     }
-     public static void delete(HttpServletRequest request) throws Exception
+     public static AvailableResource delete(HttpServletRequest request) throws Exception
      {
         String idS;
+        AvailableResource res = null;
         if ((idS = request.getParameter("id")) != null)
         {
             int id = Integer.parseInt(idS);
-            AvailableResource.getOne(id).delete();
+            res = AvailableResource.getOne(id);
+            res.delete();
         }
+        return res;
      }
      
     

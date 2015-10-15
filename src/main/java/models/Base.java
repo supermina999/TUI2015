@@ -32,28 +32,28 @@ public class Base extends DBModel {
     public static void init()
     {
     }
-     public static Stock getOne(int id) throws Exception
+     public static Base getOne(int id) throws Exception
     {
         DBEntry[] params = {
             new DBEntry("id", EntryType.Int, id)
         };
         return getOne(params);
     }
-     public static Stock getOne( DBEntry[] entryes) throws Exception
+     public static Base getOne( DBEntry[] entryes) throws Exception
     {
-        DBModel.tableName = Stock.tableName;
-        DBModel.stdEntryes = Stock.stdEntryes;
-        DBModel buf = Stock.getOne(entryes, 1);
-        if (buf != null) return new Stock(buf.entryes);
+        DBModel.tableName = Base.tableName;
+        DBModel.stdEntryes = Base.stdEntryes;
+        DBModel buf = Base.getOne(entryes, 1);
+        if (buf != null) return new Base(buf.entryes);
         else return null;
     }
-    public static Stock[] getAll( DBEntry[] entryes) throws Exception
+    public static Base[] getAll( DBEntry[] entryes) throws Exception
     {
-        DBModel.tableName = Stock.tableName;
-        DBModel.stdEntryes = Stock.stdEntryes;
-        DBModel[] ans1 = Stock.getAll(entryes, 1);
-        Stock[] ans2 = new Stock[ans1.length];
-        for(int i=0; i<ans1.length; i++) ans2[i]=new Stock(ans1[i].entryes);
+        DBModel.tableName = Base.tableName;
+        DBModel.stdEntryes = Base.stdEntryes;
+        DBModel[] ans1 = Base.getAll(entryes, 1);
+        Base[] ans2 = new Base[ans1.length];
+        for(int i=0; i<ans1.length; i++) ans2[i]=new Base(ans1[i].entryes);
         return ans2;
     }
     public int getId()

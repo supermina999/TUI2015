@@ -4,11 +4,15 @@
    %>
 <%@include file = "layout1.jsp"%>
 <%
-    DBModel.init();
+    int base_id = Integer.parseInt(request.getParameter("base_id"));
+    Base base = Base.getOne(base_id);
     City[] city = City.getAll(null);
-    Station[] station = Station.getAll(null);
-    Stock[] stock = Stock.getAll(null);
-    AvailableResource[] availableRes = AvailableResource.getAll(null);
+    Country[] country = Country.getAll(null);
+    Base[] bases = Base.getAll(null);
+    DBEntry[] params = {
+        new DBEntry("base_id", EntryType.Int, base_id)
+    };
+    AvailableResource[] availableRes = AvailableResource.getAll(params);
 %>
 <br>
 <div class="form-block center-block" style="min-height: 700px;">
@@ -32,54 +36,40 @@
                 <input type="text" class="form-control" name="number">
             </div>
         </div>
-        <center><h3 class="title">Место отправления:</h3></center>
-        <div class="form-group has-feedback">
-            <label class="col-sm-3 control-label">Город</label>
-            <div class="col-sm-8">
-                <select class="form-control" style="width: 100%;" name="cityOut">
-                    <option>Выберите город</option>
-                    <%for (int i = 0; i < city.length; i++) {%>
-                    <option><%=city[i].getName()%></option>
-                    <%}%>
-                </select>
-            </div>
-        </div>
-        <div class="form-group has-feedback">
-            <label class="col-sm-3 control-label">Склад</label>
-            <div class="col-sm-8">
-                <select class="form-control" style="width: 100%;" name="stockId">
-                    <option>Выберите склад</option>
-                    <%for (int i = 0; i < stock.length; i++) {%>
-                    <option value="<%=stock[i].getId()%>"><%=stock[i].getLocation().getAddress()%></option>
-                    <%}%>
-                </select>
-            </div>
-        </div>
-
         <center><h3 class="title">Место получения:</h3></center>
         <div class="form-group has-feedback">
-            <label class="col-sm-3 control-label">Город</label>
+            <label class="col-sm-3 control-label">Страна</label>
             <div class="col-sm-8">
-                <select class="form-control" style="width: 100%;" name="cityIn">
-                    <option>Выберите город</option>
-                    <%for (int i = 0; i < city.length; i++) {%>
-                    <option><%=city[i].getName()%></option>
+                <select id="countrySelect" class="form-control" style="width: 100%;" name="cityIn">
+                    <option>Выберите страну</option>
+                    <%for (int i = 0; i < country.length; i++) {%>
+                    <option><%=country[i].getName()%></option>
                     <%}%>
                 </select>
             </div>
         </div>
         <div class="form-group has-feedback">
-            <label class="col-sm-3 control-label">Пункт выдачи</label>
+            <label class="col-sm-3 control-label">Город</label>
             <div class="col-sm-8">
-                <select class="form-control" style="width: 100%;" name="stationId">
-                    <option>Выберите пункт выдачи</option>
-                    <%for (int i = 0; i < station.length; i++) {%>
-                    <option  value="<%=station[i].getId()%>"><%=station[i].getLocation().getAddress()%></option>
+                <select id="citySelect" class="form-control" style="width: 100%;" name="cityIn">
+                    <option>Выберите город</option>
+                    <%for (int i = 0; i < city.length; i++) {%>
+                    <option class="cityOption <%=city[i].getCountryName()%>"><%=city[i].getName()%></option>
                     <%}%>
                 </select>
             </div>
         </div>
-
+        <div class="form-group has-feedback">
+            <label class="col-sm-3 control-label">Пункт назначения</label>
+            <div class="col-sm-8">
+                <select class="form-control" style="width: 100%;" name="baseIdTo">
+                    <option>Выберите пункт назначения</option>
+                    <%for (int i = 0; i < bases.length; i++) {%>
+                    <option  class ="baseOption <%=bases[i].getLocation().getCityName()%>" value="<%=bases[i].getId()%>"><%=bases[i].getLocation().getAddress()%></option>
+                    <%}%>
+                </select>
+            </div>
+        </div>
         <div class="form-group">
             <div class="col-sm-offset-3 col-sm-8">					
                 <button type="submit" class="btn btn-group btn-default btn-block">Готово</button>
@@ -87,6 +77,31 @@
         </div>
     </form>
 </div>
-
+<script>
+    $("#countrySelect").change(function (){
+        val = $(this).val();
+        console.log(val);
+        $.each($(".cityOption"), function(){
+            console.log($(this).hasClass(val));
+            if ($(this).hasClass(val))
+            {
+                $(this).removeAttr("disabled");
+            }
+            else $(this).attr("disabled","disabled");
+        });
+    });
+     $("#citySelect").change(function (){
+        val = $(this).val();
+        console.log(val);
+        $.each($(".baseOption"), function(){
+            console.log($(this).hasClass(val));
+            if ($(this).hasClass(val))
+            {
+                $(this).removeAttr("disabled");
+            }
+            else $(this).attr("disabled","disabled");
+        });
+    });
+</script>
 
 <%@include file = "layout2.jsp"%>
