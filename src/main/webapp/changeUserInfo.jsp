@@ -2,8 +2,7 @@
 <% int minPermission = 8;
     int tab = 0;
     String s = request.getParameter("id");
-    Organization[] organization = Organization.getAll(null);
-    City[] city = City.getAll(null);
+    Region[] region = Region.getAll(null);
     Permission[] permission = Permission.getAll(null);
     Person person = new Person();
     if (s == null) {%>
@@ -35,17 +34,7 @@
                             <i class="fa fa-user form-control-feedback"></i>
                         </div>
                     </div>
-
-                    <div class="form-group has-feedback">
-                        <label class="col-sm-3 control-label">Организация</label>
-                        <div class="col-sm-8">
-                            <select class="form-control" style="width: 100%;" name="organization_id">
-                                <%for (int i = 0; i < organization.length; i++) {%>
-                                <option value="<%=organization[i].getId()%>" <% if (person.getOrganizationId() == i + 1) {%> selected <% }%>> <%=organization[i].getName()%></option>
-                                <%}%>
-                            </select>
-                        </div>
-                    </div>
+                    
                     <div class="form-group has-feedback">
                         <label class="col-sm-3 control-label">Должность</label>
                         <div class="col-sm-8">
@@ -81,13 +70,20 @@
                         </div>
                     </div>
                     <div class="form-group has-feedback">
-                        <label class="col-sm-3 control-label">Город</label>
+                        <label class="col-sm-3 control-label">Область</label>
                         <div class="col-sm-8">
-                            <select class="form-control" style="width: 100%;" name="city_id">
-                                <%for (int i = 0; i < city.length; i++) {%>
-                                <option value="<%=city[i].getId()%>" <% if (person.getCityId() == i + 1) {%> selected <% }%>><%=city[i].getName()%></option>
+                            <select class="form-control" style="width: 100%;" name="region_id">
+                                <%for (int i = 0; i < region.length; i++) {%>
+                                <option value="<%=region[i].getId()%>" <% if (person.getRegionId() == i + 1) {%> selected <% }%>><%=region[i].getName()%></option>
                                 <%}%>
                             </select>
+                        </div>
+                    </div>
+                    <div class="form-group has-feedback">
+                        <label class="col-sm-3 control-label">Город</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" required name="city" value="<%=person.getCity()%>">
+                            <i class="fa fa-map-marker form-control-feedback"></i>
                         </div>
                     </div>
                     <div class="form-group has-feedback">

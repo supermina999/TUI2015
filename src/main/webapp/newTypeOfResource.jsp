@@ -5,7 +5,7 @@
    %>
 <%@include file = "layout1.jsp"%>
 <%
-    City[] city = City.getAll(null);
+    Region[] region = Region.getAll(null);
     Stock[] stock = Stock.getAll(null);
 %>
 <br>

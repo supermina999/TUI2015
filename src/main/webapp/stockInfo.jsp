@@ -5,7 +5,7 @@
     Stock stock = new Stock();
     AvailableResource[] availableRes = AvailableResource.getAll(null);
     DBEntry[] params = {
-        new DBEntry("base_id", EntryType.Int, Integer.parseInt(s))
+        new DBEntry("stock_id", EntryType.Int, Integer.parseInt(s))
     };
     availableRes = AvailableResource.getAll(params);
     if (s == null) {%>
@@ -38,8 +38,7 @@
     <form class="form-horizontal">
 
         <div class="form-group col-sm-7">
-            <p style="font-size: 15px;"> <b>Организация:</b> <a href="organizationInfo.jsp?id=<%=stock.getOrganizationId()%>"><%=stock.getOrganizationName()%></a> </p>
-            <p style="font-size: 15px;"> <b>Город:</b> <%=stock.getLocation().getCityName()%>, <%=stock.getLocation().getCountryName()%> </p>
+            <p style="font-size: 15px;"> <b>Город:</b> <%=stock.getLocation().getRegionName()%>, <%=stock.getLocation().getCountryName()%> </p>
             <p style="font-size: 15px;"> <b>Адрес:</b> <%=stock.getLocation().getAddress()%> </p>
 
         </div>

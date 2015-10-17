@@ -2,9 +2,8 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <% int minPermission = 8;
     int tab = 4;
-    Organization[] organization = Organization.getAll(null);
     Location[] location = Location.getAll(null);
-    City[] city = City.getAll(null);
+    Region[] region = Region.getAll(null);
     String s = request.getParameter("id");
     Stock stock = new Stock();
     if (s == null) {%>
@@ -24,11 +23,11 @@
     <hr>
     <form class="form-horizontal" method = "post" action = "updateStockInfo.jsp?id=<%=Integer.parseInt(s)%>">
         <div class="form-group has-feedback">
-            <label class="col-sm-3 control-label">Город</label>
+            <label class="col-sm-3 control-label">Область</label>
             <div class="col-sm-4">
-                <select class="form-control" name="city" id="city" style="width: 100%; padding-right: 0">
-                    <%for (int i = 0; i < city.length; i++) {%>
-                    <option value="<%=city[i].getId()%>" <% if (stock.getLocation().getCityId() == i + 1) {%> selected <% }%>><%=city[i].getName()%></option>
+                <select class="form-control" name="region" id="region" style="width: 105%; padding-right: 0">
+                    <%for (int i = 0; i < region.length; i++) {%>
+                    <option value="<%=region[i].getId()%>" <% if (stock.getLocation().getRegionId() == i + 1) {%> selected <% }%>><%=region[i].getName()%></option>
                     <%}%>
                 </select>
             </div>
@@ -46,7 +45,7 @@
                 <i class="fa fa-map-marker form-control-feedback"></i>
             </div>
         </div>
-        <div class="form-group has-feedback" id="coords">
+        <div class="form-group has-feedback hidden" id="coords">
             <label class="col-sm-3 control-label">Широта</label>
             <div class="col-sm-3">
                 <input type="text" class="form-control" name="lat" id="lat" style="padding-right: 0">
@@ -57,16 +56,6 @@
             </div>
         </div><br>
         <div id="map" style="width: 100%; height: 300px"></div><br>
-        <div class="form-group has-feedback">
-            <label class="col-sm-3 control-label">Организация</label>
-            <div class="col-sm-8">
-                <select class="form-control" name="organization" style="width: 100%;">
-                    <%for (int i = 0; i < organization.length; i++) {%>
-                    <option value="<%=organization[i].getId()%>" <% if (stock.getOrganizationId() == i + 1) {%> selected <% }%>><%=organization[i].getName()%></option>
-                    <%}%>
-                </select>
-            </div>
-        </div>
         <div class="form-group">
             <div class="col-sm-offset-3 col-sm-8">					
                 <button type="submit" class="btn btn-group btn-default btn-block">Готово</button>
@@ -74,5 +63,5 @@
         </div>
     </form>
 </div>
-<script src="js/base.js"></script>
+<script src="js/stock.js"></script>
 <%@include file = "layout2.jsp"%>

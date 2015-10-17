@@ -128,18 +128,14 @@
                                                     <li <% if (tab == 1) { %>class="active" <% } %>>
                                                         <a href="index.jsp">Главная</a>
                                                     </li>
-                                                    <li <% if (tab == 2) { %>class="active" <% } %>>
-                                                        <a href="organizations.jsp">Организации</a>  
-                                                    </li>
+                                                    
                                                       <li <% if (tab == 3) { %>class="active" <% } %>>
                                                         <a href="typesOfResources.jsp">Виды ресурсов</a>  
                                                     </li>                                      
                                                     <li <% if (tab == 4) { %>class="active" <% } %>>
                                                         <a href="stocks.jsp">Склады</a>
                                                     </li>
-                                                    <li <% if (tab == 5) { %>class="active" <% } %>>
-                                                        <a href="stations.jsp">Пункты выдачи</a>
-                                                    </li>
+                                                    
                                                     <li <% if (tab == 6) { %>class="active" <% } %>>
                                                         <a href="reports.jsp">Отчёты</a>
                                                     </li><%}%>

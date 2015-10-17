@@ -6,7 +6,7 @@ function init() {
         center: [48.463629, 31.685961],
         zoom: 6
     });
-    addBases();
+    addStocks();
 }
 
 function addPlacemark(address) {
@@ -137,8 +137,8 @@ function addToTable(address, x, y) {
     $('#table > tbody:last').append('<tr><th>' + address + '</th><th>' + x + '</th><th>' + y + '</th></tr>');
 }
 
-function addBases() {
-    $('#tableBases tr td:nth-child(3)').each(function () {
+function addStocks() {
+    $('#tableBases tr td:nth-child(2)').each(function () {
         var address = $(this).text();
         if (!$(this).hasClass("hidden")) {
             addPlacemark(address);

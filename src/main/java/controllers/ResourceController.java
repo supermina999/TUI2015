@@ -72,7 +72,7 @@ public class ResourceController {
             if (nRes == null)
             {
                 nRes = new AvailableResource();
-                nRes.setBaseId(baseIdTo);
+                nRes.setStockId(baseIdTo);
                 nRes.setMeasureId(1);
                 nRes.setNumber(number);
                 nRes.setResourceId(resType);

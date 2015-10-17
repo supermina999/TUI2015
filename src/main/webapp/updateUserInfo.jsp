@@ -3,11 +3,8 @@
 <%@page import="controllers.UserController"%>
 
 <%
-    String result = UserController.update(request);
-    if (!result.equals("OK")) {%>
-<center><h2><%=result%></h2></center>
-        <%} else {%>
+    UserController.update(request);
+%>
 <script>
     window.location.href = "userInfo.jsp?id=<%=request.getParameter("id")%>";
 </script>
-<% }%>

@@ -2,53 +2,51 @@ package models;
 
 import java.sql.SQLException;
 
-public class Measure extends DBModel {
+public class Emergency extends DBModel {
 
-    static protected String tableName = "measure";
+    static protected String tableName = "permission";
     static public DBEntry[] stdEntryes = {
         new DBEntry("id", EntryType.Int),
         new DBEntry("name", EntryType.String)
     };
 
-    protected Measure(DBEntry[] entryes) {
+    protected Emergency(DBEntry[] entryes) {
         super(entryes);
-
     }
 
-    public Measure() {
+    public Emergency() {
         super();
-
     }
 
     public static void init() {
     }
 
-    public static Measure getOne(int id) throws Exception {
+    public static Emergency getOne(int id) throws Exception {
         DBEntry[] params = {
             new DBEntry("id", EntryType.Int, id)
         };
         return getOne(params);
     }
 
-    public static Measure getOne(DBEntry[] entryes) throws Exception {
-        DBModel.tableName = Measure.tableName;
-        DBModel.stdEntryes = Measure.stdEntryes;
-        DBModel buf = Measure.getOne(entryes, 1);
+    public static Emergency getOne(DBEntry[] entryes) throws Exception {
+        DBModel.tableName = Emergency.tableName;
+        DBModel.stdEntryes = Emergency.stdEntryes;
+        DBModel buf = Emergency.getOne(entryes, 1);
         if (buf != null) {
-            return new Measure(buf.entryes);
+            return new Emergency(buf.entryes);
         } else {
             return null;
         }
     }
 
-    public static Measure[] getAll(DBEntry[] entryes) throws Exception {
-        DBModel.tableName = Measure.tableName;
-        DBModel.stdEntryes = Measure.stdEntryes;
-        DBModel[] ans1 = Measure.getAll(entryes, 1);
-        Measure[] ans2 = new Measure[ans1.length];
+    public static Emergency[] getAll(DBEntry[] entryes) throws Exception {
+        DBModel.tableName = Emergency.tableName;
+        DBModel.stdEntryes = Emergency.stdEntryes;
+        DBModel[] ans1 = Emergency.getAll(entryes, 1);
+        Emergency[] ans2 = new Emergency[ans1.length];
         for (int i = 0; i < ans1.length; i++) {
             if (ans1[i] != null) {
-                ans2[i] = new Measure(ans1[i].entryes);
+                ans2[i] = new Emergency(ans1[i].entryes);
             }
         }
         return ans2;

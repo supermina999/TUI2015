@@ -7,7 +7,7 @@ function init() {
         center: [48.463629, 31.685961],
         zoom: 15
     });
-    setCenter($("#city option:selected").text());
+    setCenter($("#region option:selected").text());
     update();
 }
 
@@ -92,12 +92,12 @@ function addPlacemark(address) {
 }
 
 function update() {
-    var address = $('#city option:selected').text() + ", " + $('#address').val();
+    var address = $('#region option:selected').text() + ", " + $('#address').val();
     addPlacemark(address);
     setCenter(address);
 }
 
-$('#city').change(function () {
+$('#region').change(function () {
     if ($('#type option:selected').text() === "НА КАРТЕ") {
         $('#type option[id="1"]').prop('selected', true);
         myCollection.removeAll();

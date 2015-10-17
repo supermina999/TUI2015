@@ -10,21 +10,19 @@ public class StockController
     public static void add(HttpServletRequest request) throws Exception
     {
         String address = request.getParameter("address");
-        String organization_id = request.getParameter("organization");
-        String city_id = request.getParameter("city");
+        String region_id = request.getParameter("region");
         String lon = request.getParameter("lon");
         String lat = request.getParameter("lat");
         Stock stock = new Stock();
         Date date = new Date();
         Location location = new Location();
-        location.setCityId(Integer.parseInt(city_id));
+        location.setRegionId(Integer.parseInt(region_id));
         location.setAddress(address);
         location.setXCoord(Double.parseDouble(lon));
         location.setYCoord(Double.parseDouble(lat));
         location.writeToDB();
         Location[] allLocations = Location.getAll(null);
         stock.setLocationId(allLocations[allLocations.length-1].getId());
-        stock.setOrganizationId(Integer.parseInt(organization_id));
         stock.setDate(date);
         stock.writeToDB();
     }
@@ -33,14 +31,13 @@ public class StockController
     {
         String id = request.getParameter("id");
         String address = request.getParameter("address");
-        String organization_id = request.getParameter("organization");
-        String city_id = request.getParameter("city");
+        String region_id = request.getParameter("region");
         String lon = request.getParameter("lon");
         String lat = request.getParameter("lat");
         int locationId = Stock.getOne(Integer.parseInt(id)).getLocationId();
         Date date = Stock.getOne(Integer.parseInt(id)).getDate();
         Location location = new Location();
-        location.setCityId(Integer.parseInt(city_id));
+        location.setRegionId(Integer.parseInt(region_id));
         location.setId(locationId);
         location.setAddress(address);
         location.setXCoord(Double.parseDouble(lon));
@@ -49,7 +46,6 @@ public class StockController
         Stock stock = new Stock();
         stock.setId(Integer.parseInt(id));
         stock.setLocationId(locationId);
-        stock.setOrganizationId(Integer.parseInt(organization_id));
         stock.setDate(date);
         stock.saveChanges();
     }
@@ -61,7 +57,7 @@ public class StockController
         int locationId = data.getLocationId();
         Location location = new Location();
         location.setId(locationId);
-        location.setCityId(data.getLocation().getCityId());
+        location.setRegionId(data.getLocation().getRegionId());
         location.setId(locationId);
         location.setAddress(data.getLocation().getAddress());
         location.setXCoord(1);
@@ -70,7 +66,6 @@ public class StockController
         Stock stock = new Stock();
         stock.setId(data.getId());
         stock.setLocationId(locationId);
-        stock.setOrganizationId(data.getOrganizationId());
         stock.delete();
     }
 }

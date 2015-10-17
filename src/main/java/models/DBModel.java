@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package models;
 
 import java.io.UnsupportedEncodingException;
@@ -10,10 +5,6 @@ import java.sql.*;
 import java.text.ParseException;
 import java.util.ArrayList;
 
-/**
- *
- * @author roma
- */
 public class DBModel {
 
     protected DBEntry[] entryes; //First element always ID
@@ -47,6 +38,38 @@ public class DBModel {
             DBModel.tableName = Person.tableName;
             DBModel.stdEntryes = Person.stdEntryes;
         }
+        if (this.getClass() == Application.class) {
+            DBModel.tableName = Application.tableName;
+            DBModel.stdEntryes = Application.stdEntryes;
+        }
+        if (this.getClass() == Emergency.class) {
+            DBModel.tableName = Emergency.tableName;
+            DBModel.stdEntryes = Emergency.stdEntryes;
+        }
+        if (this.getClass() == Region.class) {
+            DBModel.tableName = Region.tableName;
+            DBModel.stdEntryes = Region.stdEntryes;
+        }
+        if (this.getClass() == Request.class) {
+            DBModel.tableName = Request.tableName;
+            DBModel.stdEntryes = Request.stdEntryes;
+        }
+        if (this.getClass() == RequestType.class) {
+            DBModel.tableName = RequestType.tableName;
+            DBModel.stdEntryes = RequestType.stdEntryes;
+        }
+        if (this.getClass() == Safety.class) {
+            DBModel.tableName = Safety.tableName;
+            DBModel.stdEntryes = Safety.stdEntryes;
+        }
+        if (this.getClass() == Status.class) {
+            DBModel.tableName = Status.tableName;
+            DBModel.stdEntryes = Status.stdEntryes;
+        }
+        if (this.getClass() == Transportation.class) {
+            DBModel.tableName = Transportation.tableName;
+            DBModel.stdEntryes = Transportation.stdEntryes;
+        }
         if (this.getClass() == AvailableResource.class) {
             DBModel.tableName = AvailableResource.tableName;
             DBModel.stdEntryes = AvailableResource.stdEntryes;
@@ -59,33 +82,17 @@ public class DBModel {
             DBModel.tableName = Location.tableName;
             DBModel.stdEntryes = Location.stdEntryes;
         }
-        if (this.getClass() == Losing.class) {
-            DBModel.tableName = Losing.tableName;
-            DBModel.stdEntryes = Losing.stdEntryes;
-        }
-        if (this.getClass() == NeededResource.class) {
-            DBModel.tableName = NeededResource.tableName;
-            DBModel.stdEntryes = NeededResource.stdEntryes;
-        }
-        if (this.getClass() == Organization.class) {
-            DBModel.tableName = Organization.tableName;
-            DBModel.stdEntryes = Organization.stdEntryes;
-        }
         if (this.getClass() == Permission.class) {
             DBModel.tableName = Permission.tableName;
             DBModel.stdEntryes = Permission.stdEntryes;
         }
-        if (this.getClass() == Receiving.class) {
-            DBModel.tableName = Receiving.tableName;
-            DBModel.stdEntryes = Receiving.stdEntryes;
+        if (this.getClass() == Measure.class) {
+            DBModel.tableName = Measure.tableName;
+            DBModel.stdEntryes = Measure.stdEntryes;
         }
         if (this.getClass() == Resource.class) {
             DBModel.tableName = Resource.tableName;
             DBModel.stdEntryes = Resource.stdEntryes;
-        }
-        if (this.getClass() == Station.class) {
-            DBModel.tableName = Station.tableName;
-            DBModel.stdEntryes = Station.stdEntryes;
         }
         if (this.getClass() == Stock.class) {
             DBModel.tableName = Stock.tableName;
@@ -94,10 +101,6 @@ public class DBModel {
         if (this.getClass() == Transport.class) {
             DBModel.tableName = Transport.tableName;
             DBModel.stdEntryes = Transport.stdEntryes;
-        }
-        if (this.getClass() == Base.class) {
-            DBModel.tableName = Base.tableName;
-            DBModel.stdEntryes = Base.stdEntryes;
         }
     }
 
@@ -156,23 +159,6 @@ public class DBModel {
         }
         st.execute(query);
         st.close();
-    }
-
-    public static void init() {
-        AvailableResource.init();
-        City.init();
-        Country.init();
-        Location.init();
-        Losing.init();
-        NeededResource.init();
-        Organization.init();
-        Permission.init();
-        Person.init();
-        Resource.init();
-        Receiving.init();
-        Station.init();
-        Stock.init();
-        Transport.init();
     }
 
     protected static DBModel getOne(DBEntry[] entryes, int fl) throws Exception {

@@ -37,9 +37,8 @@
             </div>
         </div>
         <div class="form-group col-sm-7">
-            <p style="font-size: 15px;"> <b>Организация:</b> <a href="organizationInfo.jsp?id=<%=person.getOrganizationId()%>"><%=person.getOrganizationName()%></a> </p>
             <p style="font-size: 15px;"> <b>Должность:</b> <%=person.getPermissionName()%> </p>
-            <p style="font-size: 15px;"> <b>Город:</b> <%=person.getCityName()%> </p>
+            <p style="font-size: 15px;"> <b>Местоположение:</b> <%=person.getCity()%>, <%=person.getRegionName()%>, <%=person.getCountryName()%> </p>
             <p style="font-size: 15px;"> <b>Адрес:</b> <%=person.getAddress()%> </p>
             <p style="font-size: 15px;"> <b>Телефон:</b> <%=person.getPhone()%> </p>
             <p style="font-size: 15px;"> <b>Email:</b> <%=person.getEmail()%> </p>

@@ -4,8 +4,7 @@
    %>
 <%@include file = "layout1.jsp"%>
 <%
-    Organization[] organization = Organization.getAll(null);
-    City[] city = City.getAll(null);
+    Region[] region = Region.getAll(null);
     Permission[] permission = Permission.getAll(null);
 %>
 <br>
@@ -34,17 +33,7 @@
             </div>
         </div> <br>
 
-        <div class="form-group has-feedback">
-            <label class="col-sm-3 control-label">Организация</label>
-            <div class="col-sm-8">
-                <select class="form-control" style="width: 100%;" name="organization_id">
-                    <option value="-1">Выберите организацию</option>
-                    <%for (int i = 0; i < organization.length; i++) {%>
-                    <option value="<%=organization[i].getId()%>"> <%=organization[i].getName()%></option>
-                    <%}%>
-                </select>
-            </div>
-        </div>
+        
         <div class="form-group has-feedback">
             <label class="col-sm-3 control-label">Должность</label>
             <div class="col-sm-8">
@@ -81,14 +70,21 @@
             </div>
         </div>
         <div class="form-group has-feedback">
-            <label class="col-sm-3 control-label">Город</label>
+            <label class="col-sm-3 control-label">Область</label>
             <div class="col-sm-8">
-                <select class="form-control" style="width: 100%;" name="city_id">
-                    <option value="-1">Выберите город</option>
-                    <%for (int i = 0; i < city.length; i++) {%>
-                    <option value="<%=city[i].getId()%>"><%=city[i].getName()%></option>
+                <select class="form-control" style="width: 100%;" name="region_id">
+                    <option value="-1">Выберите область</option>
+                    <%for (int i = 0; i < region.length; i++) {%>
+                    <option value="<%=region[i].getId()%>"><%=region[i].getName()%></option>
                     <%}%>
                 </select>
+            </div>
+        </div>
+        <div class="form-group has-feedback">
+            <label class="col-sm-3 control-label">Город</label>
+            <div class="col-sm-8">
+                <input type="text" class="form-control" required name="city">
+                <i class="fa fa-map-marker form-control-feedback"></i>
             </div>
         </div>
         <div class="form-group has-feedback">

@@ -4,9 +4,8 @@
 %>
 <%@include file = "layout1.jsp"%>
 <%
-    Organization[] organization = Organization.getAll(null);
     Stock[] stock = Stock.getAll(null);
-    City[] city = City.getAll(null);
+    Region[] region = Region.getAll(null);
 %>
 <script>
     function confirmDelete() {
@@ -25,23 +24,15 @@
         <center><h1>Склады</h1><br></center>
         <div class="gray-bg">
             <br>
-            <div class="col-md-4">
+            <div class="col-md-8">
                 <input type="text" class="form-control searchInput" placeholder="Поиск" style="width: 105%;" >
                 <i class="fa fa-search form-control-feedback"></i>
             </div>
             <div class="col-md-4">
-                <select class="form-control searchInput city" style="width: 105%; padding-right: 0;" name="city">
-                    <option>Выберите город</option>
-                    <%for (int i = 0; i < city.length; i++) {%>
-                    <option value="<%=city[i].getName()%>"><%=city[i].getName()%></option>
-                    <%}%>
-                </select>
-            </div>
-            <div class="col-md-4">
-                <select class="form-control searchInput" style="width: 100%; padding-right: 0;" name="organization">
-                    <option>Выберите организацию</option>
-                    <%for (int i = 0; i < organization.length; i++) {%>
-                    <option value="<%=organization[i].getName()%>"><%=organization[i].getName()%></option>
+                <select class="form-control searchInput region" style="width: 105%; padding-right: 0;" name="region">
+                    <option>Выберите область</option>
+                    <%for (int i = 0; i < region.length; i++) {%>
+                    <option value="<%=region[i].getName()%>"><%=region[i].getName()%></option>
                     <%}%>
                 </select>
             </div>
@@ -52,8 +43,7 @@
             <thead>
                 <tr>
                     <th style="width: 5%;">Номер</th>
-                    <th style="width: 40%;">Организация</th>
-                    <th style="width: 40%;">Местоположение</th>
+                    <th style="width: 80%;">Местоположение</th>
                     <th style="width: 5%;"></th>
                     <th style="width: 5%;"></th>
                     <th style="width: 5%;"></th>
@@ -64,8 +54,7 @@
                 <tr>
 
                     <td class="idSearch" ><center><a href="stockInfo.jsp?id=<%=stock[i].getId()%>"><%=stock[i].getId()%></a></center></td>
-            <td><a href="organizationInfo.jsp?id=<%=stock[i].getOrganizationId()%>"><%=stock[i].getOrganizationName()%></a></td>
-            <td><%=stock[i].getLocation().getAddress()%>, <%=stock[i].getLocation().getCityName()%>, <%=stock[i].getLocation().getCountryName()%></td>
+            <td><%=stock[i].getLocation().getAddress()%>, <%=stock[i].getLocation().getRegionName()%>, <%=stock[i].getLocation().getCountryName()%></td>
             <td><a onclick="showPlacemark($(this).closest('td').prev('td').text());"><i class="fa fa-map-marker"></i></a></td> 
             <td><a href="changeStockInfo.jsp?id=<%=stock[i].getId()%>"><i class="fa fa-edit"></i></a></td>
             <td><a href="deleteStock.jsp?id=<%=stock[i].getId()%>" onclick="return confirmDelete();"><i class="fa fa-close"></i></a></td>   

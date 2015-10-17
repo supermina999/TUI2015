@@ -18,7 +18,7 @@ public class AvailableResourceController {
         int measureId = 1;
         
         AvailableResource res = new AvailableResource();
-        res.setBaseId(baseId);
+        res.setStockId(baseId);
         res.setNumber(weight);
         res.setResourceId(resourceId);
         res.setMeasureId(measureId);

@@ -12,9 +12,7 @@
 <script src="plugins/charts/Chart.js"></script>  
 <%
     Person[] person = Person.getAll(null);
-    Organization[] organization = Organization.getAll(null);
     Stock[] stock = Stock.getAll(null);
-    Station[] station = Station.getAll(null);
 %>
 
 <center><br><h1>Отчёты</h1><br>
@@ -24,10 +22,7 @@
         <div class="vertical">
             <ul class="nav nav-tabs" role="tablist">
                 <li class><a href="#vtab1" role="tab" data-toggle="tab" aria-expanded="false">Пользователи</a></li>
-                <li class><a href="#vtab2" role="tab" data-toggle="tab" aria-expanded="false">Организации</a></li>
-                <li class><a href="#vtab3" role="tab" data-toggle="tab" aria-expanded="false">Склады</a></li>
-                <li class><a href="#vtab4" role="tab" data-toggle="tab" aria-expanded="false">Пункты выдачи</a></li>
-
+                <li class><a href="#vtab2" role="tab" data-toggle="tab" aria-expanded="false">Склады</a></li>
             </ul>
             <div class="tab-content" style="width: 80%;">
                 <div class="tab-pane fade active in" id="vtab1">
@@ -35,12 +30,6 @@
                 </div>
                 <div class="tab-pane fade active in" id="vtab2">
                     <canvas class="graph-line" id="myChart2"></canvas>
-                </div>
-                <div class="tab-pane fade active in" id="vtab3">
-                    <canvas class="graph-line" id="myChart3"></canvas>
-                </div>
-                <div class="tab-pane fade active in" id="vtab4">
-                    <canvas class="graph-line" id="myChart4"></canvas>
                 </div>
             </div>
         </div>
@@ -50,10 +39,6 @@
         Vector<Integer> number1 = new Vector<Integer>();
         Vector<String> graph_date2 = new Vector<String>();
         Vector<Integer> number2 = new Vector<Integer>();
-        Vector<String> graph_date3 = new Vector<String>();
-        Vector<Integer> number3 = new Vector<Integer>();
-        Vector<String> graph_date4 = new Vector<String>();
-        Vector<Integer> number4 = new Vector<Integer>();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         int i = 0;
         int d = 0;
@@ -77,28 +62,7 @@
             cal.add(Calendar.DATE, 1);
             date = sdf.parse(sdf.format(cal.getTime()));
         }
-        date = organization[0].getDate();
-        date_end = organization[organization.length - 1].getDate();
-        i = 0;
-        d = 0;
-        cal = Calendar.getInstance();
-        cal.setTime(date);
-        cal.add(Calendar.DATE, -1);
-        date = sdf.parse(sdf.format(cal.getTime()));
-        while (!date.after(date_end)) {
-            graph_date2.add(new SimpleDateFormat("dd.MM.yyyy").format(date));
-            String dr = sdf.format(organization[i].getDate());
-            while (sdf.format(date).equals(dr) && i < organization.length) {
-                i++;
-                d++;
-                if (i < organization.length) {
-                    dr = sdf.format(organization[i].getDate());
-                }
-            }
-            number2.add(d);
-            cal.add(Calendar.DATE, 1);
-            date = sdf.parse(sdf.format(cal.getTime()));
-        }
+        
         date = stock[0].getDate();
         date_end = stock[stock.length - 1].getDate();
         i = 0;
@@ -108,7 +72,7 @@
         cal.add(Calendar.DATE, -1);
         date = sdf.parse(sdf.format(cal.getTime()));
         while (!date.after(date_end)) {
-            graph_date3.add(new SimpleDateFormat("dd.MM.yyyy").format(date));
+            graph_date2.add(new SimpleDateFormat("dd.MM.yyyy").format(date));
             String dr = sdf.format(stock[i].getDate());
             while (sdf.format(date).equals(dr) && i < stock.length) {
                 i++;
@@ -117,32 +81,11 @@
                     dr = sdf.format(stock[i].getDate());
                 }
             }
-            number3.add(d);
+            number2.add(d);
             cal.add(Calendar.DATE, 1);
             date = sdf.parse(sdf.format(cal.getTime()));
         }
-        date = station[0].getDate();
-        date_end = station[station.length - 1].getDate();
-        i = 0;
-        d = 0;
-        cal = Calendar.getInstance();
-        cal.setTime(date);
-        cal.add(Calendar.DATE, -1);
-        date = sdf.parse(sdf.format(cal.getTime()));
-        while (!date.after(date_end)) {
-            graph_date4.add(new SimpleDateFormat("dd.MM.yyyy").format(date));
-            String dr = sdf.format(station[i].getDate());
-            while (sdf.format(date).equals(dr) && i < station.length) {
-                i++;
-                d++;
-                if (i < station.length) {
-                    dr = sdf.format(station[i].getDate());
-                }
-            }
-            number4.add(d);
-            cal.add(Calendar.DATE, 1);
-            date = sdf.parse(sdf.format(cal.getTime()));
-        }
+        
     %>
 <script>
             var data1 = {
@@ -164,7 +107,7 @@
             labels: ["<%=graph_date2.elementAt(0)%>"<%for (i = 1; i < graph_date2.size(); i++) {%>, "<%=graph_date2.elementAt(i)%>"<%}%>],
                     datasets: [
                     {
-                    label: "Организации",
+                    label: "My First dataset",
                             fillColor: "rgba(220,220,220,0.2)",
                             strokeColor: "rgba(220,220,220,1)",
                             pointColor: "rgba(220,220,220,1)",
@@ -175,45 +118,11 @@
                     }
                     ]
             };
-            var data3 = {
-            labels: ["<%=graph_date3.elementAt(0)%>"<%for (i = 1; i < graph_date3.size(); i++) {%>, "<%=graph_date3.elementAt(i)%>"<%}%>],
-                    datasets: [
-                    {
-                    label: "My First dataset",
-                            fillColor: "rgba(220,220,220,0.2)",
-                            strokeColor: "rgba(220,220,220,1)",
-                            pointColor: "rgba(220,220,220,1)",
-                            pointStrokeColor: "#fff",
-                            pointHighlightFill: "#fff",
-                            pointHighlightStroke: "rgba(220,220,220,1)",
-                            data: [<%=number3.elementAt(0)%><%for (i = 1; i < number3.size(); i++) {%>, <%=number3.elementAt(i)%><%}%>]
-                    }
-                    ]
-            };
-            var data4 = {
-            labels: ["<%=graph_date4.elementAt(0)%>"<%for (i = 1; i < graph_date4.size(); i++) {%>, "<%=graph_date4.elementAt(i)%>"<%}%>],
-                    datasets: [
-                    {
-                    label: "My First dataset",
-                            fillColor: "rgba(220,220,220,0.2)",
-                            strokeColor: "rgba(220,220,220,1)",
-                            pointColor: "rgba(220,220,220,1)",
-                            pointStrokeColor: "#fff",
-                            pointHighlightFill: "#fff",
-                            pointHighlightStroke: "rgba(220,220,220,1)",
-                            data: [<%=number4.elementAt(0)%><%for (i = 1; i < number4.size(); i++) {%>, <%=number4.elementAt(i)%><%}%>]
-                    }
-                    ]
-            };
             window.onload = function() {
-            var ctx = document.getElementById("myChart1").getContext("2d");
+                    var ctx = document.getElementById("myChart1").getContext("2d");
                     window.myNewChart = new Chart(ctx).Line(data1, {responsive: true});
                     var ctx = document.getElementById("myChart2").getContext("2d");
                     window.myNewChart = new Chart(ctx).Line(data2, {responsive: true});
-                    var ctx = document.getElementById("myChart3").getContext("2d");
-                    window.myNewChart = new Chart(ctx).Line(data3, {responsive: true});
-                    var ctx = document.getElementById("myChart4").getContext("2d");
-                    window.myNewChart = new Chart(ctx).Line(data4, {responsive: true});
             };</script>
 <script src="js/charts.js"></script>
 <%@include file = "layout2.jsp"%>
