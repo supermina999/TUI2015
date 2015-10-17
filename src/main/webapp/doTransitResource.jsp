@@ -5,9 +5,8 @@
 <%
     ResourceController.transit(request);
     AvailableResource res = AvailableResource.getOne(Integer.parseInt(request.getParameter("resourceId")));
-    int base_id = res.getBaseId();
-    String isStock = Base.getOne(base_id).isStock() ? "true" : "false";
+    int stock_id = res.getStockId();
 %>
 <script>
-    window.location.href = "baseResources.jsp?is_needed=false&id=<%=base_id%>&is_stock=<%=isStock%>";
+    window.location.href = "stockResources.jsp?id=<%=stock_id%>";
 </script>

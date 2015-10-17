@@ -43,7 +43,7 @@
 
         </div>
         <div class="form-group"></div>
-        <a href="baseResources.jsp?id=<%=stock.getId() + "&is_stock=true&is_needed=false"%>" 
+        <a href="stockResources.jsp?id=<%=stock.getId()%>" 
            class="btn btn-default btn-lg" style="width: 100%;">Ресурсы на складе</a>
     </form>
 </div>

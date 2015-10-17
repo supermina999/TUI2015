@@ -7,8 +7,9 @@ public class Application extends DBModel {
         new DBEntry("id", EntryType.Int),
         new DBEntry("info", EntryType.String),
         new DBEntry("full_name", EntryType.String),
-        new DBEntry("phone", EntryType.Int),
-        new DBEntry("requets_type_id", EntryType.Int),
+        new DBEntry("phone", EntryType.String),
+        new DBEntry("email", EntryType.String),
+        new DBEntry("request_type_id", EntryType.Int),
         new DBEntry("status_id", EntryType.Int)
     };
 
@@ -97,8 +98,13 @@ public class Application extends DBModel {
         this.entryes[5].setValue(id);
     }
 
-    public Integer getsetRequestTypeId() {
+    public Integer getRequestTypeId() {
         return Integer.parseInt(this.entryes[5].getValue());
+    }
+    
+    public String getRequestTypeName() throws Exception {
+        int id = getRequestTypeId();
+        return RequestType.getOne(id).getName();
     }
     
     public void setStatusId(int id) {

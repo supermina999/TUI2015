@@ -4,13 +4,13 @@
    %>
 <%@include file = "layout1.jsp"%>
 <%
-    int base_id = Integer.parseInt(request.getParameter("base_id"));
-    Base base = Base.getOne(base_id);
-    City[] city = City.getAll(null);
+    int stock_id = Integer.parseInt(request.getParameter("stock_id"));
+    Stock stock = Stock.getOne(stock_id);
+    Region[] region = Region.getAll(null);
     Country[] country = Country.getAll(null);
-    Base[] bases = Base.getAll(null);
+    Stock[] stocks = Stock.getAll(null);
     DBEntry[] params = {
-        new DBEntry("base_id", EntryType.Int, base_id)
+        new DBEntry("stock_id", EntryType.Int, stock_id)
     };
     AvailableResource[] availableRes = AvailableResource.getAll(params);
 %>
@@ -40,7 +40,7 @@
         <div class="form-group has-feedback">
             <label class="col-sm-3 control-label">Страна</label>
             <div class="col-sm-8">
-                <select id="countrySelect" class="form-control" style="width: 100%;" name="cityIn">
+                <select id="countrySelect" class="form-control" style="width: 100%;" name="regionIn">
                     <option>Выберите страну</option>
                     <%for (int i = 0; i < country.length; i++) {%>
                     <option><%=country[i].getName()%></option>
@@ -49,12 +49,12 @@
             </div>
         </div>
         <div class="form-group has-feedback">
-            <label class="col-sm-3 control-label">Город</label>
+            <label class="col-sm-3 control-label">Область</label>
             <div class="col-sm-8">
-                <select id="citySelect" class="form-control" style="width: 100%;" name="cityIn">
-                    <option>Выберите город</option>
-                    <%for (int i = 0; i < city.length; i++) {%>
-                    <option class="cityOption <%=city[i].getCountryName()%>"><%=city[i].getName()%></option>
+                <select id="regionSelect" class="form-control" style="width: 100%;" name="regionIn">
+                    <option>Выберите область</option>
+                    <%for (int i = 0; i < region.length; i++) {%>
+                    <option class="regionOption <%=region[i].getCountryName()%>"><%=region[i].getName()%></option>
                     <%}%>
                 </select>
             </div>
@@ -62,10 +62,10 @@
         <div class="form-group has-feedback">
             <label class="col-sm-3 control-label">Пункт назначения</label>
             <div class="col-sm-8">
-                <select class="form-control" style="width: 100%;" name="baseIdTo">
+                <select class="form-control" style="width: 100%;" name="stockIdTo">
                     <option>Выберите пункт назначения</option>
-                    <%for (int i = 0; i < bases.length; i++) {%>
-                    <option  class ="baseOption <%=bases[i].getLocation().getCityName()%>" value="<%=bases[i].getId()%>"><%=bases[i].getLocation().getAddress()%></option>
+                    <%for (int i = 0; i < stocks.length; i++) {%>
+                    <option  class ="stockOption <%=stocks[i].getLocation().getRegionName()%>" value="<%=stocks[i].getId()%>"><%=stocks[i].getLocation().getAddress()%></option>
                     <%}%>
                 </select>
             </div>
@@ -81,7 +81,7 @@
     $("#countrySelect").change(function (){
         val = $(this).val();
         console.log(val);
-        $.each($(".cityOption"), function(){
+        $.each($(".regionOption"), function(){
             console.log($(this).hasClass(val));
             if ($(this).hasClass(val))
             {
@@ -90,10 +90,10 @@
             else $(this).attr("disabled","disabled");
         });
     });
-     $("#citySelect").change(function (){
+     $("#regionSelect").change(function (){
         val = $(this).val();
         console.log(val);
-        $.each($(".baseOption"), function(){
+        $.each($(".stockOption"), function(){
             console.log($(this).hasClass(val));
             if ($(this).hasClass(val))
             {

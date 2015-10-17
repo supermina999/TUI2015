@@ -2,7 +2,7 @@ String.prototype.contains = function(it) { return this.indexOf(it) != -1; };
 $.each($('.searchInput'),function() {
     var search = function() {
         var s = $(this).val();
-        if ($(this).hasClass("City")) s+=", ";
+        if ($(this).hasClass("Region")) s+=", ";
         s = s.toLowerCase();
         console.log(s);
         var $rows = $(document).find("#searchTable").find("tr");

@@ -5,15 +5,14 @@
    %>
 <%@include file = "layout1.jsp"%>
 <%
-    String baseId = request.getParameter("base_id");
-    boolean isNeeded = request.getParameter("is_needed").equals("true");
+    String stockId = request.getParameter("stock_id");
     Resource[] resource = Resource.getAll(null);
 %>
 <br>
 <div class="form-block center-block" style="min-height: 700px;">
     <center><h2 class="title">Добавить ресурс</h2></center>
     <hr>
-    <form class="form-horizontal" method="post" action="add<%=isNeeded?"Needed":""%>Resource.jsp">
+    <form class="form-horizontal" method="post" action="addResource.jsp">
         <div class="form-group has-feedback">
             <label class="col-sm-3 control-label">Наименование</label>
             <div class="col-sm-8">
@@ -31,7 +30,7 @@
                 <input type="text" class="form-control" name="number">
             </div>
         </div>
-                <input type="hidden" class="form-control" name="baseId" value="<%=baseId%>">
+                <input type="hidden" class="form-control" name="baseId" value="<%=stockId%>">
         <div class="form-group">
             <div class="col-sm-offset-3 col-sm-8">
                 <input class="btn btn-block btn-default" type="submit" name="submit" value="Готово">

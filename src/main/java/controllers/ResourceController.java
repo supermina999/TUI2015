@@ -54,8 +54,8 @@ public class ResourceController {
         int resourceId = Integer.parseInt(resource);
         String weight = request.getParameter("number");
         int number = Integer.parseInt(weight);
-        String baseIdToS = request.getParameter("baseIdTo");
-        int baseIdTo = Integer.parseInt(baseIdToS);
+        String stockIdToS = request.getParameter("stockIdTo");
+        int stockIdTo = Integer.parseInt(stockIdToS);
         
         AvailableResource res = AvailableResource.getOne(resourceId);
         int resType = res.getResourceId();
@@ -66,13 +66,13 @@ public class ResourceController {
             res.saveChanges();
             DBEntry[] params = {
                 new DBEntry("resource_id", EntryType.Int,resType),
-                new DBEntry("base_id", EntryType.Int, baseIdTo)
+                new DBEntry("stock_id", EntryType.Int, stockIdTo)
             };
             AvailableResource nRes = AvailableResource.getOne(params);
             if (nRes == null)
             {
                 nRes = new AvailableResource();
-                nRes.setStockId(baseIdTo);
+                nRes.setStockId(stockIdTo);
                 nRes.setMeasureId(1);
                 nRes.setNumber(number);
                 nRes.setResourceId(resType);
