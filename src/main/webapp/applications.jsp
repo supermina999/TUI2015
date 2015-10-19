@@ -23,10 +23,10 @@
                         <i class="fa fa-search form-control-feedback"></i>
                     </div>
                     <div class="col-md-4">
-                        <select class="form-control searchInput region" style="width: 100%; padding-right: 0;" name="request">
+                        <select class="form-control searchInput" style="width: 100%; padding-right: 0;" name="request">
                             <option>Выберите вид заявки</option>
                             <%for (int i = 0; i < requestType.length; i++) {%>
-                            <option value="<%=requestType[i].getId()%>"><%=requestType[i].getName()%></option>
+                            <option value="<%=requestType[i].getName()%>"><%=requestType[i].getName()%></option>
                             <%}%>
                         </select>
                     </div>

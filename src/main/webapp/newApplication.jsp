@@ -25,7 +25,7 @@
         <div class="form-group has-feedback">
             <label class="col-sm-3 control-label">Содержание <br> заявки</label>
             <div class="col-sm-8">
-                <textarea rows="7" type="text" class="form-control" name="info" required></textarea>
+                <textarea rows="7" type="text" class="form-control" name="info" id="info" required></textarea>
                 <i class="fa fa-pencil form-control-feedback"></i>
             </div>
         </div>
@@ -59,5 +59,12 @@
     </form>
 </div>
 
-
+<script>
+    $('#request').change(function(){
+        if ($('#request option:selected').text() == "Получение ресурса") $('#info').attr("placeholder",
+            "Укажите необходимые Вам ресурсы и их количество, причину потребности, Ваше " +
+            "местоположение и промежуток времени, в который с Вами связаться.");
+    });
+</script>
+                    
 <%@include file = "layout2.jsp"%>
