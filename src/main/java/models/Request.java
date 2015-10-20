@@ -9,7 +9,7 @@ public class Request extends DBModel {
     static protected String tableName = "request";
     static public DBEntry[] stdEntryes = {
         new DBEntry("id", EntryType.Int),
-        new DBEntry("requets_type_id", EntryType.Int),
+        new DBEntry("request_type_id", EntryType.Int),
         new DBEntry("resource_id", EntryType.Int),
         new DBEntry("number", EntryType.Int),
         new DBEntry("measure_id", EntryType.Int),
@@ -73,8 +73,13 @@ public class Request extends DBModel {
         this.entryes[1].setValue(id);
     }
 
-    public Integer getsetRequestTypeId() {
+    public Integer getRequestTypeId() {
         return Integer.parseInt(this.entryes[1].getValue());
+    }
+    
+    public String getRequestTypeName() throws Exception {
+        int id = getRequestTypeId();
+        return RequestType.getOne(id).getName();
     }
     
     public int getResourceId() {
@@ -157,8 +162,17 @@ public class Request extends DBModel {
     public Date getDate() throws ParseException {
         return new SimpleDateFormat("yyyy-MM-dd").parse(this.entryes[9].getValue());
     }
-
+    
+    public String getDateString() throws ParseException {
+        return this.entryes[9].getValue();
+    }
+    
     public void setDate(Date date) {
         this.entryes[9].setValue(date);
+    }
+    
+    public Location getLocation() throws Exception {
+        int id = getLocationId();
+        return Location.getOne(id);
     }
 }

@@ -47,7 +47,7 @@
                 <% }%>
             </tbody>
         </table>
-        <a href="newTypeOfResource.jsp" class="btn btn-default btn-lg">Добавить вид ресурса</a>
+        <a href="newTypeOfResource.jsp?back=0" class="btn btn-default btn-lg">Добавить вид ресурса</a>
     </div>
 </center>
 <script src="js/search.js"></script>   

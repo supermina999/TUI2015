@@ -1,14 +1,15 @@
 ymaps.ready(init);
 var myMap, myCollection, myPlacemark;
-
 function init() {
     myCollection = new ymaps.GeoObjectCollection();
     myMap = new ymaps.Map("map", {
         center: [48.463629, 31.685961],
         zoom: 15
     });
-    setCenter($("#region option:selected").text());
-    update();
+    var region = $('#region option:selected').text();
+    var city = region.substr(0, region.length - 12);
+    addPlacemark(city);
+    setCenter(city);
 }
 
 function setCenter(address) {
@@ -25,7 +26,6 @@ function setCenter(address) {
                 }
             }
     );
-
 }
 
 function addCustomPlacemark() {
@@ -92,9 +92,16 @@ function addPlacemark(address) {
 }
 
 function update() {
-    var address = $('#region option:selected').text() + ", " + $('#address').val();
-    addPlacemark(address);
-    setCenter(address);
+    if ($('#address').val() != "") {
+        var address = $('#region option:selected').text() + ", " + $('#address').val();
+        addPlacemark(address);
+        setCenter(address);
+    } else {
+        var region = $('#region option:selected').text();
+        var city = region.substr(0, region.length - 12);
+        addPlacemark(city);
+        setCenter(city);
+    }
 }
 
 $('#region').change(function () {
@@ -107,17 +114,16 @@ $('#region').change(function () {
     }
     update();
 });
-
 $('#address').keyup(function () {
     update();
 });
-
 $('#type').change(function () {
     if ($('#type option:selected').text() === "ПО АДРЕСУ") {
         myCollection.removeAll();
         $('#address').val("");
         $('#lat').val("");
         $('#lon').val("");
+        update();
     } else {
         addCustomPlacemark();
     }

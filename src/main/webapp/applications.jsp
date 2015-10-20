@@ -1,14 +1,15 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <% int minPermission = 8;
-    int tab = 0;
+    int tab = 2;
     Application[] app = Application.getAll(null);
     RequestType[] requestType = RequestType.getAll(null);
+    Request[] req = Request.getAll(null);
 %>
 
 <%@include file = "layout1.jsp"%>
 <script>
     function confirmDelete() {
-        if (confirm("Вы уверены, что хотите удалить склад?")) {
+        if (confirm("Вы уверены, что хотите удалить заявку?")) {
             return true;
         } else {
             return false;
@@ -58,17 +59,17 @@
                     <td class="idSearch"><b>Вид: </b><%=app[i].getRequestTypeName()%> <br><%=app[i].getInfo()%></td>
                     <td class="idSearch">
                         <b>ФИО: </b><%=app[i].getFullName()%><br>
-                        <b>Тел.: </b> <%=app[i].getPhone()%> <br>
+                        <b>Телефон: </b> <%=app[i].getPhone()%> <br>
                         <b> Email: </b> <%=app[i].getEmail()%> <br>
                     </td>
-                    <td><i class="fa fa-check"></i></td>
+                    <td><a href="newRequest.jsp?id=<%=app[i].getId()%>"><i class="fa fa-check"></i></a></td>
                     <td><a href="deleteApplication.jsp?id=<%=app[i].getId()%>" onclick="return confirmDelete();"><i class="fa fa-close"></i></a></td>
                     </tr>
                     <%}%>
                     </tbody>
                 </table>
             </div>
-            <div class="tab-pane fade" id="h2tab2" style="min-height: 800px;">
+            <div class="tab-pane fade in active" id="h2tab2" style="min-height: 800px;">
                 <div class="gray-bg">
                     <br>
                     <div class="col-md-8">
@@ -76,7 +77,7 @@
                         <i class="fa fa-search form-control-feedback"></i>
                     </div>
                     <div class="col-md-4">
-                        <select class="form-control searchInput" style="width: 105%; padding-right: 0;" name="requestType">
+                        <select class="form-control searchInput" style="width: 100%; padding-right: 0;" name="request">
                             <option>Выберите вид заявки</option>
                             <%for (int i = 0; i < requestType.length; i++) {%>
                             <option value="<%=requestType[i].getName()%>"><%=requestType[i].getName()%></option>
@@ -89,30 +90,31 @@
                     <thead>
                         <tr>
                             <th style="width: 5%;">Номер</th>
-                            <th style="width: 45%;">Cодержание</th>
-                            <th style="width: 40%;">Контактная информация</th>
-                            <th style="width: 5%;"></th>
-                            <th style="width: 5%;"></th>
+                            <th style="width: 50%;">Информация</th>
+                            <th style="width: 45%;">Контактная информация</th>
                         </tr>
                     </thead>
                     <tbody id="searchTable">
+                        <%for (int i = 0; i < req.length; i++)
+                                if (req[i].getStatusId() == 1) {
+                                    Application tApp = Application.getOne(req[i].getApplicationId());%>
                         <tr>
-                            <%for (int i = 0; i < app.length; i++)
-                                    if (app[i].getStatusId() == 2) {%>
-                            <td class="idSearch"><center><%=app[i].getId()%></center></td>
-                    <td class="idSearch"><b>Вид: </b><%=app[i].getRequestTypeName()%> <br><%=app[i].getInfo()%></td>
+                            <td class="idSearch"><center><%=req[i].getId()%></center></td>
                     <td class="idSearch">
-                        <b>ФИО: </b><%=app[i].getFullName()%><br>
-                        <b>Тел.: </b> <%=app[i].getPhone()%> <br>
-                        <b> Email: </b> <%=app[i].getEmail()%> <br>
+                        <b>Вид: </b><%=req[i].getRequestTypeName()%><br>
+                        <b>Ресурс: </b><%=req[i].getResourceName()%> <%=req[i].getNumber()%> <%=req[i].getMeasureName()%><br>
+                        <b>Местоположение:</b> <%=req[i].getLocation().getAddress()%>, <%=req[i].getLocation().getRegionName()%><br>
+                        <b>Дата:</b> <%=req[i].getDateString()%>
                     </td>
-                    <td><i class="fa fa-check"></i></td>
-                    <td><i class="fa fa-close"></i></td>
+                    <td class="idSearch">
+                        <b>ФИО: </b><%=tApp.getFullName()%><br>
+                        <b>Телефон: </b> <%=tApp.getPhone()%> <br>
+                        <b> Email: </b> <%=tApp.getEmail()%> <br>
+                    </td>
                     </tr>
                     <%}%>
                     </tbody>
                 </table>
-
             </div>
         </div>
     </div>

@@ -1,9 +1,8 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <% int minPermission = 8;
-    int tab = 0;
+    int tab = 2;
     RequestType[] requestType = RequestType.getAll(null);
     Region[] region = Region.getAll(null);
-
 %>
 <%@include file = "layout1.jsp"%>
 <br>
@@ -25,7 +24,7 @@
         <div class="form-group has-feedback">
             <label class="col-sm-3 control-label">Содержание <br> заявки</label>
             <div class="col-sm-8">
-                <textarea rows="7" type="text" class="form-control" name="info" id="info" required></textarea>
+                <textarea rows="7" type="text" class="form-control" name="info" id="info" required maxlength="500"></textarea>
                 <i class="fa fa-pencil form-control-feedback"></i>
             </div>
         </div>

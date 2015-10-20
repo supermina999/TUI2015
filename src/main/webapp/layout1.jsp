@@ -128,8 +128,10 @@
                                                     <li <% if (tab == 1) { %>class="active" <% } %>>
                                                         <a href="index.jsp">Главная</a>
                                                     </li>
-                                                    
-                                                      <li <% if (tab == 3) { %>class="active" <% } %>>
+                                                    <li <% if (tab == 2) { %>class="active" <% } %>>
+                                                        <a href="applications.jsp">Заявки</a>
+                                                    </li>
+                                                    <li <% if (tab == 3) { %>class="active" <% } %>>
                                                         <a href="typesOfResources.jsp">Виды ресурсов</a>  
                                                     </li>                                      
                                                     <li <% if (tab == 4) { %>class="active" <% } %>>
