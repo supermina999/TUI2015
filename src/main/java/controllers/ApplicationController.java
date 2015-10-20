@@ -24,4 +24,16 @@ public class ApplicationController
         app.writeToDB();
     }
     
+    public static void delete(HttpServletRequest request) throws Exception
+     {
+        String idS;
+        Application res = null;
+        if ((idS = request.getParameter("id")) != null)
+        {
+            int id = Integer.parseInt(idS);
+            res = Application.getOne(id);
+            res.delete();
+        }
+     }
+    
 }

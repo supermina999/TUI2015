@@ -6,7 +6,15 @@
 %>
 
 <%@include file = "layout1.jsp"%>
-
+<script>
+    function confirmDelete() {
+        if (confirm("Вы уверены, что хотите удалить склад?")) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+</script>
 <div class="form-block center-block" style="width: 70%">
     <center><h1>Заявки</h1></center>
     <div class="tabs-style-2">
@@ -54,7 +62,7 @@
                         <b> Email: </b> <%=app[i].getEmail()%> <br>
                     </td>
                     <td><i class="fa fa-check"></i></td>
-                    <td><i class="fa fa-close"></i></td>
+                    <td><a href="deleteApplication.jsp?id=<%=app[i].getId()%>" onclick="return confirmDelete();"><i class="fa fa-close"></i></a></td>
                     </tr>
                     <%}%>
                     </tbody>

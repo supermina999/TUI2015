@@ -10,6 +10,9 @@
     };
     AvailableResource[] available = AvailableResource.getAll(params);
 %>
+
+<%@include file = "layout1.jsp"%>
+
 <script>
     function confirmDelete() {
         if (confirm("Вы уверены, что хотите удалить информацию о ресурсе?")) {
@@ -19,7 +22,7 @@
         }
     }
 </script>
-<%@include file = "layout1.jsp"%>
+
 <center>
     <br><h1>Ресурсы в наличии склада №<%=id%></h1>
     <h3>Адрес: <%=stock.getLocation().getCountryName() +
