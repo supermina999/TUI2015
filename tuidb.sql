@@ -297,7 +297,7 @@ CREATE TABLE IF NOT EXISTS `request` (
 LOCK TABLES `request` WRITE;
 /*!40000 ALTER TABLE `request` DISABLE KEYS */;
 INSERT INTO `request` (`id`, `request_type_id`, `resource_id`, `number`, `measure_id`, `application_id`, `location_id`, `status_id`, `emergency_id`, `date`) VALUES
-(1, 1, 1, 10, 1, 1, 1, 1, 1, '0000-00-00');
+(1, 1, 1, 10, 1, 1, 1, 1, 1, '2015-05-05');
 /*!40000 ALTER TABLE `request` ENABLE KEYS */;
 UNLOCK TABLES;
 

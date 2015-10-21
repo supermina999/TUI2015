@@ -318,15 +318,15 @@
     <div class="stats row grid-space-10" style="margin-left: 12%; margin-right: 12%;">
         <div class="col-md-3 col-sm-6">
             <div class="box-style-1">
-                <h2 class="title">Организации</h2>
-                <i class="fa fa-briefcase"></i>
-                <span class="stat-num" data-to="152000" data-speed="3000">0</span>
+                <h2 class="title">Волонтеры</h2>
+                <i class="fa fa-users"></i>
+                <span class="stat-num" data-to="870" data-speed="3000">0</span>
             </div>
         </div>
         <div class="col-md-3 col-sm-6">
             <div class="box-style-1">
-                <h2 class="title">Волонтёры</h2>
-                <i class="fa fa-users"></i>
+                <h2 class="title">Склады</h2>
+                <i class="fa fa-home"></i>
                 <span class="stat-num" data-to="870" data-speed="3000">0</span>
             </div>
         </div>

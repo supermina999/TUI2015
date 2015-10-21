@@ -1,30 +1,41 @@
 package controllers;
 
-import java.io.UnsupportedEncodingException;
-import java.sql.SQLException;
 import javax.servlet.http.HttpServletRequest;
 import models.*;
-import sql.Sql;
 
 public class AvailableResourceController {
-    public static AvailableResource add(HttpServletRequest request) throws Exception
+    
+    public static int add(HttpServletRequest request) throws Exception
     {
-        String resource_id = request.getParameter("resourceId");
-        int resourceId = Integer.parseInt(resource_id);
-        String number = request.getParameter("number");
-        int weight = Integer.parseInt(number);
-        String baseIdS = request.getParameter("baseId");
-        int baseId = Integer.parseInt(baseIdS);
-        int measureId = 1;
-        
-        AvailableResource res = new AvailableResource();
-        res.setStockId(baseId);
-        res.setNumber(weight);
-        res.setResourceId(resourceId);
-        res.setMeasureId(measureId);
-        res.writeToDB();
-        return res;
+        String resource = request.getParameter("resourceId");
+        int resourceId = Integer.parseInt(resource);
+        String numberS = request.getParameter("number");
+        int number = Integer.parseInt(numberS);
+        String stock = request.getParameter("stockId");
+        int stockId = Integer.parseInt(stock);
+        String measure = request.getParameter("measure");
+        int measureId = Integer.parseInt(request.getParameter("measure"));
+        DBEntry[] params = {
+            new DBEntry("stock_id", EntryType.Int, stockId),
+            new DBEntry("resource_id", EntryType.Int, resourceId)
+        };
+        AvailableResource check = AvailableResource.getOne(params);
+        if (check == null) {
+            AvailableResource res = new AvailableResource();
+            res.setStockId(stockId);
+            res.setNumber(number);
+            res.setResourceId(resourceId);
+            res.setMeasureId(measureId);
+            res.writeToDB();
+            return res.getStockId();
+        } else {
+           int tNumber = check.getNumber();
+           check.setNumber(tNumber + number);
+           check.saveChanges();
+           return check.getStockId();
+        }
     }
+    
     public static void update(HttpServletRequest request) throws Exception
     {   
         String idS;

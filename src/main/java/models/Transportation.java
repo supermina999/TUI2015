@@ -79,6 +79,8 @@ public class Transportation extends DBModel {
         this.entryes[1].setValue(id);
     }
     
+    
+    
     public int getTransportId() {
         return Integer.parseInt(this.entryes[2].getValue());
     }
@@ -127,6 +129,11 @@ public class Transportation extends DBModel {
     public String getSafetyName() throws Exception {
         int id = getSafetyId();
         return Safety.getOne(id).getName();
+    }
+    
+    public String getRequestType() throws Exception {
+        int id = getRequestId();
+        return Request.getOne(id).getRequestTypeName();
     }
 
 }

@@ -3,8 +3,7 @@
 <%@page import="controllers.AvailableResourceController"%>
 
 <%
-    AvailableResource res = AvailableResourceController.add(request);
-    int stock_id = res.getStockId();
+    int stock_id = AvailableResourceController.add(request);
 %>
 <script>
     window.location.href = "stockResources.jsp?id=<%=stock_id%>";

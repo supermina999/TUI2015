@@ -7,5 +7,5 @@
     int stock_id = res.getStockId();
 %>
 <script>
-    window.location.href = "baseResources.jsp?id=<%=stock_id%>";
+    window.location.href = "stockResources.jsp?id=<%=stock_id%>";
 </script>

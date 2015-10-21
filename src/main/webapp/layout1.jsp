@@ -131,8 +131,12 @@
                                                     <li <% if (tab == 2) { %>class="active" <% } %>>
                                                         <a href="applications.jsp">Заявки</a>
                                                     </li>
-                                                    <li <% if (tab == 3) { %>class="active" <% } %>>
-                                                        <a href="typesOfResources.jsp">Виды ресурсов</a>  
+                                                    <li>
+                                                        <a type="button" class="btn btn-toggle <% if (tab == 3) { %>btn-toggle-active <% }%>" data-toggle="dropdown">Ресурсы</a>
+                                                        <ul class="dropdown-menu dropdown-animation">
+                                                            <li><a href="availableResources.jsp">В наличии</a></li>
+                                                            <li><a href="typesOfResources.jsp">Виды</a></li>
+                                                        </ul>
                                                     </li>                                      
                                                     <li <% if (tab == 4) { %>class="active" <% } %>>
                                                         <a href="stocks.jsp">Склады</a>

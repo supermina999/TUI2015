@@ -29,7 +29,7 @@
                 <i class="fa fa-search form-control-feedback"></i>
             </div>
             <div class="col-md-4">
-                <select class="form-control searchInput region" style="width: 105%; padding-right: 0;" name="region">
+                <select class="form-control searchInput region" style="width: 100%; padding-right: 0;" name="region">
                     <option>Выберите область</option>
                     <%for (int i = 0; i < region.length; i++) {%>
                     <option value="<%=region[i].getName()%>"><%=region[i].getName()%></option>

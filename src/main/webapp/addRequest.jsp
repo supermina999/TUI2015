@@ -7,5 +7,5 @@
     RequestController.add(request);
 %>
 <script>
-    window.location.href = "/TUI2015/";
+    window.location.href = "/TUI2015/applications.jsp#h2tab2";
 </script>
