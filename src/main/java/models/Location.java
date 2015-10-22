@@ -111,4 +111,6 @@ public class Location extends DBModel {
         int id = getRegionId();
         return Region.getOne(id).getName();
     }
+    
+    public int onMapId = -1;
 }

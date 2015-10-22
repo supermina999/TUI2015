@@ -3,10 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package map;
+package maps;
 
 import java.util.ArrayList;
 import models.Location;
+import models.Request;
 
 public class Way {
     public Way()
@@ -16,10 +17,11 @@ public class Way {
         deltas = new ArrayList<>();       
     }
     public int transportId;
-    public ArrayList<Integer> requests;
+    public ArrayList<Request> requests;
     public ArrayList<Location> cords; 
     public ArrayList<StockDelta> deltas;
     public int mask;
+    public double time;
     
     static public class StockDelta
     {
