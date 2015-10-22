@@ -100,6 +100,7 @@ public class Map
     public static double getDistance(int node1, int node2, int safety)
     {
         if(node1 == node2) return 0;
+        if(nodes.isEmpty()) load();
         TreeSet<Position> positions = new TreeSet<>();
         TreeMap<Integer, Double> curDist = new TreeMap<>();
         TreeMap<Integer, Double> curF = new TreeMap<>();
