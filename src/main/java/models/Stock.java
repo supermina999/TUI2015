@@ -3,6 +3,8 @@ package models;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Stock extends DBModel {
 
@@ -80,5 +82,23 @@ public class Stock extends DBModel {
 
     public void setDate(Date date) {
         this.entryes[2].setValue(date);
+    }
+    
+    public Map<Integer, Integer> getAllRecources() throws Exception
+    {
+        Map<Integer, Integer> ans = new HashMap<>();
+        DBEntry[] params = {
+           new DBEntry("stock_id", EntryType.Int, getId())
+        };
+        AvailableResource[] res = AvailableResource.getAll(params);
+        for (AvailableResource buf : res)
+        {
+            int resTypeId = buf.getResourceId();
+            int resTypeCnt = buf.getNumber();
+            Integer resTypeCntPr = ans.get(resTypeId);
+            if (resTypeCntPr != null) resTypeCnt += resTypeCntPr;
+            ans.put(resTypeId, resTypeCnt);
+        }
+        return ans;
     }
 }
