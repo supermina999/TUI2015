@@ -1,5 +1,7 @@
 package maps;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.*;
 
 class Edge
@@ -39,8 +41,8 @@ class Position implements Comparable<Position>
     @Override
     public int compareTo(Position o)
     {
-        if(node == o.node) return 0;
-        return ((Double)dist).compareTo(o.dist);
+        if(dist != o.dist) return ((Double)dist).compareTo(o.dist);
+        return ((Integer)node).compareTo(o.node);
     }
 }
 
@@ -48,12 +50,12 @@ public class Map
 {
     static ArrayList<Node> nodes = new ArrayList<>();
     static ArrayList<ArrayList<Edge>> graph = new ArrayList<>();
-    static final String filePath = "map.txt";
-    static final double inf = 1e18;
+    static String filePath = "/home/xlv/map.txt";
+    static double inf = 1e18;
     
-    public static void load()
+    public static void load() throws Exception
     {
-        Scanner sc = new Scanner(filePath);
+        Scanner sc = new Scanner(new File(filePath));
         int n = sc.nextInt();
         for(int i = 0; i < n; i++) {
             double x = sc.nextDouble(), y = sc.nextDouble();
@@ -75,7 +77,7 @@ public class Map
         return Math.sqrt((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2));
     }
     
-    public static int getNodeByCoord(double x, double y)
+    public static int getNodeByCoord(double x, double y) throws Exception
     {
         if(nodes.isEmpty()) load();
         double ansDist = dist(nodes.get(0).x, nodes.get(0).y, x, y);
@@ -97,7 +99,7 @@ public class Map
         return dist(nodes.get(node1).x, nodes.get(node1).y, nodes.get(node2).x, nodes.get(node2).y);
     }
     
-    public static double getDistance(int node1, int node2, int safety)
+    public static double getDistance(int node1, int node2, int safety) throws Exception
     {
         if(node1 == node2) return 0;
         if(nodes.isEmpty()) load();
@@ -107,6 +109,7 @@ public class Map
         TreeSet<Integer> used = new TreeSet<>();
         curF.put(node1, dist(node1, node2));
         curDist.put(node1, 0.0);
+        positions.add(new Position(node1, dist(node1, node2)));
         while(!positions.isEmpty())
         {
             Position pos = positions.first();
