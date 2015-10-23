@@ -17,16 +17,6 @@ class Edge
     }
 }
 
-class Node
-{
-    double x, y;
-    Node(double x, double y)
-    {
-        this.x = x;
-        this.y = y;
-    }
-}
-
 class Position implements Comparable<Position>
 {
     int node;
@@ -117,14 +107,15 @@ public class Map
         return dist(nodes.get(node1).x, nodes.get(node1).y, nodes.get(node2).x, nodes.get(node2).y);
     }
     
-    public static double getDistance(int node1, int node2, int safety) throws Exception
+    public static Path getDistance(int node1, int node2, int safety) throws Exception
     {
-        if(node1 == node2) return 0;
+        if(node1 == node2) return new Path();
         if(nodes.isEmpty()) load();
         TreeSet<Position> positions = new TreeSet<>();
         TreeMap<Integer, Double> curDist = new TreeMap<>();
         TreeMap<Integer, Double> curF = new TreeMap<>();
         TreeSet<Integer> used = new TreeSet<>();
+        TreeMap<Integer, Integer> previous = new TreeMap<>();
         curF.put(node1, dist(node1, node2));
         curDist.put(node1, 0.0);
         positions.add(new Position(node1, dist(node1, node2)));
@@ -163,9 +154,23 @@ public class Map
                     positions.add(nxtPos);
                     curDist.put(nxtNode, nxtDist);
                     curF.put(nxtNode, nxtF);
+                    previous.put(nxtNode, node);
                 }
             }
         }
-        return curDist.get(node2);
+        ArrayList<Integer> pathNodes = new ArrayList<>();
+        int curNode = node2;
+        while(curNode != node1) {
+            pathNodes.add(curNode);
+            curNode = previous.get(curNode);
+        }
+        pathNodes.add(node1);
+        Path path = new Path();
+        for (int i = pathNodes.size() - 1; i >= 0; i--)
+        {
+            path.nodes.add(nodes.get(pathNodes.get(i)));
+        }
+        path.dist = curDist.get(node2);
+        return path;
     }
 }

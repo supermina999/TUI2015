@@ -59,7 +59,7 @@ public class Planner {
             m = Math.max(request.getLocationId(), m);
         }
         
-        double[][] distances = new double[m][m];
+        Path[][] distances = new Path[m][m];
         for (Location loc1 : allLocs)
             for (Location loc2 : allLocs)
             {
@@ -69,7 +69,8 @@ public class Planner {
                 if (loc2.onMapId == -1) {
                     loc2.onMapId = maps.Map.getNodeByCoord(loc2.getXCoord(), loc2.getYCoord());
                 }
-                distances[loc1.getId()][loc2.getId()] = maps.Map.getDistance(loc1.onMapId, loc2.onMapId, 0);
+                distances[loc1.getId()][loc2.getId()] = 
+                        maps.Map.getDistance(loc1.onMapId, loc2.onMapId, 0);
                 // Warning! No safety set!
             }
         
@@ -240,7 +241,6 @@ public class Planner {
                     if (fl)
                     {
                         //Let's ride! Vrum  vrum
-                        Double wayDist;
                         ArrayList<Location> cords = new ArrayList<>();
                         ArrayList<Request> reqs = new ArrayList<>();
                         cords.add(Stock.getOne(car.getStockId()).getLocation());
@@ -272,7 +272,8 @@ public class Planner {
                         double distance = 0;
                         for (int i = 0; i < cords.size() - 1; i++)
                         {
-                            distance += distances[cords.get(i).getId()][cords.get(i+1).getId()];
+                            distance += distances[cords.get(i).getId()][cords.get(i+1).getId()].dist;
+                            way.path.add(distances[cords.get(i).getId()][cords.get(i+1).getId()]);
                         }
                         double time = distance/car.getSpeed();
                         

@@ -14,12 +14,14 @@ public class Way {
     {
         requests = new ArrayList<>();
         cords = new ArrayList<>();
-        deltas = new ArrayList<>();       
+        deltas = new ArrayList<>();  
+        path = new Path(); 
     }
     public int transportId;
     public ArrayList<Request> requests;
     public ArrayList<Location> cords; 
     public ArrayList<StockDelta> deltas;
+    public Path path; 
     public int mask;
     public double time;
     
