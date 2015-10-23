@@ -78,7 +78,7 @@
                             <th style="width: 45%;">Контактная информация</th>
                         </tr>
                     </thead>
-                    <tbody id="searchTable">
+                    <tbody id="searchTable1">
                         <%for (int i = 0; i < req.length; i++)
                                 if (req[i].getStatusId() == 1) {
                                     Application tApp = Application.getOne(req[i].getApplicationId());%>
