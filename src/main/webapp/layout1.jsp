@@ -141,7 +141,9 @@
                                                     <li <% if (tab == 4) { %>class="active" <% } %>>
                                                         <a href="stocks.jsp">Склады</a>
                                                     </li>
-                                                    
+                                                    <li <% if (tab == 5) { %>class="active" <% } %>>
+                                                        <a href="transportations.jsp">Перевозки</a>
+                                                    </li>
                                                     <li <% if (tab == 6) { %>class="active" <% } %>>
                                                         <a href="reports.jsp">Отчёты</a>
                                                     </li><%}%>
