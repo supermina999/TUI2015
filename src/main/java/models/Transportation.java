@@ -131,9 +131,23 @@ public class Transportation extends DBModel {
         return Safety.getOne(id).getName();
     }
     
+    public String getTransportName() throws Exception {
+        int id = getTransportId();
+        return Transport.getOne(id).getName();
+    }
+    
     public String getRequestType() throws Exception {
         int id = getRequestId();
         return Request.getOne(id).getRequestTypeName();
+    }
+    
+    public String getDriverName() throws Exception {
+        int id = getTransportId();
+        int driverId = Transport.getOne(id).getPersonId();
+        String name = Person.getOne(driverId).getSurname();
+        name += ' ' + Person.getOne(driverId).getName();
+        name += ' ' + Person.getOne(driverId).getSecondName();
+        return name;
     }
 
 }

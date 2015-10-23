@@ -1,6 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <% int minPermission = 8;
-    int tab = 3;
+    int tab = 5;
 %>
 <%@include file = "layout1.jsp"%>
 <%
@@ -46,29 +46,29 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th style="width: 5%;">Номер</th>
-                        <th style="width: 40%;">Заявка</th>
-                        <th style="width: 55%;">Транспорт</th>
+                        <th style="width: 5%;"><center>Номер</center></th>
+                        <th style="width: 5%;"><center>Заявка</center></th>
+                        <th style="width: 10%;">Транспорт</th>
+                        <th style="width: 10%;">Водитель</th>
                     </tr>
                 </thead>
                 <tbody id="searchTable">
                 <%
                         for (int i = 0; i < transit.length; i++) {
                         Request req = Request.getOne(transit[i].getRequestId());
-                        Application app = Application.getOne(req.getApplicationId());%>
+                %>
                 <tr>
-                        <td class="idSearch"><center><%=transit[i].getId()%></center></td>
                         <td class="idSearch">
-                            <b>Вид:</b> <%=req.getRequestTypeName()%><br>
-                            <b>Ресурс:</b> <%=req.getResourceName()%> <%=req.getNumber()%> <%=req.getMeasureName()%><br>
-                            <b>Местоположение:</b> <%=req.getLocation().getAddress()%> <%=req.getLocation().getRegionName()%><br>
-                            <b>Дата:</b> <%=req.getDateString()%><br>
-                            <b>ФИО: </b><%=app.getFullName()%><br>
-                            <b>Телефон: </b> <%=app.getPhone()%> <br>
-                            <b> Email: </b> <%=app.getEmail()%> <br>
+                            <center><%=transit[i].getId()%></center>
                         </td>
                         <td class="idSearch">
-                            <%=transit[i].getTransportId()%>
+                            <center><a href="requestInfo.jsp?id=<%=req.getId()%>"><%=req.getId()%></a></center>
+                        </td>
+                        <td class="idSearch">
+                            <%=transit[i].getTransportName()%>
+                        </td>
+                        <td class="idSearch">
+                            <%=transit[i].getDriverName()%>
                         </td>
                 </tr>
                 <% }%>
