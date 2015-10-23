@@ -29,7 +29,7 @@
                              data-speed="600"
                              data-start="1200"
                              data-end="9400"
-                             data-endspeed="600">Premium HTML5 template
+                             data-endspeed="600">Мы предоставляем услуги:
                         </div>
 
                         <!-- LAYER NR. 2 -->
@@ -49,7 +49,7 @@
                              data-speed="600"
                              data-start="1600"
                              data-end="9400"
-                             data-endspeed="600">100% Responsive
+                             data-endspeed="600">Принятие и обработка заявок
                         </div>
 
                         <!-- LAYER NR. 4 -->
@@ -69,7 +69,7 @@
                              data-speed="600"
                              data-start="1800"
                              data-end="9400"
-                             data-endspeed="600">Bootstrap Based
+                             data-endspeed="600">Распределение и перевозка ресурсов
                         </div>
 
                         <!-- LAYER NR. 6 -->
@@ -89,7 +89,7 @@
                              data-speed="600"
                              data-start="2000"
                              data-end="9400"
-                             data-endspeed="600">Packed Full of Features
+                             data-endspeed="600">Определение маршрутов
                         </div>
 
                         <!-- LAYER NR. 8 -->
@@ -109,7 +109,7 @@
                              data-speed="600"
                              data-start="2200"
                              data-end="9400"
-                             data-endspeed="600">Very Easy to Customize
+                             data-endspeed="600">Предоставление отчетов и графиков
                         </div>
 
                         <!-- LAYER NR. 10 -->
@@ -119,7 +119,7 @@
                              data-speed="600"
                              data-start="2400"
                              data-end="9400"
-                             data-endspeed="600">And Much More...
+                             data-endspeed="600">И многое другое...
                         </div>
 
                         <!-- LAYER NR. 11 -->
@@ -339,8 +339,8 @@
         </div>
         <div class="col-md-3 col-sm-6">
             <div class="box-style-1">
-                <h2 class="title">Что-то ещё</h2>
-                <i class="fa fa-thumbs-o-up"></i>
+                <h2 class="title">Обработаные заявки</h2>
+                <i class="fa fa-pencil-square-o"></i>
                 <span class="stat-num" data-to="2687" data-speed="3000">0</span>
             </div>
         </div>
