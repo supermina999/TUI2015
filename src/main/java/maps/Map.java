@@ -1,7 +1,6 @@
 package maps;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.*;
 
 class Edge
@@ -50,12 +49,13 @@ public class Map
 {
     static ArrayList<Node> nodes = new ArrayList<>();
     static ArrayList<ArrayList<Edge>> graph = new ArrayList<>();
-    static String filePath = "/home/xlv/map.txt";
-    static double inf = 1e18;
+    static final String filePath = "/home/xlv/map.txt";
+    static final double inf = 1e18;
+    static final double earthRadius = 6372.795;
     
     public static void load() throws Exception
     {
-        Scanner sc = new Scanner(new File(filePath));
+        Scanner sc = new Scanner(new File(filePath)).useLocale(Locale.US);;
         int n = sc.nextInt();
         for(int i = 0; i < n; i++) {
             double x = sc.nextDouble(), y = sc.nextDouble();
@@ -74,7 +74,25 @@ public class Map
     
     static double dist(double x1, double y1, double x2, double y2)
     {
-        return Math.sqrt((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2));
+        double lat1 = x1 / 180 * Math.PI;
+        double lat2 = x2 / 180 * Math.PI;
+        double long1 = y1 / 180 * Math.PI;
+        double long2 = y2 / 180 * Math.PI;
+        
+        double cl1 = Math.cos(lat1);
+        double cl2 = Math.cos(lat2);
+        double sl1 = Math.sin(lat1);
+        double sl2 = Math.sin(lat2);
+        double delta = long2 - long1;
+        double cdelta = Math.cos(delta);
+        double sdelta = Math.sin(delta);
+        
+        double y = Math.sqrt(Math.pow(cl2 * sdelta, 2) + Math.pow(cl1 * sl2 - sl1 * cl2 * cdelta, 2));
+        double x = sl1 * sl2 + cl1 * cl2 * cdelta;
+        
+        double ad = Math.atan2(y, x);
+        
+        return ad * earthRadius;
     }
     
     public static int getNodeByCoord(double x, double y) throws Exception
