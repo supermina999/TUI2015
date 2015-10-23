@@ -149,5 +149,13 @@ public class Transportation extends DBModel {
         name += ' ' + Person.getOne(driverId).getSecondName();
         return name;
     }
+    
+    public String getStartString() throws ParseException {
+        return this.entryes[3].getValue();
+    }
+    
+    public String getFinishString() throws ParseException {
+        return this.entryes[4].getValue();
+    }
 
 }

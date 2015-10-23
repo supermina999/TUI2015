@@ -5,5 +5,5 @@
     ApplicationController.add(request);
 %>
 <script>
-    window.location.href = "/TUI2015/";
+    window.location.href = "/";
 </script>

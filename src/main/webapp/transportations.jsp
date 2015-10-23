@@ -49,7 +49,10 @@
                         <th style="width: 5%;"><center>Номер</center></th>
                         <th style="width: 5%;"><center>Заявка</center></th>
                         <th style="width: 10%;">Транспорт</th>
-                        <th style="width: 10%;">Водитель</th>
+                        <th style="width: 20%;">Водитель</th>
+                        <th style="width: 25%;">Дата</th>
+                        <th style="width: 25%;">Время</th>
+                        <th style="width: 10%;">Безопасность</th>
                     </tr>
                 </thead>
                 <tbody id="searchTable">
@@ -69,6 +72,16 @@
                         </td>
                         <td class="idSearch">
                             <%=transit[i].getDriverName()%>
+                        </td>
+                        <td class="idSearch">
+                            <%=req.getDateString()%>
+                        </td>
+                        <td class="idSearch">
+                            <%=transit[i].getStartString()%> <br>
+                            <%=transit[i].getStartString()%>
+                        </td>
+                        <td class="idSearch">
+                            <%=transit[i].getSafetyName()%>
                         </td>
                 </tr>
                 <% }%>
