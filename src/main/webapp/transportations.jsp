@@ -48,20 +48,28 @@
                     <tr>
                         <th style="width: 5%;">Номер</th>
                         <th style="width: 40%;">Заявка</th>
-                        <th style="width: 20%;">Транспорт</th>
+                        <th style="width: 55%;">Транспорт</th>
                     </tr>
                 </thead>
                 <tbody id="searchTable">
                 <%
                         for (int i = 0; i < transit.length; i++) {
-                        Request req = Request.getOne(transit[i].getRequestId());%>
+                        Request req = Request.getOne(transit[i].getRequestId());
+                        Application app = Application.getOne(req.getApplicationId());%>
                 <tr>
                         <td class="idSearch"><center><%=transit[i].getId()%></center></td>
                         <td class="idSearch">
-                            <br>Вид:</b> <%=transit[i].getRequestType()%><br>
-                            <br>Ресурс:</b> <%=Request.getOne(transit[i].getRequestId())%> <br>
+                            <b>Вид:</b> <%=req.getRequestTypeName()%><br>
+                            <b>Ресурс:</b> <%=req.getResourceName()%> <%=req.getNumber()%> <%=req.getMeasureName()%><br>
+                            <b>Местоположение:</b> <%=req.getLocation().getAddress()%> <%=req.getLocation().getRegionName()%><br>
+                            <b>Дата:</b> <%=req.getDateString()%><br>
+                            <b>ФИО: </b><%=app.getFullName()%><br>
+                            <b>Телефон: </b> <%=app.getPhone()%> <br>
+                            <b> Email: </b> <%=app.getEmail()%> <br>
                         </td>
-                        <td class="idSearch"><%=transit[i].getTransportId()%></td>
+                        <td class="idSearch">
+                            <%=transit[i].getTransportId()%>
+                        </td>
                 </tr>
                 <% }%>
                 </tbody>
