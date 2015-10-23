@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-import jdk.management.resource.ResourceType;
 import models.DBEntry;
 import models.EntryType;
 import static models.EntryType.Date;
@@ -304,6 +303,8 @@ public class Planner {
     private static ArrayList<Way> bestWays;
     private static double bestTime;
     private static int fullMask;
+    
+    // Warning! Wrong time when using one car two or more times
     static private void getBestWays(ArrayList<Integer> maskM, int mask, int lastI, double curTime)
     {
         // Some recursive magic
