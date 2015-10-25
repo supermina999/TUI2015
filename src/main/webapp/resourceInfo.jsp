@@ -1,7 +1,10 @@
-<%@page import="java.util.Calendar"%>
-<%@page import="java.util.Date"%>
+<%@page import="javax.swing.table.TableColumnModel"%>
+<%@page import="javax.swing.table.TableModel"%>
+<%@page import="java.io.*"%>
+<%@page import="org.apache.poi.hssf.usermodel.*"%>
+<%@page import="javax.swing.*"%>
+<%@page import="java.util.*"%>
 <%@page import="java.text.SimpleDateFormat"%>
-<%@page import="java.util.Vector"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <% int minPermission = 8;
     int tab = 3;
@@ -13,23 +16,8 @@
     DBEntry[] params = {
         new DBEntry("resource_id", EntryType.Int, id)
     };
-    
     AvailableResource[] availableRes = AvailableResource.getAll(params);
-%>
-<%@include file = "layout1.jsp"%>
-<script src="plugins/charts/Chart.js"></script> 
-<br>
-<div class="form-block center-block" style="width: 50%; min-height: 500px;">
-    <center><h2 class="title"><%=avRes.getResourceName()%></h2></center>
-    <hr>
-    <form class="form-horizontal">
-        <div class="form-group col-sm-7">
-            <p style="font-size: 15px;"> <b>Кол-во:</b> <%=avRes.getNumber()%></p>
-            <p style="font-size: 15px;"> <b>Склады:</b> <a href="stockInfo.jsp?id=<%=availableRes[0].getStockId()%>">№<%=availableRes[0].getStockId()%></a> <%for (int i = 1; i < availableRes.length; i++) {%>, <a href="stockInfo.jsp?id=<%=availableRes[i].getStockId()%>">№<%=availableRes[i].getStockId()%></a> <%}%></p>
-        </div>
-        <canvas class="graph-line" id="myChart1"></canvas>
-    </form>
-    <%Request[] req = Request.getAll(params);
+    Request[] req = Request.getAll(params);
     Vector<Integer> req_id = new Vector<Integer>();
     Vector<Long> date = new Vector<Long>();
     Vector<Integer> numb = new Vector<Integer>();
@@ -94,7 +82,60 @@
     }
     for (int i = 0; i < number.size(); i++)
         number.setElementAt(number.elementAt(i) + avRes.getNumber() - sum, i);
-    %>
+    String[] columnNames = {"Дата", "Кол-во, " + avRes.getMeasureName()};
+    Object[][] data = new Object[number.size()][2];
+    for (int i = 0; i < number.size(); i++)
+    {
+        data[i][0] = graph_date.elementAt(i);
+        data[i][1] = Integer.toString(number.elementAt(i));
+    }
+    JTable jtable = new JTable(data, columnNames);
+    HSSFWorkbook table = new HSSFWorkbook();
+    HSSFSheet fSheet = table.createSheet(avRes.getResourceName());
+    HSSFFont sheetTitleFont = table.createFont();
+    
+    File file = new File("table.xls");
+    HSSFCellStyle cellStyle = table.createCellStyle();
+    sheetTitleFont.setBoldweight(HSSFFont.BOLDWEIGHT_BOLD);
+    TableModel model = jtable.getModel();
+    TableColumnModel tcm = jtable.getColumnModel();
+    HSSFRow fRow = fSheet.createRow(0);
+    for(int j = 0; j < tcm.getColumnCount(); j++) 
+    {
+        HSSFCell cell = fRow.createCell(j);
+        cell.setCellValue(columnNames[j]);           
+    }
+    for (int i = 0; i < model.getRowCount(); i++) 
+    {
+        fRow = fSheet.createRow(i + 1);
+        for (int j = 0; j < model.getColumnCount(); j++) 
+        {
+            HSSFCell cell = fRow.createCell(j);
+            cell.setCellValue(model.getValueAt(i, j).toString());
+            cell.setCellStyle(cellStyle);
+        }
+    }
+    FileOutputStream fileOutputStream;
+    fileOutputStream = new FileOutputStream(file);
+    BufferedOutputStream bos = new BufferedOutputStream(fileOutputStream);
+    table.write(bos);
+    bos.close();
+    fileOutputStream.close();
+%>
+<%@include file = "layout1.jsp"%>
+<script src="plugins/charts/Chart.js"></script> 
+<br>
+<div class="form-block center-block" style="width: 50%; min-height: 500px;">
+    <center><h2 class="title"><%=avRes.getResourceName()%></h2></center>
+    <hr>
+    <form class="form-horizontal">
+        <div class="form-group col-sm-7">
+            <p style="font-size: 15px;"> <b>Кол-во:</b> <%=avRes.getNumber()%></p>
+            <%if (stock_id == -1) {%><p style="font-size: 15px;"> <b>Склады:</b> <a href="stockInfo.jsp?id=<%=availableRes[0].getStockId()%>">№<%=availableRes[0].getStockId()%></a> <%for (int i = 1; i < availableRes.length; i++) {%>, <a href="stockInfo.jsp?id=<%=availableRes[i].getStockId()%>">№<%=availableRes[i].getStockId()%></a> <%}%></p><%}%>
+            <p style="font-size: 15px;"> <a href="table.xls" download="table.xls"> Скачать таблицу </a></p>
+        </div>
+        <canvas class="graph-line" id="myChart1"></canvas>
+    </form>
 <script>
         var data1 = {
             labels: ["<%=graph_date.elementAt(0)%>"<%for (int i = 1; i < graph_date.size(); i++) {%>, "<%=graph_date.elementAt(i)%>"<%}%>],
