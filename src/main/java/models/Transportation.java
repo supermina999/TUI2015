@@ -158,4 +158,18 @@ public class Transportation extends DBModel {
         return this.entryes[4].getValue();
     }
 
+    public Integer getRequestTypeId() throws Exception {
+        int id = getRequestId();
+        return Request.getOne(id).getRequestTypeId();
+    }
+    
+    public Integer getResourceNumber() throws Exception {
+        int id = getRequestId();
+        return Request.getOne(id).getNumber();
+    }
+    
+    public Integer getStockId() throws Exception {
+        int id = getTransportId();
+        return Transport.getOne(id).getStockId();
+    }
 }

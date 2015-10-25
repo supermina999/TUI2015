@@ -49,7 +49,7 @@
                     <%
                         for (int i = 0; i < available.length; i++) {%>
                         <tr>
-                            <td> <%=available[i].getResourceName()%></td>
+                            <td><a href="resourceInfo.jsp?id=<%=available[i].getId()%>&stock_id=<%=id%>"> <%=available[i].getResourceName()%></a></td>
                             <td><%=available[i].getNumber()%> <%=available[i].getMeasureName()%></td>      
                             <td><a href="changeResource.jsp?is_needed=false&id=<%=available[i].getId()%>"><i class="fa fa-edit"></i></a></td>
                             <td><a href="deleteAvailableResource.jsp?id=<%=available[i].getId()%>" onclick="return confirmDelete();"><i class="fa fa-close"></i></a></td>

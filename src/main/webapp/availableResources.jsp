@@ -52,7 +52,7 @@
                         <%
                     for (int i = 0; i < availableRes.length; i++) {%>
                         <tr>
-                            <td class="idSearch"><%=availableRes[i].getResourceName()%> </td>
+                            <td class="idSearch"><a href="resourceInfo.jsp?id=<%=availableRes[i].getId()%>&stock_id=-1"><%=availableRes[i].getResourceName()%> </a></td>
                             <td class="idSearch">№<%=availableRes[i].getStockId()%>, <%=availableRes[i].getLocation().getAddress()%>, <%=availableRes[i].getLocation().getRegionName()%>, <%=availableRes[i].getLocation().getCountryName()%> </td>
                             <td class="idSearch"><%=availableRes[i].getNumber()%> <%=availableRes[i].getMeasureName()%></td>
                         </tr>
