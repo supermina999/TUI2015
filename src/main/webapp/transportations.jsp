@@ -1,6 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <% int minPermission = 8;
-    int tab = 5;
+    int tab = 6;
 %>
 <%@include file = "layout1.jsp"%>
 <%
@@ -14,7 +14,7 @@
     <div class="form-group has-feedback center-block" style="width: 100%; min-height: 800px;">
         <center>
             <h1>Перевозки</h1><br> </center>
-        <div class="form-group has-feedback" style="width: 60%; min-height: 600px;">
+        <div class="form-group has-feedback" style="width: 70%; min-height: 600px;">
             <div class="gray-bg">
                 <br>
                 <div class="col-md-4">
@@ -46,13 +46,11 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th style="width: 5%;"><center>Номер</center></th>
-                        <th style="width: 5%;"><center>Заявка</center></th>
-                        <th style="width: 10%;">Транспорт</th>
-                        <th style="width: 20%;">Водитель</th>
-                        <th style="width: 25%;">Дата</th>
+                        <th style="width: 5%;"><center>№</center></th>
+                        <th style="width: 25%;">Ресурс</th>
+                        <th style="width: 20%;">Транспорт</th>
                         <th style="width: 25%;">Время</th>
-                        <th style="width: 10%;">Безопасность</th>
+                        <th style="width: 25%;">Путь</th>
                     </tr>
                 </thead>
                 <tbody id="searchTable">
@@ -65,23 +63,23 @@
                             <center><%=transit[i].getId()%></center>
                         </td>
                         <td class="idSearch">
-                            <center><a href="requestInfo.jsp?id=<%=req.getId()%>"><%=req.getId()%></a></center>
+                            <b>Заявка: <a href="requestInfo.jsp?id=<%=req.getId()%>">№<%=req.getId()%></a><br></b>
+                            <b>Вид: </b><%=req.getRequestTypeName()%><br>
+                            <b>Ресурс: </b><%=req.getResourceName()%> <%=req.getNumber()%> <%=req.getMeasureName()%>
                         </td>
                         <td class="idSearch">
-                            <%=transit[i].getTransportName()%>
+                            <b>Вид:</b> <%=transit[i].getTransportName()%><br>
+                            <b>Водитель: </b><a href="userInfo.jsp?id=<%=transit[i].getDriverId()%>"><%=transit[i].getDriverName()%></a><br>
+                            <b>Склад: <a href="stockInfo.jsp?id=<%=transit[i].getStockId()%>">№<%=transit[i].getStockId()%></a></b>, <%=transit[i].getStockLocation().getAddress()%><br>
+                        <td class="idSearch">
+                            <b>Дата:</b> <%=req.getDateString()%> <br>
+                            <b>Время отправления:</b> <%=transit[i].getStartString()%> <br>
+                            <b>Время прибытия:</b> <%=transit[i].getStartString()%>
                         </td>
                         <td class="idSearch">
-                            <%=transit[i].getDriverName()%>
-                        </td>
-                        <td class="idSearch">
-                            <%=req.getDateString()%>
-                        </td>
-                        <td class="idSearch">
-                            <%=transit[i].getStartString()%> <br>
-                            <%=transit[i].getStartString()%>
-                        </td>
-                        <td class="idSearch">
-                            <%=transit[i].getSafetyName()%>
+                            <b>Пункт назнацения: </b><%=transit[i].getFinishLocation().getAddress()%>, <%=transit[i].getFinishLocation().getRegionName()%>, <%=transit[i].getFinishLocation().getCountryName()%><br>
+                            <b>Опасность: </b><%=transit[i].getSafetyName()%><br>
+                            <b>Статус:</b> <%=transit[i].getStatusName()%>
                         </td>
                 </tr>
                 <% }%>

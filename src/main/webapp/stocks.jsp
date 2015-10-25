@@ -17,7 +17,7 @@
     }
 </script>
 <center>
-    <div class="form-group has-feedback center-block" style="width: 84%; min-height: 800px;">
+    <div class="form-group has-feedback center-block" style="width: 60%; min-height: 800px;">
         <div style="margin-left: 80%;">
             <p><a href="newStock.jsp" class="btn btn-default"><i class="fa fa-plus"></i> Добавить склад</a></p>
         </div>
@@ -39,35 +39,30 @@
             <br><br><br>
         </div>
         <br>
-        <div>
-            <div class="col-md-7" id="map" style="height: 400px"></div>
-            <div class="col-md-5">
-            <table class="table" id="tableBases">
-                <thead>
-                    <tr>
-                        <th style="width: 5%;">Номер</th>
-                        <th style="width: 80%;">Местоположение</th>
-                        <th style="width: 5%;"></th>
-                        <th style="width: 5%;"></th>
-                        <th style="width: 5%;"></th>
-                    </tr>
-                </thead>
-                <tbody id="searchTable">
-                    <%for (int i = 0; i < stock.length; i++) {%>
-                    <tr>
-
-                        <td class="idSearch" ><center><a href="stockInfo.jsp?id=<%=stock[i].getId()%>"><%=stock[i].getId()%></a></center></td>
-                <td><%=stock[i].getLocation().getAddress()%>, <%=stock[i].getLocation().getRegionName()%>, <%=stock[i].getLocation().getCountryName()%></td>
-                <td><a onclick="showPlacemark($(this).closest('td').prev('td').text());"><i class="fa fa-map-marker"></i></a></td> 
-                <td><a href="changeStockInfo.jsp?id=<%=stock[i].getId()%>"><i class="fa fa-edit"></i></a></td>
-                <td><a href="deleteStock.jsp?id=<%=stock[i].getId()%>" onclick="return confirmDelete();"><i class="fa fa-close"></i></a></td>   
+        <table class="table" id="tableBases">
+            <thead>
+                <tr>
+                    <th style="width: 5%;">№</th>
+                    <th style="width: 80%;">Местоположение</th>
+                    <th style="width: 5%;"></th>
+                    <th style="width: 5%;"></th>
+                    <th style="width: 5%;"></th>
                 </tr>
-                <%}%>
-                </tbody>
-            </table>
-            </div>
-            
-        </div>
+            </thead>
+            <tbody id="searchTable">
+                <%for (int i = 0; i < stock.length; i++) {%>
+                <tr>
+
+                    <td class="idSearch" ><center><a href="stockInfo.jsp?id=<%=stock[i].getId()%>"><%=stock[i].getId()%></a></center></td>
+            <td><%=stock[i].getLocation().getAddress()%>, <%=stock[i].getLocation().getRegionName()%>, <%=stock[i].getLocation().getCountryName()%></td>
+            <td><a onclick="showPlacemark($(this).closest('td').prev('td').text());"><i class="fa fa-map-marker"></i></a></td> 
+            <td><a href="changeStockInfo.jsp?id=<%=stock[i].getId()%>"><i class="fa fa-edit"></i></a></td>
+            <td><a href="deleteStock.jsp?id=<%=stock[i].getId()%>" onclick="return confirmDelete();"><i class="fa fa-close"></i></a></td>   
+            </tr>
+            <%}%>
+            </tbody>
+        </table>
+        <div id="map" style="width: 100%; height: 400px"></div>
     </div>
 </center>
 <script src="js/search.js"></script>

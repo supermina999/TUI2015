@@ -150,6 +150,22 @@ public class Transportation extends DBModel {
         return name;
     }
     
+    public int getDriverId() throws Exception {
+        int id = getTransportId();
+        return Transport.getOne(id).getPersonId();
+    }
+    
+    public Location getStockLocation() throws Exception {
+        int id = getStockId();
+        return Stock.getOne(id).getLocation();
+    }
+    
+    public Location getFinishLocation() throws Exception {
+        int id = getRequestId();
+        Request req = Request.getOne(id);
+        return Location.getOne(req.getLocationId());
+    }
+    
     public String getStartString() throws ParseException {
         return this.entryes[3].getValue();
     }
