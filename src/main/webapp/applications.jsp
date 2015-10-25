@@ -53,7 +53,7 @@
                     </thead>
                     <tbody id="searchTable">
                         <%for (int i = 0; i < app.length; i++)
-                                if (app[i].getStatusId() == 1) {%>
+                                if (app[i].getStatus() == 1) {%>
                         <tr>
                             <td class="idSearch"><center><%=app[i].getId()%></center></td>
                     <td class="idSearch"><b>Вид: </b><%=app[i].getRequestTypeName()%> <br><%=app[i].getInfo()%></td>
@@ -80,7 +80,7 @@
                     </thead>
                     <tbody id="searchTable1">
                         <%for (int i = 0; i < req.length; i++)
-                                if (req[i].getStatusId() == 1) {
+                                if (req[i].getStatus() == 1) {
                                     Application tApp = Application.getOne(req[i].getApplicationId());%>
                         <tr>
                             <td class="idSearch"><center><%=req[i].getId()%></center></td>

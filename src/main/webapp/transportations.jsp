@@ -46,41 +46,43 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th style="width: 5%;"><center>№</center></th>
-                        <th style="width: 25%;">Ресурс</th>
-                        <th style="width: 20%;">Транспорт</th>
-                        <th style="width: 25%;">Время</th>
-                        <th style="width: 25%;">Путь</th>
-                    </tr>
+                        <th style="width: 1%;"><center>№</center></th>
+                <th style="width: 20%;">Ресурс</th>
+                <th style="width: 20%;">Транспорт</th>
+                <th style="width: 20%;">Время</th>
+                <th style="width: 39%;">Транспортировка</th>
+                </tr>
                 </thead>
                 <tbody id="searchTable">
-                <%
+                    <%
                         for (int i = 0; i < transit.length; i++) {
-                        Request req = Request.getOne(transit[i].getRequestId());
-                %>
-                <tr>
+                            Request req = Request.getOne(transit[i].getRequestId());
+                    %>
+                    <tr>
                         <td class="idSearch">
-                            <center><%=transit[i].getId()%></center>
-                        </td>
-                        <td class="idSearch">
-                            <b>Заявка: <a href="requestInfo.jsp?id=<%=req.getId()%>">№<%=req.getId()%></a><br></b>
-                            <b>Вид: </b><%=req.getRequestTypeName()%><br>
-                            <b>Ресурс: </b><%=req.getResourceName()%> <%=req.getNumber()%> <%=req.getMeasureName()%>
-                        </td>
-                        <td class="idSearch">
-                            <b>Вид:</b> <%=transit[i].getTransportName()%><br>
-                            <b>Водитель: </b><a href="userInfo.jsp?id=<%=transit[i].getDriverId()%>"><%=transit[i].getDriverName()%></a><br>
-                            <b>Склад: <a href="stockInfo.jsp?id=<%=transit[i].getStockId()%>">№<%=transit[i].getStockId()%></a></b>, <%=transit[i].getStockLocation().getAddress()%><br>
-                        <td class="idSearch">
-                            <b>Дата:</b> <%=req.getDateString()%> <br>
-                            <b>Время отправления:</b> <%=transit[i].getStartString()%> <br>
-                            <b>Время прибытия:</b> <%=transit[i].getStartString()%>
-                        </td>
-                        <td class="idSearch">
-                            <b>Пункт назнацения: </b><%=transit[i].getFinishLocation().getAddress()%>, <%=transit[i].getFinishLocation().getRegionName()%>, <%=transit[i].getFinishLocation().getCountryName()%><br>
-                            <b>Опасность: </b><%=transit[i].getSafetyName()%><br>
-                            <b>Статус:</b> <%=transit[i].getStatusName()%>
-                        </td>
+                    <center><%=transit[i].getId()%></center>
+                    </td>
+                    <td class="idSearch">
+                        <b>Заявка: <a href="requestInfo.jsp?id=<%=req.getId()%>">№<%=req.getId()%></a><br></b>
+                        <b>Вид: </b><%=req.getRequestTypeName()%><br>
+                        <b>Ресурс: </b><%=req.getResourceName()%> <%=req.getNumber()%> <%=req.getMeasureName()%>
+                    </td>
+                    <td class="idSearch">
+                        <b>Вид:</b> <%=transit[i].getTransportName()%><br>
+                        <b>Номер:</b> <%=transit[i].getTransportNumber()%><br>
+                        <b>Водитель: </b><a href="userInfo.jsp?id=<%=transit[i].getDriverId()%>"><%=transit[i].getDriverName()%></a><br>
+                    </td>
+                    <td class="idSearch">
+                        <b>Дата:</b> <%=req.getDateString()%> <br>
+                        <b>Отправление:</b> <%=transit[i].getTimeStart()%> <br>
+                        <b>Прибытие:</b> <%=transit[i].getTimeFinish()%>
+                    </td>
+                    <td class="idSearch">
+                        <b>Склад: <a href="stockInfo.jsp?id=<%=transit[i].getStockId()%>">№<%=transit[i].getStockId()%></a></b>, <%=transit[i].getStockLocation().getAddress()%>, <%=transit[i].getStockLocation().getRegionName()%>, <%=transit[i].getStockLocation().getCountryName()%><br>
+                        <b>Пункт назначения: </b><%=transit[i].getFinishLocation().getAddress()%>, <%=transit[i].getFinishLocation().getRegionName()%>, <%=transit[i].getFinishLocation().getCountryName()%><br>
+                        <b>Опасность: </b><%=transit[i].getSafetyName()%><br>
+                        <b>Статус:</b> <%=transit[i].getStatusName()%>
+                    </td>
                 </tr>
                 <% }%>
                 </tbody>

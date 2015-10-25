@@ -15,8 +15,7 @@ public class Request extends DBModel {
         new DBEntry("measure_id", EntryType.Int),
         new DBEntry("application_id", EntryType.Int),
         new DBEntry("location_id", EntryType.Int),
-        new DBEntry("status_id", EntryType.Int),
-        new DBEntry("emergency_id", EntryType.Int),
+        new DBEntry("status", EntryType.Int),
         new DBEntry("date", EntryType.Date),
     };
 
@@ -134,41 +133,40 @@ public class Request extends DBModel {
     }
     
     public String getStatusName() throws Exception {
-        int id = getStatusId();
-        return Status.getOne(id).getName();
+        int id = getStatus();
+        if (id == 2) {
+            if (getRequestTypeId() == 2) {
+                return "получено";
+            } else {
+                return "неполучено";
+            }
+        } else {
+            if (getRequestTypeId() == 2) {
+                return "доставлено";
+            } else {
+                return "недоставлено";
+            }
+        }
     }
     
-    public String getEmergencyName() throws Exception {
-        int id = getEmergencyId();
-        return Emergency.getOne(id).getName();
-    }
-    
-    public void setStatusId(int id) {
+    public void setStatus(int id) {
         this.entryes[7].setValue(id);
     }
 
-    public Integer getStatusId() {
+    public Integer getStatus() {
         return Integer.parseInt(this.entryes[7].getValue());
     }
     
-    public void setEmergencyId(int id) {
-        this.entryes[8].setValue(id);
-    }
-
-    public Integer getEmergencyId() {
-        return Integer.parseInt(this.entryes[8].getValue());
-    }
-    
     public Date getDate() throws ParseException {
-        return new SimpleDateFormat("yyyy-MM-dd").parse(this.entryes[9].getValue());
+        return new SimpleDateFormat("yyyy-MM-dd").parse(this.entryes[8].getValue());
     }
     
     public String getDateString() throws ParseException {
-        return this.entryes[9].getValue();
+        return this.entryes[8].getValue();
     }
     
     public void setDate(Date date) {
-        this.entryes[9].setValue(date);
+        this.entryes[8].setValue(date);
     }
     
     public Location getLocation() throws Exception {

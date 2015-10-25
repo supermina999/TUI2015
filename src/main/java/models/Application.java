@@ -10,7 +10,7 @@ public class Application extends DBModel {
         new DBEntry("phone", EntryType.String),
         new DBEntry("email", EntryType.String),
         new DBEntry("request_type_id", EntryType.Int),
-        new DBEntry("status_id", EntryType.Int)
+        new DBEntry("status", EntryType.Int)
     };
 
     protected Application(DBEntry[] entryes) {
@@ -107,11 +107,17 @@ public class Application extends DBModel {
         return RequestType.getOne(id).getName();
     }
     
-    public void setStatusId(int id) {
+    public void setStatus(int id) {
         this.entryes[6].setValue(id);
     }
 
-    public Integer getStatusId() {
+    public Integer getStatus() {
         return Integer.parseInt(this.entryes[6].getValue());
+    }
+    
+    public String getStatusName() {
+        int id = getStatus();
+        if (id == 1) return "необработана";
+        else return "обработана";
     }
 }

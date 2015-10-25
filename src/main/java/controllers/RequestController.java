@@ -36,8 +36,7 @@ public class RequestController
         req.setLocationId(allLocations[allLocations.length-1].getId());
         Date date = new SimpleDateFormat("yyyy-MM-dd").parse(date_s);
         req.setDate(date);
-        req.setStatusId(1);
-        req.setEmergencyId(1);
+        req.setStatus(1);
         req.writeToDB();
         Request[] reqs = Request.getAll(null);
         return reqs.length;

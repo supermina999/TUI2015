@@ -6,6 +6,7 @@ public class Transport extends DBModel {
     static public DBEntry[] stdEntryes = {
         new DBEntry("id", EntryType.Int),
         new DBEntry("name", EntryType.String),
+        new DBEntry("number", EntryType.String),
         new DBEntry("preson_id", EntryType.Int),
         new DBEntry("stock_id", EntryType.Int),
         new DBEntry("speed", EntryType.Int),
@@ -69,35 +70,43 @@ public class Transport extends DBModel {
         this.entryes[1].setValue(name);
     }
     
-    public int getPersonId() {
-        return Integer.parseInt(this.entryes[2].getValue());
+    public String getNumber() {
+        return this.entryes[2].getValue();
     }
 
-    public void setPersonId(int id) {
-        this.entryes[2].setValue(id);
+    public void setNumber(String name) {
+        this.entryes[2].setValue(name);
     }
     
-    public int getStockId() {
+    public int getPersonId() {
         return Integer.parseInt(this.entryes[3].getValue());
     }
 
-    public void setStockId(int id) {
+    public void setPersonId(int id) {
         this.entryes[3].setValue(id);
     }
     
-    public int getSpeed() {
+    public int getStockId() {
         return Integer.parseInt(this.entryes[4].getValue());
     }
 
-    public void setSpeed(int speed) {
-        this.entryes[4].setValue(speed);
+    public void setStockId(int id) {
+        this.entryes[4].setValue(id);
     }
     
-    public int getMaxWeight() {
+    public int getSpeed() {
         return Integer.parseInt(this.entryes[5].getValue());
     }
 
+    public void setSpeed(int speed) {
+        this.entryes[5].setValue(speed);
+    }
+    
+    public int getMaxWeight() {
+        return Integer.parseInt(this.entryes[6].getValue());
+    }
+
     public void setMaxWeight(int weight) {
-        this.entryes[5].setValue(weight);
+        this.entryes[6].setValue(weight);
     }
 }
