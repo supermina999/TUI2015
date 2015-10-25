@@ -4,8 +4,8 @@
 
 <%
     ApplicationController.changeStatus(Integer.parseInt(request.getParameter("applicationId")));
-    RequestController.add(request);
+    int id = RequestController.add(request);
 %>
 <script>
-    window.location.href = "applications.jsp#h2tab2";
+    window.location.href = "requestInfo.jsp?id=<%=id%>";
 </script>

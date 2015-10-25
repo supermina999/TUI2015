@@ -142,9 +142,12 @@
                                                         <a href="stocks.jsp">Склады</a>
                                                     </li>
                                                     <li <% if (tab == 5) { %>class="active" <% } %>>
-                                                        <a href="transportations.jsp">Перевозки</a>
+                                                        <a href="transport.jsp">Транспорт</a>
                                                     </li>
                                                     <li <% if (tab == 6) { %>class="active" <% } %>>
+                                                        <a href="transportations.jsp">Перевозки</a>
+                                                    </li>
+                                                    <li <% if (tab == 7) { %>class="active" <% } %>>
                                                         <a href="reports.jsp">Отчёты</a>
                                                     </li><%}%>
                                                     <li>
@@ -154,7 +157,7 @@
                                                             <a type="button" class="btn btn-login btn-default" href="exit.jsp"><i class="fa fa-sign-out"></i></a>
                                                                 <%} else { %>
 
-                                                            <button type="button" class="btn dropdown-toggle btn-login btn-default" data-toggle="dropdown" style="width: 165px; margin-left: 725px;"><i class="fa fa-sign-in"></i> Вход</button>
+                                                            <button type="button" class="btn dropdown-toggle btn-login btn-default" data-toggle="dropdown" style="width: 165px; margin-left: 760px;"><i class="fa fa-sign-in"></i> Вход</button>
                                                             <ul class="dropdown-menu dropdown-menu-right dropdown-animation">
                                                                 <li>
                                                                     <div class="form-block center-block">

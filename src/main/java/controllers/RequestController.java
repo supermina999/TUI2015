@@ -8,7 +8,7 @@ import models.*;
 
 public class RequestController
 {
-    public static void add(HttpServletRequest request) throws Exception
+    public static int add(HttpServletRequest request) throws Exception
     {
         String appId = request.getParameter("applicationId");
         String request_type = request.getParameter("request");
@@ -39,6 +39,8 @@ public class RequestController
         req.setStatusId(1);
         req.setEmergencyId(1);
         req.writeToDB();
+        Request[] reqs = Request.getAll(null);
+        return reqs.length;
     }
     
 }
