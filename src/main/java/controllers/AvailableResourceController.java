@@ -36,7 +36,7 @@ public class AvailableResourceController {
         }
     }
     
-    public static void update(HttpServletRequest request) throws Exception
+    public static int update(HttpServletRequest request) throws Exception
     {   
         String idS;
         if ((idS = request.getParameter("id")) != null)
@@ -52,7 +52,9 @@ public class AvailableResourceController {
                     }
             }
             res.saveChanges();
+            return res.getStockId();
         }
+        return 0;
     }
      public static AvailableResource delete(HttpServletRequest request) throws Exception
      {

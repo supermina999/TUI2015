@@ -107,5 +107,9 @@ public class Location extends DBModel {
         return Region.getOne(id).getName();
     }
     
+    public String getFullAddress() throws Exception {
+        return getAddress() + ", " + getRegionName() + ", " + getCountryName();
+    }
+    
     public int onMapId = -1;
 }

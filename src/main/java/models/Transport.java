@@ -117,4 +117,8 @@ public class Transport extends DBModel {
         int id = getTypeId();
         return TransportType.getOne(id).getName();
     }
+    
+    public String getStockAddress () throws Exception {
+        return getStockLocation().getFullAddress();
+    }
 }

@@ -30,7 +30,7 @@
         <p style="font-size: 25px;"><a href="changeUserInfo.jsp?id=<%=person.getId()%>"><i class="fa fa-edit"></i></a>
             <a href="deleteUser.jsp?id=<%=person.getId()%>" onclick="return confirmDelete();"><i class="fa fa-close"></i></a></p>
     </div>
-    <center><h2 class="title"><%=person.getSurname()%> <%=person.getName()%> <%=person.getSecondName()%></h2></center>
+    <center><h2 class="title"><%=person.getFullName()%></h2></center>
     <hr>
     <form class="form-horizontal">
         <div class="col-lg-5 col-sm-5">

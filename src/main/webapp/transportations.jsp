@@ -79,10 +79,8 @@
                         <b>Прибытие:</b> <%=transit[i].getTimeFinish()%>
                     </td>
                     <td class="idSearch">
-                        <b>Склад: <a href="stockInfo.jsp?id=<%=transit[i].getStockId()%>">№<%=transit[i].getStockId()%></a></b>, <%=transit[i].getStockLocation().getAddress()%>,
-                        <%=transit[i].getStockLocation().getRegionName()%>, <%=transit[i].getStockLocation().getCountryName()%><br>
-                        <b>Пункт назначения: </b><%=transit[i].getFinishLocation().getAddress()%>, <%=transit[i].getFinishLocation().getRegionName()%>,
-                        <%=transit[i].getFinishLocation().getCountryName()%><br>
+                        <b>Склад: <a href="stockInfo.jsp?id=<%=transit[i].getStockId()%>">№<%=transit[i].getStockId()%></a></b>, <%=transit[i].getStockLocation().getFullAddress()%><br>
+                        <b>Пункт назначения: </b><%=transit[i].getFinishLocation().getFullAddress()%><br>
                         <b>Опасность: </b><%=transit[i].getSafetyName()%><br>
                         <b>Статус:</b> <%=transit[i].getStatusName()%>
                     </td>

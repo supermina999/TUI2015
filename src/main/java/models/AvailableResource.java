@@ -113,4 +113,9 @@ public class AvailableResource extends DBModel {
         int id = getMeasureId();
         return Measure.getOne(id).getName();
     }
+    
+    public String getStockAddress () throws Exception {
+        int id = getStockId();
+        return Stock.getOne(id).getFullAddress();
+    }
 }

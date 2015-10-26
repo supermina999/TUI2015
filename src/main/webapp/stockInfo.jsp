@@ -28,6 +28,13 @@
             return false;
         }
     }
+    function confirmDelete2() {
+        if (confirm("Вы уверены, что хотите удалить ресурс в наличии?")) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 </script>
 
 <br>
@@ -71,8 +78,8 @@
                         <tr>
                             <td><a href="resourceInfo.jsp?id=<%=availableRes[i].getId()%>&stock_id=<%=Integer.parseInt(s)%>"> <%=availableRes[i].getResourceName()%></a></td>
                             <td><%=availableRes[i].getNumber()%> <%=availableRes[i].getMeasureName()%></td>      
-                            <td><a href="changeResource.jsp?is_needed=false&id=<%=availableRes[i].getId()%>"><i class="fa fa-edit"></i></a></td>
-                            <td><a href="deleteAvailableResource.jsp?id=<%=availableRes[i].getId()%>" onclick="return confirmDelete();"><i class="fa fa-close"></i></a></td>
+                            <td><a href="changeResource.jsp?id=<%=availableRes[i].getId()%>"><i class="fa fa-edit"></i></a></td>
+                            <td><a href="deleteAvailableResource.jsp?id=<%=availableRes[i].getId()%>" onclick="return confirmDelete2();"><i class="fa fa-close"></i></a></td>
                         </tr>
                         <% }%>
                     </tbody>

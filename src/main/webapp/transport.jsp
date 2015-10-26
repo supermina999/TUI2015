@@ -64,9 +64,9 @@
                         <tr>
                             <th style="width: 5%">№</th>
                             <th style="width: 25%;">Транспорт</th>
-                            <th style="width: 5%;">Номер</th>
+                            <th style="width: 10%;">Номер</th>
                             <th style="width: 20%;">Водитель</th>
-                            <th style="width: 35%;">Склад</th>
+                            <th style="width: 30%;">Склад</th>
                             <th style="width: 5%"></th>
                             <th style="width: 5%"></th>
                         </tr>
@@ -83,8 +83,7 @@
                             </td>
                             <td class="idSearch"><%=transport[i].getNumber()%></td>
                             <td class="idSearch"><a href="userInfo.jsp?id=<%=transport[i].getPersonId()%>"><%=transport[i].getDriverName()%></a></td>
-                            <td class="idSearch"><a href="stockInfo.jsp?id=<%=transport[i].getStockId()%>">№<%=transport[i].getStockId()%></a>, <%=transport[i].getStockLocation().getAddress()%>, 
-                            <%=transport[i].getStockLocation().getRegionName()%>, <%=transport[i].getStockLocation().getCountryName()%></td>
+                            <td class="idSearch"><a href="stockInfo.jsp?id=<%=transport[i].getStockId()%>">№<%=transport[i].getStockId()%></a>, <%=transport[i].getStockAddress()%></td>
                             <td><a href="changeTransportInfo.jsp?id=<%=transport[i].getId()%>"><i class="fa fa-edit"></i></a></td>
                             <td><a href="deleteTransport.jsp?id=<%=transport[i].getId()%>" onclick="return confirmDelete();"><i class="fa fa-close"></i></a></td>
                         </tr>

@@ -101,4 +101,8 @@ public class Stock extends DBModel {
         }
         return ans;
     }
+    
+    public String getFullAddress () throws Exception {
+        return getLocation().getFullAddress();
+    }
 }
