@@ -35,8 +35,8 @@
                     </select>
                 </div>
                 <div class="col-md-4">
-                    <select class="form-control searchInput" style="width: 100%; padding-left: 5px" name = "stock">
-                        <option>Выберите транспорт</option>
+                    <select class="form-control searchInput" style="width: 100%; padding: 0; padding-left: 5px" name = "stock">
+                        <option>Выберите транспортное средство</option>
                         <%for (int i = 0; i < transportType.length; i++) {%>
                         <option><%=transportType[i].getName()%></option>
                         <%}%>

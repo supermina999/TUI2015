@@ -60,7 +60,7 @@
                 <select class="form-control" name="stockId" id="stockId" style="width: 100%; padding-right: 0">
                     <option selected>Выберите склад</option>
                     <%for (int i = 0; i < stock.length; i++) {%>
-                    <option value="<%=stock[i].getId()%>"><%=stock[i].getLocation().getAddress()%></option>
+                    <option value="<%=stock[i].getId()%>">№<%=stock[i].getId()%>, <%=stock[i].getLocation().getAddress()%></option>
                     <%}%>
                 </select>
             </div>

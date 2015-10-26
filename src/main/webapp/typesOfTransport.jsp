@@ -1,6 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <% int minPermission = 8;
-    int tab = 3;
+    int tab = 5;
 %>
 <%@include file = "layout1.jsp"%>
 <%
@@ -25,9 +25,9 @@
         <div class="form-group has-feedback" style="width: 60%; min-height: 600px;">
             <div class="gray-bg">
                 <br>
-                <div class="col-md-11">
-                    <input type="text" class="form-control searchInput" placeholder="Наименование" style="width: 110%;">
-                    <i class="fa fa-search form-control-feedback" style="padding-left: 100%;"></i>
+                <div class="col-md-11" style="width: 98%">
+                    <input type="text" class="form-control searchInput" placeholder="Поиск" style="width: 102%;">
+                    <i class="fa fa-search form-control-feedback"></i>
                 </div>
                 <br><br><br>
             </div> <br>

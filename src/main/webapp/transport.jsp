@@ -5,6 +5,7 @@
 <%@include file = "layout1.jsp"%>
 <%
     Transport[] transport = Transport.getAll(null);
+    TransportType[] transportType = TransportType.getAll(null);
     Region[] region = Region.getAll(null);
     Stock[] stock = Stock.getAll(null);
 %>
@@ -18,23 +19,32 @@
             <div class="form-group has-feedback" style="width: 60%; min-height: 600px;">
                 <div class="gray-bg">
                     <br>
-                    <div class="col-md-4">
-                        <input type="text" class="form-control searchInput" placeholder="Поиск" style="width: 105%;">
+                    <div class="col-md-11" style="width: 98%">
+                        <input type="text" class="form-control searchInput" placeholder="Поиск" style="width: 102%;">
                         <i class="fa fa-search form-control-feedback"></i>
                     </div>
-                    <div class="col-md-4">
-                        <select class="form-control searchInput region" style="width: 105%;" name = "region">
+                    <br><br>
+                    <div class="col-md-4" style="width: 31%;">
+                        <select class="form-control searchInput region" style="width: 100%; padding: 0; padding-left: 5px;" name = "region">
                             <option>Выберите область</option>
                             <%for (int i = 0; i < region.length; i++) {%>
                             <option><%=region[i].getName()%></option>
                             <%}%>
                         </select>
                     </div>
-                    <div class="col-md-4">
-                        <select class="form-control searchInput" style="width: 100%; padding-left: 5px" name = "stock">
+                    <div class="col-md-4" style="width: 39%;">
+                        <select class="form-control searchInput" style="width: 100%; padding: 0; padding-left: 5px;" name = "stock">
                             <option>Выберите склад</option>
                             <%for (int i = 0; i < stock.length; i++) {%>
                             <option>№<%=stock[i].getId()%>, <%=stock[i].getLocation().getAddress()%></option>
+                            <%}%>
+                        </select>
+                    </div>
+                    <div class="col-md-4" style="width: 30%">
+                        <select class="form-control searchInput" style="width: 100%; padding: 0; padding-left: 5px;" name = "transport_type">
+                            <option>Выберите вид транспорта</option>
+                            <%for (int i = 0; i < transportType.length; i++) {%>
+                            <option><%=transportType[i].getName()%></option>
                             <%}%>
                         </select>
                     </div>
