@@ -17,12 +17,12 @@
 </script>
 <center>
     <div class="form-group has-feedback center-block" style="width: 100%; min-height: 800px;">
-        <div style="margin-left: 50%;">
+        <div style="margin-left: 40%;">
             <p><a href="newTypeOfResource.jsp" class="btn btn-default"><i class="fa fa-plus"></i> Добавить вид</a></p>
         </div>
         <center>
             <h1>Виды ресурсов</h1><br> </center>
-        <div class="form-group has-feedback" style="width: 60%; min-height: 600px;">
+        <div class="form-group has-feedback" style="width: 50%; min-height: 600px;">
             <div class="gray-bg">
                 <br>
                 <div class="col-md-11">
@@ -34,8 +34,8 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th style="width: 50%;">Название</th>
-                        <th style="width: 40%;">Вес</th>
+                        <th style="width: 75%;">Название</th>
+                        <th style="width: 15%;">Вес</th>
                         <th style="width: 5%;"></th>
                         <th style="width: 5%;"></th>
                     </tr>
@@ -45,9 +45,9 @@
                     for (int i = 0; i < resource.length; i++) {%>
                     <tr>
                         <td class="quantity idSearch"> <%= resource[i].getName()%> </td>
-                        <td class="product"><%= resource[i].getWeight()%></td>
-                        <td><a href="changeTypeOfResource.jsp?resourceId=<%=resource[i].getId()%>"><i class="fa fa-edit"></i></a></td>
-                        <td><a href="deleteTypeOfResource.jsp?resourceId=<%=resource[i].getId()%>" onclick="return confirmDelete();"><i class="fa fa-close"></i></a></td>
+                        <td class="product"><%= resource[i].getWeight()%> кг</td>
+                        <td><a href="changeTypeOfResource.jsp?id=<%=resource[i].getId()%>"><i class="fa fa-edit"></i></a></td>
+                        <td><a href="deleteTypeOfResource.jsp?id=<%=resource[i].getId()%>" onclick="return confirmDelete();"><i class="fa fa-close"></i></a></td>
                     </tr>
                     <% }%>
                 </tbody>

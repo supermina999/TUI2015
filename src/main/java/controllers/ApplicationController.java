@@ -1,26 +1,25 @@
 package controllers;
 
-import java.sql.SQLException;
-import java.util.Date;
 import javax.servlet.http.HttpServletRequest;
 import models.*;
+import sql.Sql;
 
 public class ApplicationController
 {
     public static void add(HttpServletRequest request) throws Exception
     {
-        String request_type = request.getParameter("request");
+        String requestType = request.getParameter("request");
         String info = request.getParameter("info");
         String fullName = request.getParameter("full_name");
         String phone = request.getParameter("phone");
         String email = request.getParameter("email");
         Application app = new Application();
-        app.setRequestTypeId(Integer.parseInt(request_type));
-        app.setInfo(info);
-        app.setFullName(fullName);
+        app.setRequestTypeId(Integer.parseInt(requestType));
+        app.setInfo(Sql.sql(info));
+        app.setFullName(Sql.sql(fullName));
         app.setStatus(1);
-        app.setPhone(phone);
-        app.setEmail(email);
+        app.setPhone(Sql.sql(phone));
+        app.setEmail(Sql.sql(email));
         app.writeToDB();
     }
     

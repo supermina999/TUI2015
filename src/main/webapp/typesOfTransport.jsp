@@ -22,7 +22,7 @@
         </div>
         <center>
             <h1>Виды транспортных средств</h1><br> </center>
-        <div class="form-group has-feedback" style="width: 60%; min-height: 600px;">
+        <div class="form-group has-feedback" style="width: 50%; min-height: 600px;">
             <div class="gray-bg">
                 <br>
                 <div class="col-md-11" style="width: 98%">
