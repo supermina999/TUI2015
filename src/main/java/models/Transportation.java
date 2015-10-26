@@ -155,11 +155,7 @@ public class Transportation extends DBModel {
 
     public String getDriverName() throws Exception {
         int id = getTransportId();
-        int driverId = Transport.getOne(id).getPersonId();
-        String name = Person.getOne(driverId).getSurname();
-        name += ' ' + Person.getOne(driverId).getName();
-        name += ' ' + Person.getOne(driverId).getSecondName();
-        return name;
+        return Transport.getOne(id).getDriverName();
     }
 
     public int getDriverId() throws Exception {

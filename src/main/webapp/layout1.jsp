@@ -141,8 +141,12 @@
                                                     <li <% if (tab == 4) { %>class="active" <% } %>>
                                                         <a href="stocks.jsp">Склады</a>
                                                     </li>
-                                                    <li <% if (tab == 5) { %>class="active" <% } %>>
-                                                        <a href="transport.jsp">Транспорт</a>
+                                                    <li>
+                                                        <a type="button" class="btn btn-toggle <% if (tab == 5) { %>btn-toggle-active <% }%>" data-toggle="dropdown">Транспорт</a>
+                                                        <ul class="dropdown-menu dropdown-animation">
+                                                            <li><a href="transport.jsp">В наличии</a></li>
+                                                            <li><a href="typesOfTransport.jsp">Виды</a></li>
+                                                        </ul>
                                                     </li>
                                                     <li <% if (tab == 6) { %>class="active" <% } %>>
                                                         <a href="transportations.jsp">Перевозки</a>

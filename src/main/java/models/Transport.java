@@ -84,8 +84,19 @@ public class Transport extends DBModel {
         this.entryes[3].setValue(id);
     }
     
+    public String getDriverName() throws Exception {
+        int id = getPersonId();
+        Person driver = Person.getOne(id);
+        return driver.getSurname() + ' ' + driver.getName() + ' ' + driver.getSecondName();
+    }
+    
     public int getStockId() {
         return Integer.parseInt(this.entryes[4].getValue());
+    }
+    
+    public Location getStockLocation() throws Exception {
+        int id = getStockId();
+        return Stock.getOne(id).getLocation();
     }
 
     public void setStockId(int id) {
