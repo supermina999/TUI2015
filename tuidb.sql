@@ -378,12 +378,10 @@ UNLOCK TABLES;
 DROP TABLE IF EXISTS `transport`;
 CREATE TABLE IF NOT EXISTS `transport` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` text NOT NULL,
+  `type_id` int(11) NOT NULL,
   `number` text NOT NULL,
   `person_id` int(11) NOT NULL,
   `stock_id` int(11) NOT NULL,
-  `speed` int(11) NOT NULL,
-  `max_weight` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -394,8 +392,8 @@ CREATE TABLE IF NOT EXISTS `transport` (
 
 LOCK TABLES `transport` WRITE;
 /*!40000 ALTER TABLE `transport` DISABLE KEYS */;
-INSERT INTO `transport` (`id`, `name`, `number`, `person_id`, `stock_id`, `speed`, `max_weight`) VALUES
-(1, 'Грузовик', 'АХ1800', 4, 1, 30, 120);
+INSERT INTO `transport` (`id`, `type_id`, `number`, `person_id`, `stock_id`) VALUES
+(1, 1, 'АХ1800', 4, 1);
 /*!40000 ALTER TABLE `transport` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -425,6 +423,31 @@ LOCK TABLES `transportation` WRITE;
 INSERT INTO `transportation` (`id`, `request_id`, `transport_id`, `time_start`, `time_finish`, `status`, `safety_id`) VALUES
 (1, 1, 1, '11:00', '12:00', 1, 1);
 /*!40000 ALTER TABLE `transportation` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `transport_type`
+--
+
+DROP TABLE IF EXISTS `transport_type`;
+CREATE TABLE IF NOT EXISTS `transport_type` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` text NOT NULL,
+  `speed` int(11) NOT NULL,
+  `max_weight` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `transport_type`
+--
+
+LOCK TABLES `transport_type` WRITE;
+/*!40000 ALTER TABLE `transport_type` DISABLE KEYS */;
+INSERT INTO `transport_type` (`id`, `name`, `speed`, `max_weight`) VALUES
+(1, 'Газель', 30, 150);
+/*!40000 ALTER TABLE `transport_type` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 

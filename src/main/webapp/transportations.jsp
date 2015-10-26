@@ -8,6 +8,7 @@
     Region[] region = Region.getAll(null);
     Stock[] stock = Stock.getAll(null);
     Transport[] transport = Transport.getAll(null);
+    TransportType[] transportType = TransportType.getAll(null);
     Transportation[] transit = Transportation.getAll(null);
 %>
 <center>
@@ -36,8 +37,8 @@
                 <div class="col-md-4">
                     <select class="form-control searchInput" style="width: 100%; padding-left: 5px" name = "stock">
                         <option>Выберите транспорт</option>
-                        <%for (int i = 0; i < transport.length; i++) {%>
-                        <option><%=transport[i].getName()%></option>
+                        <%for (int i = 0; i < transportType.length; i++) {%>
+                        <option><%=transportType[i].getName()%></option>
                         <%}%>
                     </select>
                 </div>

@@ -5,12 +5,10 @@ public class Transport extends DBModel {
     static protected String tableName = "transport";
     static public DBEntry[] stdEntryes = {
         new DBEntry("id", EntryType.Int),
-        new DBEntry("name", EntryType.String),
+        new DBEntry("type_id", EntryType.Int),
         new DBEntry("number", EntryType.String),
         new DBEntry("preson_id", EntryType.Int),
-        new DBEntry("stock_id", EntryType.Int),
-        new DBEntry("speed", EntryType.Int),
-        new DBEntry("max_weight", EntryType.Int)
+        new DBEntry("stock_id", EntryType.Int)
     };
 
     protected Transport(DBEntry[] entryes) {
@@ -62,12 +60,12 @@ public class Transport extends DBModel {
         this.entryes[0].setValue(id);
     }
 
-    public String getName() {
-        return this.entryes[1].getValue();
+    public Integer getTypeId() {
+        return Integer.parseInt(this.entryes[1].getValue());
     }
 
-    public void setName(String name) {
-        this.entryes[1].setValue(name);
+    public void setTypeId(int id) {
+        this.entryes[1].setValue(id);
     }
     
     public String getNumber() {
@@ -94,19 +92,18 @@ public class Transport extends DBModel {
         this.entryes[4].setValue(id);
     }
     
-    public int getSpeed() {
-        return Integer.parseInt(this.entryes[5].getValue());
-    }
-
-    public void setSpeed(int speed) {
-        this.entryes[5].setValue(speed);
+    public Integer getMaxWeight() throws Exception {
+        int id = getTypeId();
+        return TransportType.getOne(id).getMaxWeight();
     }
     
-    public int getMaxWeight() {
-        return Integer.parseInt(this.entryes[6].getValue());
+    public Integer getSpeed() throws Exception {
+        int id = getTypeId();
+        return TransportType.getOne(id).getSpeed();
     }
-
-    public void setMaxWeight(int weight) {
-        this.entryes[6].setValue(weight);
+    
+    public String getName() throws Exception {
+        int id = getTypeId();
+        return TransportType.getOne(id).getName();
     }
 }
