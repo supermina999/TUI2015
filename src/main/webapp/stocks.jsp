@@ -18,7 +18,7 @@
 </script>
 <center>
     <div class="form-group has-feedback center-block" style="width: 60%; min-height: 800px;">
-        <div style="margin-left: 80%;">
+        <div style="margin-left: 79%;">
             <p><a href="newStock.jsp" class="btn btn-default"><i class="fa fa-plus"></i> Добавить склад</a></p>
         </div>
         <center><h1>Склады</h1><br></center>
@@ -43,7 +43,7 @@
             <thead>
                 <tr>
                     <th style="width: 5%;">№</th>
-                    <th style="width: 80%;">Местоположение</th>
+                    <th style="width: 80%;">Расположение</th>
                     <th style="width: 5%;"></th>
                     <th style="width: 5%;"></th>
                     <th style="width: 5%;"></th>

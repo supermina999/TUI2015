@@ -151,5 +151,6 @@
         </div>
     </div>
 </div>
+<br>
 <script src="js/checker.js"></script>
 <%@include file = "layout2.jsp"%>

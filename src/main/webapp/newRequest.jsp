@@ -98,5 +98,6 @@
         </div>
     </form>
 </div>
+<br>
 <script src="js/stock.js"></script>
 <%@include file = "layout2.jsp"%>

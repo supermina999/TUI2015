@@ -20,7 +20,7 @@
 </script>
 <center>
     <div class="form-group has-feedback center-block" style="width: 100%; min-height: 800px;">
-        <div style="margin-left: 37%;">
+        <div style="margin-left: 42%;">
             <p><a href="newTransport.jsp" class="btn btn-default"><i class="fa fa-plus"></i> Добавить транспортное средство</a></p>
         </div>
         <center>
@@ -63,7 +63,7 @@
                     <thead>
                         <tr>
                             <th style="width: 5%">№</th>
-                            <th style="width: 25%;">Транспортное средство</th>
+                            <th style="width: 25%;">Транспорт</th>
                             <th style="width: 5%;">Номер</th>
                             <th style="width: 20%;">Водитель</th>
                             <th style="width: 35%;">Склад</th>

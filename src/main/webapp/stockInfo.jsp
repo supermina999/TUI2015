@@ -4,17 +4,18 @@
     String s = request.getParameter("id");
     Stock stock = new Stock();
     Transport[] transport = null;
+    TransportType[] transportType = TransportType.getAll(null);
     AvailableResource[] availableRes = AvailableResource.getAll(null);
     DBEntry[] params = {
         new DBEntry("stock_id", EntryType.Int, Integer.parseInt(s))
     };
-    availableRes = AvailableResource.getAll(params);
     if (s == null) {%>
 <script>
     window.location.href = "index.jsp";
 </script>
 <% } else {
         stock = Stock.getOne(Integer.parseInt(s));
+        availableRes = AvailableResource.getAll(params);
         transport = Transport.getAll(params);
     }
 %>
@@ -49,8 +50,8 @@
             <div class="tab-pane fade in active" id="h2tab1" style="min-height: 800px;">
                 <div class="gray-bg">
                     <br>
-                    <div class="col-md-11">
-                        <input type="text" class="form-control searchInput" placeholder="Название" style="width: 103%;" >
+                    <div class="col-md-11" style="width: 98%">
+                        <input type="text" class="form-control searchInput" placeholder="Поиск" style="width: 102%;">
                         <i class="fa fa-search form-control-feedback"></i>
                     </div>
                     <br><br><br>
@@ -78,9 +79,59 @@
                 </table>
             </div>
             <div class="tab-pane fade in active" id="h2tab2" style="min-height: 800px;">
+                <div class="form-group has-feedback" style="width: 100%; min-height: 800px;">
+                <div class="gray-bg">
+                    <br>
+                    <div class="col-md-8" style="width: 69%">
+                        <input type="text" class="form-control searchInput" placeholder="Поиск" style="width: 105%;">
+                        <i class="fa fa-search form-control-feedback"></i>
+                    </div>
+                    <div class="col-md-4" style="width: 30%; margin-left: 5px;">
+                        <select class="form-control searchInput" style="width: 100%; padding: 0; padding-left: 5px;" name = "transport_type">
+                            <option>Выберите вид транспорта</option>
+                            <%for (int i = 0; i < transportType.length; i++) {%>
+                            <option><%=transportType[i].getName()%></option>
+                            <%}%>
+                        </select>
+                    </div><br><br><br>
+                </div> <br>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th style="width: 5%">№</th>
+                            <th style="width: 25%;">Вид транспорта</th>
+                            <th style="width: 20%;">Характеристики</th>
+                            <th style="width: 10%;">Номер</th>
+                            <th style="width: 30%;">Водитель</th>
+                            <th style="width: 5%"></th>
+                            <th style="width: 5%"></th>
+                        </tr>
+                    </thead>
+                    <tbody id="searchTable1">
+                        <%
+                    for (int i = 0; i < transport.length; i++) {%>
+                        <tr>
+                            <td class="idSearch1"><%=transport[i].getId()%></td>
+                            <td class="idSearch1">
+                                <%=transport[i].getName()%>
+                            </td>
+                            <td class="idSearch1">
+                                <b>Скорость:</b> <%=transport[i].getSpeed()%> км/ч <br> 
+                                <b>Вместимость:</b> <%=transport[i].getMaxWeight()%> т 
+                            </td>
+                            <td class="idSearch1"><%=transport[i].getNumber()%></td>
+                            <td class="idSearch1"><a href="userInfo.jsp?id=<%=transport[i].getPersonId()%>"><%=transport[i].getDriverName()%></a></td>
+                            <td><a href="changeTransportInfo.jsp?id=<%=transport[i].getId()%>"><i class="fa fa-edit"></i></a></td>
+                            <td><a href="deleteTransport.jsp?id=<%=transport[i].getId()%>" onclick="return confirmDelete();"><i class="fa fa-close"></i></a></td>
+                        </tr>
+                        <% }%>
+                    </tbody>
+                </table>
+            </div>
             </div>        
         </div>
     </div>
 </div>
+<br>
 <script src="js/search.js"></script>
 <%@include file = "layout2.jsp"%>

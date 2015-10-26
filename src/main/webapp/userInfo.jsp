@@ -3,6 +3,7 @@
     int tab = 0;
     String s = request.getParameter("id");
     Person person = new Person();
+    int id = 0;
     if (s == null) {%>
 <script>
     window.location.href = "index.jsp";
@@ -10,6 +11,7 @@
 <%
     } else {
         person = Person.getOne(Integer.parseInt(s));
+        id = Integer.parseInt(s);
     }
 %>
 <%@include file = "layout1.jsp"%>
@@ -33,7 +35,11 @@
     <form class="form-horizontal">
         <div class="col-lg-5 col-sm-5">
             <div class="box-style-1 gray-bg team-member">
-                <img src="images/avatar2.jpg" alt="">
+                <% if (id > 0 && id< 6) { %>
+                    <img src="images/<%=person.getLogin()%>Avatar.jpg" alt="">
+                <% } else { %>
+                    <img src="images/avatar2.jpg" alt="">
+                <% } %>
             </div>
         </div>
         <div class="form-group col-sm-7">

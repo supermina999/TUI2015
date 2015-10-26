@@ -17,7 +17,7 @@
 </script>
 <center>
     <div class="form-group has-feedback center-block" style="width: 100%; min-height: 800px;">
-        <div style="margin-left: 50%;">
+        <div style="margin-left: 38%;">
             <p><a href="newTypeOfTransport.jsp" class="btn btn-default"><i class="fa fa-plus"></i> Добавить вид</a></p>
         </div>
         <center>
