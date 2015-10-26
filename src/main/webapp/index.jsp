@@ -96,7 +96,7 @@
             <div class="col-md-3 col-sm-6">
                 <div class="box-style-1">
                     <h2 class="title">Ресурсов получено</h2>
-                    <i class="fa  fa-briefcase"></i>
+                    <i class="fa fa-gift"></i>
                     <span class="stat-num" data-to="<%=transGet.length%>" data-speed="3000">0</span>
                 </div>
             </div>

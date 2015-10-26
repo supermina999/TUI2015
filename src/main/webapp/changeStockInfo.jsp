@@ -33,8 +33,8 @@
             </div>
             <div class="col-sm-4">
                 <select class="form-control" name="type" id="type" style="width: 100%; padding-right: 0">
-                    <option selected id="1">ПО АДРЕСУ</option>
-                    <option>НА КАРТЕ</option>
+                    <option selected id="1">По адресу</option>
+                    <option>На карте</option>
                 </select>
             </div>
         </div>

@@ -102,11 +102,6 @@ public class Location extends DBModel {
         return Region.getOne(id).getCountryName();
     }
 
-    public int getCountryId() throws Exception {
-        int id = getRegionId();
-        return Region.getOne(id).getCountryId();
-    }
-
     public String getRegionName() throws Exception {
         int id = getRegionId();
         return Region.getOne(id).getName();

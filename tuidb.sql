@@ -70,30 +70,6 @@ INSERT INTO `available_resource` VALUES (1,1,1,12,1);
 UNLOCK TABLES;
 
 --
--- Table structure for table `country`
---
-
-DROP TABLE IF EXISTS `country`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `country` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` text NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `country`
---
-
-LOCK TABLES `country` WRITE;
-/*!40000 ALTER TABLE `country` DISABLE KEYS */;
-INSERT INTO `country` VALUES (1,'Украина');
-/*!40000 ALTER TABLE `country` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `location`
 --
 
@@ -115,9 +91,9 @@ CREATE TABLE IF NOT EXISTS `location` (
 LOCK TABLES `location` WRITE;
 /*!40000 ALTER TABLE `location` DISABLE KEYS */;
 INSERT INTO `location` (`id`, `region_id`, `address`, `x_coord`, `y_coord`) VALUES
-(1, 1, 'улица Тобольская, 46-а', 30.456149, 50.29807),
-(2, 1, 'улица Астрономическая, 1', 50.05425, 36.292063),
-(3, 2, 'улица Сергея Есенина, 21', 50.49749, 30.74034);
+(1, 19, 'улица Тобольская, 46-а', 30.456149, 50.29807),
+(2, 19, 'улица Астрономическая, 1', 50.05425, 36.292063),
+(3, 9, 'улица Сергея Есенина, 21', 50.49749, 30.74034);
 /*!40000 ALTER TABLE `location` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -226,9 +202,8 @@ DROP TABLE IF EXISTS `region`;
 CREATE TABLE IF NOT EXISTS `region` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` text NOT NULL,
-  `country_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -237,9 +212,31 @@ CREATE TABLE IF NOT EXISTS `region` (
 
 LOCK TABLES `region` WRITE;
 /*!40000 ALTER TABLE `region` DISABLE KEYS */;
-INSERT INTO `region` (`id`, `name`, `country_id`) VALUES
-(1, 'Харьковcкая область', 1),
-(2, 'Киевская область', 1);
+INSERT INTO `region` (`id`, `name`) VALUES
+(1, 'Винницкая область'),
+(2, 'Волынская область'),
+(3, 'Днепропетровская область'),
+(4, 'Донецкая область'),
+(5, 'Житомирская область'),
+(6, 'Закарпатская область'),
+(7, 'Запорожская область'),
+(8, 'Ивано-Франковская область'),
+(9, 'Киевская область'),
+(10, 'Кировоградская область'),
+(11, 'Луганская область'),
+(12, 'Львовская область'),
+(13, 'Николаевская область'),
+(14, 'Одесская область'),
+(15, 'Полтавская область'),
+(16, 'Ровенская область'),
+(17, 'Сумская область'),
+(18, 'Тернопольская область'),
+(19, 'Харьковская область'),
+(20, 'Херсонская область'),
+(21, 'Хмельницкая область'),
+(22, 'Черкасская область'),
+(23, 'Черниговская область'),
+(24, 'Черновицкая область');
 /*!40000 ALTER TABLE `region` ENABLE KEYS */;
 UNLOCK TABLES;
 

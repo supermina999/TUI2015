@@ -42,8 +42,8 @@
     </div>
     <div class="tabs-style-2">
         <ul class="nav nav-tabs" role="tablist">
-            <li class="active text-center" style="width: 50%;"><a href="#h2tab1" role="tab" data-toggle="tab" style="font-size: 15px;"><i class="fa fa-briefcase"></i> Ресурсы</a></li>
-            <li class="text-center" style="width: 50%;"><a href="#h2tab2" role="tab" data-toggle="tab" style="font-size: 15px;"><i class="fa fa-ambulance"></i> Транспорт</a></li>
+            <li class="active text-center" style="width: 50%;"><a href="#h2tab1" role="tab" data-toggle="tab" style="font-size: 15px;"><i class="glyphicon glyphicon-list-alt"></i> Ресурсы в наличии</a></li>
+            <li class="text-center" style="width: 50%;"><a href="#h2tab2" role="tab" data-toggle="tab" style="font-size: 15px;"><i class="fa fa-truck"></i> Транспорт</a></li>
         </ul>
         <div class="tab-content">
             <div class="tab-pane fade in active" id="h2tab1" style="min-height: 800px;">

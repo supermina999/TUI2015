@@ -6,7 +6,7 @@
 <%@page import="java.util.Calendar"%>
 <%@ page import="java.text.SimpleDateFormat" %>
 <% int minPermission = 8;
-    int tab = 6;
+    int tab = 7;
    %>
 <%@include file = "layout1.jsp"%>
 <script src="plugins/charts/Chart.js"></script>  

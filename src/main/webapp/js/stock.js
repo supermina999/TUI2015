@@ -7,7 +7,7 @@ function init() {
         zoom: 15
     });
     var region = $('#region option:selected').text();
-    var city = region.substr(0, region.length - 12);
+    var city = getCity(region);
     addPlacemark(city);
     setCenter(city);
 }
@@ -26,6 +26,33 @@ function setCenter(address) {
                 }
             }
     );
+}
+
+function getCity(region) {
+    if (region === "Винницкая область") return "Винница";
+    if (region === "Волынская область") return "Луцк";
+    if (region === "Днепропетровская область") return "Днепропетровск";
+    if (region === "Донецкая область") return "Донецк";
+    if (region === "Житомирская область") return "Житомир";
+    if (region === "Закарпатская область") return "Ужгород";
+    if (region === "Запорожская область") return "Запорожье";
+    if (region === "Ивано-Франковская область") return "Ивано-Франковск";
+    if (region === "Киевская область") return "Киев";
+    if (region === "Кировоградская область") return "Кировоград";
+    if (region === "Луганская область") return "Луганск";
+    if (region === "Львовская область") return "Львов";
+    if (region === "Николаевская область") return "Николаев";
+    if (region === "Одесская область") return "Одесса";
+    if (region === "Полтавская область") return "Полтава";
+    if (region === "Ровенская область") return "Ровно";
+    if (region === "Сумская область") return "Сумы";
+    if (region === "Тернопольская область") return "Тернополь";
+    if (region === "Харьковская область") return "Харьков";
+    if (region === "Херсонская область") return "Херсон";
+    if (region === "Хмельницкая область") return "Хмельницк";
+    if (region === "Черкасская область") return "Черкасы";
+    if (region === "Черниговская область") return "Чернигов";
+    return "Черновцы";
 }
 
 function addCustomPlacemark() {
@@ -98,14 +125,14 @@ function update() {
         setCenter(address);
     } else {
         var region = $('#region option:selected').text();
-        var city = region.substr(0, region.length - 12);
+        var city = getCity(region);
         addPlacemark(city);
         setCenter(city);
     }
 }
 
 $('#region').change(function () {
-    if ($('#type option:selected').text() === "НА КАРТЕ") {
+    if ($('#type option:selected').text() === "На карте") {
         $('#type option[id="1"]').prop('selected', true);
         myCollection.removeAll();
         $('#address').val("");
@@ -114,11 +141,13 @@ $('#region').change(function () {
     }
     update();
 });
+
 $('#address').keyup(function () {
     update();
 });
+
 $('#type').change(function () {
-    if ($('#type option:selected').text() === "ПО АДРЕСУ") {
+    if ($('#type option:selected').text() === "По адресу") {
         myCollection.removeAll();
         $('#address').val("");
         $('#lat').val("");

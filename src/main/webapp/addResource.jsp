@@ -6,5 +6,5 @@
     int stock_id = AvailableResourceController.add(request);
 %>
 <script>
-    window.location.href = "stockResources.jsp?id=<%=stock_id%>";
+    window.location.href = "stockInfo.jsp?id=<%=stock_id%>";
 </script>

@@ -16,6 +16,7 @@
         }
     }
 </script>
+<br>
 <div class="form-block center-block" style="width: 70%">
     <center><h1>Заявки</h1></center>
     <div class="tabs-style-2">
@@ -83,11 +84,11 @@
                                 if (req[i].getStatus() == 1) {
                                     Application tApp = Application.getOne(req[i].getApplicationId());%>
                         <tr>
-                            <td class="idSearch"><center><%=req[i].getId()%></center></td>
+                            <td class="idSearch"><center><a href="requestInfo.jsp?id=<%=req[i].getId()%>"><%=req[i].getId()%></a></center></td>
                     <td class="idSearch">
                         <b>Вид: </b><%=req[i].getRequestTypeName()%><br>
                         <b>Ресурс: </b><%=req[i].getResourceName()%> <%=req[i].getNumber()%> <%=req[i].getMeasureName()%><br>
-                        <b>Местоположение:</b> <%=req[i].getLocation().getAddress()%>, <%=req[i].getLocation().getRegionName()%><br>
+                        <b>Местоположение:</b> <%=req[i].getLocation().getAddress()%>, <%=req[i].getLocation().getRegionName()%>, <%=req[i].getLocation().getCountryName()%><br>
                         <b>Дата:</b> <%=req[i].getDateString()%>
                     </td>
                     <td class="idSearch">

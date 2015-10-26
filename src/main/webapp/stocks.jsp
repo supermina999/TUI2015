@@ -54,10 +54,10 @@
                 <tr>
 
                     <td class="idSearch" ><center><a href="stockInfo.jsp?id=<%=stock[i].getId()%>"><%=stock[i].getId()%></a></center></td>
-            <td><%=stock[i].getLocation().getAddress()%>, <%=stock[i].getLocation().getRegionName()%>, <%=stock[i].getLocation().getCountryName()%></td>
-            <td><a onclick="showPlacemark($(this).closest('td').prev('td').text());"><i class="fa fa-map-marker"></i></a></td> 
-            <td><a href="changeStockInfo.jsp?id=<%=stock[i].getId()%>"><i class="fa fa-edit"></i></a></td>
-            <td><a href="deleteStock.jsp?id=<%=stock[i].getId()%>" onclick="return confirmDelete();"><i class="fa fa-close"></i></a></td>   
+                    <td><%=stock[i].getLocation().getAddress()%>, <%=stock[i].getLocation().getRegionName()%>, <%=stock[i].getLocation().getCountryName()%></td>
+                    <td><a onclick="showPlacemark($(this).closest('td').prev('td').text());"><i class="fa fa-map-marker"></i></a></td> 
+                    <td><a href="changeStockInfo.jsp?id=<%=stock[i].getId()%>"><i class="fa fa-edit"></i></a></td>
+                    <td><a href="deleteStock.jsp?id=<%=stock[i].getId()%>" onclick="return confirmDelete();"><i class="fa fa-close"></i></a></td>   
             </tr>
             <%}%>
             </tbody>
