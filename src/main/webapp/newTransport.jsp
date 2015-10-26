@@ -1,42 +1,49 @@
 <%@page import="models.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <% int minPermission = 8;
-   int tab = 3;%>
+   int tab = 5;%>
 <%@include file = "layout1.jsp"%>
 <%
-    Resource[] resource = Resource.getAll(null);
-    Region[] region = Region.getAll(null);
-    Measure[] measure = Measure.getAll(null);
+    DBEntry[] params = {
+        new DBEntry("permission_id", EntryType.Int, 4)
+    };
+    Person[] person = Person.getAll(params);
     Stock[] stock = Stock.getAll(null);
+    Region[] region = Region.getAll(null);
+    TransportType[] transport = TransportType.getAll(null);
 %>
 <br>
 <div class="form-block center-block" style="min-height: 700px;">
-    <center><h2 class="title">Добавить ресурс</h2></center>
+    <center><h2 class="title">Добавить транспортное средство</h2></center>
     <hr>
-    <form class="form-horizontal" method="post" action="addResource.jsp">
+    <form class="form-horizontal" method="post" action="addTransport.jsp">
         <div class="form-group has-feedback">
-            <label class="col-sm-3 control-label">Ресурс</label>
+            <label class="col-sm-3 control-label">Вид транспорта</label>
             <div class="col-sm-7">
-                <select class="form-control" name="resource_id" id="resource_id" style="width: 100%; padding-right: 0">
-                    <option selected>Выберите вид ресурса</option>
-                    <%for (int i = 0; i < resource.length; i++) {%>
-                    <option value="<%=resource[i].getId()%>"><%=resource[i].getName()%></option>
+                <select class="form-control" name="transport_type_id" style="width: 100%; padding-right: 0">
+                    <option selected>Выберите вид транспорта</option>
+                    <%for (int i = 0; i < transport.length; i++) {%>
+                    <option value="<%=transport[i].getId()%>"><%=transport[i].getName()%></option>
                     <%}%>
                 </select>
             </div>
             <div style="margin-top: 5px;">
-                <a href="newTypeOfResource.jsp?" style="font-size: 20px;"><i class="fa fa-plus"></i></a>
+                <a href="newTypeOfTransport.jsp?" style="font-size: 20px;"><i class="fa fa-plus"></i></a>
             </div>
         </div>
         <div class="form-group has-feedback">
-            <label class="col-sm-3 control-label">Количество</label>
-            <div class="col-sm-6">
+            <label class="col-sm-3 control-label">Номер</label>
+            <div class="col-sm-8">
                 <input type="text" class="form-control" name="number" style="padding-right: 0" required>
             </div>
-            <div class="col-sm-2">
-                <select class="form-control" name="measure" id="measure" style="width: 100%; padding-right: 0">
-                    <%for (int i = 0; i < measure.length; i++) {%>
-                    <option value="<%=measure[i].getId()%>"><%=measure[i].getName()%></option>
+        </div>
+        <div class="form-group has-feedback">
+            <label class="col-sm-3 control-label">Водитель</label>
+            <div class="col-sm-8">
+                <select class="form-control" name="driver" id="driver" style="width: 100%; padding-right: 0">
+                    <option selected>Выберите водителя</option>
+                    <%for (int i = 0; i < person.length; i++) {%>
+                    <option value="<%=person[i].getId()%>"><%=person[i].getFullName()%></option>
                     <%}%>
                 </select>
             </div>
@@ -55,7 +62,7 @@
         <div class="form-group has-feedback">
             <label class="col-sm-3 control-label">Склад</label>
             <div class="col-sm-8">
-                <select class="form-control" name="stock_id" id="stock_id" style="width: 100%; padding-right: 0">
+                <select class="form-control" name="stock_id" style="width: 100%; padding-right: 0">
                     <option selected>Выберите склад</option>
                     <%for (int i = 0; i < stock.length; i++) {%>
                     <option value="<%=stock[i].getId()%>">№<%=stock[i].getId()%>, <%=stock[i].getLocation().getAddress()%></option>

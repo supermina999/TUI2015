@@ -9,7 +9,7 @@ public class RequestController
 {
     public static int add(HttpServletRequest request) throws Exception
     {
-        String appId = request.getParameter("applicationId");
+        String appId = request.getParameter("application_id");
         String requestType = request.getParameter("request");
         String resource = request.getParameter("resource");
         String number = request.getParameter("number");

@@ -7,7 +7,7 @@ public class Transport extends DBModel {
         new DBEntry("id", EntryType.Int),
         new DBEntry("type_id", EntryType.Int),
         new DBEntry("number", EntryType.String),
-        new DBEntry("preson_id", EntryType.Int),
+        new DBEntry("person_id", EntryType.Int),
         new DBEntry("stock_id", EntryType.Int)
     };
 

@@ -9,6 +9,15 @@
     Region[] region = Region.getAll(null);
     Stock[] stock = Stock.getAll(null);
 %>
+<script>
+    function confirmDelete() {
+        if (confirm("Вы уверены, что хотите удалить транспортное средство?")) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+</script>
 <center>
     <div class="form-group has-feedback center-block" style="width: 100%; min-height: 800px;">
         <div style="margin-left: 37%;">
@@ -16,7 +25,7 @@
         </div>
         <center>
             <h1>Транспортные средства в наличии</h1><br> </center>
-            <div class="form-group has-feedback" style="width: 60%; min-height: 600px;">
+            <div class="form-group has-feedback" style="width: 65%; min-height: 800px;">
                 <div class="gray-bg">
                     <br>
                     <div class="col-md-11" style="width: 98%">
@@ -54,10 +63,12 @@
                     <thead>
                         <tr>
                             <th style="width: 5%">№</th>
-                            <th style="width: 30%;">Транспортное средство</th>
+                            <th style="width: 25%;">Транспортное средство</th>
                             <th style="width: 5%;">Номер</th>
-                            <th style="width: 25%;">Водитель</th>
+                            <th style="width: 20%;">Водитель</th>
                             <th style="width: 35%;">Склад</th>
+                            <th style="width: 5%"></th>
+                            <th style="width: 5%"></th>
                         </tr>
                     </thead>
                     <tbody id="searchTable">
@@ -74,6 +85,8 @@
                             <td class="idSearch"><a href="userInfo.jsp?id=<%=transport[i].getPersonId()%>"><%=transport[i].getDriverName()%></a></td>
                             <td class="idSearch"><a href="stockInfo.jsp?id=<%=transport[i].getStockId()%>">№<%=transport[i].getStockId()%></a>, <%=transport[i].getStockLocation().getAddress()%>, 
                             <%=transport[i].getStockLocation().getRegionName()%>, <%=transport[i].getStockLocation().getCountryName()%></td>
+                            <td><a href="changeTransportInfo.jsp?id=<%=transport[i].getId()%>"><i class="fa fa-edit"></i></a></td>
+                            <td><a href="deleteTransport.jsp?id=<%=transport[i].getId()%>" onclick="return confirmDelete();"><i class="fa fa-close"></i></a></td>
                         </tr>
                         <% }%>
                     </tbody>

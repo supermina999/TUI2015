@@ -95,6 +95,10 @@ public class Person extends DBModel {
     public void setSecondName(String secondName) {
         this.entryes[3].setValue(secondName);
     }
+    
+    public String getFullName() {
+        return this.entryes[2].getValue() + ' ' + this.entryes[1].getValue() + ' ' + this.entryes[3].getValue();
+    }
 
     public String getLogin() {
         return this.entryes[4].getValue();

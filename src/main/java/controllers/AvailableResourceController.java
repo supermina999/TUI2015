@@ -7,11 +7,11 @@ public class AvailableResourceController {
     
     public static int add(HttpServletRequest request) throws Exception
     {
-        String resource = request.getParameter("resourceId");
+        String resource = request.getParameter("resource_id");
         int resourceId = Integer.parseInt(resource);
         String numberS = request.getParameter("number");
         int number = Integer.parseInt(numberS);
-        String stock = request.getParameter("stockId");
+        String stock = request.getParameter("stock_id");
         int stockId = Integer.parseInt(stock);
         String measure = request.getParameter("measure");
         int measureId = Integer.parseInt(request.getParameter("measure"));

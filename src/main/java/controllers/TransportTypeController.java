@@ -10,7 +10,7 @@ public class TransportTypeController {
     {
         String name = request.getParameter("name");
         String speed = request.getParameter("speed");
-        String maxWeight = request.getParameter("maxWeight");
+        String maxWeight = request.getParameter("max_weight");
         TransportType transport = new TransportType();
         transport.setName(Sql.sql(name));
         transport.setSpeed(Integer.parseInt(speed));

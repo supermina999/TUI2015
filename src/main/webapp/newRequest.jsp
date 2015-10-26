@@ -13,7 +13,7 @@
 <div  class="form-block center-block" style="min-height: 700px; width: 50%">
     <center><h2 class="title">Обработка заявки</h2></center>
     <hr>
-    <form class="form-horizontal" method="post" action="addRequest.jsp?applicationId=<%=id%>&request=<%=app.getRequestTypeId()%>">
+    <form class="form-horizontal" method="post" action="addRequest.jsp?application_id=<%=id%>&request=<%=app.getRequestTypeId()%>">
         <div class="form-group has-feedback">
             <label class="col-sm-3 control-label" style="padding-top: 0">Вид заявки:</label>
             <div class="col-sm-8">
@@ -35,7 +35,7 @@
                 </select>
             </div>
             <div style="margin-top: 5px;">
-                <a href="newTypeOfResource.jsp?back=1" style="font-size: 20px;"><i class="fa fa-plus"></i></a>
+                <a href="newTypeOfResource.jsp?" style="font-size: 20px;"><i class="fa fa-plus"></i></a>
             </div>
         </div>
         <div class="form-group has-feedback">

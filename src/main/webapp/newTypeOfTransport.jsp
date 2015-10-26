@@ -26,7 +26,7 @@
         <div class="form-group">
             <label class="col-sm-3 control-label">Вместимость</label>
             <div class="col-sm-8">
-                <input type="text" class="form-control" name="maxWeight">
+                <input type="text" class="form-control" name="max_weight">
             </div>
             <p style="font-size: 15px; margin-top: 10px; margin-bottom: 0">т</p>
         </div>
