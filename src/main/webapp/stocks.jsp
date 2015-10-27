@@ -7,6 +7,7 @@
     Stock[] stock = Stock.getAll(null);
     Region[] region = Region.getAll(null);
 %>
+<script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
 <script>
     function confirmDelete() {
         if (confirm("Вы уверены, что хотите удалить склад?")) {

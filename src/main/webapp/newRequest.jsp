@@ -10,6 +10,8 @@
 %>
 <%@include file = "layout1.jsp"%>
 <br>
+
+<script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
 <div  class="form-block center-block" style="min-height: 700px; width: 50%">
     <center><h2 class="title">Обработка заявки</h2></center>
     <hr>

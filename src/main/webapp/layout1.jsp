@@ -58,7 +58,7 @@
         <![endif]-->
 
         <script type="text/javascript" src="plugins/jquery.min.js"></script>
-        <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+        
     </head>
 
     <!-- body classes: 

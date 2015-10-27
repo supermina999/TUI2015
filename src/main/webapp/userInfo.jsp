@@ -52,6 +52,16 @@
         </div>
         <div class="form-group"></div>
     </form>
+    <hr>
+    <% 
+       int pId = person.getPermissionId();
+       if (pId == 1) {%> <%@include file = "desk1.jsp"%> <%}
+       else if (pId == 2) {%> <%@include file = "desk2.jsp"%> <%}
+       else if (pId == 3) {%> <%@include file = "desk3.jsp"%> <%}
+       else if (pId == 4) {%> <%@include file = "desk4.jsp"%> <%}
+       else if (pId == 5) {%> <%@include file = "desk5.jsp"%> <%}
+       else if (pId == 6) {%> <%@include file = "desk6.jsp"%> <%}
+    %>
 </div>
 <br>
 

@@ -47,6 +47,7 @@
     <hr>
     <div class="form-group col-sm-12">
         <p style="font-size: 20px; margin-bottom: 0"><b>Вид:</b> <%=transport.getName()%></p>
+        <p style="font-size: 20px; margin-bottom: 0"><b>Номер:</b> <%=transport.getNumber()%></p>
         <p style="font-size: 20px; margin-bottom: 0"> <b>Склад:</b> <a href="stockInfo.jsp?id=<%=transport.getStockId()%>s">№<%=transport.getStockId()%></a>, 
             <%=transport.getStockAddress()%> </p>
         <p style="font-size: 20px; margin-top: 0"> <b>Водитель:</b> <a href="userInfo.jsp?id=<%=transport.getPersonId()%>"><%=transport.getDriverName()%></a></p>
