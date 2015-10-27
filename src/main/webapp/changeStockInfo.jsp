@@ -4,6 +4,10 @@
     int tab = 4;
     Location[] location = Location.getAll(null);
     Region[] region = Region.getAll(null);
+    DBEntry[] params = {
+        new DBEntry("permission_id", EntryType.Int, 5)
+    };
+    Person[] person = Person.getAll(params);
     String s = request.getParameter("id");
     Stock stock = new Stock();
     if (s == null) {%>
@@ -22,6 +26,17 @@
     <center><h2 class="title">Изменить информацию о складе №<%=stock.getId()%></h2></center>
     <hr>
     <form class="form-horizontal" method = "post" action = "updateStockInfo.jsp?id=<%=Integer.parseInt(s)%>">
+        <div class="form-group has-feedback">
+            <label class="col-sm-3 control-label">Заведующий</label>
+            <div class="col-sm-8">
+                <select class="form-control" name="person" id="person" style="width: 100%; padding-right: 0">
+                    <option selected>Выберите заведующего</option>
+                    <%for (int i = 0; i < person.length; i++) {%>
+                    <option value="<%=person[i].getId()%>"><%=person[i].getFullName()%></option>
+                    <%}%>
+                </select>
+            </div>
+        </div>
         <div class="form-group has-feedback">
             <label class="col-sm-3 control-label">Область</label>
             <div class="col-sm-4">

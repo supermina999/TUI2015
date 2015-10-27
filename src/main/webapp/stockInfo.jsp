@@ -46,7 +46,8 @@
     <center><h2 class="title">Склад № <%=Integer.parseInt(s)%></h2></center>
     <hr>
     <div class="form-group col-sm-12">
-        <p style="font-size: 20px;"> <b>Расположение:</b> <%=stock.getFullAddress()%> </p>
+        <p style="font-size: 20px; margin-bottom: 0"> <b>Расположение:</b> <%=stock.getFullAddress()%> </p>
+        <p style="font-size: 20px;"> <b>Заведующий:</b> <a href="userInfo.jsp?id=<%=stock.getPersonId()%>"><%=stock.getFullPersonName()%></a> </p>
     </div>
     <div class="tabs-style-2">
         <ul class="nav nav-tabs" role="tablist">

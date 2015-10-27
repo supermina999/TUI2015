@@ -25,6 +25,9 @@
 </script>
 <br>
 <div class="form-block center-block" style="width: 70%">
+    <div style="margin-left: 81%;">
+        <p><a href="newApplication.jsp" class="btn btn-default"><i class="fa fa-plus"></i> Добавить заявку</a></p>
+    </div>
     <center><h1>Заявки</h1></center>
     <div class="tabs-style-2">
         <ul class="nav nav-tabs" role="tablist">
@@ -97,7 +100,7 @@
                     <td class="idSearch1">
                         <b>Вид: </b><%=req[i].getRequestTypeName()%><br>
                         <b>Ресурс: </b><%=req[i].getResourceName()%> <%=req[i].getNumber()%> <%=req[i].getMeasureName()%><br>
-                        <b>Местоположение:</b> <%=req[i].getLocation().getAddress()%>, <%=req[i].getLocation().getRegionName()%>, <%=req[i].getLocation().getCountryName()%><br>
+                        <b>Местоположение:</b> <%=req[i].getLocation().getFullAddress()%><br>
                         <b>Дата:</b> <%=req[i].getDateString()%>
                     </td>
                     <td class="idSearch1">
@@ -129,7 +132,7 @@
                     <td class="idSearch2">
                         <b>Вид: </b><%=req[i].getRequestTypeName()%><br>
                         <b>Ресурс: </b><%=req[i].getResourceName()%> <%=req[i].getNumber()%> <%=req[i].getMeasureName()%><br>
-                        <b>Местоположение:</b> <%=req[i].getLocation().getAddress()%>, <%=req[i].getLocation().getRegionName()%>, <%=req[i].getLocation().getCountryName()%><br>
+                        <b>Местоположение:</b> <%=req[i].getLocation().getFullAddress()%><br>
                         <b>Дата:</b> <%=req[i].getDateString()%>
                     </td>
                     <td class="idSearch2">

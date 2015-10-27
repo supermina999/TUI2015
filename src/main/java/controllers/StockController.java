@@ -10,6 +10,7 @@ public class StockController
     public static void add(HttpServletRequest request) throws Exception
     {
         String address = request.getParameter("address");
+        String personId = request.getParameter("person");
         String regionId = request.getParameter("region");
         String lon = request.getParameter("lon");
         String lat = request.getParameter("lat");
@@ -21,6 +22,7 @@ public class StockController
         location.setYCoord(Double.parseDouble(lat));
         location.writeToDB();
         Location[] allLocations = Location.getAll(null);
+        stock.setPersonId(Integer.parseInt(personId));
         stock.setLocationId(allLocations[allLocations.length-1].getId());
         stock.writeToDB();
     }
@@ -28,6 +30,7 @@ public class StockController
     public static void update(HttpServletRequest request) throws Exception
     {
         String id = request.getParameter("id");
+        String personId = request.getParameter("person");
         String address = request.getParameter("address");
         String regionId = request.getParameter("region");
         String lon = request.getParameter("lon");
@@ -42,6 +45,7 @@ public class StockController
         location.saveChanges();
         Stock stock = new Stock();
         stock.setId(Integer.parseInt(id));
+        stock.setPersonId(Integer.parseInt(personId));
         stock.setLocationId(locationId);
         stock.saveChanges();
     }
