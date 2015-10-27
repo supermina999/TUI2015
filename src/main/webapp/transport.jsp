@@ -75,7 +75,7 @@
                         <%
                     for (int i = 0; i < transport.length; i++) {%>
                         <tr>
-                            <td class="idSearch"><%=transport[i].getId()%></td>
+                            <td class="idSearch"><a href="transportInfo.jsp?id=<%=transport[i].getId()%>"><%=transport[i].getId()%></a></td>
                             <td class="idSearch">
                                 <b>Вид:</b> <%=transport[i].getName()%><br> 
                                 <b>Скорость:</b> <%=transport[i].getSpeed()%> км/ч <br> 

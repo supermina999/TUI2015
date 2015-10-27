@@ -17,7 +17,8 @@ public class AvailableResourceController {
         int measureId = Integer.parseInt(request.getParameter("measure"));
         DBEntry[] params = {
             new DBEntry("stock_id", EntryType.Int, stockId),
-            new DBEntry("resource_id", EntryType.Int, resourceId)
+            new DBEntry("resource_id", EntryType.Int, resourceId),
+            new DBEntry("measure_id", EntryType.Int, measureId)
         };
         AvailableResource check = AvailableResource.getOne(params);
         if (check == null) {

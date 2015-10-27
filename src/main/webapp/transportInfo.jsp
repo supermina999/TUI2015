@@ -4,6 +4,7 @@
     String s = request.getParameter("id");
     Transport transport = new Transport();
     Transportation[] transit = null;
+    RequestType[] requestType = RequestType.getAll(null);
     int id = 0;
     if (s == null) {%>
 <script>
@@ -55,24 +56,31 @@
             <li class="active text-center" style="width: 50%;"><a href="#h2tab1" role="tab" data-toggle="tab" style="font-size: 15px;"><i class="glyphicon glyphicon-list-alt"></i> План перевозок</a></li>
             <li class="text-center" style="width: 50%;"><a href="#h2tab2" role="tab" data-toggle="tab" style="font-size: 15px;"><i class="fa fa-truck"></i> Архив перевозок</a></li>
         </ul>
+        <div class="gray-bg">
+            <br>
+            <div class="col-md-8">
+                <input type="text" class="form-control searchInput" placeholder="Поиск" style="width: 105%;" >
+                <i class="fa fa-search form-control-feedback"></i>
+            </div>
+            <div class="col-md-4">
+                <select class="form-control searchInput" style="width: 100%; padding-right: 0;" name="request">
+                    <option>Выберите вид заявки</option>
+                    <%for (int i = 0; i < requestType.length; i++) {%>
+                    <option value="<%=requestType[i].getName()%>"><%=requestType[i].getName()%></option>
+                    <%}%>
+                </select>
+            </div>
+            <br><br><br>
+        </div>
         <div class="tab-content">
             <div class="tab-pane fade in active" id="h2tab1" style="min-height: 800px;">
-                <div class="gray-bg">
-                    <br>
-                    <div class="col-md-11" style="width: 98%">
-                        <input type="text" class="form-control searchInput" placeholder="Поиск" style="width: 102%;">
-                        <i class="fa fa-search form-control-feedback"></i>
-                    </div>
-                    <br><br><br>
-                </div> <br>
                 <table class="table">
                     <thead>
                         <tr>
                             <th style="width: 5%;"><center>№</center></th>
                             <th style="width: 30%;">Ресурс</th>
-                            <th style="width: 20%;">Время</th>
+                            <th style="width: 25%;">Время</th>
                             <th style="width: 35%;">Транспортировка</th>
-                            <th style="width: 5%;"></th>
                             <th style="width: 5%;"></th>
                         </tr>
                     </thead>
@@ -101,21 +109,13 @@
                         <b>Опасность: </b><%=transit[i].getSafetyName()%><br>
                     </td>
                     <td><a href="confirmTransportation.jsp?id=<%=transit[i].getId()%>"><i class="fa fa-check"></i></a></td>
-                    <td><a href="deleteTraportation.jsp?id=<%=transit[i].getId()%>" onclick="return confirmDelete2();"><i class="fa fa-close"></i></a></td>   
                     </tr>
                     <% }%>
                     </tbody>
                 </table>
             </div>
             <div class="tab-pane" id="h2tab2" style="min-height: 800px;">
-                <div class="gray-bg">
-                    <br>
-                    <div class="col-md-11" style="width: 98%">
-                        <input type="text" class="form-control searchInput" placeholder="Поиск" style="width: 102%;">
-                        <i class="fa fa-search form-control-feedback"></i>
-                    </div>
-                    <br><br><br>
-                </div> <br>
+                
                 <table class="table">
                     <thead>
                         <tr>
@@ -125,27 +125,27 @@
                             <th style="width: 35%;">Транспортировка</th>
                         </tr>
                     </thead>
-                    <tbody id="searchTable">
+                    <tbody id="searchTable1">
                         <%
                             for (int i = 0; i < transit.length; i++)
                                 if (transit[i].getStatus() == 2) {
                                     Request req = Request.getOne(transit[i].getRequestId());
                         %>
                         <tr>
-                            <td class="idSearch">
+                            <td class="idSearch1">
                     <center><%=transit[i].getId()%></center>
                     </td>
-                    <td class="idSearch">
+                    <td class="idSearch1">
                         <b>Заявка: <a href="requestInfo.jsp?id=<%=req.getId()%>">№<%=req.getId()%></a><br></b>
                         <b>Вид: </b><%=req.getRequestTypeName()%><br>
                         <b>Ресурс: </b><%=req.getResourceName()%> <%=req.getNumber()%> <%=req.getMeasureName()%>
                     </td>
-                    <td class="idSearch">
+                    <td class="idSearch1">
                         <b>Дата:</b> <%=req.getDateString()%> <br>
                         <b>Отправление:</b> <%=transit[i].getTimeStart()%> <br>
                         <b>Прибытие:</b> <%=transit[i].getTimeFinish()%>
                     </td>
-                    <td class="idSearch">
+                    <td class="idSearch1">
                         <b>Пункт назначения: </b><%=transit[i].getFinishLocation().getFullAddress()%><br>
                         <b>Опасность: </b><%=transit[i].getSafetyName()%><br>
                     </td>
