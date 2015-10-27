@@ -56,7 +56,7 @@
                             <th style="width: 10%;">Логин</th>
                             <th style="width: 25%;">ФИО</th>
                             <th style="width: 20%;">Должность</th>
-                            <th style="width: 30%;">Область</th>
+                            <th style="width: 30%;">Место проживания</th>
                             <th style="width: 5%;"></th>
                             <th style="width: 5%;"></th>
                         </tr>
@@ -69,7 +69,7 @@
                             <td class="idSearch"><%=person[i].getLogin()%></td>
                             <td class="idSearch"><a href="userInfo.jsp?id=<%=person[i].getId()%>"><%=person[i].getFullName()%></a></td>
                             <td class="idSearch"><%=person[i].getPermissionName()%></td>
-                            <td class="idSearch"><%=person[i].getRegionName()%></td>
+                            <td class="idSearch"><%=person[i].getCity()%>, <%=person[i].getRegionName()%></td>
                             <td><a href="changeUserInfo.jsp?id=<%=person[i].getId()%>"><i class="fa fa-edit"></i></a></td>
                             <td><a href="deleteUser.jsp?id=<%=person[i].getId()%>" onclick="return confirmDelete();"><i class="fa fa-close"></i></a></td>
                         </tr>

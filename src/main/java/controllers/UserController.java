@@ -23,6 +23,9 @@ public class UserController {
         String city = request.getParameter("city");
         String email = request.getParameter("email");
         String phone = request.getParameter("phone");
+        String birthday = request.getParameter("birthday");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        Date date = sdf.parse(birthday);
         Person person = new Person();
         person.setLogin(Sql.sql(login));
         person.setPassword(Sql.sql(password1));
@@ -34,6 +37,7 @@ public class UserController {
         person.setEmail(Sql.sql(email));
         person.setPhone(Sql.sql(phone));
         person.setCity(Sql.sql(city));
+        person.setBirthday(date);
         person.setPermissionId(Integer.parseInt(permissionId));
         person.writeToDB();
     }
@@ -51,6 +55,9 @@ public class UserController {
         String city = request.getParameter("city");
         String email = request.getParameter("email");
         String phone = request.getParameter("phone");
+        String birthday = request.getParameter("birthday");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        Date date = sdf.parse(birthday);
         Person person = Person.getOne(Integer.parseInt(id));
         person.setLogin(login);
         person.setPermissionId(Integer.parseInt(permissionId));
@@ -62,6 +69,7 @@ public class UserController {
         person.setEmail(email);
         person.setPhone(phone);
         person.setCity(Sql.sql(city));
+        person.setBirthday(date);
         person.saveChanges();
     }
     

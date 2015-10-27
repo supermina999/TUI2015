@@ -194,6 +194,7 @@ CREATE TABLE `person` (
   `email` text NOT NULL,
   `permission_id` int(11) NOT NULL,
   `city` text NOT NULL,
+  `birthday` date NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -204,12 +205,12 @@ CREATE TABLE `person` (
 
 LOCK TABLES `person` WRITE;
 /*!40000 ALTER TABLE `person` DISABLE KEYS */;
-INSERT INTO `person` (`id`, `name`, `surname`, `second_name`, `login`, `password`, `region_id`, `address`, `phone`, `email`, `permission_id`, `city`) VALUES
-(1, 'Елизавета', 'Попова', 'Олеговна', 'liza', '1', 19, 'улица Астрономическая, 37', '3150897', 'lizapopova@yandex.ru', 1, 'Харьков'),
-(2, 'Станислав', 'Минаков', 'Сергеевич', 'stas', '2', 19, 'улица 23 Августа, 16', '3568790', 'supermina999@gmail.com', 2, 'Харьков'),
-(3, 'Роман', 'Скурихин', 'Владимирович', 'roma', '3', 19, 'улица Розы Люксембург, 4', '3780987', 'romasku135@gmail.com', 6, 'Харьков'),
-(4, 'София', 'Уфимцева', 'Игоревна', 'sofy', '4', 19, 'улица Тобольская, 78Б', '9007865', 'sonya.uf@gmail.com', 4, 'Харьков'),
-(5, 'Артем', 'Пайвин', 'Юрьевич', 'artem', '5', 9, 'улица Довженко, 6', '2346789', 'payvinartem@gmail.com', 3, 'Киев');
+INSERT INTO `person` (`id`, `name`, `surname`, `second_name`, `login`, `password`, `region_id`, `address`, `phone`, `email`, `permission_id`, `city`, `birthday`) VALUES
+(1, 'Елизавета', 'Попова', 'Олеговна', 'liza', '1', 19, 'улица Астрономическая, 37', '3150897', 'lizapopova@yandex.ru', 1, 'Харьков', '1999-01-25'),
+(2, 'Станислав', 'Минаков', 'Сергеевич', 'stas', '2', 19, 'улица 23 Августа, 16', '3568790', 'supermina999@gmail.com', 2, 'Харьков', '1999-01-15'),
+(3, 'Роман', 'Скурихин', 'Владимирович', 'roma', '3', 19, 'улица Розы Люксембург, 4', '3780987', 'romasku135@gmail.com', 6, 'Харьков', '1998-09-17'),
+(4, 'София', 'Уфимцева', 'Игоревна', 'sofy', '4', 19, 'улица Тобольская, 78Б', '9007865', 'sonya.uf@gmail.com', 4, 'Харьков', '1999-01-28'),
+(5, 'Артем', 'Пайвин', 'Юрьевич', 'artem', '5', 9, 'улица Довженко, 6', '2346789', 'payvinartem@gmail.com', 3, 'Киев', '1998-12-23');
 /*!40000 ALTER TABLE `person` ENABLE KEYS */;
 UNLOCK TABLES;
 

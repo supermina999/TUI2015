@@ -20,7 +20,8 @@ public class Person extends DBModel {
         new DBEntry("phone", EntryType.String),
         new DBEntry("email", EntryType.String),
         new DBEntry("permission_id", EntryType.Int),
-        new DBEntry("city", EntryType.String)
+        new DBEntry("city", EntryType.String),
+        new DBEntry("birthday", EntryType.Date)
     };
 
     public Person() {
@@ -176,5 +177,13 @@ public class Person extends DBModel {
 
     public String getCity() {
         return this.entryes[11].getValue();
+    }
+    
+    public void setBirthday(Date date) {
+        this.entryes[12].setValue(date);
+    }
+
+    public String getBirthday() throws ParseException {
+        return this.entryes[12].getValue();
     }
 }
