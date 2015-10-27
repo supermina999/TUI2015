@@ -41,4 +41,16 @@ public class RequestController
         return reqs.length;
     }
     
+    public static void delete(HttpServletRequest request) throws Exception
+    {
+       String idS;
+       Request req = null;
+       if ((idS = request.getParameter("id")) != null)
+       {
+           int id = Integer.parseInt(idS);
+           req = Request.getOne(id);
+           req.delete();
+       }
+    }
+    
 }

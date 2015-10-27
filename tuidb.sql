@@ -38,7 +38,12 @@ CREATE TABLE IF NOT EXISTS `application` (
 LOCK TABLES `application` WRITE;
 /*!40000 ALTER TABLE `application` DISABLE KEYS */;
 INSERT INTO `application` (`id`, `info`, `full_name`, `phone`, `email`, `request_type_id`, `status`) VALUES
-(1, 'Я хочу кушать! Помогите!', 'Карасиков Владислав Викторович', '12345', 'karas@ya.ru', 1, 2);
+(1, 'Здравствуйте! Я директор Харьковского детского дома №5. Наши дети нуждаются в медикаментах! Звоните в любое время.', 'Карасиков Владислав Викторович', '+380678364374833', 'karas@ya.ru', 1, 1),
+(2, 'Я директор текстильной фабрики Николаев А.В. Готов пожертвовать одежду нуждающимся. Звонить во 2 половине дня.', 'Николаев Андрей Викторович', '+3805674656764', 'nikAV@textil.ua', 2, 1),
+(3, 'Нечего есть в поселке Добровольное. Помогите!', 'Крестьянова Лидия Юрьевна', '+3803457347538756', 'lidia@dobro.com', 1, 2),
+(4, 'Я хочу помочь деткам! У меня есть одежда, оставшаяся от моих деток. Звоните', 'Милевская Варвара Николаевна', '+34647856478', 'motherVarya@mymail.com', 2, 2),
+(5, 'У меня большая семья и мы нуждаемся в одежде. Срочно, ибо зима близко!', 'Носов Фёдор Константинович', '+3678483473', '-', 1, 2),
+(6, 'Полтавскую окружная больница №9 готова помочь с медикаментами.', 'Вольная Алла Николаевна', '+3678465454', 'allamed@hospital.ua', 2, 2);
 /*!40000 ALTER TABLE `application` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -65,7 +70,14 @@ CREATE TABLE `available_resource` (
 
 LOCK TABLES `available_resource` WRITE;
 /*!40000 ALTER TABLE `available_resource` DISABLE KEYS */;
-INSERT INTO `available_resource` VALUES (1,1,1,12,1);
+INSERT INTO `available_resource` (`id`, `resource_id`, `stock_id`, `number`, `measure_id`) VALUES
+(1, 1, 1, 10, 1),
+(2, 2, 2, 20, 3),
+(3, 1, 3, 30, 1),
+(4, 1, 4, 10, 1),
+(5, 2, 5, 20, 3),
+(6, 3, 6, 30, 1),
+(7, 1, 7, 10, 1);
 /*!40000 ALTER TABLE `available_resource` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -93,7 +105,15 @@ LOCK TABLES `location` WRITE;
 INSERT INTO `location` (`id`, `region_id`, `address`, `x_coord`, `y_coord`) VALUES
 (1, 19, 'улица Тобольская, 46-а', 30.456149, 50.29807),
 (2, 19, 'улица Астрономическая, 1', 50.05425, 36.292063),
-(3, 9, 'улица Сергея Есенина, 21', 50.49749, 30.74034);
+(3, 9, 'улица Сергея Есенина, 21', 50.49749, 30.74034),
+(4, 5, 'Соборная площадь, 2/2', 28.657425, 50.254992),
+(5, 1, 'улица Архитектора Артынова, 37', 28.465527, 49.23267),
+(6, 17, 'Покровская улица, 6', 34.469355, 50.578017),
+(7, 1, 'улица Козицкого, 71', 28.470243, 49.231894),
+(8, 5, 'Замковая площадь, 2', 28.654677, 50.255089),
+(9, 17, 'Нижнесоборная улица, 10', 34.801623, 50.909356),
+(10, 9, 'переулок Тараса Шевченко, 11', 29.918453, 50.079386),
+(11, 13, 'улица Лягина, 4', 31.992726, 46.974885);
 /*!40000 ALTER TABLE `location` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -266,7 +286,10 @@ CREATE TABLE IF NOT EXISTS `request` (
 LOCK TABLES `request` WRITE;
 /*!40000 ALTER TABLE `request` DISABLE KEYS */;
 INSERT INTO `request` (`id`, `request_type_id`, `resource_id`, `number`, `measure_id`, `application_id`, `location_id`, `status`, `date`) VALUES
-(1, 1, 1, 10, 1, 1, 1, 1, '2015-05-05');
+(1, 1, 3, 10, 1, 3, 4, 1, '2015-05-05'),
+(2, 2, 2, 12, 3, 4, 2, 1, '2015-10-27'),
+(3, 1, 2, 10, 3, 5, 5, 2, '2015-10-25'),
+(4, 2, 1, 30, 1, 6, 6, 2, '2015-10-19');
 /*!40000 ALTER TABLE `request` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -314,8 +337,9 @@ CREATE TABLE IF NOT EXISTS `resource` (
 LOCK TABLES `resource` WRITE;
 /*!40000 ALTER TABLE `resource` DISABLE KEYS */;
 INSERT INTO `resource` (`id`, `name`, `weight`) VALUES
-(1, 'Медикаменты', 0),
-(2, 'Одежда', 0);
+(1, 'Медикаменты', 2),
+(2, 'Одежда', 3),
+(3, 'Хлеб', 1);
 /*!40000 ALTER TABLE `resource` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -367,7 +391,13 @@ CREATE TABLE IF NOT EXISTS `stock` (
 LOCK TABLES `stock` WRITE;
 /*!40000 ALTER TABLE `stock` DISABLE KEYS */;
 INSERT INTO `stock` (`id`, `location_id`, `date`) VALUES
-(1, 1, '2015-09-23');
+(1, 1, '2015-09-23'),
+(2, 3, '2015-10-27'),
+(3, 7, '2015-10-27'),
+(4, 8, '2015-10-27'),
+(5, 9, '2015-10-27'),
+(6, 10, '2015-10-27'),
+(7, 11, '2015-10-27');
 /*!40000 ALTER TABLE `stock` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -393,7 +423,13 @@ CREATE TABLE IF NOT EXISTS `transport` (
 LOCK TABLES `transport` WRITE;
 /*!40000 ALTER TABLE `transport` DISABLE KEYS */;
 INSERT INTO `transport` (`id`, `type_id`, `number`, `person_id`, `stock_id`) VALUES
-(1, 1, 'АХ1800', 4, 1);
+(1, 1, 'АХ1800', 4, 1),
+(2, 2, 'АН5626АУ', 4, 2),
+(3, 1, 'АС5665УУ', 4, 3),
+(4, 2, 'АК5670УА', 4, 4),
+(5, 1, 'АУ4444АУ', 4, 5),
+(6, 2, 'ГР5672АА', 4, 6),
+(7, 1, 'АХ6767АУ', 4, 7);
 /*!40000 ALTER TABLE `transport` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -421,7 +457,10 @@ CREATE TABLE IF NOT EXISTS `transportation` (
 LOCK TABLES `transportation` WRITE;
 /*!40000 ALTER TABLE `transportation` DISABLE KEYS */;
 INSERT INTO `transportation` (`id`, `request_id`, `transport_id`, `time_start`, `time_finish`, `status`, `safety_id`) VALUES
-(1, 1, 1, '11:00', '12:00', 1, 1);
+(1, 1, 4, '11:00', '12:00', 1, 1),
+(2, 2, 1, '17:00', '19:30', 1, 3),
+(3, 3, 3, '15:30', '16:45', 2, 2),
+(4, 4, 5, '8:00', '9:15', 2, 4);
 /*!40000 ALTER TABLE `transportation` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -446,7 +485,8 @@ CREATE TABLE IF NOT EXISTS `transport_type` (
 LOCK TABLES `transport_type` WRITE;
 /*!40000 ALTER TABLE `transport_type` DISABLE KEYS */;
 INSERT INTO `transport_type` (`id`, `name`, `speed`, `max_weight`) VALUES
-(1, 'Газель', 30, 150);
+(1, 'Газель', 30, 10),
+(2, 'Фура', 50, 20);
 /*!40000 ALTER TABLE `transport_type` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;

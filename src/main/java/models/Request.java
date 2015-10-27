@@ -128,23 +128,23 @@ public class Request extends DBModel {
     }
 
     public String getMeasureName() throws Exception {
-        int id = getResourceId();
+        int id = getMeasureId();
         return Measure.getOne(id).getName();
     }
     
     public String getStatusName() throws Exception {
-        int id = getStatus();
+        int id = getRequestTypeId();
         if (id == 2) {
-            if (getRequestTypeId() == 2) {
+            if (getStatus() == 2) {
                 return "получено";
             } else {
-                return "неполучено";
+                return "не получено";
             }
         } else {
-            if (getRequestTypeId() == 2) {
+            if (getStatus() == 2) {
                 return "доставлено";
             } else {
-                return "недоставлено";
+                return "не доставлено";
             }
         }
     }
