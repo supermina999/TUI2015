@@ -1,7 +1,8 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<% int minPermission = 8;
-    int tab = 0;
-   %>
+<% 
+    int minPermission = 8;
+    int tab = 7;
+%>
 <%@include file = "layout1.jsp"%>
 <%
     Region[] region = Region.getAll(null);

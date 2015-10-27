@@ -14,7 +14,6 @@ public class StockController
         String lon = request.getParameter("lon");
         String lat = request.getParameter("lat");
         Stock stock = new Stock();
-        Date date = new Date();
         Location location = new Location();
         location.setRegionId(Integer.parseInt(regionId));
         location.setAddress(address);
@@ -23,7 +22,6 @@ public class StockController
         location.writeToDB();
         Location[] allLocations = Location.getAll(null);
         stock.setLocationId(allLocations[allLocations.length-1].getId());
-        stock.setDate(date);
         stock.writeToDB();
     }
     
@@ -35,7 +33,6 @@ public class StockController
         String lon = request.getParameter("lon");
         String lat = request.getParameter("lat");
         int locationId = Stock.getOne(Integer.parseInt(id)).getLocationId();
-        Date date = Stock.getOne(Integer.parseInt(id)).getDate();
         Location location = new Location();
         location.setRegionId(Integer.parseInt(regionId));
         location.setId(locationId);
@@ -46,26 +43,22 @@ public class StockController
         Stock stock = new Stock();
         stock.setId(Integer.parseInt(id));
         stock.setLocationId(locationId);
-        stock.setDate(date);
         stock.saveChanges();
     }
     
     public static void delete(HttpServletRequest request) throws Exception
     {
         String id = request.getParameter("id");
-        Stock data = Stock.getOne(Integer.parseInt(id));
-        int locationId = data.getLocationId();
+        Stock stock = Stock.getOne(Integer.parseInt(id));
+        int locationId = stock.getLocationId();
         Location location = new Location();
         location.setId(locationId);
-        location.setRegionId(data.getLocation().getRegionId());
+        location.setRegionId(stock.getLocation().getRegionId());
         location.setId(locationId);
-        location.setAddress(data.getLocation().getAddress());
+        location.setAddress(stock.getLocation().getAddress());
         location.setXCoord(1);
         location.setYCoord(1);
         location.delete();
-        Stock stock = new Stock();
-        stock.setId(data.getId());
-        stock.setLocationId(locationId);
         stock.delete();
     }
 }

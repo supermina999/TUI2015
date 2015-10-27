@@ -193,7 +193,6 @@ CREATE TABLE `person` (
   `phone` text NOT NULL,
   `email` text NOT NULL,
   `permission_id` int(11) NOT NULL,
-  `date` date NOT NULL,
   `city` text NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
@@ -205,12 +204,12 @@ CREATE TABLE `person` (
 
 LOCK TABLES `person` WRITE;
 /*!40000 ALTER TABLE `person` DISABLE KEYS */;
-INSERT INTO `person` (`id`, `name`, `surname`, `second_name`, `login`, `password`, `region_id`, `address`, `phone`, `email`, `permission_id`, `date`, `city`) VALUES
-(1, 'Елизавета', 'Попова', 'Олеговна', 'liza', '1', 19, 'улица Астрономическая, 37', '3150897', 'lizapopova@yandex.ru', 1, '2015-09-17', 'Харьков'),
-(2, 'Станислав', 'Минаков', 'Сергеевич', 'stas', '2', 19, 'улица 23 Августа, 16', '3568790', 'supermina999@gmail.com', 2, '2015-09-17', 'Харьков'),
-(3, 'Роман', 'Скурихин', 'Владимирович', 'roma', '3', 19, 'улица Розы Люксембург, 4', '3780987', 'romasku135@gmail.com', 6, '2015-09-17', 'Харьков'),
-(4, 'София', 'Уфимцева', 'Игоревна', 'sofy', '4', 19, 'улица Тобольская, 78Б', '9007865', 'sonya.uf@gmail.com', 4, '2015-09-17', 'Харьков'),
-(5, 'Артем', 'Пайвин', 'Юрьевич', 'artem', '5', 9, 'улица Довженко, 6', '2346789', 'payvinartem@gmail.com', 3, '2015-09-17', 'Киев');
+INSERT INTO `person` (`id`, `name`, `surname`, `second_name`, `login`, `password`, `region_id`, `address`, `phone`, `email`, `permission_id`, `city`) VALUES
+(1, 'Елизавета', 'Попова', 'Олеговна', 'liza', '1', 19, 'улица Астрономическая, 37', '3150897', 'lizapopova@yandex.ru', 1, 'Харьков'),
+(2, 'Станислав', 'Минаков', 'Сергеевич', 'stas', '2', 19, 'улица 23 Августа, 16', '3568790', 'supermina999@gmail.com', 2, 'Харьков'),
+(3, 'Роман', 'Скурихин', 'Владимирович', 'roma', '3', 19, 'улица Розы Люксембург, 4', '3780987', 'romasku135@gmail.com', 6, 'Харьков'),
+(4, 'София', 'Уфимцева', 'Игоревна', 'sofy', '4', 19, 'улица Тобольская, 78Б', '9007865', 'sonya.uf@gmail.com', 4, 'Харьков'),
+(5, 'Артем', 'Пайвин', 'Юрьевич', 'artem', '5', 9, 'улица Довженко, 6', '2346789', 'payvinartem@gmail.com', 3, 'Киев');
 /*!40000 ALTER TABLE `person` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -379,7 +378,6 @@ DROP TABLE IF EXISTS `stock`;
 CREATE TABLE IF NOT EXISTS `stock` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `location_id` int(11) NOT NULL,
-  `date` date NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -390,14 +388,14 @@ CREATE TABLE IF NOT EXISTS `stock` (
 
 LOCK TABLES `stock` WRITE;
 /*!40000 ALTER TABLE `stock` DISABLE KEYS */;
-INSERT INTO `stock` (`id`, `location_id`, `date`) VALUES
-(1, 1, '2015-09-23'),
-(2, 3, '2015-10-27'),
-(3, 7, '2015-10-27'),
-(4, 8, '2015-10-27'),
-(5, 9, '2015-10-27'),
-(6, 10, '2015-10-27'),
-(7, 11, '2015-10-27');
+INSERT INTO `stock` (`id`, `location_id`) VALUES
+(1, 1),
+(2, 3),
+(3, 7),
+(4, 8),
+(5, 9),
+(6, 10),
+(7, 11);
 /*!40000 ALTER TABLE `stock` ENABLE KEYS */;
 UNLOCK TABLES;
 

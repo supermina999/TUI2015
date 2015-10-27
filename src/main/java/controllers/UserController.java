@@ -23,7 +23,6 @@ public class UserController {
         String city = request.getParameter("city");
         String email = request.getParameter("email");
         String phone = request.getParameter("phone");
-        Date date = new Date();
         Person person = new Person();
         person.setLogin(Sql.sql(login));
         person.setPassword(Sql.sql(password1));
@@ -36,7 +35,6 @@ public class UserController {
         person.setPhone(Sql.sql(phone));
         person.setCity(Sql.sql(city));
         person.setPermissionId(Integer.parseInt(permissionId));
-        person.setDate(date);
         person.writeToDB();
     }
     
