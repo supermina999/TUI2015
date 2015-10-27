@@ -121,4 +121,5 @@ public class Transport extends DBModel {
     public String getStockAddress () throws Exception {
         return getStockLocation().getFullAddress();
     }
+    
 }

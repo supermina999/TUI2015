@@ -38,7 +38,7 @@ CREATE TABLE IF NOT EXISTS `application` (
 LOCK TABLES `application` WRITE;
 /*!40000 ALTER TABLE `application` DISABLE KEYS */;
 INSERT INTO `application` (`id`, `info`, `full_name`, `phone`, `email`, `request_type_id`, `status`) VALUES
-(1, 'Я хочу кушать! Помогите!', 'Карасиков Владислав Викторович', '12345', 'karas@ya.ru', 1, 1);
+(1, 'Я хочу кушать! Помогите!', 'Карасиков Владислав Викторович', '12345', 'karas@ya.ru', 1, 2);
 /*!40000 ALTER TABLE `application` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -186,11 +186,11 @@ CREATE TABLE `person` (
 LOCK TABLES `person` WRITE;
 /*!40000 ALTER TABLE `person` DISABLE KEYS */;
 INSERT INTO `person` (`id`, `name`, `surname`, `second_name`, `login`, `password`, `region_id`, `address`, `phone`, `email`, `permission_id`, `date`, `city`) VALUES
-(1, 'Елизавета', 'Попова', 'Олеговна', 'liza', '1', 1, 'улица Астрономическая, 37', '3150897', 'lizapopova@yandex.ru', 1, '2015-09-17', 'Харьков'),
-(2, 'Станислав', 'Минаков', 'Сергеевич', 'stas', '2', 1, 'улица 23 Августа, 16', '3568790', 'supermina999@gmail.com', 2, '2015-09-17', 'Харьков'),
-(3, 'Роман', 'Скурихин', 'Владимирович', 'roma', '3', 1, 'улица Розы Люксембург, 4', '3780987', 'romasku135@gmail.com', 6, '2015-09-17', 'Харьков'),
-(4, 'София', 'Уфимцева', 'Игоревна', 'sofy', '4', 2, 'улица Тобольская, 78Б', '9007865', 'sonya.uf@gmail.com', 4, '2015-09-17', 'Харьков'),
-(5, 'Артем', 'Пайвин', 'Юрьевич', 'artem', '5', 1, 'улица Довженко, 6', '2346789', 'payvinartem@gmail.com', 3, '2015-09-17', 'Киев');
+(1, 'Елизавета', 'Попова', 'Олеговна', 'liza', '1', 19, 'улица Астрономическая, 37', '3150897', 'lizapopova@yandex.ru', 1, '2015-09-17', 'Харьков'),
+(2, 'Станислав', 'Минаков', 'Сергеевич', 'stas', '2', 19, 'улица 23 Августа, 16', '3568790', 'supermina999@gmail.com', 2, '2015-09-17', 'Харьков'),
+(3, 'Роман', 'Скурихин', 'Владимирович', 'roma', '3', 19, 'улица Розы Люксембург, 4', '3780987', 'romasku135@gmail.com', 6, '2015-09-17', 'Харьков'),
+(4, 'София', 'Уфимцева', 'Игоревна', 'sofy', '4', 19, 'улица Тобольская, 78Б', '9007865', 'sonya.uf@gmail.com', 4, '2015-09-17', 'Харьков'),
+(5, 'Артем', 'Пайвин', 'Юрьевич', 'artem', '5', 9, 'улица Довженко, 6', '2346789', 'payvinartem@gmail.com', 3, '2015-09-17', 'Киев');
 /*!40000 ALTER TABLE `person` ENABLE KEYS */;
 UNLOCK TABLES;
 

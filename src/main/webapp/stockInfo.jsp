@@ -46,7 +46,7 @@
     <center><h2 class="title">Склад № <%=Integer.parseInt(s)%></h2></center>
     <hr>
     <div class="form-group col-sm-12">
-        <p style="font-size: 20px;"> <b>Расположение:</b> <%=stock.getLocation().getAddress()%>, <%=stock.getLocation().getRegionName()%>, <%=stock.getLocation().getCountryName()%> </p>
+        <p style="font-size: 20px;"> <b>Расположение:</b> <%=stock.getFullAddress()%> </p>
     </div>
     <div class="tabs-style-2">
         <ul class="nav nav-tabs" role="tablist">
@@ -85,7 +85,7 @@
                     </tbody>
                 </table>
             </div>
-            <div class="tab-pane fade in active" id="h2tab2" style="min-height: 800px;">
+            <div class="tab-pane" id="h2tab2" style="min-height: 800px;">
                 <div class="form-group has-feedback" style="width: 100%; min-height: 800px;">
                 <div class="gray-bg">
                     <br>
