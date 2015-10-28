@@ -57,24 +57,24 @@
             <li class="active text-center" style="width: 50%;"><a href="#h2tab1" role="tab" data-toggle="tab" style="font-size: 15px;"><i class="glyphicon glyphicon-list-alt"></i> План перевозок</a></li>
             <li class="text-center" style="width: 50%;"><a href="#h2tab2" role="tab" data-toggle="tab" style="font-size: 15px;"><i class="fa fa-truck"></i> Архив перевозок</a></li>
         </ul>
-        <div class="gray-bg">
-            <br>
-            <div class="col-md-8">
-                <input type="text" class="form-control searchInput" placeholder="Поиск" style="width: 105%;" >
-                <i class="fa fa-search form-control-feedback"></i>
-            </div>
-            <div class="col-md-4">
-                <select class="form-control searchInput" style="width: 100%; padding-right: 0;" name="request">
-                    <option>Выберите вид заявки</option>
-                    <%for (int i = 0; i < requestType.length; i++) {%>
-                    <option value="<%=requestType[i].getName()%>"><%=requestType[i].getName()%></option>
-                    <%}%>
-                </select>
-            </div>
-            <br><br><br>
-        </div>
         <div class="tab-content">
             <div class="tab-pane fade in active" id="h2tab1" style="min-height: 800px;">
+                <div class="gray-bg">
+                    <br>
+                    <div class="col-md-8">
+                        <input type="text" class="form-control searchInputText" placeholder="Поиск" style="width: 105%;" >
+                        <i class="fa fa-search form-control-feedback"></i>
+                    </div>
+                    <div class="col-md-4">
+                        <select class="form-control searchInput" style="width: 100%; padding-right: 0;" name="request">
+                            <option>Выберите вид заявки</option>
+                            <%for (int i = 0; i < requestType.length; i++) {%>
+                            <option value="<%=requestType[i].getName()%>"><%=requestType[i].getName()%></option>
+                            <%}%>
+                        </select>
+                    </div>
+                    <br><br><br>
+                </div>
                 <table class="table">
                     <thead>
                         <tr>
@@ -116,7 +116,22 @@
                 </table>
             </div>
             <div class="tab-pane" id="h2tab2" style="min-height: 800px;">
-                
+                <div class="gray-bg">
+                    <br>
+                    <div class="col-md-8">
+                        <input type="text" class="form-control searchInputText1" placeholder="Поиск" style="width: 105%;" >
+                        <i class="fa fa-search form-control-feedback"></i>
+                    </div>
+                    <div class="col-md-4">
+                        <select class="form-control searchInput1" style="width: 100%; padding-right: 0;" name="request">
+                            <option>Выберите вид заявки</option>
+                            <%for (int i = 0; i < requestType.length; i++) {%>
+                            <option value="<%=requestType[i].getName()%>"><%=requestType[i].getName()%></option>
+                            <%}%>
+                        </select>
+                    </div>
+                    <br><br><br>
+                </div>
                 <table class="table">
                     <thead>
                         <tr>

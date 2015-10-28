@@ -26,7 +26,7 @@
             <div class="gray-bg">
                 <br>
                 <div class="col-md-11">
-                    <input type="text" class="form-control searchInput" placeholder="Наименование" style="width: 110%;">
+                    <input type="text" class="form-control searchInputText" placeholder="Наименование" style="width: 110%;">
                     <i class="fa fa-search form-control-feedback" style="padding-left: 100%;"></i>
                 </div>
                 <br><br><br>

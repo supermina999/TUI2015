@@ -28,7 +28,7 @@
                 <div class="gray-bg">
                     <br>
                     <div class="col-md-4">
-                        <input type="text" class="form-control searchInput" placeholder="Название" style="width: 105%;">
+                        <input type="text" class="form-control searchInputText" placeholder="Название" style="width: 105%;">
                         <i class="fa fa-search form-control-feedback"></i>
                     </div>
                     <div class="col-md-4">

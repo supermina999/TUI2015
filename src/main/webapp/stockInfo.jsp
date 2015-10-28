@@ -59,7 +59,7 @@
                 <div class="gray-bg">
                     <br>
                     <div class="col-md-11" style="width: 98%">
-                        <input type="text" class="form-control searchInput" placeholder="Поиск" style="width: 102%;">
+                        <input type="text" class="form-control searchInputText" placeholder="Поиск" style="width: 102%;">
                         <i class="fa fa-search form-control-feedback"></i>
                     </div>
                     <br><br><br>
@@ -91,11 +91,11 @@
                 <div class="gray-bg">
                     <br>
                     <div class="col-md-8" style="width: 69%">
-                        <input type="text" class="form-control searchInput" placeholder="Поиск" style="width: 105%;">
+                        <input type="text" class="form-control searchInputText1" placeholder="Поиск" style="width: 105%;">
                         <i class="fa fa-search form-control-feedback"></i>
                     </div>
                     <div class="col-md-4" style="width: 30%; margin-left: 5px;">
-                        <select class="form-control searchInput" style="width: 100%; padding: 0; padding-left: 5px;" name = "transport_type">
+                        <select class="form-control searchInput1" style="width: 100%; padding: 0; padding-left: 5px;" name = "transport_type">
                             <option>Выберите вид транспорта</option>
                             <%for (int i = 0; i < transportType.length; i++) {%>
                             <option><%=transportType[i].getName()%></option>
