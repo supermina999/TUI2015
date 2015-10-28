@@ -1,3 +1,4 @@
+<%@page import="fileXLS.MakeFileXLS"%>
 <%@page import="javax.swing.table.TableColumnModel"%>
 <%@page import="javax.swing.table.TableModel"%>
 <%@page import="java.io.*"%>
@@ -90,37 +91,8 @@
         data[i][1] = Integer.toString(number.elementAt(i));
     }
     JTable jtable = new JTable(data, columnNames);
-    HSSFWorkbook table = new HSSFWorkbook();
-    HSSFSheet fSheet = table.createSheet(avRes.getResourceName());
-    HSSFFont sheetTitleFont = table.createFont();
-    
-    File file = new File("table.xls");
-    HSSFCellStyle cellStyle = table.createCellStyle();
-    sheetTitleFont.setBoldweight(HSSFFont.BOLDWEIGHT_BOLD);
-    TableModel model = jtable.getModel();
-    TableColumnModel tcm = jtable.getColumnModel();
-    HSSFRow fRow = fSheet.createRow(0);
-    for(int j = 0; j < tcm.getColumnCount(); j++) 
-    {
-        HSSFCell cell = fRow.createCell(j);
-        cell.setCellValue(columnNames[j]);           
-    }
-    for (int i = 0; i < model.getRowCount(); i++) 
-    {
-        fRow = fSheet.createRow(i + 1);
-        for (int j = 0; j < model.getColumnCount(); j++) 
-        {
-            HSSFCell cell = fRow.createCell(j);
-            cell.setCellValue(model.getValueAt(i, j).toString());
-            cell.setCellStyle(cellStyle);
-        }
-    }
-    FileOutputStream fileOutputStream;
-    fileOutputStream = new FileOutputStream(file);
-    BufferedOutputStream bos = new BufferedOutputStream(fileOutputStream);
-    table.write(bos);
-    bos.close();
-    fileOutputStream.close();
+    MakeFileXLS mfXLS = new MakeFileXLS();
+    mfXLS.makeFile(jtable, avRes.getResourceName());
 %>
 <%@include file = "layout1.jsp"%>
 <script src="plugins/charts/Chart.js"></script> 
@@ -132,7 +104,7 @@
         <div class="form-group col-sm-7">
             <p style="font-size: 15px;"> <b>Кол-во:</b> <%=avRes.getNumber()%></p>
             <%if (stock_id == -1) {%><p style="font-size: 15px;"> <b>Склады:</b> <a href="stockInfo.jsp?id=<%=availableRes[0].getStockId()%>">№<%=availableRes[0].getStockId()%></a> <%for (int i = 1; i < availableRes.length; i++) {%>, <a href="stockInfo.jsp?id=<%=availableRes[i].getStockId()%>">№<%=availableRes[i].getStockId()%></a> <%}%></p><%}%>
-            <p style="font-size: 15px;"> <a href="table.xls" download="table.xls"> Скачать таблицу </a></p>
+            <p style="font-size: 15px;"> <a href="/home/table.xls" download="table.xls"> Скачать таблицу </a></p>
         </div>
         <canvas class="graph-line" id="myChart1"></canvas>
     </form>
