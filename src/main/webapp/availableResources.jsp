@@ -63,7 +63,7 @@
                         <%
                     for (int i = 0; i < availableRes.length; i++) {%>
                         <tr>
-                            <td class="idSearch"><a href="resourceInfo.jsp?id=<%=availableRes[i].getId()%>&stock_id=-1"><%=availableRes[i].getResourceName()%> </a></td>
+                            <td class="idSearch"><a href="resourceInfo.jsp?id=<%=availableRes[i].getId()%>&stock_id=<%=availableRes[i].getStockId()%>"><%=availableRes[i].getResourceName()%> </a></td>
                             <td class="idSearch"><a href="stockInfo.jsp?id=<%=availableRes[i].getStockId()%>">№<%=availableRes[i].getStockId()%></a>, <%=availableRes[i].getStockAddress()%> </td>
                             <td class="idSearch"><%=availableRes[i].getNumber()%> <%=availableRes[i].getMeasureName()%></td>
                             <td><a href="changeResource.jsp?id=<%=availableRes[i].getId()%>"><i class="fa fa-edit"></i></a></td>
