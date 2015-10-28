@@ -57,7 +57,7 @@
                     <td class="idSearch" ><center><a href="stockInfo.jsp?id=<%=stock[i].getId()%>"><%=stock[i].getId()%></a></center></td>
                     <td class="idSearch"><%=stock[i].getFullAddress()%></td>
                     <td class="idSearch"><a href="userInfo.jsp?id=<%=stock[i].getPersonId()%>"><%=stock[i].getFullPersonName()%></a></td>
-                    <td><a onclick="showPlacemark($(this).closest('td').prev('td').text());"><i class="fa fa-map-marker"></i></a></td> 
+                    <td><a onclick="showPlacemark($(this).closest('td').prev('td').prev('td').text());"><i class="fa fa-map-marker"></i></a></td> 
                     <td><a href="changeStockInfo.jsp?id=<%=stock[i].getId()%>"><i class="fa fa-edit"></i></a></td>
                     <td><a href="deleteStock.jsp?id=<%=stock[i].getId()%>" onclick="return confirmDelete();"><i class="fa fa-close"></i></a></td>   
             </tr>

@@ -16,8 +16,7 @@ public class Request extends DBModel {
         new DBEntry("application_id", EntryType.Int),
         new DBEntry("location_id", EntryType.Int),
         new DBEntry("status", EntryType.Int),
-        new DBEntry("date", EntryType.Date),
-    };
+        new DBEntry("date", EntryType.Date),};
 
     protected Request(DBEntry[] entryes) {
         super(entryes);
@@ -75,12 +74,12 @@ public class Request extends DBModel {
     public Integer getRequestTypeId() {
         return Integer.parseInt(this.entryes[1].getValue());
     }
-    
+
     public String getRequestTypeName() throws Exception {
         int id = getRequestTypeId();
         return RequestType.getOne(id).getName();
     }
-    
+
     public int getResourceId() {
         return Integer.parseInt(this.entryes[2].getValue());
     }
@@ -104,7 +103,7 @@ public class Request extends DBModel {
     public void setMeasureId(int id) {
         this.entryes[4].setValue(id);
     }
-    
+
     public int getApplicationId() {
         return Integer.parseInt(this.entryes[5].getValue());
     }
@@ -112,7 +111,7 @@ public class Request extends DBModel {
     public void setApplicationId(int id) {
         this.entryes[5].setValue(id);
     }
-    
+
     public int getLocationId() {
         return Integer.parseInt(this.entryes[6].getValue());
     }
@@ -120,7 +119,6 @@ public class Request extends DBModel {
     public void setLocationId(int id) {
         this.entryes[6].setValue(id);
     }
-    
 
     public String getResourceName() throws Exception {
         int id = getResourceId();
@@ -131,24 +129,16 @@ public class Request extends DBModel {
         int id = getMeasureId();
         return Measure.getOne(id).getName();
     }
-    
+
     public String getStatusName() throws Exception {
-        int id = getRequestTypeId();
-        if (id == 2) {
-            if (getStatus() == 2) {
-                return "получено";
-            } else {
-                return "не получено";
-            }
+        int id = getStatus();
+        if (id == 1) {
+            return "запланировано";
         } else {
-            if (getStatus() == 2) {
-                return "доставлено";
-            } else {
-                return "не доставлено";
-            }
+            return "не запланировано";
         }
     }
-    
+
     public void setStatus(int id) {
         this.entryes[7].setValue(id);
     }
@@ -156,19 +146,19 @@ public class Request extends DBModel {
     public Integer getStatus() {
         return Integer.parseInt(this.entryes[7].getValue());
     }
-    
+
     public Date getDate() throws ParseException {
         return new SimpleDateFormat("yyyy-MM-dd").parse(this.entryes[8].getValue());
     }
-    
+
     public String getDateString() throws ParseException {
         return this.entryes[8].getValue();
     }
-    
+
     public void setDate(Date date) {
         this.entryes[8].setValue(date);
     }
-    
+
     public Location getLocation() throws Exception {
         int id = getLocationId();
         return Location.getOne(id);

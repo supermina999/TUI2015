@@ -88,7 +88,7 @@
                     <tbody id="searchTable">
                         <%
                             for (int i = 0; i < transit.length; i++)
-                                if (transit[i].getStatus() == 1) {
+                                if (transit[i].getStatus() == 0) {
                                     Request req = Request.getOne(transit[i].getRequestId());
                         %>
                         <tr>
@@ -129,7 +129,7 @@
                     <tbody id="searchTable1">
                         <%
                             for (int i = 0; i < transit.length; i++)
-                                if (transit[i].getStatus() == 2) {
+                                if (transit[i].getStatus() == 1) {
                                     Request req = Request.getOne(transit[i].getRequestId());
                         %>
                         <tr>

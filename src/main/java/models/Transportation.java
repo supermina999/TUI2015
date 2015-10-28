@@ -121,14 +121,14 @@ public class Transportation extends DBModel {
 
     public String getStatusName() throws Exception {
         int id = getRequestTypeId();
-        if (id == 2) {
-            if (getStatus() == 2) {
+        if (id == 1) {
+            if (getStatus() == 1) {
                 return "получено";
             } else {
                 return "не получено";
             }
         } else {
-            if (getStatus() == 2) {
+            if (getStatus() == 1) {
                 return "доставлено";
             } else {
                 return "не доставлено";

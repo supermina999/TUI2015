@@ -23,8 +23,8 @@
         }
     }
 </script>
-<br>
-<div class="form-block center-block" style="width: 70%">
+
+<div class="form-group has-feedback center-block" style="width: 70%">
     <div style="margin-left: 81%;">
         <p><a href="newApplication.jsp" class="btn btn-default"><i class="fa fa-plus"></i> Добавить заявку</a></p>
     </div>
@@ -65,7 +65,7 @@
                     </thead>
                     <tbody id="searchTable">
                         <%for (int i = 0; i < app.length; i++)
-                                if (app[i].getStatus() == 1) {%>
+                                if (app[i].getStatus() == 0) {%>
                         <tr>
                             <td class="idSearch"><center><%=app[i].getId()%></center></td>
                     <td class="idSearch"><b>Вид: </b><%=app[i].getRequestTypeName()%> <br><%=app[i].getInfo()%></td>
@@ -93,7 +93,7 @@
                     </thead>
                     <tbody id="searchTable1">
                         <%for (int i = 0; i < req.length; i++)
-                                if (req[i].getStatus() == 1) {
+                                if (req[i].getStatus() == 0) {
                                     Application tApp = Application.getOne(req[i].getApplicationId());%>
                         <tr>
                             <td class="idSearch"><center><a href="requestInfo.jsp?id=<%=req[i].getId()%>"><%=req[i].getId()%></a></center></td>
@@ -125,7 +125,7 @@
                     </thead>
                     <tbody id="searchTable2">
                         <%for (int i = 0; i < req.length; i++)
-                                if (req[i].getStatus() == 2) {
+                                if (req[i].getStatus() == 1) {
                                     Application tApp = Application.getOne(req[i].getApplicationId());%>
                         <tr>
                             <td class="idSearch"><center><a href="requestInfo.jsp?id=<%=req[i].getId()%>"><%=req[i].getId()%></a></center></td>
