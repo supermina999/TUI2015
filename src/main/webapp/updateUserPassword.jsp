@@ -6,5 +6,5 @@
     UserController.updatePassword(request);
 %>
 <script>
-    window.location.href = "userInfo.jsp?id=<%=request.getParameter("id")%>";
+    window.location.href = "exit.jsp";
 </script>

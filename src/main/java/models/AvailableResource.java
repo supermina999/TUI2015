@@ -110,7 +110,12 @@ public class AvailableResource extends DBModel {
     }
 
     public String getMeasureName() throws Exception {
-        int id = getResourceId();
+        int id = getMeasureId();
         return Measure.getOne(id).getName();
+    }
+    
+    public String getStockAddress () throws Exception {
+        int id = getStockId();
+        return Stock.getOne(id).getFullAddress();
     }
 }

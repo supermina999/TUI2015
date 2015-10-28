@@ -12,7 +12,7 @@ public class Stock extends DBModel {
     static public DBEntry[] stdEntryes = {
         new DBEntry("id", EntryType.Int),
         new DBEntry("location_id", EntryType.Int),
-        new DBEntry("date", EntryType.Date)
+        new DBEntry("person_id", EntryType.Int)
     };
 
     protected Stock(DBEntry[] entryes) {
@@ -70,18 +70,23 @@ public class Stock extends DBModel {
     public void setLocationId(int id) {
         this.entryes[1].setValue(id);
     }
+    
+    public int getPersonId() {
+        return Integer.parseInt(this.entryes[2].getValue());
+    }
 
+    public void setPersonId(int id) {
+        this.entryes[2].setValue(id);
+    }
+    
+    public String getFullPersonName() throws Exception {
+        int id = getPersonId();
+        return Person.getOne(id).getFullName();
+    }
+    
     public Location getLocation() throws Exception {
         int id = getLocationId();
         return Location.getOne(id);
-    }
-
-    public Date getDate() throws ParseException {
-        return new SimpleDateFormat("yyyy-MM-dd").parse(this.entryes[2].getValue());
-    }
-
-    public void setDate(Date date) {
-        this.entryes[2].setValue(date);
     }
     
     public Map<Integer, Integer> getAllRecources() throws Exception
@@ -100,5 +105,9 @@ public class Stock extends DBModel {
             ans.put(resTypeId, resTypeCnt);
         }
         return ans;
+    }
+    
+    public String getFullAddress () throws Exception {
+        return getLocation().getFullAddress();
     }
 }

@@ -42,10 +42,6 @@ public class DBModel {
             DBModel.tableName = Application.tableName;
             DBModel.stdEntryes = Application.stdEntryes;
         }
-        if (this.getClass() == Emergency.class) {
-            DBModel.tableName = Emergency.tableName;
-            DBModel.stdEntryes = Emergency.stdEntryes;
-        }
         if (this.getClass() == Region.class) {
             DBModel.tableName = Region.tableName;
             DBModel.stdEntryes = Region.stdEntryes;
@@ -61,10 +57,6 @@ public class DBModel {
         if (this.getClass() == Safety.class) {
             DBModel.tableName = Safety.tableName;
             DBModel.stdEntryes = Safety.stdEntryes;
-        }
-        if (this.getClass() == Status.class) {
-            DBModel.tableName = Status.tableName;
-            DBModel.stdEntryes = Status.stdEntryes;
         }
         if (this.getClass() == Transportation.class) {
             DBModel.tableName = Transportation.tableName;
@@ -101,6 +93,10 @@ public class DBModel {
         if (this.getClass() == Transport.class) {
             DBModel.tableName = Transport.tableName;
             DBModel.stdEntryes = Transport.stdEntryes;
+        }
+        if (this.getClass() == TransportType.class) {
+            DBModel.tableName = TransportType.tableName;
+            DBModel.stdEntryes = TransportType.stdEntryes;
         }
     }
 

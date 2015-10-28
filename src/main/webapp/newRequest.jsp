@@ -10,10 +10,12 @@
 %>
 <%@include file = "layout1.jsp"%>
 <br>
+
+<script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
 <div  class="form-block center-block" style="min-height: 700px; width: 50%">
     <center><h2 class="title">Обработка заявки</h2></center>
     <hr>
-    <form class="form-horizontal" method="post" action="addRequest.jsp?applicationId=<%=id%>&request=<%=app.getRequestTypeId()%>">
+    <form class="form-horizontal" method="post" action="addRequest.jsp?application_id=<%=id%>&request=<%=app.getRequestTypeId()%>">
         <div class="form-group has-feedback">
             <label class="col-sm-3 control-label" style="padding-top: 0">Вид заявки:</label>
             <div class="col-sm-8">
@@ -35,7 +37,7 @@
                 </select>
             </div>
             <div style="margin-top: 5px;">
-                <a href="newTypeOfResource.jsp?back=1" style="font-size: 20px;"><i class="fa fa-plus"></i></a>
+                <a href="newTypeOfResource.jsp?" style="font-size: 20px;"><i class="fa fa-plus"></i></a>
             </div>
         </div>
         <div class="form-group has-feedback">
@@ -68,8 +70,8 @@
             </div>
             <div class="col-sm-4">
                 <select class="form-control" name="type" id="type" style="width: 100%; padding-right: 0">
-                    <option selected id="1">ПО АДРЕСУ</option>
-                    <option>НА КАРТЕ</option>
+                    <option selected id="1">По адресу</option>
+                    <option>На карте</option>
                 </select>
             </div>
         </div>
@@ -98,5 +100,6 @@
         </div>
     </form>
 </div>
+<br>
 <script src="js/stock.js"></script>
 <%@include file = "layout2.jsp"%>

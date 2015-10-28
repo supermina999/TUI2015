@@ -1,11 +1,9 @@
 <%@page import="models.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <% int minPermission = 8;
-    int tab = 3;
-%>
+   int tab = 3;%>
 <%@include file = "layout1.jsp"%>
 <%
-    String stockId = request.getParameter("stock_id");
     Resource[] resource = Resource.getAll(null);
     Region[] region = Region.getAll(null);
     Measure[] measure = Measure.getAll(null);
@@ -19,7 +17,7 @@
         <div class="form-group has-feedback">
             <label class="col-sm-3 control-label">Ресурс</label>
             <div class="col-sm-7">
-                <select class="form-control" name="resourceId" id="resourceId" style="width: 100%; padding-right: 0">
+                <select class="form-control" name="resource_id" id="resource_id" style="width: 100%; padding-right: 0">
                     <option selected>Выберите вид ресурса</option>
                     <%for (int i = 0; i < resource.length; i++) {%>
                     <option value="<%=resource[i].getId()%>"><%=resource[i].getName()%></option>
@@ -27,7 +25,7 @@
                 </select>
             </div>
             <div style="margin-top: 5px;">
-                <a href="newTypeOfResource.jsp?back=1" style="font-size: 20px;"><i class="fa fa-plus"></i></a>
+                <a href="newTypeOfResource.jsp?" style="font-size: 20px;"><i class="fa fa-plus"></i></a>
             </div>
         </div>
         <div class="form-group has-feedback">
@@ -57,10 +55,10 @@
         <div class="form-group has-feedback">
             <label class="col-sm-3 control-label">Склад</label>
             <div class="col-sm-8">
-                <select class="form-control" name="stockId" id="stockId" style="width: 100%; padding-right: 0">
+                <select class="form-control" name="stock_id" id="stock_id" style="width: 100%; padding-right: 0">
                     <option selected>Выберите склад</option>
                     <%for (int i = 0; i < stock.length; i++) {%>
-                    <option value="<%=stock[i].getId()%>"><%=stock[i].getLocation().getAddress()%></option>
+                    <option value="<%=stock[i].getId()%>">№<%=stock[i].getId()%>, <%=stock[i].getLocation().getAddress()%></option>
                     <%}%>
                 </select>
             </div>
@@ -72,6 +70,6 @@
         </div>
     </form>
 </div>
-
+<br>
 
 <%@include file = "layout2.jsp"%>

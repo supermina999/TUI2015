@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS `application` (
   `phone` text CHARACTER SET utf8 NOT NULL,
   `email` text CHARACTER SET utf8 NOT NULL,
   `request_type_id` int(11) NOT NULL,
-  `status_id` int(11) NOT NULL,
+  `status` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
@@ -37,8 +37,13 @@ CREATE TABLE IF NOT EXISTS `application` (
 
 LOCK TABLES `application` WRITE;
 /*!40000 ALTER TABLE `application` DISABLE KEYS */;
-INSERT INTO `application` (`id`, `info`, `full_name`, `phone`, `email`, `request_type_id`, `status_id`) VALUES
-(1, 'Я хочу кушать! Помогите!', 'Карасиков Владислав Викторович', '12345', 'karas@ya.ru', 1, 1);
+INSERT INTO `application` (`id`, `info`, `full_name`, `phone`, `email`, `request_type_id`, `status`) VALUES
+(1, 'Здравствуйте! Я директор Харьковского детского дома №5. Наши дети нуждаются в медикаментах! Звоните в любое время.', 'Карасиков Владислав Викторович', '+380678364374833', 'karas@ya.ru', 1, 1),
+(2, 'Я директор текстильной фабрики Николаев А.В. Готов пожертвовать одежду нуждающимся. Звонить во 2 половине дня.', 'Николаев Андрей Викторович', '+3805674656764', 'nikAV@textil.ua', 2, 1),
+(3, 'Нечего есть в поселке Добровольное. Помогите!', 'Крестьянова Лидия Юрьевна', '+3803457347538756', 'lidia@dobro.com', 1, 2),
+(4, 'Я хочу помочь деткам! У меня есть одежда, оставшаяся от моих деток. Звоните', 'Милевская Варвара Николаевна', '+34647856478', 'motherVarya@mymail.com', 2, 2),
+(5, 'У меня большая семья и мы нуждаемся в одежде. Срочно, ибо зима близко!', 'Носов Фёдор Константинович', '+3678483473', '-', 1, 2),
+(6, 'Полтавскую окружная больница №9 готова помочь с медикаментами.', 'Вольная Алла Николаевна', '+3678465454', 'allamed@hospital.ua', 2, 2);
 /*!40000 ALTER TABLE `application` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -65,60 +70,16 @@ CREATE TABLE `available_resource` (
 
 LOCK TABLES `available_resource` WRITE;
 /*!40000 ALTER TABLE `available_resource` DISABLE KEYS */;
-INSERT INTO `available_resource` VALUES (1,1,1,12,1);
+INSERT INTO `available_resource` (`id`, `resource_id`, `stock_id`, `number`, `measure_id`) VALUES
+(1, 1, 1, 10, 1),
+(2, 2, 2, 20, 3),
+(3, 1, 3, 30, 1),
+(4, 1, 4, 10, 1),
+(5, 2, 5, 20, 3),
+(6, 3, 6, 30, 1),
+(7, 1, 7, 10, 1);
 /*!40000 ALTER TABLE `available_resource` ENABLE KEYS */;
 UNLOCK TABLES;
-
---
--- Table structure for table `country`
---
-
-DROP TABLE IF EXISTS `country`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `country` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` text NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `country`
---
-
-LOCK TABLES `country` WRITE;
-/*!40000 ALTER TABLE `country` DISABLE KEYS */;
-INSERT INTO `country` VALUES (1,'Украина');
-/*!40000 ALTER TABLE `country` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `emergency`
---
-
-DROP TABLE IF EXISTS `emergency`;
-CREATE TABLE IF NOT EXISTS `emergency` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` text CHARACTER SET utf8 NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `emergency`
---
-
-LOCK TABLES `emergency` WRITE;
-/*!40000 ALTER TABLE `emergency` DISABLE KEYS */;
-INSERT INTO `emergency` (`id`, `name`) VALUES
-(1, 'Несрочно'),
-(2, 'Достаточно срочно'),
-(3, 'Срочно'),
-(4, 'Очень срочно');
-/*!40000 ALTER TABLE `emergency` ENABLE KEYS */;
-UNLOCK TABLES;
-
 
 --
 -- Table structure for table `location`
@@ -142,9 +103,17 @@ CREATE TABLE IF NOT EXISTS `location` (
 LOCK TABLES `location` WRITE;
 /*!40000 ALTER TABLE `location` DISABLE KEYS */;
 INSERT INTO `location` (`id`, `region_id`, `address`, `x_coord`, `y_coord`) VALUES
-(1, 1, 'улица Тобольская, 46-а', 30.456149, 50.29807),
-(2, 1, 'улица Астрономическая, 1', 50.05425, 36.292063),
-(3, 2, 'улица Сергея Есенина, 21', 50.49749, 30.74034);
+(1, 19, 'улица Тобольская, 46-а', 30.456149, 50.29807),
+(2, 19, 'улица Астрономическая, 1', 50.05425, 36.292063),
+(3, 9, 'улица Сергея Есенина, 21', 50.49749, 30.74034),
+(4, 5, 'Соборная площадь, 2/2', 28.657425, 50.254992),
+(5, 1, 'улица Архитектора Артынова, 37', 28.465527, 49.23267),
+(6, 17, 'Покровская улица, 6', 34.469355, 50.578017),
+(7, 1, 'улица Козицкого, 71', 28.470243, 49.231894),
+(8, 5, 'Замковая площадь, 2', 28.654677, 50.255089),
+(9, 17, 'Нижнесоборная улица, 10', 34.801623, 50.909356),
+(10, 9, 'переулок Тараса Шевченко, 11', 29.918453, 50.079386),
+(11, 13, 'улица Лягина, 4', 31.992726, 46.974885);
 /*!40000 ALTER TABLE `location` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -224,8 +193,8 @@ CREATE TABLE `person` (
   `phone` text NOT NULL,
   `email` text NOT NULL,
   `permission_id` int(11) NOT NULL,
-  `date` date NOT NULL,
   `city` text NOT NULL,
+  `birthday` date NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -236,12 +205,12 @@ CREATE TABLE `person` (
 
 LOCK TABLES `person` WRITE;
 /*!40000 ALTER TABLE `person` DISABLE KEYS */;
-INSERT INTO `person` (`id`, `name`, `surname`, `second_name`, `login`, `password`, `region_id`, `address`, `phone`, `email`, `permission_id`, `date`, `city`) VALUES
-(1, 'Елизавета', 'Попова', 'Олеговна', 'liza', '1', 1, 'улица Астрономическая, 37', '3150897', 'lizapopova@yandex.ru', 1, '2015-09-17', 'Харьков'),
-(2, 'Станислав', 'Минаков', 'Сергеевич', 'stas', '2', 1, 'улица 23 Августа, 16', '3568790', 'supermina999@gmail.com', 2, '2015-09-17', 'Харьков'),
-(3, 'Роман', 'Скурихин', 'Владимирович', 'roma', '3', 1, 'улица Розы Люксембург, 4', '3780987', 'romasku135@gmail.com', 6, '2015-09-17', 'Харьков'),
-(4, 'София', 'Уфимцева', 'Игоревна', 'sofy', '4', 2, 'улица Тобольская, 78Б', '9007865', 'sonya.uf@gmail.com', 4, '2015-09-17', 'Харьков'),
-(5, 'Артем', 'Пайвин', 'Юрьевич', 'artem', '5', 1, 'улица Довженко, 6', '2346789', 'payvinartem@gmail.com', 3, '2015-09-17', 'Киев');
+INSERT INTO `person` (`id`, `name`, `surname`, `second_name`, `login`, `password`, `region_id`, `address`, `phone`, `email`, `permission_id`, `city`, `birthday`) VALUES
+(1, 'Елизавета', 'Попова', 'Олеговна', 'liza', '1', 19, 'улица Астрономическая, 37', '3150897', 'lizapopova@yandex.ru', 1, 'Харьков', '1999-01-25'),
+(2, 'Станислав', 'Минаков', 'Сергеевич', 'stas', '2', 19, 'улица 23 Августа, 16', '3568790', 'supermina999@gmail.com', 5, 'Харьков', '1999-01-15'),
+(3, 'Роман', 'Скурихин', 'Владимирович', 'roma', '3', 19, 'улица Розы Люксембург, 4', '3780987', 'romasku135@gmail.com', 6, 'Харьков', '1998-09-17'),
+(4, 'София', 'Уфимцева', 'Игоревна', 'sofy', '4', 19, 'улица Тобольская, 78Б', '9007865', 'sonya.uf@gmail.com', 4, 'Харьков', '1999-01-28'),
+(5, 'Артем', 'Пайвин', 'Юрьевич', 'artem', '5', 9, 'улица Довженко, 6', '2346789', 'payvinartem@gmail.com', 3, 'Киев', '1998-12-23');
 /*!40000 ALTER TABLE `person` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -253,9 +222,8 @@ DROP TABLE IF EXISTS `region`;
 CREATE TABLE IF NOT EXISTS `region` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` text NOT NULL,
-  `country_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -264,9 +232,31 @@ CREATE TABLE IF NOT EXISTS `region` (
 
 LOCK TABLES `region` WRITE;
 /*!40000 ALTER TABLE `region` DISABLE KEYS */;
-INSERT INTO `region` (`id`, `name`, `country_id`) VALUES
-(1, 'Харьковcкая область', 1),
-(2, 'Киевская область', 1);
+INSERT INTO `region` (`id`, `name`) VALUES
+(1, 'Винницкая область'),
+(2, 'Волынская область'),
+(3, 'Днепропетровская область'),
+(4, 'Донецкая область'),
+(5, 'Житомирская область'),
+(6, 'Закарпатская область'),
+(7, 'Запорожская область'),
+(8, 'Ивано-Франковская область'),
+(9, 'Киевская область'),
+(10, 'Кировоградская область'),
+(11, 'Луганская область'),
+(12, 'Львовская область'),
+(13, 'Николаевская область'),
+(14, 'Одесская область'),
+(15, 'Полтавская область'),
+(16, 'Ровенская область'),
+(17, 'Сумская область'),
+(18, 'Тернопольская область'),
+(19, 'Харьковская область'),
+(20, 'Херсонская область'),
+(21, 'Хмельницкая область'),
+(22, 'Черкасская область'),
+(23, 'Черниговская область'),
+(24, 'Черновицкая область');
 /*!40000 ALTER TABLE `region` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -283,8 +273,7 @@ CREATE TABLE IF NOT EXISTS `request` (
   `measure_id` int(11) NOT NULL,
   `application_id` int(11) NOT NULL,
   `location_id` int(11) NOT NULL,
-  `status_id` int(11) NOT NULL,
-  `emergency_id` int(11) NOT NULL,
+  `status` int(11) NOT NULL,
   `date` date NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
@@ -296,8 +285,11 @@ CREATE TABLE IF NOT EXISTS `request` (
 
 LOCK TABLES `request` WRITE;
 /*!40000 ALTER TABLE `request` DISABLE KEYS */;
-INSERT INTO `request` (`id`, `request_type_id`, `resource_id`, `number`, `measure_id`, `application_id`, `location_id`, `status_id`, `emergency_id`, `date`) VALUES
-(1, 1, 1, 10, 1, 1, 1, 1, 1, '2015-05-05');
+INSERT INTO `request` (`id`, `request_type_id`, `resource_id`, `number`, `measure_id`, `application_id`, `location_id`, `status`, `date`) VALUES
+(1, 1, 3, 10, 1, 3, 4, 1, '2015-05-05'),
+(2, 2, 2, 12, 3, 4, 2, 1, '2015-10-27'),
+(3, 1, 2, 10, 3, 5, 5, 2, '2015-10-25'),
+(4, 2, 1, 30, 1, 6, 6, 2, '2015-10-19');
 /*!40000 ALTER TABLE `request` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -345,8 +337,9 @@ CREATE TABLE IF NOT EXISTS `resource` (
 LOCK TABLES `resource` WRITE;
 /*!40000 ALTER TABLE `resource` DISABLE KEYS */;
 INSERT INTO `resource` (`id`, `name`, `weight`) VALUES
-(1, 'Медикаменты', 0),
-(2, 'Одежда', 0);
+(1, 'Медикаменты', 2),
+(2, 'Одежда', 3),
+(3, 'Хлеб', 1);
 /*!40000 ALTER TABLE `resource` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -369,35 +362,13 @@ CREATE TABLE IF NOT EXISTS `safety` (
 LOCK TABLES `safety` WRITE;
 /*!40000 ALTER TABLE `safety` DISABLE KEYS */;
 INSERT INTO `safety` (`id`, `name`) VALUES
-(1, 'Безопасно'),
-(2, 'Достаточно безопасно'),
-(3, 'Небезопасно'),
-(4, 'Опасно');
+(1, 'абсолютно безопасно'),
+(2, 'безопасно'),
+(3, 'достаточно безопасно'),
+(4, 'небезопасно'),
+(5, 'опасно'),
+(6, 'очень опасно');
 /*!40000 ALTER TABLE `safety` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `status`
---
-
-DROP TABLE IF EXISTS `status`;
-CREATE TABLE IF NOT EXISTS `status` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` text NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `status`
---
-
-LOCK TABLES `status` WRITE;
-/*!40000 ALTER TABLE `status` DISABLE KEYS */;
-INSERT INTO `status` (`id`, `name`) VALUES
-(1, 'Обработано'),
-(2, 'Необработано');
-/*!40000 ALTER TABLE `status` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -408,7 +379,7 @@ DROP TABLE IF EXISTS `stock`;
 CREATE TABLE IF NOT EXISTS `stock` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `location_id` int(11) NOT NULL,
-  `date` date NOT NULL,
+  `person_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -419,8 +390,14 @@ CREATE TABLE IF NOT EXISTS `stock` (
 
 LOCK TABLES `stock` WRITE;
 /*!40000 ALTER TABLE `stock` DISABLE KEYS */;
-INSERT INTO `stock` (`id`, `location_id`, `date`) VALUES
-(1, 1, '2015-09-23');
+INSERT INTO `stock` (`id`, `location_id`, `person_id`) VALUES
+(1, 1, 2),
+(2, 3, 2),
+(3, 7, 2),
+(4, 8, 2),
+(5, 9, 2),
+(6, 10, 2),
+(7, 11, 2);
 /*!40000 ALTER TABLE `stock` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -431,11 +408,10 @@ UNLOCK TABLES;
 DROP TABLE IF EXISTS `transport`;
 CREATE TABLE IF NOT EXISTS `transport` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` text NOT NULL,
+  `type_id` int(11) NOT NULL,
+  `number` text NOT NULL,
   `person_id` int(11) NOT NULL,
   `stock_id` int(11) NOT NULL,
-  `speed` int(11) NOT NULL,
-  `max_weight` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -446,8 +422,14 @@ CREATE TABLE IF NOT EXISTS `transport` (
 
 LOCK TABLES `transport` WRITE;
 /*!40000 ALTER TABLE `transport` DISABLE KEYS */;
-INSERT INTO `transport` (`id`, `name`, `person_id`, `stock_id`, `speed`, `max_weight`) VALUES
-(1, 'Грузовик', 4, 1, 30, 120);
+INSERT INTO `transport` (`id`, `type_id`, `number`, `person_id`, `stock_id`) VALUES
+(1, 1, 'АХ1800', 4, 1),
+(2, 2, 'АН5626АУ', 4, 2),
+(3, 1, 'АС5665УУ', 4, 3),
+(4, 2, 'АК5670УА', 4, 4),
+(5, 1, 'АУ4444АУ', 4, 5),
+(6, 2, 'ГР5672АА', 4, 6),
+(7, 1, 'АХ6767АУ', 4, 7);
 /*!40000 ALTER TABLE `transport` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -460,9 +442,9 @@ CREATE TABLE IF NOT EXISTS `transportation` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `request_id` int(11) NOT NULL,
   `transport_id` int(11) NOT NULL,
-  `time_start` date NOT NULL,
-  `time_finish` date NOT NULL,
-  `status_id` int(11) NOT NULL,
+  `time_start` text NOT NULL,
+  `time_finish` text NOT NULL,
+  `status` int(11) NOT NULL,
   `safety_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
@@ -474,9 +456,38 @@ CREATE TABLE IF NOT EXISTS `transportation` (
 
 LOCK TABLES `transportation` WRITE;
 /*!40000 ALTER TABLE `transportation` DISABLE KEYS */;
-INSERT INTO `transportation` (`id`, `request_id`, `transport_id`, `time_start`, `time_finish`, `status_id`, `safety_id`) VALUES
-(1, 1, 1, '2015-10-12', '2015-10-12', 1, 1);
+INSERT INTO `transportation` (`id`, `request_id`, `transport_id`, `time_start`, `time_finish`, `status`, `safety_id`) VALUES
+(1, 1, 4, '11:00', '12:00', 1, 1),
+(2, 2, 1, '17:00', '19:30', 1, 3),
+(3, 3, 3, '15:30', '16:45', 2, 2),
+(4, 4, 5, '8:00', '9:15', 2, 4);
 /*!40000 ALTER TABLE `transportation` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `transport_type`
+--
+
+DROP TABLE IF EXISTS `transport_type`;
+CREATE TABLE IF NOT EXISTS `transport_type` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` text NOT NULL,
+  `speed` int(11) NOT NULL,
+  `max_weight` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `transport_type`
+--
+
+LOCK TABLES `transport_type` WRITE;
+/*!40000 ALTER TABLE `transport_type` DISABLE KEYS */;
+INSERT INTO `transport_type` (`id`, `name`, `speed`, `max_weight`) VALUES
+(1, 'Газель', 30, 10),
+(2, 'Фура', 50, 20);
+/*!40000 ALTER TABLE `transport_type` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 

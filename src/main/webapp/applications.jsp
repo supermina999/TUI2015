@@ -15,13 +15,25 @@
             return false;
         }
     }
+    function confirmDelete2() {
+        if (confirm("Вы уверены, что хотите удалить уже утверждённую заявку?")) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 </script>
+<br>
 <div class="form-block center-block" style="width: 70%">
+    <div style="margin-left: 81%;">
+        <p><a href="newApplication.jsp" class="btn btn-default"><i class="fa fa-plus"></i> Добавить заявку</a></p>
+    </div>
     <center><h1>Заявки</h1></center>
     <div class="tabs-style-2">
         <ul class="nav nav-tabs" role="tablist">
-            <li class="active text-center" style="width: 50%;"><a href="#h2tab1" role="tab" data-toggle="tab" style="font-size: 15px;"><i class="fa fa-question-circle"></i> Новые</a></li>
-            <li class="text-center" style="width: 50%;"><a href="#h2tab2" role="tab" data-toggle="tab" style="font-size: 15px;"><i class="fa fa-check-circle"></i> Утвержденные</a></li>
+            <li class="active text-center" style="width: 35%;"><a href="#h2tab1" role="tab" data-toggle="tab" style="font-size: 15px;"><i class="fa fa-question-circle"></i> Новые</a></li>
+            <li class="text-center" style="width: 35%;"><a href="#h2tab2" role="tab" data-toggle="tab" style="font-size: 15px;"><i class="fa fa-check-circle"></i> Утвержденные</a></li>
+            <li class="text-center" style="width: 30%;"><a href="#h2tab3" role="tab" data-toggle="tab" style="font-size: 15px;"><i class="fa fa-list-alt"></i> Архив</a></li>
         </ul>
         <div class="gray-bg">
             <br>
@@ -44,7 +56,7 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th style="width: 5%;">Номер</th>
+                            <th style="width: 5%;">№</th>
                             <th style="width: 45%;">Cодержание</th>
                             <th style="width: 40%;">Контактная информация</th>
                             <th style="width: 5%;"></th>
@@ -53,7 +65,7 @@
                     </thead>
                     <tbody id="searchTable">
                         <%for (int i = 0; i < app.length; i++)
-                                if (app[i].getStatusId() == 1) {%>
+                                if (app[i].getStatus() == 1) {%>
                         <tr>
                             <td class="idSearch"><center><%=app[i].getId()%></center></td>
                     <td class="idSearch"><b>Вид: </b><%=app[i].getRequestTypeName()%> <br><%=app[i].getInfo()%></td>
@@ -73,24 +85,57 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th style="width: 5%;">Номер</th>
-                            <th style="width: 50%;">Информация</th>
+                            <th style="width: 5%;">№</th>
+                            <th style="width: 45%;">Содержание</th>
                             <th style="width: 45%;">Контактная информация</th>
+                            <th style="width: 5%;"></th>
                         </tr>
                     </thead>
                     <tbody id="searchTable1">
                         <%for (int i = 0; i < req.length; i++)
-                                if (req[i].getStatusId() == 1) {
+                                if (req[i].getStatus() == 1) {
                                     Application tApp = Application.getOne(req[i].getApplicationId());%>
                         <tr>
-                            <td class="idSearch"><center><%=req[i].getId()%></center></td>
-                    <td class="idSearch">
+                            <td class="idSearch"><center><a href="requestInfo.jsp?id=<%=req[i].getId()%>"><%=req[i].getId()%></a></center></td>
+                    <td class="idSearch1">
                         <b>Вид: </b><%=req[i].getRequestTypeName()%><br>
                         <b>Ресурс: </b><%=req[i].getResourceName()%> <%=req[i].getNumber()%> <%=req[i].getMeasureName()%><br>
-                        <b>Местоположение:</b> <%=req[i].getLocation().getAddress()%>, <%=req[i].getLocation().getRegionName()%><br>
+                        <b>Местоположение:</b> <%=req[i].getLocation().getFullAddress()%><br>
                         <b>Дата:</b> <%=req[i].getDateString()%>
                     </td>
-                    <td class="idSearch">
+                    <td class="idSearch1">
+                        <b>ФИО: </b><%=tApp.getFullName()%><br>
+                        <b>Телефон: </b> <%=tApp.getPhone()%> <br>
+                        <b> Email: </b> <%=tApp.getEmail()%> <br>
+                    </td>
+                    <td><a href="deleteRequest.jsp?id=<%=req[i].getId()%>" onclick="return confirmDelete2();"><i class="fa fa-close"></i></a></td>
+                    </tr>
+                    <%}%>
+                    </tbody>
+                </table>
+            </div>
+            <div class="tab-pane" id="h2tab3" style="min-height: 800px;">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th style="width: 5%;">№</th>
+                            <th style="width: 45%;">Содержание</th>
+                            <th style="width: 50%;">Контактная информация</th>
+                        </tr>
+                    </thead>
+                    <tbody id="searchTable2">
+                        <%for (int i = 0; i < req.length; i++)
+                                if (req[i].getStatus() == 2) {
+                                    Application tApp = Application.getOne(req[i].getApplicationId());%>
+                        <tr>
+                            <td class="idSearch"><center><a href="requestInfo.jsp?id=<%=req[i].getId()%>"><%=req[i].getId()%></a></center></td>
+                    <td class="idSearch2">
+                        <b>Вид: </b><%=req[i].getRequestTypeName()%><br>
+                        <b>Ресурс: </b><%=req[i].getResourceName()%> <%=req[i].getNumber()%> <%=req[i].getMeasureName()%><br>
+                        <b>Местоположение:</b> <%=req[i].getLocation().getFullAddress()%><br>
+                        <b>Дата:</b> <%=req[i].getDateString()%>
+                    </td>
+                    <td class="idSearch2">
                         <b>ФИО: </b><%=tApp.getFullName()%><br>
                         <b>Телефон: </b> <%=tApp.getPhone()%> <br>
                         <b> Email: </b> <%=tApp.getEmail()%> <br>

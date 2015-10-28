@@ -1,12 +1,9 @@
 package controllers;
 
-
 import javax.servlet.http.HttpServletRequest;
 import models.*;
-
 import sql.Sql;
 import java.util.Date;
-
 import java.text.SimpleDateFormat;
 
 
@@ -17,29 +14,31 @@ public class UserController {
         String login = request.getParameter("login");
         String password1 = request.getParameter("password1");
         String password2 = request.getParameter("password2");
-        String permission_id = request.getParameter("permission_id");
+        String permissionId = request.getParameter("permission_id");
         String name = request.getParameter("name");
         String surname = request.getParameter("surname");
-        String second_name = request.getParameter("second_name");
-        String region_id = request.getParameter("region_id");
+        String secondName = request.getParameter("second_name");
+        String regionId = request.getParameter("region_id");
         String address = request.getParameter("address");
         String city = request.getParameter("city");
         String email = request.getParameter("email");
         String phone = request.getParameter("phone");
-        Date date = new Date();
+        String birthday = request.getParameter("birthday");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        Date date = sdf.parse(birthday);
         Person person = new Person();
         person.setLogin(Sql.sql(login));
         person.setPassword(Sql.sql(password1));
         person.setName(Sql.sql(name));
         person.setSurname(Sql.sql(surname));
-        person.setSecondName(Sql.sql(second_name));
-        person.setRegionId(Integer.parseInt(region_id));
+        person.setSecondName(Sql.sql(secondName));
+        person.setRegionId(Integer.parseInt(regionId));
         person.setAddress(Sql.sql(address));
         person.setEmail(Sql.sql(email));
         person.setPhone(Sql.sql(phone));
         person.setCity(Sql.sql(city));
-        person.setPermissionId(Integer.parseInt(permission_id));
-        person.setDate(date);
+        person.setBirthday(date);
+        person.setPermissionId(Integer.parseInt(permissionId));
         person.writeToDB();
     }
     
@@ -47,26 +46,30 @@ public class UserController {
     {
         String id = request.getParameter("id");
         String login = request.getParameter("login");
-        String permission_id = request.getParameter("permission_id");
+        String permissionId = request.getParameter("permission_id");
         String name = request.getParameter("name");
         String surname = request.getParameter("surname");
-        String second_name = request.getParameter("second_name");
-        String region_id = request.getParameter("region_id");
+        String secondName = request.getParameter("second_name");
+        String regionId = request.getParameter("region_id");
         String address = request.getParameter("address");
         String city = request.getParameter("city");
         String email = request.getParameter("email");
         String phone = request.getParameter("phone");
+        String birthday = request.getParameter("birthday");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        Date date = sdf.parse(birthday);
         Person person = Person.getOne(Integer.parseInt(id));
         person.setLogin(login);
-        person.setPermissionId(Integer.parseInt(permission_id));
+        person.setPermissionId(Integer.parseInt(permissionId));
         person.setName(name);
         person.setSurname(surname);
-        person.setSecondName(second_name);
-        person.setRegionId(Integer.parseInt(region_id));
+        person.setSecondName(secondName);
+        person.setRegionId(Integer.parseInt(regionId));
         person.setAddress(address);
         person.setEmail(email);
         person.setPhone(phone);
         person.setCity(Sql.sql(city));
+        person.setBirthday(date);
         person.saveChanges();
     }
     

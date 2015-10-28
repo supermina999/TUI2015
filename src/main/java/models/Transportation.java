@@ -11,9 +11,9 @@ public class Transportation extends DBModel {
         new DBEntry("id", EntryType.Int),
         new DBEntry("request_id", EntryType.Int),
         new DBEntry("transport_id", EntryType.Int),
-        new DBEntry("time_start", EntryType.Date),
-        new DBEntry("time_finish", EntryType.Date),
-        new DBEntry("statis_id", EntryType.Int),
+        new DBEntry("time_start", EntryType.String),
+        new DBEntry("time_finish", EntryType.String),
+        new DBEntry("status", EntryType.Int),
         new DBEntry("safety_id", EntryType.Int)
 
     };
@@ -70,7 +70,7 @@ public class Transportation extends DBModel {
     public void setId(int id) {
         this.entryes[0].setValue(id);
     }
-    
+
     public int getRequestId() {
         return Integer.parseInt(this.entryes[1].getValue());
     }
@@ -78,9 +78,7 @@ public class Transportation extends DBModel {
     public void setRequestId(int id) {
         this.entryes[1].setValue(id);
     }
-    
-    
-    
+
     public int getTransportId() {
         return Integer.parseInt(this.entryes[2].getValue());
     }
@@ -88,31 +86,31 @@ public class Transportation extends DBModel {
     public void setTransportId(int id) {
         this.entryes[2].setValue(id);
     }
-    
-    public Date getTimeStart() throws ParseException {
-        return new SimpleDateFormat("yyyy-MM-dd").parse(this.entryes[3].getValue());
+
+    public String getTimeStart() throws ParseException {
+        return this.entryes[3].getValue();
     }
 
-    public void setTimeStart(Date date) {
+    public void setTimeStart(String date) {
         this.entryes[3].setValue(date);
     }
-    
-    public Date getTimeFinish() throws ParseException {
-        return new SimpleDateFormat("yyyy-MM-dd").parse(this.entryes[4].getValue());
+
+    public String getTimeFinish() throws ParseException {
+        return this.entryes[4].getValue();
     }
 
-    public void setTimeFinish(Date date) {
+    public void setTimeFinish(String date) {
         this.entryes[4].setValue(date);
     }
-    
-    public void setStatusId(int id) {
+
+    public void setStatus(int id) {
         this.entryes[5].setValue(id);
     }
 
-    public Integer getStatusId() {
+    public Integer getStatus() {
         return Integer.parseInt(this.entryes[5].getValue());
     }
-    
+
     public void setSafetyId(int id) {
         this.entryes[6].setValue(id);
     }
@@ -120,56 +118,79 @@ public class Transportation extends DBModel {
     public Integer getSafetyId() {
         return Integer.parseInt(this.entryes[6].getValue());
     }
-    
+
     public String getStatusName() throws Exception {
-        int id = getStatusId();
-        return Status.getOne(id).getName();
+        int id = getRequestTypeId();
+        if (id == 2) {
+            if (getStatus() == 2) {
+                return "получено";
+            } else {
+                return "не получено";
+            }
+        } else {
+            if (getStatus() == 2) {
+                return "доставлено";
+            } else {
+                return "не доставлено";
+            }
+        }
     }
     
+    
+
     public String getSafetyName() throws Exception {
         int id = getSafetyId();
         return Safety.getOne(id).getName();
     }
-    
+
     public String getTransportName() throws Exception {
         int id = getTransportId();
         return Transport.getOne(id).getName();
     }
-    
+
     public String getRequestType() throws Exception {
         int id = getRequestId();
         return Request.getOne(id).getRequestTypeName();
     }
-    
+
     public String getDriverName() throws Exception {
         int id = getTransportId();
-        int driverId = Transport.getOne(id).getPersonId();
-        String name = Person.getOne(driverId).getSurname();
-        name += ' ' + Person.getOne(driverId).getName();
-        name += ' ' + Person.getOne(driverId).getSecondName();
-        return name;
+        return Transport.getOne(id).getDriverName();
     }
-    
-    public String getStartString() throws ParseException {
-        return this.entryes[3].getValue();
+
+    public int getDriverId() throws Exception {
+        int id = getTransportId();
+        return Transport.getOne(id).getPersonId();
     }
-    
-    public String getFinishString() throws ParseException {
-        return this.entryes[4].getValue();
+
+    public Location getStockLocation() throws Exception {
+        int id = getStockId();
+        return Stock.getOne(id).getLocation();
+    }
+
+    public Location getFinishLocation() throws Exception {
+        int id = getRequestId();
+        Request req = Request.getOne(id);
+        return Location.getOne(req.getLocationId());
     }
 
     public Integer getRequestTypeId() throws Exception {
         int id = getRequestId();
         return Request.getOne(id).getRequestTypeId();
     }
-    
+
     public Integer getResourceNumber() throws Exception {
         int id = getRequestId();
         return Request.getOne(id).getNumber();
     }
-    
+
     public Integer getStockId() throws Exception {
         int id = getTransportId();
         return Transport.getOne(id).getStockId();
+    }
+    
+    public String getTransportNumber() throws Exception {
+        int id = getTransportId();
+        return Transport.getOne(id).getNumber();
     }
 }

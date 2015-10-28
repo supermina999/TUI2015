@@ -24,6 +24,7 @@
             <div class="col-sm-8">
                 <input type="text" class="form-control" name="weight">
             </div>
+            <p style="font-size: 15px; margin-top: 10px; margin-bottom: 0">кг</p>
         </div>
         <div class="form-group">
             <div class="col-sm-offset-3 col-sm-8">
@@ -32,6 +33,6 @@
         </div>
     </form>
 </div>
-
+<br>
 
 <%@include file = "layout2.jsp"%>

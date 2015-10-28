@@ -70,6 +70,12 @@
                         </div>
                     </div>
                     <div class="form-group has-feedback">
+                        <label class="col-sm-3 control-label">Дата рождения</label>
+                        <div class="col-sm-8">
+                            <input type="date" class="form-control" name="birthday" style="padding-right: 0" required value="<%=person.getBirthday()%>">
+                        </div>
+                    </div>
+                    <div class="form-group has-feedback">
                         <label class="col-sm-3 control-label">Область</label>
                         <div class="col-sm-8">
                             <select class="form-control" style="width: 100%;" name="region_id">
@@ -151,5 +157,6 @@
         </div>
     </div>
 </div>
+<br>
 <script src="js/checker.js"></script>
 <%@include file = "layout2.jsp"%>

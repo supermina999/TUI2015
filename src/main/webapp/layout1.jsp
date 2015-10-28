@@ -58,7 +58,7 @@
         <![endif]-->
 
         <script type="text/javascript" src="plugins/jquery.min.js"></script>
-        <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+        
     </head>
 
     <!-- body classes: 
@@ -122,7 +122,7 @@
                                             </div>
 
                                             <!-- Collect the nav links, forms, and other content for toggling -->
-                                            <div class="collapse navbar-collapse">
+                                            <div class="collapse navbar-collapse" style="margin-left: -20px">
                                                 <ul class="nav navbar-nav">
                                                     <% if (isLogin) { %>
                                                     <li <% if (tab == 1) { %>class="active" <% } %>>
@@ -141,23 +141,27 @@
                                                     <li <% if (tab == 4) { %>class="active" <% } %>>
                                                         <a href="stocks.jsp">Склады</a>
                                                     </li>
-                                                    <li <% if (tab == 5) { %>class="active" <% } %>>
-                                                        <a href="transport.jsp">Транспорт</a>
+                                                    <li>
+                                                        <a type="button" class="btn btn-toggle <% if (tab == 5) { %>btn-toggle-active <% }%>" data-toggle="dropdown">Транспорт</a>
+                                                        <ul class="dropdown-menu dropdown-animation">
+                                                            <li><a href="transport.jsp">В наличии</a></li>
+                                                            <li><a href="typesOfTransport.jsp">Виды</a></li>
+                                                        </ul>
                                                     </li>
                                                     <li <% if (tab == 6) { %>class="active" <% } %>>
                                                         <a href="transportations.jsp">Перевозки</a>
                                                     </li>
                                                     <li <% if (tab == 7) { %>class="active" <% } %>>
-                                                        <a href="reports.jsp">Отчёты</a>
+                                                        <a href="volunteers.jsp">Волонтёры</a>
                                                     </li><%}%>
                                                     <li>
-                                                        <div class="btn-group">
+                                                        <div class="btn-group"  style="margin-left: 15px">
                                                             <% if (isLogin) {%>
                                                             <a type="button" class="btn btn-login btn-default" href="userInfo.jsp?id=<%=user.user.getId()%>" style="width: 110px;"><i class="fa fa-user"></i> Кабинет</a>
                                                             <a type="button" class="btn btn-login btn-default" href="exit.jsp"><i class="fa fa-sign-out"></i></a>
                                                                 <%} else { %>
 
-                                                            <button type="button" class="btn dropdown-toggle btn-login btn-default" data-toggle="dropdown" style="width: 165px; margin-left: 760px;"><i class="fa fa-sign-in"></i> Вход</button>
+                                                            <button type="button" class="btn dropdown-toggle btn-login btn-default" data-toggle="dropdown" style="width: 165px; margin-left: 790px;"><i class="fa fa-sign-in"></i> Вход</button>
                                                             <ul class="dropdown-menu dropdown-menu-right dropdown-animation">
                                                                 <li>
                                                                     <div class="form-block center-block">

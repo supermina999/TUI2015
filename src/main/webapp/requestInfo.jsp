@@ -47,6 +47,6 @@
         <div class="form-group"></div>
     </form>
 </div>
-
+<br>
 
 <%@include file = "layout2.jsp"%>

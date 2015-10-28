@@ -5,11 +5,10 @@ public class Transport extends DBModel {
     static protected String tableName = "transport";
     static public DBEntry[] stdEntryes = {
         new DBEntry("id", EntryType.Int),
-        new DBEntry("name", EntryType.String),
-        new DBEntry("preson_id", EntryType.Int),
-        new DBEntry("stock_id", EntryType.Int),
-        new DBEntry("speed", EntryType.Int),
-        new DBEntry("max_weight", EntryType.Int)
+        new DBEntry("type_id", EntryType.Int),
+        new DBEntry("number", EntryType.String),
+        new DBEntry("person_id", EntryType.Int),
+        new DBEntry("stock_id", EntryType.Int)
     };
 
     protected Transport(DBEntry[] entryes) {
@@ -61,43 +60,66 @@ public class Transport extends DBModel {
         this.entryes[0].setValue(id);
     }
 
-    public String getName() {
-        return this.entryes[1].getValue();
+    public Integer getTypeId() {
+        return Integer.parseInt(this.entryes[1].getValue());
     }
 
-    public void setName(String name) {
-        this.entryes[1].setValue(name);
+    public void setTypeId(int id) {
+        this.entryes[1].setValue(id);
+    }
+    
+    public String getNumber() {
+        return this.entryes[2].getValue();
+    }
+
+    public void setNumber(String name) {
+        this.entryes[2].setValue(name);
     }
     
     public int getPersonId() {
-        return Integer.parseInt(this.entryes[2].getValue());
-    }
-
-    public void setPersonId(int id) {
-        this.entryes[2].setValue(id);
-    }
-    
-    public int getStockId() {
         return Integer.parseInt(this.entryes[3].getValue());
     }
 
-    public void setStockId(int id) {
+    public void setPersonId(int id) {
         this.entryes[3].setValue(id);
     }
     
-    public int getSpeed() {
-        return Integer.parseInt(this.entryes[4].getValue());
-    }
-
-    public void setSpeed(int speed) {
-        this.entryes[4].setValue(speed);
+    public String getDriverName() throws Exception {
+        int id = getPersonId();
+        Person driver = Person.getOne(id);
+        return driver.getSurname() + ' ' + driver.getName() + ' ' + driver.getSecondName();
     }
     
-    public int getMaxWeight() {
-        return Integer.parseInt(this.entryes[5].getValue());
+    public int getStockId() {
+        return Integer.parseInt(this.entryes[4].getValue());
+    }
+    
+    public Location getStockLocation() throws Exception {
+        int id = getStockId();
+        return Stock.getOne(id).getLocation();
     }
 
-    public void setMaxWeight(int weight) {
-        this.entryes[5].setValue(weight);
+    public void setStockId(int id) {
+        this.entryes[4].setValue(id);
     }
+    
+    public Integer getMaxWeight() throws Exception {
+        int id = getTypeId();
+        return TransportType.getOne(id).getMaxWeight();
+    }
+    
+    public Integer getSpeed() throws Exception {
+        int id = getTypeId();
+        return TransportType.getOne(id).getSpeed();
+    }
+    
+    public String getName() throws Exception {
+        int id = getTypeId();
+        return TransportType.getOne(id).getName();
+    }
+    
+    public String getStockAddress () throws Exception {
+        return getStockLocation().getFullAddress();
+    }
+    
 }

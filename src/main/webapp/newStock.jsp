@@ -5,14 +5,31 @@
 %>
 <%@include file = "layout1.jsp"%>
 <%
+    DBEntry[] params = {
+        new DBEntry("permission_id", EntryType.Int, 5)
+    };
+    Person[] person = Person.getAll(params);
     Location[] location = Location.getAll(null);
     Region[] region = Region.getAll(null);
 %>
 <br>
+
+<script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
 <div class="form-block center-block" style="width: 50%; min-height: 700px;">
     <center><h2 class="title">Добавить склад</h2></center>
     <hr>
     <form class="form-horizontal" method = "post" action = "addStock.jsp">
+        <div class="form-group has-feedback">
+            <label class="col-sm-3 control-label">Заведующий</label>
+            <div class="col-sm-8">
+                <select class="form-control" name="person" id="person" style="width: 100%; padding-right: 0">
+                    <option selected>Выберите заведующего</option>
+                    <%for (int i = 0; i < person.length; i++) {%>
+                    <option value="<%=person[i].getId()%>"><%=person[i].getFullName()%></option>
+                    <%}%>
+                </select>
+            </div>
+        </div>
         <div class="form-group has-feedback">
             <label class="col-sm-3 control-label">Область</label>
             <div class="col-sm-4">
@@ -24,8 +41,8 @@
             </div>
             <div class="col-sm-4">
                 <select class="form-control" name="type" id="type" style="width: 100%; padding-right: 0">
-                    <option selected id="1">ПО АДРЕСУ</option>
-                    <option>НА КАРТЕ</option>
+                    <option selected id="1">По адресу</option>
+                    <option>На карте</option>
                 </select>
             </div>
         </div>
@@ -54,5 +71,6 @@
         </div>
     </form>
 </div>
+<br>
 <script src="js/stock.js"></script>
 <%@include file = "layout2.jsp"%>

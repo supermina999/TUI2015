@@ -3,7 +3,7 @@
 <%@page import="controllers.ApplicationController"%>
 
 <%
-    ApplicationController.changeStatus(Integer.parseInt(request.getParameter("applicationId")));
+    ApplicationController.changeStatus(Integer.parseInt(request.getParameter("application_id")));
     int id = RequestController.add(request);
 %>
 <script>

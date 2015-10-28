@@ -20,8 +20,8 @@ public class Person extends DBModel {
         new DBEntry("phone", EntryType.String),
         new DBEntry("email", EntryType.String),
         new DBEntry("permission_id", EntryType.Int),
-        new DBEntry("date", EntryType.Date),
-        new DBEntry("city", EntryType.String)
+        new DBEntry("city", EntryType.String),
+        new DBEntry("birthday", EntryType.Date)
     };
 
     public Person() {
@@ -95,6 +95,10 @@ public class Person extends DBModel {
     public void setSecondName(String secondName) {
         this.entryes[3].setValue(secondName);
     }
+    
+    public String getFullName() {
+        return this.entryes[2].getValue() + ' ' + this.entryes[1].getValue() + ' ' + this.entryes[3].getValue();
+    }
 
     public String getLogin() {
         return this.entryes[4].getValue();
@@ -166,20 +170,20 @@ public class Person extends DBModel {
         int id = getRegionId();
         return Region.getOne(id).getCountryName();
     }
-
-    public Date getDate() throws ParseException {
-        return new SimpleDateFormat("yyyy-MM-dd").parse(this.entryes[11].getValue());
-    }
-
-    public void setDate(Date date) {
-        this.entryes[11].setValue(date);
-    }
     
     public void setCity(String city) {
-        this.entryes[12].setValue(city);
+        this.entryes[11].setValue(city);
     }
 
     public String getCity() {
+        return this.entryes[11].getValue();
+    }
+    
+    public void setBirthday(Date date) {
+        this.entryes[12].setValue(date);
+    }
+
+    public String getBirthday() throws ParseException {
         return this.entryes[12].getValue();
     }
 }

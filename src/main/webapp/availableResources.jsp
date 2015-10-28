@@ -8,9 +8,18 @@
     Region[] region = Region.getAll(null);
     Stock[] stock = Stock.getAll(null);
 %>
+<script>
+    function confirmDelete() {
+        if (confirm("Вы уверены, что хотите удалить ресурс в наличии?")) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+</script>
 <center>
     <div class="form-group has-feedback center-block" style="width: 100%; min-height: 800px;">
-        <div style="margin-left: 50%;">
+        <div style="margin-left: 47%;">
             <p><a href="newResource.jsp" class="btn btn-default"><i class="fa fa-plus"></i> Добавить ресурс</a></p>
         </div>
         <center>
@@ -43,9 +52,11 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th style="width: 40%;">Название</th>
-                            <th style="width: 50%;">Склад</th>
+                            <th style="width: 25%;">Название</th>
+                            <th style="width: 55%;">Склад</th>
                             <th style="width: 10%;">Количество</th>
+                            <th style="width: 5%;"></th>
+                            <th style="width: 5%;"></th>
                         </tr>
                     </thead>
                     <tbody id="searchTable">
@@ -53,8 +64,10 @@
                     for (int i = 0; i < availableRes.length; i++) {%>
                         <tr>
                             <td class="idSearch"><a href="resourceInfo.jsp?id=<%=availableRes[i].getId()%>&stock_id=-1"><%=availableRes[i].getResourceName()%> </a></td>
-                            <td class="idSearch">№<%=availableRes[i].getStockId()%>, <%=availableRes[i].getLocation().getAddress()%>, <%=availableRes[i].getLocation().getRegionName()%>, <%=availableRes[i].getLocation().getCountryName()%> </td>
+                            <td class="idSearch"><a href="stockInfo.jsp?id=<%=availableRes[i].getStockId()%>">№<%=availableRes[i].getStockId()%></a>, <%=availableRes[i].getStockAddress()%> </td>
                             <td class="idSearch"><%=availableRes[i].getNumber()%> <%=availableRes[i].getMeasureName()%></td>
+                            <td><a href="changeResource.jsp?id=<%=availableRes[i].getId()%>"><i class="fa fa-edit"></i></a></td>
+                            <td><a href="deleteAvailableResource.jsp?id=<%=availableRes[i].getId()%>" onclick="return confirmDelete();"><i class="fa fa-close"></i></a></td>
                         </tr>
                         <% }%>
                     </tbody>
