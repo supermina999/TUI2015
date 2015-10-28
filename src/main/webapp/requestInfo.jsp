@@ -35,7 +35,7 @@
         <div class="form-group">
             <p style="font-size: 15px;"> <b>Вид:</b> <%=req.getRequestTypeName()%> </p>
             <p style="font-size: 15px;"> <b>Ресурс:</b> <%=req.getResourceName()%> <%=req.getNumber()%> <%=req.getMeasureName()%></p>
-            <p style="font-size: 15px;"> <b>Местоположение:</b> <%=req.getLocation().getAddress()%>, <%=req.getLocation().getRegionName()%>, <%=req.getLocation().getCountryName()%> </p>
+            <p style="font-size: 15px;"> <b>Местоположение:</b> <%=req.getLocation().getFullAddress()%> </p>
             <p style="font-size: 15px;"> <b>Дата:</b> <%=req.getDateString()%> </p>
             <hr> <p class="text-center" style="font-size: 20px;"><b>Контактная информация:</b></p><hr>
             <p style="font-size: 15px;"> <b>ФИО:</b> <%=app.getFullName()%> </p>

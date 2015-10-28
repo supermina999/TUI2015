@@ -9,10 +9,12 @@ public class ResourceController {
     {
         String name = request.getParameter("name");
         String number = request.getParameter("weight");
+        String measure = request.getParameter("measure");
         int weight = Integer.parseInt(number);
         Resource resource = new Resource();
-        resource.setName(Sql.sql(name));
+        resource.setName(Sql.sql(Sql.sql(name)));
         resource.setWeight(weight);
+        resource.setMeasureId(Integer.parseInt(measure));
         resource.writeToDB();
     }
     public static void delete(HttpServletRequest request) throws Exception
@@ -28,10 +30,12 @@ public class ResourceController {
         int resourceId = Integer.parseInt(id);
         String name = request.getParameter("name");
         String number = request.getParameter("weight");
+        String measure = request.getParameter("measure");
         int weight = Integer.parseInt(number);
         Resource resource = Resource.getOne(resourceId);
         resource.setName(Sql.sql(name));
         resource.setWeight(weight);
+        resource.setMeasureId(Integer.parseInt(measure));
         resource.saveChanges();
     }
 }

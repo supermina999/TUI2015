@@ -30,7 +30,7 @@
         <div class="form-group has-feedback" style="margin-top: 0">
             <label class="col-sm-3 control-label">Вид ресурса</label>
             <div class="col-sm-8">
-                <p style="margin: 0; margin-top: 7px;"><%=resource.getResourceName()%></p>
+                <p style="margin: 0; margin-top: 7px;"><%=resource.getResourceName()%>, <%=resource.getMeasureName()%></p>
             </div>
         </div>
         <div class="form-group has-feedback">
@@ -38,7 +38,6 @@
             <div class="col-sm-8">
                 <input type="text" class="form-control" name="number" value="<%=resource.getNumber()%>" required>
             </div>
-            <p style="font-size: 15px; margin-top: 10px; margin-bottom: 0"><%=resource.getMeasureName()%></p>
         </div>
         <div class="form-group">
             <div class="col-sm-offset-3 col-sm-8">					

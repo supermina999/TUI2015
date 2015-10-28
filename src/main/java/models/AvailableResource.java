@@ -11,8 +11,7 @@ public class AvailableResource extends DBModel {
         new DBEntry("id", EntryType.Int),
         new DBEntry("resource_id", EntryType.Int),
         new DBEntry("stock_id", EntryType.Int),
-        new DBEntry("number", EntryType.Int),
-        new DBEntry("measure_id", EntryType.Int)
+        new DBEntry("number", EntryType.Int)
     };
 
     protected AvailableResource(DBEntry[] entryes) {
@@ -91,14 +90,6 @@ public class AvailableResource extends DBModel {
         this.entryes[3].setValue(number);
     }
 
-    public int getMeasureId() {
-        return Integer.parseInt(this.entryes[4].getValue());
-    }
-
-    public void setMeasureId(int id) {
-        this.entryes[4].setValue(id);
-    }
-
     public String getResourceName() throws Exception {
         int id = getResourceId();
         return Resource.getOne(id).getName();
@@ -108,7 +99,12 @@ public class AvailableResource extends DBModel {
         int id = getStockId();
         return Stock.getOne(id).getLocation();
     }
-
+    
+    public int getMeasureId() throws Exception {
+        int id = getResourceId(); 
+        return Resource.getOne(id).getMeasureId();
+    }
+    
     public String getMeasureName() throws Exception {
         int id = getMeasureId();
         return Measure.getOne(id).getName();

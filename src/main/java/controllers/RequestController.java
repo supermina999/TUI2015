@@ -13,7 +13,6 @@ public class RequestController
         String requestType = request.getParameter("request");
         String resource = request.getParameter("resource");
         String number = request.getParameter("number");
-        String measure = request.getParameter("measure");
         String dateS = request.getParameter("date");
         String regionId= request.getParameter("region");
         String address = request.getParameter("address");
@@ -23,7 +22,6 @@ public class RequestController
         req.setRequestTypeId(Integer.parseInt(requestType));
         req.setResourceId(Integer.parseInt(resource));
         req.setNumber(Integer.parseInt(number));
-        req.setMeasureId(Integer.parseInt(measure));
         req.setApplicationId(Integer.parseInt(appId));
         Location location = new Location();
         location.setRegionId(Integer.parseInt(regionId));
@@ -35,10 +33,10 @@ public class RequestController
         req.setLocationId(allLocations[allLocations.length-1].getId());
         Date date = new SimpleDateFormat("yyyy-MM-dd").parse(dateS);
         req.setDate(date);
-        req.setStatus(1);
+        req.setStatus(0);
         req.writeToDB();
         Request[] reqs = Request.getAll(null);
-        return reqs.length;
+        return reqs[reqs.length-1].getId();
     }
     
     public static void delete(HttpServletRequest request) throws Exception

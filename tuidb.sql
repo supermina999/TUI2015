@@ -59,9 +59,8 @@ CREATE TABLE `available_resource` (
   `resource_id` int(11) NOT NULL,
   `stock_id` int(11) DEFAULT NULL,
   `number` int(11) NOT NULL,
-  `measure_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -70,16 +69,43 @@ CREATE TABLE `available_resource` (
 
 LOCK TABLES `available_resource` WRITE;
 /*!40000 ALTER TABLE `available_resource` DISABLE KEYS */;
-INSERT INTO `available_resource` (`id`, `resource_id`, `stock_id`, `number`, `measure_id`) VALUES
-(1, 1, 1, 10, 1),
-(2, 2, 2, 20, 3),
-(3, 1, 3, 30, 1),
-(4, 1, 4, 10, 1),
-(5, 2, 5, 20, 3),
-(6, 3, 6, 30, 1),
-(7, 1, 7, 10, 1);
+INSERT INTO `available_resource` (`id`, `resource_id`, `stock_id`, `number`) VALUES
+(1, 1, 1, 10),
+(2, 2, 2, 20),
+(3, 1, 3, 30),
+(4, 1, 4, 65),
+(5, 2, 5, 20),
+(6, 3, 6, 30),
+(7, 1, 7, 10);
 /*!40000 ALTER TABLE `available_resource` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Table structure for table `history`
+--
+
+DROP TABLE IF EXISTS `history`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `history` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `number` int(11) NOT NULL,
+  `resource_id` int(11) NOT NULL,
+  `stock_id` int(11) NOT NULL,
+  `date` date NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `available_resource`
+--
+
+LOCK TABLES `history` WRITE;
+/*!40000 ALTER TABLE `history` DISABLE KEYS */;
+/*!40000 ALTER TABLE `history` ENABLE KEYS */;
+UNLOCK TABLES;
+
 
 --
 -- Table structure for table `location`
@@ -270,13 +296,12 @@ CREATE TABLE IF NOT EXISTS `request` (
   `request_type_id` int(11) NOT NULL,
   `resource_id` int(11) NOT NULL,
   `number` int(11) NOT NULL,
-  `measure_id` int(11) NOT NULL,
   `application_id` int(11) NOT NULL,
   `location_id` int(11) NOT NULL,
   `status` int(11) NOT NULL,
   `date` date NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -285,11 +310,11 @@ CREATE TABLE IF NOT EXISTS `request` (
 
 LOCK TABLES `request` WRITE;
 /*!40000 ALTER TABLE `request` DISABLE KEYS */;
-INSERT INTO `request` (`id`, `request_type_id`, `resource_id`, `number`, `measure_id`, `application_id`, `location_id`, `status`, `date`) VALUES
-(1, 1, 3, 10, 1, 3, 4, 0, '2015-05-05'),
-(2, 2, 2, 12, 3, 4, 2, 0, '2015-10-27'),
-(3, 1, 2, 10, 3, 5, 5, 1, '2015-10-25'),
-(4, 2, 1, 30, 1, 6, 6, 1, '2015-10-19');
+INSERT INTO `request` (`id`, `request_type_id`, `resource_id`, `number`, `application_id`, `location_id`, `status`, `date`) VALUES
+(1, 1, 3, 10, 3, 4, 0, '2015-05-05'),
+(2, 2, 2, 12, 4, 2, 0, '2015-10-27'),
+(3, 1, 2, 10, 5, 5, 1, '2015-10-25'),
+(4, 2, 1, 30, 6, 6, 1, '2015-10-19');
 /*!40000 ALTER TABLE `request` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -326,6 +351,7 @@ CREATE TABLE IF NOT EXISTS `resource` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` text NOT NULL,
   `weight` int(11) NOT NULL,
+  `measure_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -336,10 +362,10 @@ CREATE TABLE IF NOT EXISTS `resource` (
 
 LOCK TABLES `resource` WRITE;
 /*!40000 ALTER TABLE `resource` DISABLE KEYS */;
-INSERT INTO `resource` (`id`, `name`, `weight`) VALUES
-(1, 'Медикаменты', 2),
-(2, 'Одежда', 3),
-(3, 'Хлеб', 1);
+INSERT INTO `resource` (`id`, `name`, `weight`, `measure_id`) VALUES
+(1, 'Медикаменты', 2, 1),
+(2, 'Одежда', 3, 1),
+(3, 'Хлеб', 1, 1);
 /*!40000 ALTER TABLE `resource` ENABLE KEYS */;
 UNLOCK TABLES;
 

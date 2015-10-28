@@ -54,6 +54,10 @@ public class DBModel {
             DBModel.tableName = RequestType.tableName;
             DBModel.stdEntryes = RequestType.stdEntryes;
         }
+        if (this.getClass() == History.class) {
+            DBModel.tableName = History.tableName;
+            DBModel.stdEntryes = History.stdEntryes;
+        }
         if (this.getClass() == Safety.class) {
             DBModel.tableName = Safety.tableName;
             DBModel.stdEntryes = Safety.stdEntryes;

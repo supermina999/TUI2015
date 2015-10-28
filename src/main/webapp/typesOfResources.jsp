@@ -44,7 +44,7 @@
                     <%
                     for (int i = 0; i < resource.length; i++) {%>
                     <tr>
-                        <td class="quantity idSearch"> <%= resource[i].getName()%> </td>
+                        <td class="quantity idSearch"> <%= resource[i].getName()%>, <%= resource[i].getMeasureName()%> </td>
                         <td class="product"><%= resource[i].getWeight()%> кг</td>
                         <td><a href="changeTypeOfResource.jsp?id=<%=resource[i].getId()%>"><i class="fa fa-edit"></i></a></td>
                         <td><a href="deleteTypeOfResource.jsp?id=<%=resource[i].getId()%>" onclick="return confirmDelete();"><i class="fa fa-close"></i></a></td>

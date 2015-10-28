@@ -12,7 +12,6 @@ public class Request extends DBModel {
         new DBEntry("request_type_id", EntryType.Int),
         new DBEntry("resource_id", EntryType.Int),
         new DBEntry("number", EntryType.Int),
-        new DBEntry("measure_id", EntryType.Int),
         new DBEntry("application_id", EntryType.Int),
         new DBEntry("location_id", EntryType.Int),
         new DBEntry("status", EntryType.Int),
@@ -96,38 +95,25 @@ public class Request extends DBModel {
         this.entryes[3].setValue(number);
     }
 
-    public int getMeasureId() {
+    public int getApplicationId() {
         return Integer.parseInt(this.entryes[4].getValue());
     }
 
-    public void setMeasureId(int id) {
+    public void setApplicationId(int id) {
         this.entryes[4].setValue(id);
     }
 
-    public int getApplicationId() {
+    public int getLocationId() {
         return Integer.parseInt(this.entryes[5].getValue());
     }
 
-    public void setApplicationId(int id) {
-        this.entryes[5].setValue(id);
-    }
-
-    public int getLocationId() {
-        return Integer.parseInt(this.entryes[6].getValue());
-    }
-
     public void setLocationId(int id) {
-        this.entryes[6].setValue(id);
+        this.entryes[5].setValue(id);
     }
 
     public String getResourceName() throws Exception {
         int id = getResourceId();
         return Resource.getOne(id).getName();
-    }
-
-    public String getMeasureName() throws Exception {
-        int id = getMeasureId();
-        return Measure.getOne(id).getName();
     }
 
     public String getStatusName() throws Exception {
@@ -140,27 +126,37 @@ public class Request extends DBModel {
     }
 
     public void setStatus(int id) {
-        this.entryes[7].setValue(id);
+        this.entryes[6].setValue(id);
     }
 
     public Integer getStatus() {
-        return Integer.parseInt(this.entryes[7].getValue());
+        return Integer.parseInt(this.entryes[6].getValue());
     }
 
     public Date getDate() throws ParseException {
-        return new SimpleDateFormat("yyyy-MM-dd").parse(this.entryes[8].getValue());
+        return new SimpleDateFormat("yyyy-MM-dd").parse(this.entryes[7].getValue());
     }
 
     public String getDateString() throws ParseException {
-        return this.entryes[8].getValue();
+        return this.entryes[7].getValue();
     }
 
     public void setDate(Date date) {
-        this.entryes[8].setValue(date);
+        this.entryes[7].setValue(date);
     }
 
     public Location getLocation() throws Exception {
         int id = getLocationId();
         return Location.getOne(id);
+    }
+    
+    public int getMeasureId() throws Exception {
+        int id = getResourceId(); 
+        return Resource.getOne(id).getMeasureId();
+    }
+    
+    public String getMeasureName() throws Exception {
+        int id = getMeasureId();
+        return Measure.getOne(id).getName();
     }
 }

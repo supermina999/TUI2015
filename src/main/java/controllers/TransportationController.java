@@ -39,15 +39,13 @@ public class TransportationController {
         int requestTypeId = req.getRequestTypeId();
         int resourceId = req.getResourceId();
         int number = req.getNumber();
-        int measureId = req.getMeasureId();
         int stockId = transit.getStockId();
         DBEntry[] params = {
             new DBEntry("stock_id", EntryType.Int, stockId),
-            new DBEntry("resource_id", EntryType.Int, resourceId),
-            new DBEntry("measure_id", EntryType.Int, measureId)
+            new DBEntry("resource_id", EntryType.Int, resourceId)
         };
         AvailableResource aRes = AvailableResource.getOne(params);
-        transit.setStatus(2);
+        transit.setStatus(1);
         transit.saveChanges();
         if (requestTypeId == 1) {
             int tNumber = aRes.getNumber();
@@ -60,7 +58,6 @@ public class TransportationController {
                 res.setStockId(stockId);
                 res.setNumber(number);
                 res.setResourceId(resourceId);
-                res.setMeasureId(measureId);
                 res.writeToDB();
                 return res.getStockId();
             } else {

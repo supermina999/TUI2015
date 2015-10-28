@@ -7,6 +7,7 @@
 <%
     Region[] region = Region.getAll(null);
     Stock[] stock = Stock.getAll(null);
+    Measure[] measure = Measure.getAll(null);
 %>
 <br>
 <div class="form-block center-block" style="min-height: 700px;">
@@ -25,6 +26,17 @@
                 <input type="text" class="form-control" name="weight">
             </div>
             <p style="font-size: 15px; margin-top: 10px; margin-bottom: 0">кг</p>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Единица измерения</label>
+            <div class="col-sm-8">
+                <select class="form-control" name="measure" id="measure" style="width: 100%; padding-right: 0">
+                    <option>Выберите единицу измерения</option>
+                    <%for (int i = 0; i < measure.length; i++) {%>
+                    <option value="<%=measure[i].getId()%>"><%=measure[i].getName()%></option>
+                    <%}%>
+                </select>
+            </div>
         </div>
         <div class="form-group">
             <div class="col-sm-offset-3 col-sm-8">

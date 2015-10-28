@@ -32,7 +32,7 @@
                 <select class="form-control" name="resource" id="request" style="width: 100%; padding-right: 0">
                     <option selected>Выберите вид ресурса</option>
                     <%for (int i = 0; i < resource.length; i++) {%>
-                    <option value="<%=resource[i].getId()%>"><%=resource[i].getName()%></option>
+                    <option value="<%=resource[i].getId()%>"><%=resource[i].getName()%>, <%=resource[i].getMeasureName()%></option>
                     <%}%>
                 </select>
             </div>
@@ -42,15 +42,8 @@
         </div>
         <div class="form-group has-feedback">
             <label class="col-sm-3 control-label">Количество</label>
-            <div class="col-sm-6">
+            <div class="col-sm-8">
                 <input type="text" class="form-control" name="number" style="padding-right: 0" required>
-            </div>
-            <div class="col-sm-2">
-                <select class="form-control" name="measure" id="request" style="width: 100%; padding-right: 0">
-                    <%for (int i = 0; i < measure.length; i++) {%>
-                    <option value="<%=measure[i].getId()%>"><%=measure[i].getName()%></option>
-                    <%}%>
-                </select>
             </div>
         </div>
         <div class="form-group has-feedback">

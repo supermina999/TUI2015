@@ -13,12 +13,9 @@ public class AvailableResourceController {
         int number = Integer.parseInt(numberS);
         String stock = request.getParameter("stock_id");
         int stockId = Integer.parseInt(stock);
-        String measure = request.getParameter("measure");
-        int measureId = Integer.parseInt(request.getParameter("measure"));
         DBEntry[] params = {
             new DBEntry("stock_id", EntryType.Int, stockId),
-            new DBEntry("resource_id", EntryType.Int, resourceId),
-            new DBEntry("measure_id", EntryType.Int, measureId)
+            new DBEntry("resource_id", EntryType.Int, resourceId)
         };
         AvailableResource check = AvailableResource.getOne(params);
         if (check == null) {
@@ -26,7 +23,6 @@ public class AvailableResourceController {
             res.setStockId(stockId);
             res.setNumber(number);
             res.setResourceId(resourceId);
-            res.setMeasureId(measureId);
             res.writeToDB();
             return res.getStockId();
         } else {

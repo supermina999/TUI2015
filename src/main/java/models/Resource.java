@@ -11,7 +11,8 @@ public class Resource extends DBModel {
     static public DBEntry[] stdEntryes = {
         new DBEntry("id", EntryType.Int),
         new DBEntry("name", EntryType.String),
-        new DBEntry("weight", EntryType.Int)
+        new DBEntry("weight", EntryType.Int),
+        new DBEntry("measure_id", EntryType.Int)
     };
 
     protected Resource(DBEntry[] entryes) {
@@ -76,5 +77,18 @@ public class Resource extends DBModel {
 
     public void setWeight(int weight) {
         this.entryes[2].setValue(weight);
+    }
+    
+    public int getMeasureId() {
+        return Integer.parseInt(this.entryes[3].getValue());
+    }
+    
+    public void setMeasureId(int id) {
+        this.entryes[3].setValue(id);
+    }
+    
+    public String getMeasureName() throws Exception {
+        int id = getMeasureId();
+        return Measure.getOne(id).getName();
     }
 }

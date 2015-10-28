@@ -4,6 +4,7 @@
     int tab = 3;
     String s = request.getParameter("id");
     Resource resource = new Resource();
+    Measure[] measure = Measure.getAll(null);
     int id = -1;
     if (s == null) {%>
 <script>
@@ -33,6 +34,16 @@
                 <input type="text" class="form-control" name="weight" value="<%=resource.getWeight()%>" required>
             </div>
             <p style="font-size: 15px; margin-top: 10px; margin-bottom: 0">кг</p>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Единица измерения</label>
+            <div class="col-sm-8">
+                <select class="form-control" name="measure" id="measure" style="width: 100%; padding-right: 0">
+                    <%for (int i = 0; i < measure.length; i++) {%>
+                    <option value="<%=measure[i].getId()%>" <% if (resource.getMeasureId() == i + 1) {%> selected <% }%>><%=measure[i].getName()%></option>
+                    <%}%>
+                </select>
+            </div>
         </div>
         <div class="form-group">
             <div class="col-sm-offset-3 col-sm-8">

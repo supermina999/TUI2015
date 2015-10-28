@@ -17,7 +17,7 @@ public class ApplicationController
         app.setRequestTypeId(Integer.parseInt(requestType));
         app.setInfo(Sql.sql(info));
         app.setFullName(Sql.sql(fullName));
-        app.setStatus(1);
+        app.setStatus(0);
         app.setPhone(Sql.sql(phone));
         app.setEmail(Sql.sql(email));
         app.writeToDB();
@@ -37,7 +37,7 @@ public class ApplicationController
     
     public static void changeStatus(int id) throws Exception {
         Application app = Application.getOne(id);
-        app.setStatus(2);
+        app.setStatus(1);
         app.saveChanges();
     }
     
