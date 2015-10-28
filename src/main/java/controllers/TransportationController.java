@@ -1,5 +1,6 @@
 package controllers;
 
+import java.util.Date;
 import javax.servlet.http.HttpServletRequest;
 import models.*;
 import sql.Sql;
@@ -47,12 +48,21 @@ public class TransportationController {
         AvailableResource aRes = AvailableResource.getOne(params);
         transit.setStatus(1);
         transit.saveChanges();
+        History history = new History();
+        Date date = new Date();
+        history.setResourceId(resourceId);
+        history.setStockId(stockId);
+        history.setDate(date);
         if (requestTypeId == 1) {
+            history.setNumber(number*-1);
+            history.writeToDB();
             int tNumber = aRes.getNumber();
             aRes.setNumber(tNumber - number);
             aRes.saveChanges();
             return aRes.getStockId();
         } else {
+            history.setNumber(number);
+            history.writeToDB();
             if (aRes == null) {
                 AvailableResource res = new AvailableResource();
                 res.setStockId(stockId);

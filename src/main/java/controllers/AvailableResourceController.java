@@ -1,5 +1,6 @@
 package controllers;
 
+import java.util.Date;
 import javax.servlet.http.HttpServletRequest;
 import models.*;
 
@@ -13,6 +14,13 @@ public class AvailableResourceController {
         int number = Integer.parseInt(numberS);
         String stock = request.getParameter("stock_id");
         int stockId = Integer.parseInt(stock);
+        History history = new History();
+        Date date = new Date();
+        history.setNumber(number);
+        history.setResourceId(resourceId);
+        history.setStockId(stockId);
+        history.setDate(date);
+        history.writeToDB();
         DBEntry[] params = {
             new DBEntry("stock_id", EntryType.Int, stockId),
             new DBEntry("resource_id", EntryType.Int, resourceId)
