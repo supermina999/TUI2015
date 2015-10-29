@@ -1,10 +1,17 @@
 <%@page import="models.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<% int minPermission = 8;
+<%
     int tab = 5;
-   %>
+%>
 <%@include file = "layout1.jsp"%>
-
+<%
+    if (!isLogin) {%>
+<script>
+    window.location.href = "/";
+</script>
+<%} else if (user.user.getPermissionId() != 1 && user.user.getPermissionId() != 5) {%>
+    <%@include file = "wrongPermission.jsp"%>
+<%} else {%>
 <br>
 <div class="form-block center-block" style="min-height: 700px;">
     <center><h2 class="title">Добавить вид транспортного средства</h2></center>
@@ -38,5 +45,5 @@
     </form>
 </div>
 <br>
-
+<% } %>
 <%@include file = "layout2.jsp"%>

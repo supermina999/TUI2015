@@ -1,12 +1,19 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <% 
-    int minPermission = 8;
     int tab = 7;
 %>
 <%@include file = "layout1.jsp"%>
+%@include file = "layout1.jsp"%>
 <%
+    if (!isLogin) {%>
+<script>
+    window.location.href = "/";
+</script>
+<%} else if (user.user.getPermissionId() != 1) {%>
+    <%@include file = "wrongPermission.jsp"%>
+<%} else {
     Region[] region = Region.getAll(null);
-    Permission[] permission = Permission.getAll(null);
+    Permission[] perm = Permission.getAll(null);
 %>
 <br>
 <div class="form-block center-block">
@@ -38,10 +45,10 @@
         <div class="form-group has-feedback">
             <label class="col-sm-3 control-label">Должность</label>
             <div class="col-sm-8">
-                <select class="form-control" style="width: 100%;" name="permission_id">
+                <select class="form-control" style="width: 100%;" name="perm_id">
                     <option value="-1">Выберите должность</option>
-                    <%for (int i = 0; i < permission.length; i++) {%>
-                    <option value="<%=permission[i].getId()%>"><%=permission[i].getName()%></option>
+                    <%for (int i = 0; i < perm.length; i++) {%>
+                    <option value="<%=perm[i].getId()%>"><%=perm[i].getName()%></option>
                     <%}%>
                 </select>
             </div>
@@ -123,5 +130,6 @@
         </div>
     </form>
 </div>
+<% } %>
 <script src="js/checker.js"></script>
 <%@include file = "layout2.jsp"%>

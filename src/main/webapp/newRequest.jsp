@@ -1,6 +1,16 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<% int minPermission = 8;
+<%
     int tab = 0;
+%>
+<%@include file = "layout1.jsp"%>
+<%
+    if (!isLogin) {%>
+<script>
+    window.location.href = "/";
+</script>
+<%} else if (user.user.getPermissionId() != 1 && user.user.getPermissionId() != 6) {%>
+    <%@include file = "wrongPermission.jsp"%>
+<%} else {
     Resource[] resource = Resource.getAll(null);
     Region[] region = Region.getAll(null);
     Measure[] measure = Measure.getAll(null);
@@ -8,7 +18,7 @@
     int id = Integer.parseInt(idS);
     Application app = Application.getOne(id);
 %>
-<%@include file = "layout1.jsp"%>
+
 <br>
 
 <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
@@ -94,5 +104,6 @@
     </form>
 </div>
 <br>
+<% } %>
 <script src="js/stock.js"></script>
 <%@include file = "layout2.jsp"%>

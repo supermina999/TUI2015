@@ -1,5 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<% int minPermission = 8;
+<%
     int tab = 1;
     Person[] persons = Person.getAll(null);
     Request[] requests = Request.getAll(null);

@@ -1,10 +1,17 @@
 <%@page import="models.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<% int minPermission = 8;
+<%
     int tab = 3;
-   %>
+%>
 <%@include file = "layout1.jsp"%>
 <%
+    if (!isLogin) {%>
+<script>
+    window.location.href = "/";
+</script>
+<%} else if (user.user.getPermissionId() != 1 && user.user.getPermissionId() != 5 && user.user.getPermissionId() != 6) {%>
+    <%@include file = "wrongPermission.jsp"%>
+<%} else {
     Region[] region = Region.getAll(null);
     Stock[] stock = Stock.getAll(null);
     Measure[] measure = Measure.getAll(null);
@@ -46,5 +53,5 @@
     </form>
 </div>
 <br>
-
+<% } %>
 <%@include file = "layout2.jsp"%>
