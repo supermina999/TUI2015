@@ -40,9 +40,8 @@
             <label class="col-sm-3 control-label">Заведующий</label>
             <div class="col-sm-8">
                 <select class="form-control" name="person" id="person" style="width: 100%; padding-right: 0">
-                    <option selected>Выберите заведующего</option>
                     <%for (int i = 0; i < person.length; i++) {%>
-                    <option value="<%=person[i].getId()%>"><%=person[i].getFullName()%></option>
+                    <option value="<%=person[i].getId()%>" <%if (person[i].getId() == stock.getPersonId()) {%> selected <% } %>><%=person[i].getFullName()%></option>
                     <%}%>
                 </select>
             </div>

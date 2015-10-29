@@ -39,6 +39,30 @@ public class RequestController
         return reqs[reqs.length-1].getId();
     }
     
+    public static void update(HttpServletRequest request) throws Exception
+    {
+        String id = request.getParameter("id");
+        String number = request.getParameter("number");
+        String dateS = request.getParameter("date");
+        String regionId= request.getParameter("region");
+        String address = request.getParameter("address");
+        String lat = request.getParameter("lat");
+        String lon = request.getParameter("lon");
+        Request req = Request.getOne(Integer.parseInt(id));
+        int locationId = req.getLocationId();
+        Location location = Location.getOne(locationId);
+        location.setRegionId(Integer.parseInt(regionId));
+        location.setId(locationId);
+        location.setAddress(address);
+        location.setXCoord(Double.parseDouble(lon));
+        location.setYCoord(Double.parseDouble(lat));
+        location.saveChanges();
+        req.setNumber(Integer.parseInt(number));
+        Date date = new SimpleDateFormat("yyyy-MM-dd").parse(dateS);
+        req.setDate(date);
+        req.saveChanges();
+    }
+    
     public static void delete(HttpServletRequest request) throws Exception
     {
        String idS;

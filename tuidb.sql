@@ -337,7 +337,7 @@ CREATE TABLE IF NOT EXISTS `request_type` (
 LOCK TABLES `request_type` WRITE;
 /*!40000 ALTER TABLE `request_type` DISABLE KEYS */;
 INSERT INTO `request_type` (`id`, `name`) VALUES
-(1, 'Получение ресурса'),
+(1, 'Потребность в ресурсе'),
 (2, 'Пожертвование ресурса');
 /*!40000 ALTER TABLE `request_type` ENABLE KEYS */;
 UNLOCK TABLES;

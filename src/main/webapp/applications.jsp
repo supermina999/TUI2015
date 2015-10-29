@@ -113,8 +113,9 @@
                     <thead>
                         <tr>
                             <th style="width: 5%;">№</th>
-                            <th style="width: 45%;">Содержание</th>
+                            <th style="width: 40%;">Содержание</th>
                             <th style="width: 45%;">Контактная информация</th>
+                            <th style="width: 5%;"></th>
                             <th style="width: 5%;"></th>
                         </tr>
                     </thead>
@@ -135,6 +136,7 @@
                         <b>Телефон: </b> <%=tApp.getPhone()%> <br>
                         <b> Email: </b> <%=tApp.getEmail()%> <br>
                     </td>
+                    <td><a href="changeRequestInfo.jsp?id=<%=req[i].getId()%>"><i class="fa fa-edit"></i></a></td>
                     <td><a href="deleteRequest.jsp?id=<%=req[i].getId()%>" onclick="return confirmDelete2();"><i class="fa fa-close"></i></a></td>
                     </tr>
                     <%}%>

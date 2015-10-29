@@ -26,7 +26,7 @@
 </script>
 <center>
     <div class="form-group has-feedback center-block" style="width: 100%; min-height: 800px;">
-        <div style="margin-left: 47%;">
+        <div style="margin-left: 47%;" <% if (user.user.getPermissionId() != 1 && user.user.getPermissionId() != 5) {%> hidden <% } %>>
             <p><a href="newResource.jsp" class="btn btn-default"><i class="fa fa-plus"></i> Добавить ресурс</a></p>
         </div>
         <center>
