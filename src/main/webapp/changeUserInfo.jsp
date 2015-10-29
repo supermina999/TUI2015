@@ -1,20 +1,29 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<% int minPermission = 8;
+<%
     int tab = 0;
+%>
+<%@include file = "layout1.jsp"%>
+<%
+    if (!isLogin) {%>
+<script>
+    window.location.href = "/";
+</script>
+<%} else {
     String s = request.getParameter("id");
     Region[] region = Region.getAll(null);
-    Permission[] permission = Permission.getAll(null);
+    Permission[] perm = Permission.getAll(null);
     Person person = new Person();
     if (s == null) {%>
 <script>
     window.location.href = "index.jsp";
 </script>
 <%} else {
-        int i = Integer.parseInt(s);
-        person = Person.getOne(i);
-    }
+        int id = Integer.parseInt(s);
+        if (id != user.user.getId() && user.user.getPermissionId() != 1) {%>
+        <%@include file = "wrongPermission.jsp"%>
+        <%} else { 
+        person = Person.getOne(id);
 %>
-<%@include file = "layout1.jsp"%>
 
 <br>
 <div class="form-block center-block">
@@ -26,7 +35,7 @@
         <div class="tab-content">
             <div class="tab-pane fade in active" id="h2tab1">
                 <center><br><h2 class="title">Измененить личную информацию</h2></center><br>
-                <form class="form-horizontal" method="post" action="updateUserInfo.jsp?id=<%=Integer.parseInt(s)%>">
+                <form class="form-horizontal" method="post" action="updateUserInfo.jsp?id=<%=id%>">
                     <div class="form-group has-feedback">
                         <label class="col-sm-3 control-label">Логин </label>
                         <div class="col-sm-8">
@@ -38,9 +47,9 @@
                     <div class="form-group has-feedback">
                         <label class="col-sm-3 control-label">Должность</label>
                         <div class="col-sm-8">
-                            <select class="form-control" style="width: 100%;" name="permission_id">
-                                <%for (int i = 0; i < permission.length; i++) {%>
-                                <option value="<%=permission[i].getId()%>" <% if (person.getPermissionId() == i + 1) {%> selected <% }%>><%=permission[i].getName()%></option>
+                            <select class="form-control" style="width: 100%;" name="perm_id">
+                                <%for (int i = 0; i < perm.length; i++) {%>
+                                <option value="<%=perm[i].getId()%>" <% if (person.getPermissionId() == i + 1) {%> selected <% }%>><%=perm[i].getName()%></option>
                                 <%}%>
                             </select>
                         </div>
@@ -158,5 +167,6 @@
     </div>
 </div>
 <br>
+<% }}} %>
 <script src="js/checker.js"></script>
 <%@include file = "layout2.jsp"%>

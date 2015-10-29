@@ -1,7 +1,17 @@
 <%@page import="models.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<% int minPermission = 8;
+<% 
     int tab = 4;
+%>
+<%@include file = "layout1.jsp"%>
+<%
+    if (!isLogin) {%>
+<script>
+    window.location.href = "/";
+</script>
+<%} else if (user.user.getPermissionId() != 1 && user.user.getPermissionId() != 5 && user.user.getPermissionId() != 3) {%>
+    <%@include file = "wrongPermission.jsp"%>
+<%} else {
     Location[] location = Location.getAll(null);
     Region[] region = Region.getAll(null);
     DBEntry[] params = {
@@ -19,7 +29,6 @@
         stock = Stock.getOne(i);
     }
 %>
-<%@include file = "layout1.jsp"%>
 
 <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
 <br>
@@ -80,5 +89,6 @@
     </form>
 </div>
 <br>
+<% } %>
 <script src="js/stock.js"></script>
 <%@include file = "layout2.jsp"%>
