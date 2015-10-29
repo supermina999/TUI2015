@@ -1,10 +1,17 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<% int minPermission = 8;
+<%
     int tab = 7;
 %>
 <%@include file = "layout1.jsp"%>
 <%
-    Permission[] permission = Permission.getAll(null);
+    if (!isLogin) {%>
+<script>
+    window.location.href = "/";
+</script>
+<%} else if (user.user.getPermissionId() != 1) {%>
+    <%@include file = "wrongPermission.jsp"%>
+<%} else {
+    Permission[] perm = Permission.getAll(null);
     Region[] region = Region.getAll(null);
     Person[] person = Person.getAll(null);
 %>
@@ -40,10 +47,10 @@
                         </select>
                     </div>
                     <div class="col-md-4">
-                        <select class="form-control searchInput" style="width: 100%; padding-left: 5px" name = "permission">
+                        <select class="form-control searchInput" style="width: 100%; padding-left: 5px" name = "perm">
                             <option>Выберите должность</option>
-                            <%for (int i = 0; i < permission.length; i++) {%>
-                            <option><%=permission[i].getName()%></option>
+                            <%for (int i = 0; i < perm.length; i++) {%>
+                            <option><%=perm[i].getName()%></option>
                             <%}%>
                         </select>
                     </div>
@@ -79,5 +86,6 @@
             </div>
     </div>
 </center>
+<% } %>
 <script src="js/search.js"></script>   
 <%@include file = "layout2.jsp"%>

@@ -1,6 +1,14 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<% int minPermission = 8;
+<%
     int tab = 0;
+%>
+<%@include file = "layout1.jsp"%>
+<%
+    if (!isLogin) {%>
+<script>
+    window.location.href = "/";
+</script>
+<%} else {
     String s = request.getParameter("id");
     Person person = new Person();
     int id = 0;
@@ -12,9 +20,11 @@
     } else {
         person = Person.getOne(Integer.parseInt(s));
         id = Integer.parseInt(s);
-    }
+        if (id != user.user.getId() && user.user.getPermissionId() != 1) {%>
+        <%@include file = "wrongPermission.jsp"%>
+        <%} else { 
 %>
-<%@include file = "layout1.jsp"%>
+
 <script>
     function confirmDelete() {
         if (confirm("Вы уверены, что хотите удалить пользователя?")) {
@@ -64,5 +74,5 @@
     %>
 </div>
 <br>
-
+<% }}} %>
 <%@include file = "layout2.jsp"%>

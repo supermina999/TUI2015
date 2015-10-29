@@ -1,9 +1,16 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<% int minPermission = 8;
+<%
     int tab = 5;
 %>
 <%@include file = "layout1.jsp"%>
 <%
+    if (!isLogin) {%>
+<script>
+    window.location.href = "/";
+</script>
+<%} else if (user.user.getPermissionId() != 1 && user.user.getPermissionId() != 2 && user.user.getPermissionId() != 4 && user.user.getPermissionId() != 5) {%>
+    <%@include file = "wrongPermission.jsp"%>
+<%} else {
     Transport[] transport = Transport.getAll(null);
     TransportType[] transportType = TransportType.getAll(null);
     Region[] region = Region.getAll(null);
@@ -93,5 +100,6 @@
             </div>
     </div>
 </center>
+<% } %>
 <script src="js/search.js"></script>   
 <%@include file = "layout2.jsp"%>

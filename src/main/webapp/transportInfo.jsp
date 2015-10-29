@@ -1,6 +1,16 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<% int minPermission = 8;
+<%
     int tab = 4;
+%>
+<%@include file = "layout1.jsp"%>
+<%
+    if (!isLogin) {%>
+<script>
+    window.location.href = "/";
+</script>
+<%} else if (user.user.getPermissionId() != 1 && user.user.getPermissionId() != 4) {%>
+    <%@include file = "wrongPermission.jsp"%>
+<%} else {
     String s = request.getParameter("id");
     Transport transport = new Transport();
     Transportation[] transit = null;
@@ -19,7 +29,6 @@
         transit = Transportation.getAll(params);
     }
 %>
-<%@include file = "layout1.jsp"%>
 <script>
     function confirmDelete() {
         if (confirm("Вы уверены, что хотите удалить транспортное средство?")) {
@@ -173,7 +182,7 @@
         </div>        
     </div>
 </div>
-
 <br>
+<% } %>
 <script src="js/search.js"></script>
 <%@include file = "layout2.jsp"%>

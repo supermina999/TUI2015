@@ -7,8 +7,18 @@
 <%@page import="java.util.*"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%  int minPermission = 8;
+<%  
     int tab = 3;
+%>
+<%@include file = "layout1.jsp"%>
+<%
+    if (!isLogin) {%>
+<script>
+    window.location.href = "/";
+</script>
+<%} else if (user.user.getPermissionId() != 1 && user.user.getPermissionId() != 5) {%>
+    <%@include file = "wrongPermission.jsp"%>
+<%} else {
     String string_id = request.getParameter("id");
     String string_stock_id = request.getParameter("stock_id");
     int id = Integer.parseInt(string_id);
@@ -87,7 +97,7 @@
         mfXLS.makeFile(jtable, ResourceName);
     }
 %>
-<%@include file = "layout1.jsp"%>
+
 <script src="plugins/charts/Chart.js"></script> 
 <br>
 <div class="form-block center-block" style="width: 50%; min-height: 500px;">
@@ -125,4 +135,5 @@
     <%}%>
 </div>
 <br>
+<% } %>
 <%@include file = "layout2.jsp"%>

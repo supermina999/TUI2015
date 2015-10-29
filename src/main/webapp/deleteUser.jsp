@@ -10,7 +10,7 @@
 <script>
     window.location.href = "/";
 </script>
-<%} else if (user.user.getPermissionId() != 1) {%>
+<%} else if (user.user.getPermissionId() != 1 && user.user.getId() != Integer.parseInt(request.getParameter("id"))) {%>
     <%@include file = "wrongPermission.jsp"%>
 <%} else {
     UserController.delete(request);

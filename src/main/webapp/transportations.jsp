@@ -1,9 +1,16 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<% int minPermission = 8;
+<%
     int tab = 6;
 %>
 <%@include file = "layout1.jsp"%>
 <%
+    if (!isLogin) {%>
+<script>
+    window.location.href = "/";
+</script>
+<%} else if (user.user.getPermissionId() != 1 && user.user.getPermissionId() != 2 && user.user.getPermissionId() != 4) {%>
+    <%@include file = "wrongPermission.jsp"%>
+<%} else {
     AvailableResource[] availableRes = AvailableResource.getAll(null);
     Region[] region = Region.getAll(null);
     Stock[] stock = Stock.getAll(null);
@@ -91,5 +98,6 @@
         </div>
     </div>
 </center>
+<% } %>
 <script src="js/search.js"></script>   
 <%@include file = "layout2.jsp"%>
