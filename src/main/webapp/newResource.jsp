@@ -8,15 +8,6 @@
     Region[] region = Region.getAll(null);
     Stock[] stock = Stock.getAll(null);
 %>
-
-<script>
-    $('#resource_id').change(function () {
-        var value = $('#resource_id option:selected').text();
-        var i = value.indexOf(',')
-        
-    }
-});
-</script>
 <br>
 <div class="form-block center-block" style="min-height: 700px;">
     <center><h2 class="title">Добавить ресурс</h2></center>
