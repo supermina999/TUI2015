@@ -20,7 +20,7 @@ public class MakeFileXLS {
         HSSFWorkbook table = new HSSFWorkbook();
         HSSFSheet fSheet = table.createSheet(resource_name);
 
-        File file = new File("../../table.xls");
+        File file = new File("table.xls");
         HSSFCellStyle cellStyle = table.createCellStyle();
         TableModel model = jtable.getModel();
         HSSFRow fRow = fSheet.createRow(0);

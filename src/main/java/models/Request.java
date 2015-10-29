@@ -15,7 +15,7 @@ public class Request extends DBModel {
         new DBEntry("application_id", EntryType.Int),
         new DBEntry("location_id", EntryType.Int),
         new DBEntry("status", EntryType.Int),
-        new DBEntry("date", EntryType.Date),};
+        new DBEntry("date", EntryType.Date)};
 
     protected Request(DBEntry[] entryes) {
         super(entryes);

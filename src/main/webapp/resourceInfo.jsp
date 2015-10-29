@@ -7,105 +7,100 @@
 <%@page import="java.util.*"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<% int minPermission = 8;
+<%  int minPermission = 8;
     int tab = 3;
     String string_id = request.getParameter("id");
     String string_stock_id = request.getParameter("stock_id");
     int id = Integer.parseInt(string_id);
     int stock_id = Integer.parseInt(string_stock_id);
-    AvailableResource avRes = AvailableResource.getOne(id);
-    DBEntry[] params = {
-        new DBEntry("resource_id", EntryType.Int, avRes.getResourceId()),
-        new DBEntry("status", EntryType.Int, 1)
-    };
-    Request[] req = Request.getAll(params);
+    String MeasureName;
+    String ResourceName;
+    if (stock_id == -1)
+    {
+        MeasureName = Resource.getOne(id).getMeasureName();
+        ResourceName = Resource.getOne(id).getName();
+    }
+    else
+    {
+        MeasureName = AvailableResource.getOne(id).getMeasureName();
+        ResourceName = AvailableResource.getOne(id).getResourceName();
+    }
+    int sum_now = 0;
+    DBEntry[] params;
+    if (stock_id != -1)
+    {
+        params = new DBEntry[2];
+        AvailableResource avRes = AvailableResource.getOne(id);
+        sum_now = avRes.getNumber();
+        params[0] = new DBEntry("resource_id", EntryType.Int, avRes.getResourceId());
+        params[1] = new DBEntry("stock_id", EntryType.Int, stock_id);
+    }
+    else
+    {
+        params = new DBEntry[1];
+        params[0] = new DBEntry("resource_id", EntryType.Int, id);
+    }
+    History[] history = History.getAll(params);
+    if (stock_id == -1)
+    {
+        AvailableResource[] avRes = AvailableResource.getAll(params);
+        for (int i = 0; i < avRes.length; i++)
+            sum_now += avRes[i].getNumber();
+    }
     Vector<String> graph_date = new Vector<String>();
     Vector<Integer> number = new Vector<Integer>();
-    Vector<Long> date = new Vector<Long>();
-        Vector<Integer> numb = new Vector<Integer>();
-    //graph_date.add("0000-00-00");
-    //number.add(0);
-    if (req.length > 0)
+    if (history.length > 0)
     {        
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        for (int i = 0; i < req.length; i++)
+        Calendar cal = Calendar.getInstance();
+        cal.setTimeInMillis(history[0].getDate().getTime());
+        cal.add(Calendar.DATE, -1);
+        Date date1 = sdf.parse(sdf.format(cal.getTime()));
+        cal.setTimeInMillis(history[history.length - 1].getDate().getTime());
+        Date date2 = sdf.parse(sdf.format(cal.getTime()));
+        cal.setTime(date1);
+        int d = 0;
+        int sum = 0;
+        while(!date1.after(date2))
         {
-            DBEntry[] params2 = {
-                new DBEntry("request_id", EntryType.Int, req[i].getId())
-            };
-            Transportation[] tr = Transportation.getAll(params2);
-            if (tr.length > 0 && tr[0].getStockId() == stock_id)
+            graph_date.add(new SimpleDateFormat("dd.MM.yyyy").format(date1));
+            while(d < history.length && date1.getTime() == history[d].getDate().getTime())
             {
-                date.add(req[i].getDate().getTime());
-                if (req[i].getRequestTypeId() == 1)
-                    numb.add(req[i].getNumber() * -1);
-                else
-                    numb.add(req[i].getNumber());
+                sum += history[d].getNumber();
+                d++;
             }
+            number.add(sum);
+            cal.add(Calendar.DATE, 1);
+            date1 = sdf.parse(sdf.format(cal.getTime()));
         }
-        if (date.size() > 0)
+        for (int i = 1; i < number.size(); i++)
+            number.setElementAt(number.elementAt(i) + sum_now - sum, i);
+        String[] columnNames = {"Дата", "Кол-во, " + MeasureName};
+        Object[][] data = new Object[history.length][2];
+        for (int i = 0; i < history.length; i++)
         {
-            for (int i = 0; i < date.size() - 1; i++)
-                for (int j = 0; j < date.size() - i; j++)
-                    if (date.elementAt(j) > date.elementAt(j + 1))
-                    {
-                        long ind1 = date.elementAt(j);
-                        date.setElementAt(date.elementAt(j + 1), j);
-                        date.setElementAt(ind1, j + 1);
-                        int ind2 = numb.elementAt(j);
-                        numb.setElementAt(numb.elementAt(j + 1), j);
-                        numb.setElementAt(ind2, j + 1);
-                    }
-            Calendar cal = Calendar.getInstance();
-            cal.setTimeInMillis(date.elementAt(0));
-            cal.add(Calendar.DATE, -1);
-            Date date1 = sdf.parse(sdf.format(cal.getTime()));
-            cal.setTimeInMillis(date.elementAt(date.size() - 1));
-            Date date2 = sdf.parse(sdf.format(cal.getTime()));
-            cal.setTime(date1);
-            int d = 0;
-            int sum = 0;
-            while(!date1.after(date2))
-            {
-                graph_date.add(new SimpleDateFormat("dd.MM.yyyy").format(date1));
-                while(d < date.size() && date1.getTime() == date.elementAt(d))
-                {
-                    sum += numb.elementAt(d);
-                    d++;
-                }
-                number.add(sum);
-                cal.add(Calendar.DATE, 1);
-                date1 = sdf.parse(sdf.format(cal.getTime()));
-            }
-            for (int i = 0; i < number.size(); i++)
-                number.setElementAt(number.elementAt(i) + avRes.getNumber() - sum, i);
-            String[] columnNames = {"Дата", "Кол-во, " + avRes.getMeasureName()};
-            Object[][] data = new Object[number.size()][2];
-            for (int i = 0; i < number.size(); i++)
-            {
-                data[i][0] = graph_date.elementAt(i);
-                data[i][1] = Integer.toString(number.elementAt(i));
-            }
-            JTable jtable = new JTable(data, columnNames);
-            MakeFileXLS mfXLS = new MakeFileXLS();
-            mfXLS.makeFile(jtable, avRes.getResourceName());
+            data[i][0] = history[i].getDateString();
+            data[i][1] = history[i].getNumber();
         }
+        JTable jtable = new JTable(data, columnNames);
+        MakeFileXLS mfXLS = new MakeFileXLS();
+        mfXLS.makeFile(jtable, ResourceName);
     }
 %>
 <%@include file = "layout1.jsp"%>
 <script src="plugins/charts/Chart.js"></script> 
 <br>
 <div class="form-block center-block" style="width: 50%; min-height: 500px;">
-    <center><h2 class="title"><%=avRes.getResourceName()%></h2></center>
+    <center><h2 class="title"><%=ResourceName%></h2></center>
     <hr>
     <form class="form-horizontal">
         <div class="form-group col-sm-7">
-            <p style="font-size: 15px;"> <b>Кол-во:</b> <%=avRes.getNumber()%> <%=avRes.getMeasureName()%></p>
-            <%if (req.length > 0 && date.size() > 0){%><p style="font-size: 15px;"> <a href="/home/table.xls" download="table.xls"> Скачать таблицу </a></p><%}%>
+            <p style="font-size: 15px;"> <b>Кол-во:</b> <%=sum_now%> <%=MeasureName%></p>
+            <%if (history.length > 0){%><p style="font-size: 15px;"> <a href="/home/table.xls" download="table.xls"> Скачать таблицу </a></p><%}%>
         </div>
-        <%if (req.length > 0 && date.size() > 0){%><canvas class="graph-line" id="myChart1"></canvas><%}%>
+        <%if (history.length > 0){%><canvas class="graph-line" id="myChart1"></canvas><%}%>
     </form>
-    <%if (req.length > 0 && date.size() > 0){%>
+    <%if (history.length > 0){%>
 <script>
         var data1 = {
             labels: ["<%=graph_date.elementAt(0)%>"<%for (int i = 1; i < graph_date.size(); i++) {%>, "<%=graph_date.elementAt(i)%>"<%}%>],
