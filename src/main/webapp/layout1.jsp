@@ -48,7 +48,7 @@
         <link href="css/style.css" rel="stylesheet">
 
         <!-- Style Switcher Styles (Remove these two lines) -->
-        <link href="#" data-style="styles" rel="stylesheet">
+        <!--<link href="#" data-style="styles" rel="stylesheet"> -->
         <link href="style-switcher/style-switcher.css" rel="stylesheet">
 
         <!-- Custom css -->
