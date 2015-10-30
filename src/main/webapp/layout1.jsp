@@ -25,7 +25,7 @@
         <link rel="shortcut icon" href="images/icon.png">
 
         <!-- Web Fonts -->
-        <link href='../../../../../fonts.googleapis.com/css_6EE468F4' rel='stylesheet' type='text/css'>
+        <!--<link href='../../../../../fonts.googleapis.com/css_6EE468F4' rel='stylesheet' type='text/css'>
         <link href='../../../../../fonts.googleapis.com/css_A7E562AD' rel='stylesheet' type='text/css'>
 
         <!-- Bootstrap core CSS -->
