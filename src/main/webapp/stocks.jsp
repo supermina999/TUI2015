@@ -26,7 +26,7 @@
 </script>
 <center>
     <div class="form-group has-feedback center-block" style="width: 60%; min-height: 800px;">
-        <div style="margin-left: 79%;">
+        <div style="margin-left: 79%;" <% if (user.user.getPermissionId() != 1 && user.user.getPermissionId() != 3) {%> hidden <% } %>>
             <p><a href="newStock.jsp" class="btn btn-default"><i class="fa fa-plus"></i> Добавить склад</a></p>
         </div>
         <center><h1>Склады</h1><br></center>
@@ -54,19 +54,19 @@
                     <th style="width: 50%;">Расположение</th>
                     <th style="width: 30%;">Заведующий</th>
                     <th style="width: 5%;"></th>
-                    <th style="width: 5%;"></th>
-                    <th style="width: 5%;"></th>
+                    <% if (user.user.getPermissionId() == 1 || user.user.getPermissionId() == 3) {%><th style="width: 5%;"></th>
+                    <th style="width: 5%;"></th><% } %>
                 </tr>
             </thead>
             <tbody id="searchTable">
                 <%for (int i = 0; i < stock.length; i++) {%>
                 <tr>
-                    <td class="idSearch" ><center><a href="stockInfo.jsp?id=<%=stock[i].getId()%>"><%=stock[i].getId()%></a></center></td>
+                    <td class="idSearch" ><center><% if (user.user.getPermissionId() == 1 || user.user.getPermissionId() == 5) {%><a href="stockInfo.jsp?id=<%=stock[i].getId()%>"><% } %><%=stock[i].getId()%><% if (user.user.getPermissionId() == 1 || user.user.getPermissionId() == 5) {%></a><% } %></center></td>
                     <td class="idSearch"><%=stock[i].getFullAddress()%></td>
-                    <td class="idSearch"><a href="userInfo.jsp?id=<%=stock[i].getPersonId()%>"><%=stock[i].getFullPersonName()%></a></td>
+                    <td class="idSearch"><% if (user.user.getPermissionId() == 1) {%><a href="userInfo.jsp?id=<%=stock[i].getPersonId()%>"><% } %><%=stock[i].getFullPersonName()%><% if (user.user.getPermissionId() == 1) {%></a><% } %></td>
                     <td><a onclick="showPlacemark($(this).closest('td').prev('td').prev('td').text());"><i class="fa fa-map-marker"></i></a></td> 
-                    <td><a href="changeStockInfo.jsp?id=<%=stock[i].getId()%>"><i class="fa fa-edit"></i></a></td>
-                    <td><a href="deleteStock.jsp?id=<%=stock[i].getId()%>" onclick="return confirmDelete();"><i class="fa fa-close"></i></a></td>   
+                    <% if (user.user.getPermissionId() == 1 || user.user.getPermissionId() == 3) {%><td><a href="changeStockInfo.jsp?id=<%=stock[i].getId()%>"><i class="fa fa-edit"></i></a></td>
+                    <td><a href="deleteStock.jsp?id=<%=stock[i].getId()%>" onclick="return confirmDelete();"><i class="fa fa-close"></i></a></td><%}%>   
             </tr>
             <%}%>
             </tbody>

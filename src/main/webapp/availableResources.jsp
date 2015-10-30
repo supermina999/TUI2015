@@ -62,19 +62,19 @@
                             <th style="width: 25%;">Название</th>
                             <th style="width: 55%;">Склад</th>
                             <th style="width: 10%;">Количество</th>
-                            <th style="width: 5%;"></th>
-                            <th style="width: 5%;"></th>
+                            <% if (user.user.getPermissionId() == 1 || user.user.getPermissionId() == 5) {%><th style="width: 5%;"></th><% } %>
+                            <% if (user.user.getPermissionId() == 1 || user.user.getPermissionId() == 5) {%><th style="width: 5%;"></th><% } %>
                         </tr>
                     </thead>
                     <tbody id="searchTable">
                         <%
                     for (int i = 0; i < availableRes.length; i++) {%>
                         <tr>
-                            <td class="idSearch"><a href="resourceInfo.jsp?id=<%=availableRes[i].getId()%>&stock_id=<%=availableRes[i].getStockId()%>"><%=availableRes[i].getResourceName()%> </a></td>
-                            <td class="idSearch"><a href="stockInfo.jsp?id=<%=availableRes[i].getStockId()%>">№<%=availableRes[i].getStockId()%></a>, <%=availableRes[i].getStockAddress()%> </td>
+                            <td class="idSearch"><% if (user.user.getPermissionId() == 1 || user.user.getPermissionId() == 5) {%><a href="resourceInfo.jsp?id=<%=availableRes[i].getId()%>&stock_id=<%=availableRes[i].getStockId()%>"><% } %><%=availableRes[i].getResourceName()%> <% if (user.user.getPermissionId() == 1 || user.user.getPermissionId() == 5) {%></a><% } %></td>
+                            <td class="idSearch"><% if (user.user.getPermissionId() == 1 || user.user.getPermissionId() == 5) {%><a href="stockInfo.jsp?id=<%=availableRes[i].getStockId()%>"><% } %>№<%=availableRes[i].getStockId()%><% if (user.user.getPermissionId() == 1 || user.user.getPermissionId() == 5) {%></a><% } %>, <%=availableRes[i].getStockAddress()%> </td>
                             <td class="idSearch"><%=availableRes[i].getNumber()%> <%=availableRes[i].getMeasureName()%></td>
-                            <td><a href="changeResource.jsp?id=<%=availableRes[i].getId()%>"><i class="fa fa-edit"></i></a></td>
-                            <td><a href="deleteAvailableResource.jsp?id=<%=availableRes[i].getId()%>" onclick="return confirmDelete();"><i class="fa fa-close"></i></a></td>
+                            <% if (user.user.getPermissionId() == 1 || user.user.getPermissionId() == 5) {%><td><a href="changeResource.jsp?id=<%=availableRes[i].getId()%>"><i class="fa fa-edit"></i></a></td><% } %>
+                            <% if (user.user.getPermissionId() == 1 || user.user.getPermissionId() == 5) {%><td><a href="deleteAvailableResource.jsp?id=<%=availableRes[i].getId()%>" onclick="return confirmDelete();"><i class="fa fa-close"></i></a></td><% } %>
                         </tr>
                         <% }%>
                     </tbody>

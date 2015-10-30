@@ -10,7 +10,7 @@
 <script>
     window.location.href = "/";
 </script>
-<%} else if (user.user.getPermissionId() != 1 && user.user.getPermissionId() != 3 && user.user.getPermissionId() != 5) {%>
+<%} else if (user.user.getPermissionId() != 1 && user.user.getPermissionId() != 3) {%>
     <%@include file = "wrongPermission.jsp"%>
 <%} else {
     StockController.delete(request);
