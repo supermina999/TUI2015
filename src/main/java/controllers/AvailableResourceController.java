@@ -43,23 +43,22 @@ public class AvailableResourceController {
     
     public static int update(HttpServletRequest request) throws Exception
     {   
-        String idS;
-        if ((idS = request.getParameter("id")) != null)
-        {
-            int id = Integer.parseInt(idS);
-            AvailableResource res = AvailableResource.getOne(id);
-            for (DBEntry entry : AvailableResource.stdEntryes)
-            {
-                String val = null;
-                if ( (val = request.getParameter(entry.name)) != null)
-                    {
-                        res.updateEntry(entry, val);
-                    }
-            }
-            res.saveChanges();
-            return res.getStockId();
-        }
-        return 0;
+        String idS = request.getParameter("id");
+        int id = Integer.parseInt(idS);
+        String numberS = request.getParameter("number");
+        int number = Integer.parseInt(numberS);
+        AvailableResource aRes = AvailableResource.getOne(id);
+        int tNumber = aRes.getNumber();
+        History history = new History();
+        Date date = new Date();
+        history.setNumber(number-tNumber);
+        history.setResourceId(aRes.getResourceId());
+        history.setStockId(aRes.getStockId());
+        history.setDate(date);
+        history.writeToDB();
+        aRes.setNumber(number);
+        aRes.saveChanges();
+        return aRes.getStockId();
     }
      public static AvailableResource delete(HttpServletRequest request) throws Exception
      {
