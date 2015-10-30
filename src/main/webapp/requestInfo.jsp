@@ -60,8 +60,8 @@
                 };
                 Transportation transit = Transportation.getOne(params); %>
                 <p style="font-size: 15px;"> <b>Статус:</b> <%=transit.getStatusName()%> </p>
-                <p style="font-size: 15px;"> <b>Транспортное средство:</b> <%=transit.getTransportName()%><a href="transportInfo.jsp?id=<%=transit.getTransportId()%>"> <%=transit.getTransportNumber()%><a/></p>
-            <p style="font-size: 15px;"> <b>Водитель:</b> <a href="userInfo.jsp?id=<%=transit.getDriverId()%>"><%=transit.getDriverName()%></a> </p>
+                <p style="font-size: 15px;"> <b>Транспортное средство:</b> <%=transit.getTransportName()%><a href="transportInfo.jsp?id=<%=transit.getTransportId()%>"> <%=transit.getTransportNumber()%></a></p>
+            <p style="font-size: 15px;"> <b>Водитель:</b> <a href="userInfo.jsp?id=<%=transit.getDriverId()%>"> <%=transit.getDriverName()%></a> </p>
             <p style="font-size: 15px;"> <b>Отправление:</b> <%=transit.getTimeStart() %> </p>
             <p style="font-size: 15px;"> <b>Прибытие:</b> <%=transit.getTimeFinish() %> </p>   
             <p style="font-size: 15px;"> <b>Опасность пути:</b> <%=transit.getSafetyName()%> </p>   
