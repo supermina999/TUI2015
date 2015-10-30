@@ -47,7 +47,7 @@
                     <div class="form-group has-feedback">
                         <label class="col-sm-3 control-label">Должность</label>
                         <div class="col-sm-8">
-                            <select class="form-control" style="width: 100%;" name="perm_id">
+                            <select class="form-control" style="width: 100%;" name="permission_id">
                                 <%for (int i = 0; i < perm.length; i++) {%>
                                 <option value="<%=perm[i].getId()%>" <% if (person.getPermissionId() == i + 1) {%> selected <% }%>><%=perm[i].getName()%></option>
                                 <%}%>

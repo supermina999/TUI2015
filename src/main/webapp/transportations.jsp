@@ -33,7 +33,7 @@
                         <div class="gray-bg">
                             <br>
                             <div class="col-lg-2" style="width: 20%">
-                                <input type="date" class="form-control searchInput" placeholder="Поиск" style="width: 115%;" >
+                                <input type="date" class="form-control searchInput" style="width: 115%;" >
                                 <i class="fa fa-calendar-o form-control-feedback"></i>
                             </div>
                             <div class="col-md-3" style="width: 25%">
@@ -110,7 +110,7 @@
                         <div class="gray-bg">
                             <br>
                             <div class="col-lg-2" style="width: 20%">
-                                <input type="date" class="form-control searchInput1" placeholder="Поиск" style="width: 115%;" >
+                                <input type="date" class="form-control searchInput1" style="width: 115%;" >
                                 <i class="fa fa-calendar-o form-control-feedback"></i>
                             </div>
                             <div class="col-md-3" style="width: 25%">
