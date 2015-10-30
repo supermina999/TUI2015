@@ -27,7 +27,7 @@
 </script>
 <center>
     <div class="form-group has-feedback center-block" style="width: 100%; min-height: 800px;">
-        <div style="margin-left: 42%;">
+        <div style="margin-left: 42%;" <% if (user.user.getPermissionId() != 1 && user.user.getPermissionId() != 5) { %> hidden <% } %>>
             <p><a href="newTransport.jsp" class="btn btn-default"><i class="fa fa-plus"></i> Добавить транспортное средство</a></p>
         </div>
         <center>
@@ -74,25 +74,25 @@
                             <th style="width: 10%;">Номер</th>
                             <th style="width: 20%;">Водитель</th>
                             <th style="width: 30%;">Склад</th>
-                            <th style="width: 5%"></th>
-                            <th style="width: 5%"></th>
+                            <% if (user.user.getPermissionId() == 1 || user.user.getPermissionId() == 5) {%><th style="width: 5%"></th>
+                            <th style="width: 5%"></th> <% } %>
                         </tr>
                     </thead>
                     <tbody id="searchTable">
                         <%
                     for (int i = 0; i < transport.length; i++) {%>
                         <tr>
-                            <td class="idSearch"><a href="transportInfo.jsp?id=<%=transport[i].getId()%>"><%=transport[i].getId()%></a></td>
+                            <td class="idSearch"><% if (user.user.getPermissionId() == 1 || user.user.getPermissionId() == 4) {%><a href="transportInfo.jsp?id=<%=transport[i].getId()%>"><% } %><%=transport[i].getId()%> <%if (user.user.getPermissionId() == 1 || user.user.getPermissionId() == 4) {%></a><% } %></td>
                             <td class="idSearch">
                                 <b>Вид:</b> <%=transport[i].getName()%><br> 
                                 <b>Скорость:</b> <%=transport[i].getSpeed()%> км/ч <br> 
                                 <b>Вместимость:</b> <%=transport[i].getMaxWeight()%> т 
                             </td>
                             <td class="idSearch"><%=transport[i].getNumber()%></td>
-                            <td class="idSearch"><a href="userInfo.jsp?id=<%=transport[i].getPersonId()%>"><%=transport[i].getDriverName()%></a></td>
-                            <td class="idSearch"><a href="stockInfo.jsp?id=<%=transport[i].getStockId()%>">№<%=transport[i].getStockId()%></a>, <%=transport[i].getStockAddress()%></td>
-                            <td><a href="changeTransportInfo.jsp?id=<%=transport[i].getId()%>"><i class="fa fa-edit"></i></a></td>
-                            <td><a href="deleteTransport.jsp?id=<%=transport[i].getId()%>" onclick="return confirmDelete();"><i class="fa fa-close"></i></a></td>
+                            <td class="idSearch"><% if (user.user.getPermissionId() == 1) {%><a href="userInfo.jsp?id=<%=transport[i].getPersonId()%>"><% } %><%=transport[i].getDriverName()%><% if (user.user.getPermissionId() == 1) {%></a><% } %></td>
+                            <td class="idSearch"><% if (user.user.getPermissionId() == 1 || user.user.getPermissionId() == 5) {%><a href="stockInfo.jsp?id=<%=transport[i].getStockId()%>"><% } %>№<%=transport[i].getStockId()%><% if (user.user.getPermissionId() == 1 || user.user.getPermissionId() == 5) {%></a><%}%>, <%=transport[i].getStockAddress()%></td>
+                            <% if (user.user.getPermissionId() == 1 || user.user.getPermissionId() == 5) {%><td><a href="changeTransportInfo.jsp?id=<%=transport[i].getId()%>"><i class="fa fa-edit"></i></a></td>
+                            <td><a href="deleteTransport.jsp?id=<%=transport[i].getId()%>" onclick="return confirmDelete();"><i class="fa fa-close"></i></a></td><% } %>
                         </tr>
                         <% }%>
                     </tbody>
