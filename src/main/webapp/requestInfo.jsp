@@ -13,7 +13,6 @@
 <%} else {
     String s = request.getParameter("id");
     Request req = new Request();
-    Application app = Application.getOne(req.getApplicationId());
     if (s == null) {%>
 <script>
     window.location.href = "index.jsp";
@@ -21,6 +20,7 @@
 <%
     } else {
         req = Request.getOne(Integer.parseInt(s));
+        Application app = Application.getOne(req.getApplicationId());
     }
 %>
 

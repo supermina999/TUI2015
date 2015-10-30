@@ -220,7 +220,7 @@ $.each($('.searchInput2'),function() {
             $.each($rows, function() {
                     var t = $(this);
                     var b = 1;
-                    $.each($('.searchInput1'), function() {
+                    $.each($('.searchInput2'), function() {
                         var s = $(this).val();
                         s = s.toLowerCase();
                         if (!s.contains("выберите")) {
