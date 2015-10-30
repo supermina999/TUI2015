@@ -9,7 +9,7 @@
     ApplicationController.add(request);
 %>
 <script>
-    window.location.href = "/";
+    window.location.href = "applicationAccepted.jsp";
 </script>
 
 <%@include file = "layout2.jsp"%>
