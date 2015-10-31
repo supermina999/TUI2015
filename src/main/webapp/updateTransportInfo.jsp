@@ -13,7 +13,7 @@
 <%} else if (user.user.getPermissionId() != 1 && user.user.getPermissionId() != 5) {%>
     <%@include file = "wrongPermission.jsp"%>
 <%} else {
-     if (user.user.getId() != Stock.getOne(Transport.getOne(Integer.parseInt(request.getParameter("id"))).getStockId()).getPersonId()) {%>
+     if (user.user.getId() != Stock.getOne(Transport.getOne(Integer.parseInt(request.getParameter("id"))).getStockId()).getPersonId() && user.user.getPermissionId() != 1) {%>
        <%@include file = "wrongPermission.jsp"%> 
     <%} else {
     TransportController.change(request);

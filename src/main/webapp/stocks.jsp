@@ -25,7 +25,7 @@
     }
 </script>
 <center>
-    <div class="form-group has-feedback center-block" style="width: 60%; min-height: 800px;">
+    <div class="form-group has-feedback center-block" style="width: 60%; min-height: 1000px;">
         <div style="margin-left: 79%;" <% if (user.user.getPermissionId() != 1 && user.user.getPermissionId() != 3) {%> hidden <% } %>>
             <p><a href="newStock.jsp" class="btn btn-default"><i class="fa fa-plus"></i> Добавить склад</a></p>
         </div>

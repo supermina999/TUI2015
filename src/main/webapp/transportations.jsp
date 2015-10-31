@@ -19,17 +19,17 @@
     Transportation[] transit = Transportation.getAll(null);
 %>
 <center>
-    <div class="form-group has-feedback center-block" style="width: 100%; min-height: 800px;">
+    <div class="form-group has-feedback center-block" style="width: 100%; min-height: 1000px;">
         <center>
             <h1>Расписание перевозок</h1><br> </center>
-        <div class="form-group has-feedback" style="width: 75%; min-height: 600px;">
+        <div class="form-group has-feedback" style="width: 75%; min-height: 1000px;">
             <div class="tabs-style-2">
                 <ul class="nav nav-tabs" role="tablist">
                     <li class="active text-center" style="width: 50%;"><a href="#h2tab1" role="tab" data-toggle="tab" style="font-size: 15px;"><i class="glyphicon glyphicon-list-alt"></i> План перевозок</a></li>
                     <li class="text-center" style="width: 50%;"><a href="#h2tab2" role="tab" data-toggle="tab" style="font-size: 15px;"><i class="fa fa-truck"></i> Архив перевозок</a></li>
                 </ul>
                 <div class="tab-content">
-                    <div class="tab-pane fade in active" id="h2tab1" style="min-height: 800px;">
+                    <div class="tab-pane fade in active" id="h2tab1" style="min-height: 1000px;">
                         <div class="gray-bg">
                             <br>
                             <div class="col-lg-2" style="width: 20%">

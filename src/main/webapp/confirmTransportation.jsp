@@ -15,7 +15,7 @@
     <%@include file = "wrongPermission.jsp"%>
 <%} else {
     int pId = Transportation.getOne(Integer.parseInt(request.getParameter("id"))).getDriverId();
-    if (user.user.getId() != pId) {%>
+    if (user.user.getId() != pId && user.user.getPermissionId() != 1) {%>
         <%@include file = "wrongPermission.jsp"%>
     <%} else {
     int stockId = TransportationController.confirm(request);

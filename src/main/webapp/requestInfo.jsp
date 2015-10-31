@@ -35,7 +35,7 @@
     }
 </script>
 <br>
-<div class="form-block center-block" style="width: 50%; min-height: 700px;">
+<div class="form-block center-block" style="width: 50%; min-height: 1000px;">
     <div style="margin-left: 90%;" <%if (req.getStatus() == 1) {%> hidden <% } %>>
         <p style="font-size: 25px;"><a href="changeRequestInfo.jsp?id=<%=req.getId()%>"><i class="fa fa-edit"></i></a>
             <a href="deleteRequest.jsp?id=<%=req.getId()%>" onclick="return confirmDelete();"><i class="fa fa-close"></i></a></p>

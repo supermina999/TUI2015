@@ -29,13 +29,13 @@
 <%} else {
         id = Integer.parseInt(s);
         transport = Transport.getOne(id);
-        if (Stock.getOne(transport.getStockId()).getPersonId() != user.user.getId()) {%>
+        if (Stock.getOne(transport.getStockId()).getPersonId() != user.user.getId() && user.user.getPermissionId() != 1) {%>
              <%@include file = "wrongPermission.jsp"%>
         <%} else {
 %>
 
 <br>
-<div class="form-block center-block" style="min-height: 700px;">
+<div class="form-block center-block" style="min-height: 1000px;">
     <center><h2 class="title">Изменить информацию о транспортном средстве</h2></center>
     <hr>
     <form class="form-horizontal" method="post" action="updateTransportInfo.jsp?id=<%=id%>&transport_type_id=<%=transport.getTypeId()%>">
@@ -56,7 +56,7 @@
             <div class="col-sm-8">
                 <select class="form-control" name="driver" id="driver" style="width: 100%; padding-right: 0">
                     <%for (int i = 0; i < person.length; i++) {%>
-                    <option value="<%=person[i].getId()%>" <% if (transport.getPersonId() == i + 1) {%> selected <% }%>><%=person[i].getFullName()%></option>
+                    <option value="<%=person[i].getId()%>" <% if (transport.getPersonId() == person[i].getId()) {%> selected <% }%>><%=person[i].getFullName()%></option>
                     <%}%>
                 </select>
             </div>

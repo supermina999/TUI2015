@@ -13,7 +13,7 @@
 <%} else if (user.user.getPermissionId() != 1 && user.user.getPermissionId() != 5) {%>
     <%@include file = "wrongPermission.jsp"%>
 <%} else {
-    if (user.user.getId() != Transport.getOne(Integer.parseInt(request.getParameter("id"))).getPersonId()) {%>
+    if (user.user.getId() != Transport.getOne(Integer.parseInt(request.getParameter("id"))).getPersonId() && user.user.getPermissionId() != 1) {%>
     <%@include file = "wrongPermission.jsp"%>
     <%} else {
     TransportController.delete(request);

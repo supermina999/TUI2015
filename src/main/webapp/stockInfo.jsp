@@ -27,7 +27,7 @@
         stock = Stock.getOne(Integer.parseInt(s));
         availableRes = AvailableResource.getAll(params);
         transport = Transport.getAll(params);
-        if (stock.getPersonId() != user.user.getId()) {%>
+        if (stock.getPersonId() != user.user.getId() && user.user.getPermissionId() != 1) {%>
               <%@include file = "wrongPermission.jsp"%>
         <%} else {
 %>
@@ -73,7 +73,7 @@
             <li class="text-center" style="width: 50%;"><a href="#h2tab2" role="tab" data-toggle="tab" style="font-size: 15px;"><i class="fa fa-truck"></i> Транспорт</a></li>
         </ul>
         <div class="tab-content">
-            <div class="tab-pane fade in active" id="h2tab1" style="min-height: 800px;">
+            <div class="tab-pane fade in active" id="h2tab1" style="min-height: 1000px;">
                 <div class="gray-bg">
                     <br>
                     <div class="col-md-11" style="width: 98%">
@@ -104,8 +104,8 @@
                     </tbody>
                 </table>
             </div>
-            <div class="tab-pane" id="h2tab2" style="min-height: 800px;">
-                <div class="form-group has-feedback" style="width: 100%; min-height: 800px;">
+            <div class="tab-pane" id="h2tab2" style="min-height: 1000px;">
+                <div class="form-group has-feedback" style="width: 100%; min-height: 1000px;">
                 <div class="gray-bg">
                     <br>
                     <div class="col-md-8" style="width: 69%">

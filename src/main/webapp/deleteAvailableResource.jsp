@@ -15,7 +15,7 @@
 <%} else {
     AvailableResource res = AvailableResourceController.delete(request);
     int stock_id = res.getStockId();
-    if (Stock.getOne(res.getStockId()).getPersonId() != user.user.getId()) {%>
+    if (Stock.getOne(res.getStockId()).getPersonId() != user.user.getId() && user.user.getPermissionId() != 1) {%>
         <%@include file = "wrongPermission.jsp"%>
     <%} else {
 %>
