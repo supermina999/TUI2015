@@ -152,7 +152,7 @@
                             </thead>
                             <tbody id="searchTable1">
                                 <%
-                                    for (int i = 0; i < transit.length; i++) if (transit[i].getStatus() == 0) {
+                                    for (int i = 0; i < transit.length; i++) if (transit[i].getStatus() == 1) {
                                         Request req = Request.getOne(transit[i].getRequestId());
                                          if (user.user.getPermissionId() != 4 || user.user.getId() == transit[i].getDriverId()){
                                 %>
