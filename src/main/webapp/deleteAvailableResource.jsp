@@ -15,9 +15,12 @@
 <%} else {
     AvailableResource res = AvailableResourceController.delete(request);
     int stock_id = res.getStockId();
+    if (Stock.getOne(res.getStockId()).getPersonId() != user.user.getId() && user.user.getPermissionId() != 1) {%>
+        <%@include file = "wrongPermission.jsp"%>
+    <%} else {
 %>
 <script>
     window.location.href = "stockInfo.jsp?id=<%=stock_id%>";
 </script>
-<% } %>
+<% }} %>
 <%@include file = "layout2.jsp"%>

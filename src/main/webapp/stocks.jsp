@@ -25,7 +25,7 @@
     }
 </script>
 <center>
-    <div class="form-group has-feedback center-block" style="width: 60%; min-height: 800px;">
+    <div class="form-group has-feedback center-block" style="width: 60%; min-height: 1000px;">
         <div style="margin-left: 79%;" <% if (user.user.getPermissionId() != 1 && user.user.getPermissionId() != 3) {%> hidden <% } %>>
             <p><a href="newStock.jsp" class="btn btn-default"><i class="fa fa-plus"></i> Добавить склад</a></p>
         </div>
@@ -59,7 +59,8 @@
                 </tr>
             </thead>
             <tbody id="searchTable">
-                <%for (int i = 0; i < stock.length; i++) {%>
+                <%for (int i = 0; i < stock.length; i++) 
+                if (user.user.getPermissionId() != 5 || user.user.getId() == stock[i].getPersonId()){%>
                 <tr>
                     <td class="idSearch" ><center><% if (user.user.getPermissionId() == 1 || user.user.getPermissionId() == 5) {%><a href="stockInfo.jsp?id=<%=stock[i].getId()%>"><% } %><%=stock[i].getId()%><% if (user.user.getPermissionId() == 1 || user.user.getPermissionId() == 5) {%></a><% } %></center></td>
                     <td class="idSearch"><%=stock[i].getFullAddress()%></td>

@@ -27,7 +27,9 @@
             new DBEntry("transport_id", EntryType.Int, Integer.parseInt(s))
         };
         transit = Transportation.getAll(params);
-    }
+        if (user.user.getId() != transport.getPersonId() && user.user.getPermissionId() != 1) {%>
+            <%@include file = "wrongPermission.jsp"%>
+        <%} else {
 %>
 <script>
     function confirmDelete() {
@@ -67,7 +69,7 @@
             <li class="text-center" style="width: 50%;"><a href="#h2tab2" role="tab" data-toggle="tab" style="font-size: 15px;"><i class="fa fa-truck"></i> Архив перевозок</a></li>
         </ul>
         <div class="tab-content">
-            <div class="tab-pane fade in active" id="h2tab1" style="min-height: 800px;">
+            <div class="tab-pane fade in active" id="h2tab1" style="min-height: 1000px;">
                 <div class="gray-bg">
                     <br>
                     <div class="col-md-8">
@@ -124,7 +126,7 @@
                     </tbody>
                 </table>
             </div>
-            <div class="tab-pane" id="h2tab2" style="min-height: 800px;">
+            <div class="tab-pane" id="h2tab2" style="min-height: 1000px;">
                 <div class="gray-bg">
                     <br>
                     <div class="col-md-8">
@@ -183,6 +185,6 @@
     </div>
 </div>
 <br>
-<% } %>
+<% }}} %>
 <script src="js/search.js"></script>
 <%@include file = "layout2.jsp"%>

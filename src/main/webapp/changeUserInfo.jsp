@@ -49,7 +49,7 @@
                         <div class="col-sm-8">
                             <select class="form-control" style="width: 100%;" name="permission_id">
                                 <%for (int i = 0; i < perm.length; i++) {%>
-                                <option value="<%=perm[i].getId()%>" <% if (person.getPermissionId() == i + 1) {%> selected <% }%>><%=perm[i].getName()%></option>
+                                <option value="<%=perm[i].getId()%>" <% if (person.getPermissionId() == perm[i].getId()) {%> selected <% }%>><%=perm[i].getName()%></option>
                                 <%}%>
                             </select>
                         </div>
@@ -89,7 +89,7 @@
                         <div class="col-sm-8">
                             <select class="form-control" style="width: 100%;" name="region_id">
                                 <%for (int i = 0; i < region.length; i++) {%>
-                                <option value="<%=region[i].getId()%>" <% if (person.getRegionId() == i + 1) {%> selected <% }%>><%=region[i].getName()%></option>
+                                <option value="<%=region[i].getId()%>" <% if (person.getRegionId() == region[i].getId()) {%> selected <% }%>><%=region[i].getName()%></option>
                                 <%}%>
                             </select>
                         </div>
@@ -133,7 +133,7 @@
             </div>
             <div class="tab-pane fade" id="h2tab2">
                 <center><br><h2 class="title">Измененить пароль</h2></center><br>
-                <form class="form-horizontal" method="post" action="updateUserPassword.jsp?id=<%=Integer.parseInt(s)%>" style="min-height: 550px;">
+                <form class="form-horizontal" method="post" action="updateUserPassword.jsp?id=<%=Integer.parseInt(s)%>" style="min-height: 1000px;">
                     <div class="form-group has-feedback">
                         <label class="col-sm-3 control-label">Старый пароль </label>
                         <div class="col-sm-8" id="divPassOld">

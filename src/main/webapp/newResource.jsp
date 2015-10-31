@@ -17,7 +17,7 @@
     Stock[] stock = Stock.getAll(null);
 %>
 <br>
-<div class="form-block center-block" style="min-height: 700px;">
+<div class="form-block center-block" style="min-height: 1000px;">
     <center><h2 class="title">Добавить ресурс</h2></center>
     <hr>
     <form class="form-horizontal" method="post" action="addResource.jsp">
@@ -42,22 +42,12 @@
             </div>
         </div>
         <div class="form-group has-feedback">
-            <label class="col-sm-3 control-label">Область</label>
-            <div class="col-sm-8">
-                <select class="form-control" name="region" id="region" style="width: 100%; padding-right: 0">
-                    <option selected>Выберите область</option>
-                    <%for (int i = 0; i < region.length; i++) {%>
-                    <option value="<%=region[i].getId()%>"><%=region[i].getName()%></option>
-                    <%}%>
-                </select>
-            </div>
-        </div>
-        <div class="form-group has-feedback">
             <label class="col-sm-3 control-label">Склад</label>
             <div class="col-sm-8">
                 <select class="form-control" name="stock_id" id="stock_id" style="width: 100%; padding-right: 0">
                     <option selected>Выберите склад</option>
-                    <%for (int i = 0; i < stock.length; i++) {%>
+                    <%for (int i = 0; i < stock.length; i++) 
+                    if (user.user.getPermissionId() == 1 || user.user.getId() == stock[i].getPersonId()) {%>
                     <option value="<%=stock[i].getId()%>">№<%=stock[i].getId()%>, <%=stock[i].getLocation().getAddress()%></option>
                     <%}%>
                 </select>

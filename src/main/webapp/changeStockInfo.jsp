@@ -32,7 +32,7 @@
 
 <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
 <br>
-<div class="form-block center-block" style="width: 50%; min-height: 700px;">
+<div class="form-block center-block" style="width: 50%; min-height: 1000px;">
     <center><h2 class="title">Изменить информацию о складе №<%=stock.getId()%></h2></center>
     <hr>
     <form class="form-horizontal" method = "post" action = "updateStockInfo.jsp?id=<%=Integer.parseInt(s)%>">
@@ -51,7 +51,7 @@
             <div class="col-sm-4">
                 <select class="form-control" name="region" id="region" style="width: 105%; padding-right: 0">
                     <%for (int i = 0; i < region.length; i++) {%>
-                    <option value="<%=region[i].getId()%>" <% if (stock.getLocation().getRegionId() == i + 1) {%> selected <% }%>><%=region[i].getName()%></option>
+                    <option value="<%=region[i].getId()%>" <% if (stock.getLocation().getRegionId() == region[i].getId()) {%> selected <% }%>><%=region[i].getName()%></option>
                     <%}%>
                 </select>
             </div>

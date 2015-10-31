@@ -23,13 +23,13 @@
     }
 </script>
 <center>
-    <div class="form-group has-feedback center-block" style="width: 100%; min-height: 800px;">
+    <div class="form-group has-feedback center-block" style="width: 100%; min-height: 1000px;">
         <div style="margin-left: 38%;">
             <p><a href="newTypeOfTransport.jsp" class="btn btn-default"><i class="fa fa-plus"></i> Добавить вид</a></p>
         </div>
         <center>
             <h1>Виды транспортных средств</h1><br> </center>
-        <div class="form-group has-feedback" style="width: 50%; min-height: 600px;">
+        <div class="form-group has-feedback" style="width: 50%; min-height: 1000px;">
             <div class="gray-bg">
                 <br>
                 <div class="col-md-11" style="width: 98%">

@@ -22,10 +22,12 @@
 <%} else {
         id = Integer.parseInt(s);
         resource = AvailableResource.getOne(id);
-    }
+        if (Stock.getOne(resource.getStockId()).getPersonId() != user.user.getId() && user.user.getPermissionId() != 1) {%>
+             <%@include file = "wrongPermission.jsp"%>
+        <%} else {
 %>
 <br>
-<div class="form-block center-block" style="width: 40%; min-height: 500px;">
+<div class="form-block center-block" style="width: 40%; min-height: 1000px;">
     <center><h2 class="title">Изменить информацию о ресурсе</h2></center>
     <hr>
     <form class="form-horizontal" method = "post" action = "updateResourceInfo.jsp?id=<%=id%>">
@@ -55,5 +57,5 @@
     </form>
 </div>
 <br>
-<% }%>
+<% }}}%>
 <%@include file = "layout2.jsp"%>
