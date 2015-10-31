@@ -24,7 +24,7 @@
 
 <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
 <div  class="form-block center-block" style="min-height: 700px; width: 50%">
-    <center><h2 class="title">Изменение утревжденной заявки</h2></center>
+    <center><h2 class="title">Изменение утвержденной заявки</h2></center>
     <hr>
     <form class="form-horizontal" method="post" action="updateRequestInfo.jsp?id=<%=id%>">
         <div class="form-group has-feedback">
