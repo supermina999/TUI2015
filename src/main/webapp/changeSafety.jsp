@@ -1,6 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
-  int tab = -1;
+  int tab = 0;
 %>
 <%@include file = "layout1.jsp"%>
 <%
@@ -8,24 +8,24 @@
 <script>
   window.location.href = "/";
 </script>
-<%} else if (user.user.getPermissionId() != 1 && user.user.getPermissionId() != 2 && user.user.getPermissionId() != 3 && user.user.getPermissionId() != 5) {%>
+<%} else if (user.user.getPermissionId() != 1 && user.user.getPermissionId() != 3) {%>
 <%@include file = "wrongPermission.jsp"%>
-<% } else { %>
+<% } else { 
+    Safety[] safety = Safety.getAll(null);
+%>
 <br>
 
-<div class="form-block center-block" style="width: 50%; min-height: 700px;">
-  <center><h2 class="title">Изменить безопасность дороги</h2></center>
+<div class="form-block center-block" style="width: 50%; min-height: 1000px;">
+  <center><h2 class="title">Изменить опасность дороги</h2></center>
   <hr>
   <div class="form-horizontal">
     <div class="form-group has-feedback">
-      <label class="col-sm-3 control-label">Безопасность</label>
+      <label class="col-sm-3 control-label">Опасность</label>
       <div class="col-sm-8">
         <select class="form-control" name="safety" id="safety" style="width: 100%; padding-right: 0">
-          <option selected value="-1">Выберите Безопасность</option>
-          <option value="0">Безопасно</option>
-          <option value="1">Опасно</option>
-          <option value="2">Очень опасно</option>
-          <option value="3">Смертельно опасно</option>
+          <option selected value="-1">Выберите опасность</option>
+          <% for (int i = 0; i < safety.length; i++) {%>
+          <option value="<%=i%>"><%=safety[i].getName()%></option> <% } %>
         </select>
       </div>
     </div>

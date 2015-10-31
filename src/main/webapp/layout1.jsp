@@ -166,7 +166,7 @@
                                                         <ul class="dropdown-menu dropdown-animation">
                                                             <% if (permission == 1 || permission == 2 || permission == 4) {%><li><a href="transportations.jsp">Расписание</a></li><%}%>
                                                             <% if (permission == 1 || permission == 2) {%> <li><a href="">Рассчет маршрутов</a></li><%}%>
-                                                            <% if (permission == 1 || permission == 3) {%><li><a href="">Состояние дорог</a></li><%}%>
+                                                            <% if (permission == 1 || permission == 3) {%><li><a href="changeSafety.jsp">Состояние дорог</a></li><%}%>
                                                         </ul>
                                                     </li><%}%>
                                                     <% if (permission == 1) {%> <li style="margin-left: <%=width%>px; margin-right: <%=width%>px;" <% if (tab == 7) { %>class="active" <% } %>>
