@@ -10,6 +10,6 @@
 </script>
 <%} else {%>
 <script>
-    window.history.back();
+    window.location.href = "authError.jsp";
 </script>
 <%}%>
