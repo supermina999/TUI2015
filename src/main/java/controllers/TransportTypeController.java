@@ -14,7 +14,7 @@ public class TransportTypeController {
         TransportType transport = new TransportType();
         transport.setName(Sql.sql(name));
         transport.setSpeed(Integer.parseInt(speed));
-        transport.setMaxWeight(Integer.parseInt(maxWeight));
+        transport.setMaxWeight(Double.parseDouble(maxWeight));
         transport.writeToDB();
     }
     
@@ -36,7 +36,7 @@ public class TransportTypeController {
         TransportType transport = TransportType.getOne(typeId);
         transport.setName(Sql.sql(name));
         transport.setSpeed(Integer.parseInt(speed));
-        transport.setMaxWeight(Integer.parseInt(maxWeight));
+        transport.setMaxWeight(Double.parseDouble(maxWeight));
         transport.saveChanges();
     }
     

@@ -47,7 +47,7 @@
             <li class="text-center" style="width: 30%;"><a href="#h2tab3" role="tab" data-toggle="tab" style="font-size: 15px;"><i class="fa fa-list-alt"></i> Архив</a></li>
         </ul>
         <div class="tab-content">
-            <div class="tab-pane fade in active" id="h2tab1" style="min-height: 800px;">
+            <div class="tab-pane fade in active" id="h2tab1" style="min-height: 1000px;">
                 <div class="gray-bg">
                     <br>
                     <div class="col-md-8">
@@ -92,7 +92,7 @@
                     </tbody>
                 </table>
             </div>
-            <div class="tab-pane" id="h2tab2" style="min-height: 800px;">
+            <div class="tab-pane" id="h2tab2" style="min-height: 1000px;">
                 <div class="gray-bg">
                     <br>
                     <div class="col-md-8">
@@ -143,7 +143,7 @@
                     </tbody>
                 </table>
             </div>
-            <div class="tab-pane" id="h2tab3" style="min-height: 800px;">
+            <div class="tab-pane" id="h2tab3" style="min-height: 1000px;">
                 <div class="gray-bg">
                     <br>
                     <div class="col-md-8">

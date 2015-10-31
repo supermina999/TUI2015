@@ -100,7 +100,7 @@
 
 <script src="plugins/charts/Chart.js"></script> 
 <br>
-<div class="form-block center-block" style="width: 50%; min-height: 500px;">
+<div class="form-block center-block" style="width: 50%; min-height: 1000px;">
     <center><h2 class="title"><%=ResourceName%></h2></center>
     <hr>
     <form class="form-horizontal">

@@ -176,7 +176,11 @@ CREATE TABLE `measure` (
 
 LOCK TABLES `measure` WRITE;
 /*!40000 ALTER TABLE `measure` DISABLE KEYS */;
-INSERT INTO `measure` VALUES (1,'кг'),(2,'м'),(3,'шт');
+INSERT INTO `measure` (`id`, `name`) VALUES
+(1, 'кг'),
+(2, 'м'),
+(3, 'шт'),
+(4, 'л');
 /*!40000 ALTER TABLE `measure` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -373,7 +377,7 @@ DROP TABLE IF EXISTS `resource`;
 CREATE TABLE IF NOT EXISTS `resource` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` text NOT NULL,
-  `weight` int(11) NOT NULL,
+  `weight` double NOT NULL,
   `measure_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
@@ -387,15 +391,15 @@ LOCK TABLES `resource` WRITE;
 /*!40000 ALTER TABLE `resource` DISABLE KEYS */;
 INSERT INTO `resource` (`id`, `name`, `weight`, `measure_id`) VALUES
 (2, 'Одежда', 3, 1),
-(3, 'Хлеб', 1, 1),
-(4, 'Антигистаминные', 1, 3),
+(3, 'Хлеб', 0.5, 1),
+(4, 'Антигистаминные препараты', 0.7, 3),
 (5, 'Крупы', 1, 1),
-(6, 'Консервы', 2, 1),
-(7, 'Вода', 2, 1),
+(6, 'Консервы', 2, 3),
+(7, 'Вода', 2, 4),
 (8, 'Канцтовары', 1, 3),
 (9, 'Одеяла', 1, 3),
 (10, 'Бинты', 1, 2),
-(11, 'Перекись водорода', 1, 1);
+(11, 'Перекись водорода', 1, 4);
 /*!40000 ALTER TABLE `resource` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -532,7 +536,7 @@ CREATE TABLE IF NOT EXISTS `transport_type` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` text NOT NULL,
   `speed` int(11) NOT NULL,
-  `max_weight` int(11) NOT NULL,
+  `max_weight` double NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -544,10 +548,10 @@ CREATE TABLE IF NOT EXISTS `transport_type` (
 LOCK TABLES `transport_type` WRITE;
 /*!40000 ALTER TABLE `transport_type` DISABLE KEYS */;
 INSERT INTO `transport_type` (`id`, `name`, `speed`, `max_weight`) VALUES
-(1, 'ГАЗ 3302', 60, 1),
+(1, 'ГАЗ 3302', 60, 1.6),
 (2, 'Mercedes-Benz Actros', 50, 2),
 (4, 'Volvo FH12', 60, 1),
-(6, 'Renault Magnum', 60, 2);
+(6, 'Renault Magnum', 60, 2.5);
 /*!40000 ALTER TABLE `transport_type` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;

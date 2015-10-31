@@ -22,7 +22,7 @@
 <br>
 
 <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
-<div  class="form-block center-block" style="min-height: 700px; width: 50%">
+<div  class="form-block center-block" style="min-height: 1000px; width: 50%">
     <center><h2 class="title">Обработка заявки</h2></center>
     <hr>
     <form class="form-horizontal" method="post" action="addRequest.jsp?application_id=<%=id%>&request=<%=app.getRequestTypeId()%>">

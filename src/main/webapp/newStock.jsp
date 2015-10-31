@@ -22,7 +22,7 @@
 <br>
 
 <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
-<div class="form-block center-block" style="width: 50%; min-height: 700px;">
+<div class="form-block center-block" style="width: 50%; min-height: 1000px;">
     <center><h2 class="title">Добавить склад</h2></center>
     <hr>
     <form class="form-horizontal" method = "post" action = "addStock.jsp">

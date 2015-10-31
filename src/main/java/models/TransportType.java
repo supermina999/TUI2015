@@ -7,7 +7,7 @@ public class TransportType extends DBModel {
         new DBEntry("id", EntryType.Int),
         new DBEntry("name", EntryType.String),
         new DBEntry("speed", EntryType.Int),
-        new DBEntry("max_weight", EntryType.Int)
+        new DBEntry("max_weight", EntryType.Double)
     };
 
     protected TransportType(DBEntry[] entryes) {
@@ -75,11 +75,11 @@ public class TransportType extends DBModel {
         this.entryes[2].setValue(speed);
     }
     
-    public int getMaxWeight() {
-        return Integer.parseInt(this.entryes[3].getValue());
+    public double getMaxWeight() {
+        return Double.parseDouble(this.entryes[3].getValue());
     }
 
-    public void setMaxWeight(int weight) {
+    public void setMaxWeight(double weight) {
         this.entryes[3].setValue(weight);
     }
 }

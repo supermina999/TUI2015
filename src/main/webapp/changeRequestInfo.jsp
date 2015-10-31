@@ -23,8 +23,8 @@
 <br>
 
 <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
-<div  class="form-block center-block" style="min-height: 700px; width: 50%">
-    <center><h2 class="title">Изменение утревжденной заявки</h2></center>
+<div  class="form-block center-block" style="min-height: 1000px; width: 50%">
+    <center><h2 class="title">Изменение утвержденной заявки</h2></center>
     <hr>
     <form class="form-horizontal" method="post" action="updateRequestInfo.jsp?id=<%=id%>">
         <div class="form-group has-feedback">
@@ -54,7 +54,7 @@
             <div class="col-sm-4">
                 <select class="form-control" name="region" id="region" style="width: 105%; padding-right: 0">
                     <%for (int i = 0; i < region.length; i++) {%>
-                    <option value="<%=region[i].getId()%>" <% if (req.getLocation().getRegionId() == i + 1) {%> selected <% }%>><%=region[i].getName()%></option>
+                    <option value="<%=region[i].getId()%>" <% if (req.getLocation().getRegionId() == region[i].getId()) {%> selected <% }%>><%=region[i].getName()%></option>
                     <%}%>
                 </select>
             </div>

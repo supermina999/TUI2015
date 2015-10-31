@@ -27,7 +27,7 @@
 %>
 
 <br>
-<div class="form-block center-block" style="min-height: 700px;">
+<div class="form-block center-block" style="min-height: 1000px;">
     <center><h2 class="title">Изменить вид ресурса</h2></center>
     <hr>
     <form class="form-horizontal" method="post" action="updateTypeOfResource.jsp?id=<%=id%>">
@@ -49,7 +49,7 @@
             <div class="col-sm-8">
                 <select class="form-control" name="measure" id="measure" style="width: 100%; padding-right: 0">
                     <%for (int i = 0; i < measure.length; i++) {%>
-                    <option value="<%=measure[i].getId()%>" <% if (resource.getMeasureId() == i + 1) {%> selected <% }%>><%=measure[i].getName()%></option>
+                    <option value="<%=measure[i].getId()%>" <% if (resource.getMeasureId() == measure[i].getId()) {%> selected <% }%>><%=measure[i].getName()%></option>
                     <%}%>
                 </select>
             </div>

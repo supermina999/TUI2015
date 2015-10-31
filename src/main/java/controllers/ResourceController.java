@@ -10,7 +10,7 @@ public class ResourceController {
         String name = request.getParameter("name");
         String number = request.getParameter("weight");
         String measure = request.getParameter("measure");
-        int weight = Integer.parseInt(number);
+        double weight = Double.parseDouble(number);
         Resource resource = new Resource();
         resource.setName(Sql.sql(Sql.sql(name)));
         resource.setWeight(weight);
@@ -31,7 +31,7 @@ public class ResourceController {
         String name = request.getParameter("name");
         String number = request.getParameter("weight");
         String measure = request.getParameter("measure");
-        int weight = Integer.parseInt(number);
+        double weight = Double.parseDouble(number);
         Resource resource = Resource.getOne(resourceId);
         resource.setName(Sql.sql(name));
         resource.setWeight(weight);
