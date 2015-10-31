@@ -9,11 +9,13 @@ public class Path {
     Path(ArrayList<Node> nodes, ArrayList<Integer> edgeNumbers, double dist)
     {
         this.nodes = nodes;
+        this.edgeNumbers = edgeNumbers;
         this.dist = dist;
     }
 
     Path() {
         nodes = new ArrayList<>();
+        edgeNumbers = new ArrayList<>();
         dist = 0;
     }
     

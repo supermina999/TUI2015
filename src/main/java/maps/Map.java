@@ -8,7 +8,7 @@ import java.util.*;
 class Edge
 {
     int node, safety = 0;
-    Edge(int node, int safety) 
+    Edge(int node, int safety)
     {
         this.node = node;
         this.safety = safety;
@@ -188,7 +188,7 @@ public class Map
                     curDist.put(nxtNode, nxtDist);
                     curF.put(nxtNode, nxtF);
                     previous.put(nxtNode, node);
-                    previous.put(nxtNode, edgeNumber);
+                    previousEdge.put(nxtNode, edgeNumber);
                 }
             }
         }
@@ -200,7 +200,7 @@ public class Map
         int curNode = node2;
         while(curNode != node1) {
             pathNodes.add(curNode);
-            pathNodes.add(previousEdge.get(curNode));
+            pathEdges.add(previousEdge.get(curNode));
             curNode = previous.get(curNode);
         }
         pathNodes.add(node1);
