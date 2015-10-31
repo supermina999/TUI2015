@@ -51,7 +51,8 @@
                     <div class="col-md-4" style="width: 39%;">
                         <select class="form-control searchInput" style="width: 100%; padding: 0; padding-left: 5px;" name = "stock">
                             <option>Выберите склад</option>
-                            <%for (int i = 0; i < stock.length; i++) {%>
+                            <%for (int i = 0; i < stock.length; i++) 
+                            if (user.user.getId() == stock[i].getPersonId()) {%>
                             <option>№<%=stock[i].getId()%>, <%=stock[i].getLocation().getAddress()%></option>
                             <%}%>
                         </select>
@@ -80,7 +81,8 @@
                     </thead>
                     <tbody id="searchTable">
                         <%
-                    for (int i = 0; i < transport.length; i++) {%>
+                    for (int i = 0; i < transport.length; i++) 
+                        if (user.user.getId() == Stock.getOne(transport[i].getStockId()).getPersonId()) {%>
                         <tr>
                             <td class="idSearch"><% if (user.user.getPermissionId() == 1 || user.user.getPermissionId() == 4) {%><a href="transportInfo.jsp?id=<%=transport[i].getId()%>"><% } %><%=transport[i].getId()%> <%if (user.user.getPermissionId() == 1 || user.user.getPermissionId() == 4) {%></a><% } %></td>
                             <td class="idSearch">

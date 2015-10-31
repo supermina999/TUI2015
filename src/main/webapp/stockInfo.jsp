@@ -27,7 +27,9 @@
         stock = Stock.getOne(Integer.parseInt(s));
         availableRes = AvailableResource.getAll(params);
         transport = Transport.getAll(params);
-    }
+        if (stock.getPersonId() != user.user.getId()) {%>
+              <%@include file = "wrongPermission.jsp"%>
+        <%} else {
 %>
 <script>
     function confirmDelete() {
@@ -39,6 +41,13 @@
     }
     function confirmDelete2() {
         if (confirm("Вы уверены, что хотите удалить ресурс в наличии?")) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    function confirmDelete3() {
+        if (confirm("Вы уверены, что хотите удалить транспортное средтво?")) {
             return true;
         } else {
             return false;
@@ -128,7 +137,7 @@
                         <%
                     for (int i = 0; i < transport.length; i++) {%>
                         <tr>
-                            <td class="idSearch1"><%=transport[i].getId()%></td>
+                            <td class="idSearch1"><%if (user.user.getPermissionId() == 1) {%><a href="transportInfo.jsp?<%=transport[i].getId()%>"><% } %><%=transport[i].getId()%><%if (user.user.getPermissionId() == 1) {%></a><% } %></td>
                             <td class="idSearch1">
                                 <%=transport[i].getName()%>
                             </td>
@@ -137,9 +146,9 @@
                                 <b>Вместимость:</b> <%=transport[i].getMaxWeight()%> т 
                             </td>
                             <td class="idSearch1"><%=transport[i].getNumber()%></td>
-                            <td class="idSearch1"><a href="userInfo.jsp?id=<%=transport[i].getPersonId()%>"><%=transport[i].getDriverName()%></a></td>
+                            <td class="idSearch1"><%if (user.user.getPermissionId() == 1) {%><a href="userInfo.jsp?id=<%=transport[i].getPersonId()%>"><% } %><%=transport[i].getDriverName()%><%if (user.user.getPermissionId() == 1) {%></a><% } %></td>
                             <td><a href="changeTransportInfo.jsp?id=<%=transport[i].getId()%>"><i class="fa fa-edit"></i></a></td>
-                            <td><a href="deleteTransport.jsp?id=<%=transport[i].getId()%>" onclick="return confirmDelete();"><i class="fa fa-close"></i></a></td>
+                            <td><a href="deleteTransport.jsp?id=<%=transport[i].getId()%>" onclick="return confirmDelete3();"><i class="fa fa-close"></i></a></td>
                         </tr>
                         <% }%>
                     </tbody>
@@ -150,6 +159,6 @@
     </div>
 </div>
 <br>
-<% } %>
+<% }}} %>
 <script src="js/search.js"></script>
 <%@include file = "layout2.jsp"%>

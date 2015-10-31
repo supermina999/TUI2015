@@ -49,7 +49,8 @@
                     <div class="col-md-4">
                         <select class="form-control searchInput" style="width: 100%; padding-left: 5px" name = "stock">
                             <option>Выберите склад</option>
-                            <%for (int i = 0; i < stock.length; i++) {%>
+                            <%for (int i = 0; i < stock.length; i++) 
+                            if (user.user.getId() == stock[i].getPersonId()) {%>
                             <option>№<%=stock[i].getId()%>, <%=stock[i].getLocation().getAddress()%></option>
                             <%}%>
                         </select>
@@ -68,7 +69,8 @@
                     </thead>
                     <tbody id="searchTable">
                         <%
-                    for (int i = 0; i < availableRes.length; i++) {%>
+                    for (int i = 0; i < availableRes.length; i++) {
+                    if (user.user.getPermissionId() != 5 || Stock.getOne(availableRes[i].getStockId()).getPersonId() == user.user.getId()) {%>
                         <tr>
                             <td class="idSearch"><% if (user.user.getPermissionId() == 1 || user.user.getPermissionId() == 5) {%><a href="resourceInfo.jsp?id=<%=availableRes[i].getId()%>&stock_id=<%=availableRes[i].getStockId()%>"><% } %><%=availableRes[i].getResourceName()%> <% if (user.user.getPermissionId() == 1 || user.user.getPermissionId() == 5) {%></a><% } %></td>
                             <td class="idSearch"><% if (user.user.getPermissionId() == 1 || user.user.getPermissionId() == 5) {%><a href="stockInfo.jsp?id=<%=availableRes[i].getStockId()%>"><% } %>№<%=availableRes[i].getStockId()%><% if (user.user.getPermissionId() == 1 || user.user.getPermissionId() == 5) {%></a><% } %>, <%=availableRes[i].getStockAddress()%> </td>
@@ -76,7 +78,7 @@
                             <% if (user.user.getPermissionId() == 1 || user.user.getPermissionId() == 5) {%><td><a href="changeResource.jsp?id=<%=availableRes[i].getId()%>"><i class="fa fa-edit"></i></a></td><% } %>
                             <% if (user.user.getPermissionId() == 1 || user.user.getPermissionId() == 5) {%><td><a href="deleteAvailableResource.jsp?id=<%=availableRes[i].getId()%>" onclick="return confirmDelete();"><i class="fa fa-close"></i></a></td><% } %>
                         </tr>
-                        <% }%>
+                        <% }}%>
                     </tbody>
                 </table>
             </div>

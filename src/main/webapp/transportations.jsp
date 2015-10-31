@@ -76,6 +76,7 @@
                                 <%
                                     for (int i = 0; i < transit.length; i++) if (transit[i].getStatus() == 0) {
                                         Request req = Request.getOne(transit[i].getRequestId());
+                                        if (user.user.getPermissionId() != 4 || user.user.getId() == transit[i].getDriverId()){
                                 %>
                                 <tr>
                                     <td class="idSearch">
@@ -102,7 +103,7 @@
                                 <b>Опасность пути: </b><%=transit[i].getSafetyName()%>
                             </td>
                             </tr>
-                            <% }%>
+                            <% }}%>
                             </tbody>
                         </table>
                     </div>
@@ -153,6 +154,7 @@
                                 <%
                                     for (int i = 0; i < transit.length; i++) if (transit[i].getStatus() == 0) {
                                         Request req = Request.getOne(transit[i].getRequestId());
+                                         if (user.user.getPermissionId() != 4 || user.user.getId() == transit[i].getDriverId()){
                                 %>
                                 <tr>
                                     <td class="idSearch1">
@@ -179,7 +181,7 @@
                                         <b>Опасность пути: </b><%=transit[i].getSafetyName()%>
                                     </td>
                                 </tr>
-                            <% }%>
+                            <% }}%>
                             </tbody>
                         </table>
                     </div>

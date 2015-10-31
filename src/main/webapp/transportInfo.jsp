@@ -27,7 +27,9 @@
             new DBEntry("transport_id", EntryType.Int, Integer.parseInt(s))
         };
         transit = Transportation.getAll(params);
-    }
+        if (user.user.getId() != transport.getPersonId()) {%>
+            <%@include file = "wrongPermission.jsp"%>
+        <%} else {
 %>
 <script>
     function confirmDelete() {
@@ -183,6 +185,6 @@
     </div>
 </div>
 <br>
-<% } %>
+<% }}} %>
 <script src="js/search.js"></script>
 <%@include file = "layout2.jsp"%>

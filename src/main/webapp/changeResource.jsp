@@ -22,7 +22,9 @@
 <%} else {
         id = Integer.parseInt(s);
         resource = AvailableResource.getOne(id);
-    }
+        if (Stock.getOne(resource.getStockId()).getPersonId() != user.user.getId()) {%>
+             <%@include file = "wrongPermission.jsp"%>
+        <%} else {
 %>
 <br>
 <div class="form-block center-block" style="width: 40%; min-height: 500px;">
@@ -55,5 +57,5 @@
     </form>
 </div>
 <br>
-<% }%>
+<% }}}%>
 <%@include file = "layout2.jsp"%>

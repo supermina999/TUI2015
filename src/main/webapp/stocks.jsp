@@ -59,7 +59,8 @@
                 </tr>
             </thead>
             <tbody id="searchTable">
-                <%for (int i = 0; i < stock.length; i++) {%>
+                <%for (int i = 0; i < stock.length; i++) 
+                if (user.user.getPermissionId() != 5 || user.user.getId() == stock[i].getPersonId()){%>
                 <tr>
                     <td class="idSearch" ><center><% if (user.user.getPermissionId() == 1 || user.user.getPermissionId() == 5) {%><a href="stockInfo.jsp?id=<%=stock[i].getId()%>"><% } %><%=stock[i].getId()%><% if (user.user.getPermissionId() == 1 || user.user.getPermissionId() == 5) {%></a><% } %></center></td>
                     <td class="idSearch"><%=stock[i].getFullAddress()%></td>

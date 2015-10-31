@@ -68,6 +68,13 @@ public class AvailableResourceController {
         {
             int id = Integer.parseInt(idS);
             res = AvailableResource.getOne(id);
+            History history = new History();
+             Date date = new Date();
+            history.setNumber(-1*res.getNumber());
+            history.setResourceId(res.getResourceId());
+            history.setStockId(res.getStockId());
+            history.setDate(date);
+            history.writeToDB();
             res.delete();
         }
         return res;
