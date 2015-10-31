@@ -3,9 +3,11 @@ package maps;
 public class Node
 {
     public double x, y;
-    Node(double x, double y)
+    public int number;
+    Node(double x, double y, int number)
     {
         this.x = x;
         this.y = y;
+        this.number = number;
     }
 }

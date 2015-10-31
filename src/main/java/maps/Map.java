@@ -1,6 +1,8 @@
 package maps;
 
 import java.io.File;
+import java.io.PrintStream;
+import java.io.PrintWriter;
 import java.util.*;
 
 class Edge
@@ -45,21 +47,48 @@ public class Map
     
     public static void load() throws Exception
     {
-        Scanner sc = new Scanner(new File(filePath)).useLocale(Locale.US);;
+        Scanner sc = new Scanner(new File(filePath)).useLocale(Locale.US);
         int n = sc.nextInt();
         for(int i = 0; i < n; i++) {
             double x = sc.nextDouble(), y = sc.nextDouble();
-            nodes.add(new Node(x, y));
+            nodes.add(new Node(x, y, i));
         }
         for(int i = 0; i < n; i++) {
             int m = sc.nextInt();
             ArrayList<Edge> curList = new ArrayList<>();
             for(int j = 0; j < m; j++) {
                 int number = sc.nextInt();
-                curList.add(new Edge(number));
+                int safety = sc.nextInt();
+                curList.add(new Edge(number, safety));
             }
             graph.add(curList);
         }
+    }
+
+    public static void save() throws Exception
+    {
+        if(nodes.isEmpty()) return;
+        PrintStream writer = new PrintStream(filePath);
+        writer.println(nodes.size());
+        for(Node node : nodes)
+        {
+            writer.print(node.x);
+            writer.print(" ");
+            writer.println(node.y);
+        }
+        for(ArrayList<Edge> curEdges : graph)
+        {
+            writer.print(curEdges.size());
+            for(Edge edge : curEdges)
+            {
+                writer.print(" ");
+                writer.print(edge.node);
+                writer.print(" ");
+                writer.print(edge.safety);
+            }
+            writer.println();
+        }
+        writer.close();
     }
     
     static double dist(double x1, double y1, double x2, double y2)
@@ -111,11 +140,14 @@ public class Map
     {
         if(node1 == node2) return new Path();
         if(nodes.isEmpty()) load();
+
         TreeSet<Position> positions = new TreeSet<>();
         TreeMap<Integer, Double> curDist = new TreeMap<>();
         TreeMap<Integer, Double> curF = new TreeMap<>();
         TreeSet<Integer> used = new TreeSet<>();
         TreeMap<Integer, Integer> previous = new TreeMap<>();
+        TreeMap<Integer, Integer> previousEdge = new TreeMap<>();
+
         curF.put(node1, dist(node1, node2));
         curDist.put(node1, 0.0);
         positions.add(new Position(node1, dist(node1, node2)));
@@ -123,7 +155,6 @@ public class Map
         {
             Position pos = positions.first();
             int node = pos.node;
-            double tF = pos.dist;
             double tDist = curDist.get(node);
             positions.remove(pos);
             used.add(node);
@@ -131,8 +162,10 @@ public class Map
             {
                 break;
             }
-            for(Edge edge : graph.get(node))
+            for(int edgeNumber = 0; edgeNumber < graph.get(node).size(); edgeNumber++)
             {
+                Edge edge = graph.get(node).get(edgeNumber);
+                if (edge.safety > safety) continue;
                 int nxtNode = edge.node;
                 if(used.contains(nxtNode)) continue;
                 Double nxtDist = curDist.get(nxtNode);
@@ -155,22 +188,40 @@ public class Map
                     curDist.put(nxtNode, nxtDist);
                     curF.put(nxtNode, nxtF);
                     previous.put(nxtNode, node);
+                    previous.put(nxtNode, edgeNumber);
                 }
             }
         }
+
+        if(previous.get(node2) == null) return null;
+
         ArrayList<Integer> pathNodes = new ArrayList<>();
+        ArrayList<Integer> pathEdges = new ArrayList<>();
         int curNode = node2;
         while(curNode != node1) {
             pathNodes.add(curNode);
+            pathNodes.add(previousEdge.get(curNode));
             curNode = previous.get(curNode);
         }
         pathNodes.add(node1);
         Path path = new Path();
-        for (int i = pathNodes.size() - 1; i >= 0; i--)
+        for(int i = pathNodes.size() - 1; i >= 0; i--)
         {
             path.nodes.add(nodes.get(pathNodes.get(i)));
         }
+        for(int i = pathEdges.size() - 1; i >= 0; i--)
+        {
+            path.edgeNumbers.add(pathEdges.get(i));
+        }
         path.dist = curDist.get(node2);
         return path;
+    }
+
+    public static void setSafetyOnPath(Path path, int safety)
+    {
+        for(int i = 0; i < path.nodes.size() - 1; i++)
+        {
+            graph.get(path.nodes.get(i).number).get(path.edgeNumbers.get(i)).safety = safety;
+        }
     }
 }
