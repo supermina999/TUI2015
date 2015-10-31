@@ -28,7 +28,7 @@ public class UserController {
         Date date = sdf.parse(birthday);
         Person person = new Person();
         person.setLogin(Sql.sql(login));
-        person.setPassword(Sql.sql(password1));
+        person.setPassword(Sql.md5(password1));
         person.setName(Sql.sql(name));
         person.setSurname(Sql.sql(surname));
         person.setSecondName(Sql.sql(secondName));
@@ -80,7 +80,7 @@ public class UserController {
         String passwordOld = request.getParameter("passwordOld");
         String password1 = request.getParameter("password1");
         String password2 = request.getParameter("password2");
-        person.setPassword(password1);
+        person.setPassword(Sql.md5(password1));
         person.saveChanges();
     }
     
