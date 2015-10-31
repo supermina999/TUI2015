@@ -103,7 +103,7 @@ public class Transport extends DBModel {
         this.entryes[4].setValue(id);
     }
     
-    public Integer getMaxWeight() throws Exception {
+    public double getMaxWeight() throws Exception {
         int id = getTypeId();
         return TransportType.getOne(id).getMaxWeight();
     }

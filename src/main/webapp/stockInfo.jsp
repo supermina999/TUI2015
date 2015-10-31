@@ -57,11 +57,16 @@
 
 <br>
 <div class="form-block center-block" style="width: 70%;">
-    <div style="margin-left: 90%;">
+    <div style="margin-left: 90%;" <% if (user.user.getPermissionId() != 1 && user.user.getPermissionId() != 3) {%> hidden <% } %>>
         <p style="font-size: 25px;"><a href="changeStockInfo.jsp?id=<%=stock.getId()%>"><i class="fa fa-edit"></i></a>
             <a href="deleteStock.jsp?id=<%=stock.getId()%>" onclick="return confirmDelete();"><i class="fa fa-close"></i></a></p>
     </div>
     <center><h2 class="title">Склад № <%=Integer.parseInt(s)%></h2></center>
+    <hr>
+    <div class="text-center">
+        <a style="width: 30%;" href="newResource.jsp" class="btn btn-default"><i class="fa fa-plus"></i> Добавить ресурс</a>
+        <a style="width: 30%;" href="newTransport.jsp" class="btn btn-default"><i class="fa fa-plus"></i> Добавить транспорт</a>
+    </div>
     <hr>
     <div class="form-group col-sm-12">
         <p style="font-size: 20px; margin-bottom: 0"> <b>Расположение:</b> <%=stock.getFullAddress()%> </p>
