@@ -68,7 +68,7 @@ public class Sql {
     {
         try
         {
-            SimpleDateFormat sdf= new SimpleDateFormat("yyyy-mm-dd");
+            SimpleDateFormat sdf= new SimpleDateFormat("yyyy-MM-dd");
             sdf.parse(s);
         }
         catch (Exception e)

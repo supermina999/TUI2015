@@ -22,7 +22,7 @@
 %>
 
 <script>
-    window.location.href = "stockInfo.jsp?id=<%=stockId%>";
+    window.location.href = "transportations.jsp";
 </script>
 <% }} %>
 <%@include file = "layout2.jsp"%>

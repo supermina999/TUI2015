@@ -9,7 +9,7 @@ import java.text.SimpleDateFormat;
 
 public class UserController {
     
-    public static void add(HttpServletRequest request) throws Exception
+    public static boolean add(HttpServletRequest request) throws Exception
     {
         String login = request.getParameter("login");
         String password1 = request.getParameter("password1");
@@ -24,6 +24,10 @@ public class UserController {
         String email = request.getParameter("email");
         String phone = request.getParameter("phone");
         String birthday = request.getParameter("birthday");
+        if (permissionId == null || name == null || surname == null || secondName == null || regionId == null || address == null ||
+            city == null || email == null || phone == null || birthday == null) return false;
+        if (permissionId.equals("-1") || regionId.equals("-1")) return false;
+        if (!Sql.isInt(regionId) || !Sql.isInt(permissionId) || !Sql.isDate(birthday)) return  false;
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         Date date = sdf.parse(birthday);
         Person person = new Person();
@@ -40,9 +44,10 @@ public class UserController {
         person.setBirthday(date);
         person.setPermissionId(Integer.parseInt(permissionId));
         person.writeToDB();
+        return true;
     }
     
-    public static void update(HttpServletRequest request) throws Exception
+    public static boolean update(HttpServletRequest request) throws Exception
     {
         String id = request.getParameter("id");
         String login = request.getParameter("login");
@@ -56,6 +61,9 @@ public class UserController {
         String email = request.getParameter("email");
         String phone = request.getParameter("phone");
         String birthday = request.getParameter("birthday");
+        if (permissionId == null || name == null || surname == null || secondName == null || regionId == null || address == null ||
+            city == null || email == null || phone == null || birthday == null) return false;
+        if (!Sql.isInt(regionId) || !Sql.isInt(permissionId) || !Sql.isDate(birthday)) return  false;
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         Date date = sdf.parse(birthday);
         Person person = Person.getOne(Integer.parseInt(id));
@@ -71,17 +79,20 @@ public class UserController {
         person.setCity(Sql.sql(city));
         person.setBirthday(date);
         person.saveChanges();
+        return true;
     }
     
-    public static void updatePassword(HttpServletRequest request) throws Exception 
+    public static boolean updatePassword(HttpServletRequest request) throws Exception 
     {
         String id = request.getParameter("id");
         Person person = Person.getOne(Integer.parseInt(id));
         String passwordOld = request.getParameter("passwordOld");
         String password1 = request.getParameter("password1");
         String password2 = request.getParameter("password2");
+        if (!password1.equals(password2)) return false;
         person.setPassword(Sql.md5(password1));
         person.saveChanges();
+        return true;
     }
     
     public static void delete(HttpServletRequest request) throws Exception
