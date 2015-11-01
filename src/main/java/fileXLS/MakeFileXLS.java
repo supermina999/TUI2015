@@ -19,7 +19,7 @@ public class MakeFileXLS {
     {
         HSSFWorkbook table = new HSSFWorkbook();
         HSSFSheet fSheet = table.createSheet(resource_name);
-        String link = "../../TUI2015/src/main/webapp/load/resourceId" + id + ".xls";
+        String link = "/home/TUI2015/src/main/webapp/load/resourceId" + id + ".xls";
         File file = new File(link);
         HSSFCellStyle cellStyle = table.createCellStyle();
         TableModel model = jtable.getModel();
