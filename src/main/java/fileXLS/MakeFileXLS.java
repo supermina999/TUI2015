@@ -19,8 +19,8 @@ public class MakeFileXLS {
     {
         HSSFWorkbook table = new HSSFWorkbook();
         HSSFSheet fSheet = table.createSheet(resource_name);
-
-        File file = new File("table.xls");
+        String link = "/var/lib/tomcat7/webapps/ROOT/" + resource_name + ".xls";
+        File file = new File(link);
         HSSFCellStyle cellStyle = table.createCellStyle();
         TableModel model = jtable.getModel();
         HSSFRow fRow = fSheet.createRow(0);
