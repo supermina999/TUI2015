@@ -64,7 +64,8 @@ public class Planner {
             stocks.put(buf.getId(), buf);
         }
         DBEntry[] params = {
-            new DBEntry("date", EntryType.Date, date)
+            new DBEntry("date", EntryType.Date, date),
+            new DBEntry("status", EntryType.Int, 0)
         };
         Request[] requestsM = Request.getAll(params);
         Map<Integer, Request> requests = new HashMap<>();
@@ -143,13 +144,15 @@ public class Planner {
                     //Generating needed resource list & calculating total weight;
                     double weight = 0;
                     Map<Integer, Integer> recourcesNeeded = new HashMap<>();
+                    Map<Integer, Integer> recourcesNew = new HashMap<>();
                     if (i1 >= 0) 
                     {
                         int resTypeId = requestsM[i1].getResourceId();
                         int resTypeCnt = requestsM[i1].getNumber();
                         Integer resTypeCntPr = recourcesNeeded.get(resTypeId);
                         if (resTypeCntPr != null) resTypeCnt += resTypeCntPr;
-                        recourcesNeeded.put(resTypeId, resTypeCnt);
+                        if (requestsM[i1].getRequestTypeId() == 1)recourcesNeeded.put(resTypeId, resTypeCnt);
+                        else recourcesNew.put(resTypeId, resTypeCnt);
                         weight += Resource.getOne(resTypeId).getWeight()*resTypeCnt;
                     }
                     if (i2 >= 0) 
@@ -158,7 +161,11 @@ public class Planner {
                         int resTypeCnt = requestsM[i2].getNumber();
                         Integer resTypeCntPr = recourcesNeeded.get(resTypeId);
                         if (resTypeCntPr != null) resTypeCnt += resTypeCntPr;
-                        recourcesNeeded.put(resTypeId, resTypeCnt);
+                        if (requestsM[i2].getRequestTypeId() == 1) {
+                            recourcesNeeded.put(resTypeId, resTypeCnt);
+                        } else {
+                            recourcesNew.put(resTypeId, resTypeCnt);
+                        }
                         weight += Resource.getOne(resTypeId).getWeight() * resTypeCnt;
                     }
                     if (i3 >= 0) 
@@ -167,7 +174,11 @@ public class Planner {
                         int resTypeCnt = requestsM[i3].getNumber();
                         Integer resTypeCntPr = recourcesNeeded.get(resTypeId);
                         if (resTypeCntPr != null) resTypeCnt += resTypeCntPr;
-                        recourcesNeeded.put(resTypeId, resTypeCnt);
+                        if (requestsM[i3].getRequestTypeId() == 1) {
+                            recourcesNeeded.put(resTypeId, resTypeCnt);
+                        } else {
+                            recourcesNew.put(resTypeId, resTypeCnt);
+                        }
                         weight += Resource.getOne(resTypeId).getWeight() * resTypeCnt;
                     }
                     if (i4 >= 0) 
@@ -176,7 +187,11 @@ public class Planner {
                         int resTypeCnt = requestsM[i4].getNumber();
                         Integer resTypeCntPr = recourcesNeeded.get(resTypeId);
                         if (resTypeCntPr != null) resTypeCnt += resTypeCntPr;
-                        recourcesNeeded.put(resTypeId, resTypeCnt);
+                        if (requestsM[i4].getRequestTypeId() == 1) {
+                            recourcesNeeded.put(resTypeId, resTypeCnt);
+                        } else {
+                            recourcesNew.put(resTypeId, resTypeCnt);
+                        }
                         weight += Resource.getOne(resTypeId).getWeight() * resTypeCnt;
                     }
                     if (i5 >= 0) 
@@ -185,7 +200,11 @@ public class Planner {
                         int resTypeCnt = requestsM[i5].getNumber();
                         Integer resTypeCntPr = recourcesNeeded.get(resTypeId);
                         if (resTypeCntPr != null) resTypeCnt += resTypeCntPr;
-                        recourcesNeeded.put(resTypeId, resTypeCnt);
+                        if (requestsM[i5].getRequestTypeId() == 1) {
+                            recourcesNeeded.put(resTypeId, resTypeCnt);
+                        } else {
+                            recourcesNew.put(resTypeId, resTypeCnt);
+                        }
                         weight += Resource.getOne(resTypeId).getWeight() * resTypeCnt;
                     }
                     Map<Integer, Integer> stock1Res, stock2Res, stock3Res;
@@ -219,6 +238,13 @@ public class Planner {
                             }
                         }
                     }  
+                    
+                    //Adding new resources
+                    keys = recourcesNew.keySet().toArray(new Integer[recourcesNew.keySet().size()]);
+                    for (int key : keys)
+                    {
+                        way.deltas.add(new Way.StockDelta(stockId1, key, -recourcesNew.get(key)));
+                    }
                     
                     // Looking in second stock
                     int stockId2 = stocksM[i6].getId();
