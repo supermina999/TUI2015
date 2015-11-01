@@ -82,16 +82,8 @@
         }
         for (int i = 1; i < number.size(); i++)
             number.setElementAt(number.elementAt(i) + sum_now - sum, i);
-        String[] columnNames = {"Дата", "Кол-во, " + MeasureName};
-        Object[][] data = new Object[history.length][2];
-        for (int i = 0; i < history.length; i++)
-        {
-            data[i][0] = history[i].getDateString();
-            data[i][1] = history[i].getNumber();
-        }
-        JTable jtable = new JTable(data, columnNames);
         MakeFileXLS mfXLS = new MakeFileXLS();
-        mfXLS.makeFile(jtable, id, ResourceName);
+        mfXLS.makeFile(id, stock_id);
     }
 %>
 
@@ -103,8 +95,8 @@
     <form class="form-horizontal">
         <div class="form-group col-sm-7">
             <p style="font-size: 15px;"> <b>Кол-во:</b> <%=sum_now%> <%=MeasureName%></p>
-            <%if (stock_id == -1) {%><p style="font-size: 15px;"> <b>Склады:</b> <a href="stockInfo.jsp?id=0">№<%=stocks[0]%></a><%for (int i = 1; i < stocks.length; i++) {%>, <a href="stockInfo.jsp?id=<%=i%>">№<%=stocks[i]%></a><%}%> </p><%}%> 
-            <%if (history.length > 0){%><p style="font-size: 15px;"> <a href="/resourceId<%=id%>.xls" download="resourceId<%=id%>.xls"> Скачать таблицу </a></p><%}%>
+            <%if (stock_id == -1) {%><p style="font-size: 15px;"> <b><%if (stocks.length > 1){%>Склады<%}else{%>Склад<%}%>:</b> <a href="stockInfo.jsp?id=0">№<%=stocks[0]%></a><%for (int i = 1; i < stocks.length; i++) {%>, <a href="stockInfo.jsp?id=<%=i%>">№<%=stocks[i]%></a><%}%> </p><%}%> 
+            <%if (history.length > 0){%><p style="font-size: 15px;"> <a href="/<%if (stock_id == -1){%>resourceId<%=id%><%} else {%>resourceId<%=id%>&stockId<%=stock_id%>.xls" download="Report.xls">Скачать таблицу</a></p><%}%>
         </div>
         <%if (history.length > 0){%><canvas class="graph-line" id="myChart1"></canvas><%}%>
     </form>

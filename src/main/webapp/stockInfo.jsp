@@ -1,3 +1,4 @@
+<%@page import="fileXLS.MakeFileXLS"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
     int tab = 4;
@@ -30,6 +31,12 @@
         if (stock.getPersonId() != user.user.getId() && user.user.getPermissionId() != 1) {%>
               <%@include file = "wrongPermission.jsp"%>
         <%} else {
+        History[] history = History.getAll(params);
+        if (history.length > 0)
+        {
+            MakeFileXLS mfXLS = new MakeFileXLS();
+            mfXLS.makeFile(-1, Integer.parseInt(s));
+        }
 %>
 <script>
     function confirmDelete() {
@@ -71,6 +78,7 @@
     <div class="form-group col-sm-12">
         <p style="font-size: 20px; margin-bottom: 0"> <b>Расположение:</b> <%=stock.getFullAddress()%> </p>
         <p style="font-size: 20px;"> <b>Заведующий:</b> <a href="userInfo.jsp?id=<%=stock.getPersonId()%>"><%=stock.getFullPersonName()%></a> </p>
+        <%if (history.length > 0) {%><p style="font-size: 20px;"> <a href="/stockId<%=Integer.parseInt(s)%>.xls" download="Report.xls">Скачать отчет о изменениях на складе</a> </p><%}%>
     </div>
     <div class="tabs-style-2">
         <ul class="nav nav-tabs" role="tablist">
