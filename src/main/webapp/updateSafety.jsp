@@ -1,7 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="models.*"%>
 <%@page import="controllers.MapsController"%>
-<%@ page import="javafx.collections.MapChangeListener" %>
 <%
   int tab = 0;
 %>
