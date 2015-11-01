@@ -151,7 +151,7 @@ public class Planner {
                         int resTypeCnt = requestsM[i1].getNumber();
                         Integer resTypeCntPr = recourcesNeeded.get(resTypeId);
                         if (resTypeCntPr != null) resTypeCnt += resTypeCntPr;
-                        if (requestsM[i1].getRequestTypeId()==0)recourcesNeeded.put(resTypeId, resTypeCnt);
+                        if (requestsM[i1].getRequestTypeId() == 1)recourcesNeeded.put(resTypeId, resTypeCnt);
                         else recourcesNew.put(resTypeId, resTypeCnt);
                         weight += Resource.getOne(resTypeId).getWeight()*resTypeCnt;
                     }
@@ -161,7 +161,7 @@ public class Planner {
                         int resTypeCnt = requestsM[i2].getNumber();
                         Integer resTypeCntPr = recourcesNeeded.get(resTypeId);
                         if (resTypeCntPr != null) resTypeCnt += resTypeCntPr;
-                        if (requestsM[i2].getRequestTypeId() == 0) {
+                        if (requestsM[i2].getRequestTypeId() == 1) {
                             recourcesNeeded.put(resTypeId, resTypeCnt);
                         } else {
                             recourcesNew.put(resTypeId, resTypeCnt);
@@ -174,7 +174,7 @@ public class Planner {
                         int resTypeCnt = requestsM[i3].getNumber();
                         Integer resTypeCntPr = recourcesNeeded.get(resTypeId);
                         if (resTypeCntPr != null) resTypeCnt += resTypeCntPr;
-                        if (requestsM[i3].getRequestTypeId() == 0) {
+                        if (requestsM[i3].getRequestTypeId() == 1) {
                             recourcesNeeded.put(resTypeId, resTypeCnt);
                         } else {
                             recourcesNew.put(resTypeId, resTypeCnt);
@@ -187,7 +187,7 @@ public class Planner {
                         int resTypeCnt = requestsM[i4].getNumber();
                         Integer resTypeCntPr = recourcesNeeded.get(resTypeId);
                         if (resTypeCntPr != null) resTypeCnt += resTypeCntPr;
-                        if (requestsM[i4].getRequestTypeId() == 0) {
+                        if (requestsM[i4].getRequestTypeId() == 1) {
                             recourcesNeeded.put(resTypeId, resTypeCnt);
                         } else {
                             recourcesNew.put(resTypeId, resTypeCnt);
@@ -200,7 +200,7 @@ public class Planner {
                         int resTypeCnt = requestsM[i5].getNumber();
                         Integer resTypeCntPr = recourcesNeeded.get(resTypeId);
                         if (resTypeCntPr != null) resTypeCnt += resTypeCntPr;
-                        if (requestsM[i5].getRequestTypeId() == 0) {
+                        if (requestsM[i5].getRequestTypeId() == 1) {
                             recourcesNeeded.put(resTypeId, resTypeCnt);
                         } else {
                             recourcesNew.put(resTypeId, resTypeCnt);
