@@ -351,6 +351,7 @@ public class Planner {
                             }
                             distance += distances[cords.get(i).getId()][cords.get(i+1).getId()].dist;
                             way.path.add(distances[cords.get(i).getId()][cords.get(i+1).getId()]);
+                            way.times.add(distance / car.getSpeed());
                         }
                         if (badWay) 
                             continue;
