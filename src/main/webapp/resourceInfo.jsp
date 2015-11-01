@@ -1,3 +1,4 @@
+<%@page import="fileXLS.MakeFileXLS"%>
 <%@page import="javax.swing.table.TableColumnModel"%>
 <%@page import="javax.swing.table.TableModel"%>
 <%@page import="java.io.*"%>
@@ -81,23 +82,29 @@
         }
         for (int i = 1; i < number.size(); i++)
             number.setElementAt(number.elementAt(i) + sum_now - sum, i);
+        String[] columnNames = {"Дата", "Кол-во, " + MeasureName};
+        Object[][] data = new Object[history.length][2];
+        for (int i = 0; i < history.length; i++)
+        {
+            data[i][0] = history[i].getDateString();
+            data[i][1] = history[i].getNumber();
+        }
+        JTable jtable = new JTable(data, columnNames);
+        MakeFileXLS mfXLS = new MakeFileXLS();
+        mfXLS.makeFile(jtable, id, ResourceName);
     }
 %>
 
 <script src="plugins/charts/Chart.js"></script> 
 <br>
 <div class="form-block center-block" style="width: 50%; min-height: 1000px;">
-<<<<<<< HEAD
     <center><h2 class="title"><%=ResourceName%> <%if (stock_id != -1) {%>на складе №<%=stock_id%><%}%></h2></center>
-=======
-    <center><h2 class="title"><%=ResourceName%></h2></center>
->>>>>>> 82e7ca499646661712d9b46820286196e6d3b524
     <hr>
     <form class="form-horizontal">
         <div class="form-group col-sm-7">
             <p style="font-size: 15px;"> <b>Кол-во:</b> <%=sum_now%> <%=MeasureName%></p>
             <%if (stock_id == -1) {%><p style="font-size: 15px;"> <b>Склады:</b> <a href="stockInfo.jsp?id=0">№<%=stocks[0]%></a><%for (int i = 1; i < stocks.length; i++) {%>, <a href="stockInfo.jsp?id=<%=i%>">№<%=stocks[i]%></a><%}%> </p><%}%> 
-            <%if (history.length > 0){%><p style="font-size: 15px;"> <a href="downloadTable.jsp?id=<%=id%>&stock_id=<%=stock_id%>" target="_blank"> Скачать таблицу </a></p><%}%>
+            <%if (history.length > 0){%><p style="font-size: 15px;"> <a href="/TUI2015/load/resourceId<%=id%>.xls" download="resourceId<%=id%>.xls"> Скачать таблицу </a></p><%}%>
         </div>
         <%if (history.length > 0){%><canvas class="graph-line" id="myChart1"></canvas><%}%>
     </form>
