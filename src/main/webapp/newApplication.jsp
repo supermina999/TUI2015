@@ -14,7 +14,7 @@
             <label class="col-sm-3 control-label">Вид заявки</label>
             <div class="col-sm-8">
                 <select class="form-control" name="request" id="request" style="width: 100%; padding-right: 0">
-                    <option selected>Выберите вид заявки</option>
+                    <option value="-1" selected>Выберите вид заявки</option>
                     <%for (int i = 0; i < requestType.length; i++) {%>
                     <option value="<%=requestType[i].getId()%>"><%=requestType[i].getName()%></option>
                     <%}%>

@@ -15,6 +15,11 @@
     Region[] region = Region.getAll(null);
     Measure[] measure = Measure.getAll(null);
     String idS = request.getParameter("id");
+    if (idS == null) {%>
+        <script>
+            window.location.href = "/";
+        </script>
+    <%} else {
     int id = Integer.parseInt(idS);
     Application app = Application.getOne(id);
 %>
@@ -40,7 +45,7 @@
             <label class="col-sm-3 control-label">Ресурс</label>
             <div class="col-sm-7">
                 <select class="form-control" name="resource" id="request" style="width: 100%; padding-right: 0">
-                    <option selected>Выберите вид ресурса</option>
+                    <option value="-1" selected>Выберите вид ресурса</option>
                     <%for (int i = 0; i < resource.length; i++) {%>
                     <option value="<%=resource[i].getId()%>"><%=resource[i].getName()%>, <%=resource[i].getMeasureName()%></option>
                     <%}%>
@@ -104,6 +109,6 @@
     </form>
 </div>
 <br>
-<% } %>
+<% }} %>
 <script src="js/stock.js"></script>
 <%@include file = "layout2.jsp"%>

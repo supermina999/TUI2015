@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.servlet.http.HttpServletRequest;
 import models.*;
+import sql.Sql;
 
 public class RequestController
 {
@@ -25,7 +26,7 @@ public class RequestController
         req.setApplicationId(Integer.parseInt(appId));
         Location location = new Location();
         location.setRegionId(Integer.parseInt(regionId));
-        location.setAddress(address);
+        location.setAddress(Sql.sql(address));
         location.setXCoord(Double.parseDouble(lon));
         location.setYCoord(Double.parseDouble(lat));
         location.writeToDB();
