@@ -26,9 +26,19 @@ public class Planner {
     
     public static Map<Integer, ArrayList<Way> > plan;
     public static Map<Integer, Integer> status = new HashMap<>();
+    public static Date date;
+    public static Date lDate;
+    
+    public static void accepted(int safetyId)
+    {
+        lDate = date;
+        status.put(safetyId, 4);
+    }
     
     public static void createPlan(Date date) throws Exception
     {
+        if (lDate != null && date.before(lDate)) return;
+        Planner.date = date;
         plan = new HashMap<>();
         Safety[] safetys = Safety.getAll(null);
         for (Safety safety : safetys) {
@@ -183,7 +193,7 @@ public class Planner {
                     Way way = new Way();
                     
                     // check if we can carry all res
-                    if (weight > car.getMaxWeight()) 
+                    if (weight > car.getMaxWeight()*1000) 
                         continue;
                     
                     // Looking in first stock

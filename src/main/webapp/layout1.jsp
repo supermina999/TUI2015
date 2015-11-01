@@ -165,7 +165,7 @@
                                                         <a class="text-center" type="button" class="btn btn-toggle <% if (tab == 6) { %>btn-toggle-active<% }%>" data-toggle="dropdown">Перевозки</a>
                                                         <ul class="dropdown-menu dropdown-animation">
                                                             <% if (permission == 1 || permission == 2 || permission == 4) {%><li><a href="transportations.jsp">Расписание</a></li><%}%>
-                                                            <% if (permission == 1 || permission == 2) {%> <li><a href="">Рассчет маршрутов</a></li><%}%>
+                                                            <% if (permission == 1 || permission == 2) {%> <li><a href="calculationControlPanel.jsp">Рассчет маршрутов</a></li><%}%>
                                                             <% if (permission == 1 || permission == 3) {%><li><a href="changeSafety.jsp">Состояние дорог</a></li><%}%>
                                                         </ul>
                                                     </li><%}%>
