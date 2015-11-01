@@ -74,6 +74,7 @@
         route.editor.start({
           addWayPoints: false
         });
+        addRoutes();
       },
       function (error) {
         alert('Возникла ошибка: ' + error.message);
@@ -88,7 +89,6 @@
       zoom: 6
     });
     addPlacemarks();
-    addRoutes();
   }
 
   function clicked() {
