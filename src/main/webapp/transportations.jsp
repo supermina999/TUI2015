@@ -69,7 +69,8 @@
                             <th style="width: 20%;">Ресурс</th>
                             <th style="width: 20%;">Транспорт</th>
                             <th style="width: 20%;">Время</th>
-                            <th style="width: 39%;">Транспортировка</th>
+                            <th style="width: 34%;">Транспортировка</th>
+                            <th style="width: 5%;"></th>
                             </tr>
                             </thead>
                             <tbody id="searchTable">
@@ -83,14 +84,14 @@
                             <center><%=transit[i].getId()%></center>
                             </td>
                             <td class="idSearch">
-                                <b>Заявка: <a href="requestInfo.jsp?id=<%=req.getId()%>">№<%=req.getId()%></a><br></b>
+                                <b>Заявка: <% if (user.user.getPermissionId() == 1) {%><a href="requestInfo.jsp?id=<%=req.getId()%>"><% } %>№<%=req.getId()%><% if (user.user.getPermissionId() == 1) {%></a><% } %><br></b>
                                 <b>Вид: </b><%=req.getRequestTypeName()%><br>
                                 <b>Ресурс: </b><%=req.getResourceName()%> <%=req.getNumber()%> <%=req.getMeasureName()%>
                             </td>
                             <td class="idSearch">
                                 <b>Вид:</b> <%=transit[i].getTransportName()%><br>
                                 <b>Номер:</b> <%=transit[i].getTransportNumber()%><br>
-                                <b>Водитель: </b><a href="userInfo.jsp?id=<%=transit[i].getDriverId()%>"><%=transit[i].getDriverName()%></a><br>
+                                <b>Водитель: </b><% if (user.user.getPermissionId() == 1) {%><a href="userInfo.jsp?id=<%=transit[i].getDriverId()%>"><% } %><%=transit[i].getDriverName()%><% if (user.user.getPermissionId() == 1) {%></a><% } %><br>
                             </td>
                             <td class="idSearch">
                                 <b>Дата:</b> <%=req.getDateString()%> <br>
@@ -98,10 +99,11 @@
                                 <b>Прибытие:</b> <%=transit[i].getTimeFinish()%>
                             </td>
                             <td class="idSearch">
-                                <b>Склад: <a href="stockInfo.jsp?id=<%=transit[i].getStockId()%>">№<%=transit[i].getStockId()%></a></b>, <%=transit[i].getStockLocation().getFullAddress()%><br>
+                                <b>Склад: <% if (user.user.getPermissionId() == 1) {%><a href="stockInfo.jsp?id=<%=transit[i].getStockId()%>"><% } %>№<%=transit[i].getStockId()%><% if (user.user.getPermissionId() == 1) {%></a><% } %></b>, <%=transit[i].getStockLocation().getFullAddress()%><br>
                                 <b>Пункт назначения: </b><%=transit[i].getFinishLocation().getFullAddress()%><br>
                                 <b>Опасность пути: </b><%=transit[i].getSafetyName()%>
                             </td>
+                            <% if (user.user.getPermissionId() != 2) {%><td><a href="confirmTransportation.jsp?id=<%=transit[i].getId()%>"><i class="fa fa-check"></i></a></td><% } %>
                             </tr>
                             <% }}%>
                             </tbody>
@@ -161,14 +163,14 @@
                                     <center><%=transit[i].getId()%></center>
                                     </td>
                                     <td class="idSearch1">
-                                        <b>Заявка: <a href="requestInfo.jsp?id=<%=req.getId()%>">№<%=req.getId()%></a><br></b>
+                                        <b>Заявка: <% if (user.user.getPermissionId() == 1) {%><a href="requestInfo.jsp?id=<%=req.getId()%>"><% } %>№<%=req.getId()%><% if (user.user.getPermissionId() == 1) {%></a><% } %><br></b>
                                         <b>Вид: </b><%=req.getRequestTypeName()%><br>
                                         <b>Ресурс: </b><%=req.getResourceName()%> <%=req.getNumber()%> <%=req.getMeasureName()%>
                                     </td>
                                     <td class="idSearch1">
                                         <b>Вид:</b> <%=transit[i].getTransportName()%><br>
                                         <b>Номер:</b> <%=transit[i].getTransportNumber()%><br>
-                                        <b>Водитель: </b><a href="userInfo.jsp?id=<%=transit[i].getDriverId()%>"><%=transit[i].getDriverName()%></a><br>
+                                        <b>Водитель: </b><% if (user.user.getPermissionId() == 1) {%><a href="userInfo.jsp?id=<%=transit[i].getDriverId()%>"><% } %><%=transit[i].getDriverName()%><% if (user.user.getPermissionId() == 1) {%></a><% } %><br>
                                     </td>
                                     <td class="idSearch1">
                                         <b>Дата:</b> <%=req.getDateString()%> <br>
@@ -176,7 +178,7 @@
                                         <b>Прибытие:</b> <%=transit[i].getTimeFinish()%>
                                     </td>
                                     <td class="idSearch1">
-                                        <b>Склад: <a href="stockInfo.jsp?id=<%=transit[i].getStockId()%>">№<%=transit[i].getStockId()%></a></b>, <%=transit[i].getStockLocation().getFullAddress()%><br>
+                                        <b>Склад: <% if (user.user.getPermissionId() == 1) {%><a href="stockInfo.jsp?id=<%=transit[i].getStockId()%>"><% } %>№<%=transit[i].getStockId()%><% if (user.user.getPermissionId() == 1) {%></a><% } %></b>, <%=transit[i].getStockLocation().getFullAddress()%><br>
                                         <b>Пункт назначения: </b><%=transit[i].getFinishLocation().getFullAddress()%><br>
                                         <b>Опасность пути: </b><%=transit[i].getSafetyName()%>
                                     </td>

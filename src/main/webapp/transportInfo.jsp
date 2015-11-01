@@ -59,7 +59,7 @@
     <div class="form-group col-sm-12">
         <p style="font-size: 20px; margin-bottom: 0"><b>Вид:</b> <%=transport.getName()%></p>
         <p style="font-size: 20px; margin-bottom: 0"><b>Номер:</b> <%=transport.getNumber()%></p>
-        <p style="font-size: 20px; margin-bottom: 0"> <b>Склад:</b> <a href="stockInfo.jsp?id=<%=transport.getStockId()%>s">№<%=transport.getStockId()%></a>, 
+        <p style="font-size: 20px; margin-bottom: 0"> <b>Склад:</b> <%if (user.user.getPermissionId() == 1) {%><a href="stockInfo.jsp?id=<%=transport.getStockId()%>s"><% } %>№<%=transport.getStockId()%><%if (user.user.getPermissionId() == 1) {%></a><% } %>, 
             <%=transport.getStockAddress()%> </p>
         <p style="font-size: 20px; margin-top: 0"> <b>Водитель:</b> <a href="userInfo.jsp?id=<%=transport.getPersonId()%>"><%=transport.getDriverName()%></a></p>
     </div>
@@ -107,7 +107,7 @@
                     <center><%=transit[i].getId()%></center>
                     </td>
                     <td class="idSearch">
-                        <b>Заявка: <a href="requestInfo.jsp?id=<%=req.getId()%>">№<%=req.getId()%></a><br></b>
+                        <b>Заявка: <%if (user.user.getPermissionId() == 1) {%><a href="requestInfo.jsp?id=<%=req.getId()%>"><% } %>№<%=req.getId()%><%if (user.user.getPermissionId() == 1) {%></a><% } %><br></b>
                         <b>Вид: </b><%=req.getRequestTypeName()%><br>
                         <b>Ресурс: </b><%=req.getResourceName()%> <%=req.getNumber()%> <%=req.getMeasureName()%>
                     </td>
@@ -163,7 +163,7 @@
                     <center><%=transit[i].getId()%></center>
                     </td>
                     <td class="idSearch1">
-                        <b>Заявка: <a href="requestInfo.jsp?id=<%=req.getId()%>">№<%=req.getId()%></a><br></b>
+                        <b>Заявка: <%if (user.user.getPermissionId() == 1) {%><a href="requestInfo.jsp?id=<%=req.getId()%>"><% } %>№<%=req.getId()%><%if (user.user.getPermissionId() == 1) {%></a><% } %><br></b>
                         <b>Вид: </b><%=req.getRequestTypeName()%><br>
                         <b>Ресурс: </b><%=req.getResourceName()%> <%=req.getNumber()%> <%=req.getMeasureName()%>
                     </td>
