@@ -351,6 +351,7 @@ public class Planner {
                             }
                             distance += distances[cords.get(i).getId()][cords.get(i+1).getId()].dist;
                             way.path.add(distances[cords.get(i).getId()][cords.get(i+1).getId()]);
+                            way.times.add(distance / car.getSpeed());
                         }
                         if (badWay) 
                             continue;
@@ -369,7 +370,7 @@ public class Planner {
         allWays = ways;
         bestTime = 1e20;
         fullMask = (1 << (requests.size())) - 1; 
-        getBestWays(new ArrayList<Integer>(), 0, -1, 0);
+        getBestWays(new ArrayList<Integer>(), 0, -1, 0, new HashMap<Integer, Double>());
         
         return bestWays;
     }
@@ -380,7 +381,7 @@ public class Planner {
     private static int fullMask;
     
     // Warning! Wrong time when using one car two or more times
-    static private void getBestWays(ArrayList<Integer> maskM, int mask, int lastI, double curTime)
+    static private void getBestWays(ArrayList<Integer> maskM, int mask, int lastI, double curTime, Map<Integer, Double> carTimes)
     {
         // Some recursive magic
         for (int i = lastI + 1; i < allWays.size(); i++)
@@ -390,12 +391,19 @@ public class Planner {
             if ( (mask & way.mask) == 0)
             {
                 int Nmask = mask | way.mask;
-                double NcurTime = Math.max(curTime, way.time);
+                Map<Integer, Double> nCarTimes = new HashMap(carTimes);
+                double carTime = carTimes.get(way.transportId)==null?0:carTimes.get(way.transportId);
+                nCarTimes.put(way.transportId, carTime+way.time);
+                double nCurTime = 0;
+                for (Double time : nCarTimes.values())
+                {
+                    if (nCurTime < time) nCurTime=time;
+                }
                 if (Nmask == fullMask)
                 {
-                    if (bestTime > NcurTime)
+                    if (bestTime > nCurTime)
                     {
-                        bestTime = NcurTime;
+                        bestTime = nCurTime;
                         bestWays = new ArrayList<>();
                         for( int j : maskM)
                         {
@@ -405,7 +413,7 @@ public class Planner {
                 }
                 else
                 {
-                    getBestWays(maskM, Nmask, i, NcurTime);
+                    getBestWays(maskM, Nmask, i, nCurTime, nCarTimes);
                 }
             }
             maskM.remove(maskM.size()-1);

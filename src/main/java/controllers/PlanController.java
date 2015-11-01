@@ -31,12 +31,19 @@ public class PlanController {
             i++;
             SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
             Date dateStart = sdf.parse(request.getParameter("way"+i+"time"));
+            Date dateFinish;
             Calendar buf = Calendar.getInstance();
             buf.setTime(dateStart);
-            buf.add(Calendar.MINUTE, new Double(way.time*60).intValue());
-            Date dateFinish = buf.getTime();
+            double prTime=0;
+            int m = way.requests.size();
+            int n = way.times.size();
+            int j=0;
             for (Request req :way.requests)
             {
+                dateStart = buf.getTime();
+                buf.add(Calendar.MINUTE, new Double((way.times.get(n-m+j) - prTime)*60).intValue());
+                prTime = way.times.get(n - m + j);
+                dateFinish = buf.getTime();
                 Transportation transportion = new Transportation();  
                 transportion.setRequestId(req.getId());
                 transportion.setSafetyId(safetyId);
@@ -47,6 +54,7 @@ public class PlanController {
                 transportion.writeToDB();
                 req.setStatus(1);
                 req.saveChanges();
+                j++;
             }
         }
     }

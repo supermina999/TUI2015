@@ -17,10 +17,12 @@ public class Way {
         cords = new ArrayList<>();
         deltas = new ArrayList<>();  
         stocks = new ArrayList<>();
+        times = new ArrayList<>();
         path = new Path(); 
     }
     public int transportId;
     public ArrayList<Request> requests;
+    public ArrayList<Double> times;
     public ArrayList<Location> cords; 
     public ArrayList<StockDelta> deltas;
     public ArrayList<Stock> stocks;

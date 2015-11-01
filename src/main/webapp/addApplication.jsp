@@ -6,10 +6,14 @@
 <%@include file = "layout1.jsp"%>
 
 <%
-    ApplicationController.add(request);
-%>
+    boolean b = ApplicationController.add(request);
+    if (!b) {%>
+<script>
+    window.location.href = "incorrectData.jsp";
+</script>
+    <% } else {%>
 <script>
     window.location.href = "applicationAccepted.jsp";
 </script>
-
+<% } %>
 <%@include file = "layout2.jsp"%>

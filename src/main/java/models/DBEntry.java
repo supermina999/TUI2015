@@ -9,7 +9,7 @@ import java.io.UnsupportedEncodingException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
+import sql.Sql;
 /**
  *
  * @author roma
@@ -60,6 +60,6 @@ public class DBEntry
                 String string_date = sdf.format(date);
                 return '"' + string_date + '"';
             }
-            else return '"' + new String(value.getBytes("iso8859-1"), "utf8") + '"';
+            else return '"' + Sql.sql(new String(value.getBytes("iso8859-1"), "utf8")) + '"';
         }
     }

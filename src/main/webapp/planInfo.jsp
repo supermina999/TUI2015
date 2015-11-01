@@ -58,7 +58,7 @@
                 {
             %><b>Заявка: <a href="requestInfo.jsp?id=<%=req.getId()%>">№<%=req.getId()%></a><br></b>
             <b>Вид: </b><%=req.getRequestTypeName()%><br>
-            <b>Ресурс: </b><%=req.getResourceName()%> <%=req.getNumber()%> <%=req.getMeasureName()%>
+            <b>Ресурс: </b><%=req.getResourceName()%> <%=req.getNumber()%> <%=req.getMeasureName()%><br>
             <%  }%>
         </td>
         <td class="idSearch">
@@ -72,7 +72,7 @@
                Resource resType = Resource.getOne(delta.resourceTypeId);
             %>
             <b>Склад: <a href="stockInfo.jsp?id=<%=stock.getId()%>">№<%=stock.getId()%></a></b>, <%=stock.getFullAddress()%><br>
-            <b>Изминение:</b> <%=(delta.delta>0?"-":"+") + Math.abs(delta.delta) + "" + resType.getMeasureName() + " " + resType.getName()%><%}%><br>
+            <b>Изминение:</b> <%=(delta.delta>0?"-":"+") + Math.abs(delta.delta) + "" + resType.getMeasureName() + " " + resType.getName()%><br><%}%>
             <b>Время в пути:</b> <%= new Double(Math.floor(way.time)).intValue()+ ":" + new Double((way.time-Math.floor(way.time))*60).intValue()%>
         </td>
         <td>

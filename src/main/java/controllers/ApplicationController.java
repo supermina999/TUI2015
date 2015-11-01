@@ -6,13 +6,15 @@ import sql.Sql;
 
 public class ApplicationController
 {
-    public static void add(HttpServletRequest request) throws Exception
+    public static boolean add(HttpServletRequest request) throws Exception
     {
         String requestType = request.getParameter("request");
         String info = request.getParameter("info");
         String fullName = request.getParameter("full_name");
         String phone = request.getParameter("phone");
         String email = request.getParameter("email");
+        if (requestType == null || info == null || fullName == null || phone == null || email == null) return false;
+        if (requestType.equals("-1") || !Sql.isInt(requestType)) return false;
         Application app = new Application();
         app.setRequestTypeId(Integer.parseInt(requestType));
         app.setInfo(Sql.sql(info));
@@ -21,6 +23,7 @@ public class ApplicationController
         app.setPhone(Sql.sql(phone));
         app.setEmail(Sql.sql(email));
         app.writeToDB();
+        return true;
     }
     
     public static void delete(HttpServletRequest request) throws Exception
