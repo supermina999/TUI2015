@@ -8,7 +8,7 @@ import java.util.*;
 class Edge
 {
     int node, safety = 0;
-    Edge(int node, int safety) 
+    Edge(int node, int safety)
     {
         this.node = node;
         this.safety = safety;

@@ -3,6 +3,7 @@ package users;
 import java.sql.*;
 import javax.servlet.http.HttpServletRequest;
 import models.*;
+import sql.Sql;
 
 public class User {
     public Person user;
@@ -13,7 +14,7 @@ public class User {
         String password = request.getParameter("password");
         DBEntry[] params = {
             new DBEntry("login", EntryType.String, login),
-            new DBEntry("password", EntryType.String, password)
+            new DBEntry("password", EntryType.String, Sql.md5(password))
         };
         Person person = Person.getOne(params);
         if (person != null) 

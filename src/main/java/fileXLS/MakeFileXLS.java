@@ -1,4 +1,4 @@
-/*
+    /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -15,12 +15,12 @@ import org.apache.poi.hssf.usermodel.*;
 
 public class MakeFileXLS {
     
-    public void makeFile(JTable jtable, String resource_name) throws IOException
+    public void makeFile(JTable jtable, int id, String resource_name) throws IOException
     {
         HSSFWorkbook table = new HSSFWorkbook();
         HSSFSheet fSheet = table.createSheet(resource_name);
-
-        File file = new File("table.xls");
+        String link = "/home/TUI2015/src/main/webapp/load/resourceId" + id + ".xls";
+        File file = new File(link);
         HSSFCellStyle cellStyle = table.createCellStyle();
         TableModel model = jtable.getModel();
         HSSFRow fRow = fSheet.createRow(0);

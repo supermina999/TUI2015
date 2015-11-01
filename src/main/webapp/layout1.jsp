@@ -123,45 +123,55 @@
                                                     <span class="icon-bar"></span>
                                                 </button>
                                             </div>
-
+                                            <% 
+                                                int width = 0;
+                                                if (isLogin) {
+                                                    if (user.user.getPermissionId() == 1) width = 4;
+                                                    if (user.user.getPermissionId() == 2) width = 25;
+                                                    if (user.user.getPermissionId() == 3) width = 75;
+                                                    if (user.user.getPermissionId() == 4) width = 71;
+                                                    if (user.user.getPermissionId() == 5) width = 45;
+                                                    if (user.user.getPermissionId() == 6) width = 79;
+                                                }
+                                            %>
                                             <!-- Collect the nav links, forms, and other content for toggling -->
                                             <div class="collapse navbar-collapse" style="margin-left: -20px">
                                                 <ul class="nav navbar-nav">
                                                     <% if (isLogin) {%>
-                                                    <li <% if (tab == 1) { %>class="active" <% } %>>
-                                                        <a href="index.jsp">Главная</a>
+                                                    <li style="margin-left: <%=width%>px; margin-right: <%=width%>px" <% if (tab == 1) { %>class="active" <% } %>>
+                                                        <a class="text-center" href="index.jsp">Главная</a>
                                                     </li>
-                                                    <li <% if (tab == 2) { %>class="active" <% } %>>
-                                                        <a <% if (permission == 1 || permission == 6) {%> href="applications.jsp" <%}%>>Заявки</a>
-                                                    </li>
-                                                    <li>
-                                                        <a type="button" class="btn btn-toggle <% if (tab == 3) { %>btn-toggle-active <% }%>" <% if (permission == 1 || permission == 2 || permission == 5 || permission == 6) {%>data-toggle="dropdown"<%}%>>Ресурсы</a>
+                                                    <% if (permission == 1 || permission == 6) {%><li style="margin-left: <%=width%>px; margin-right: <%=width%>px" <% if (tab == 2) { %>class="active" <% } %>>
+                                                        <a class="text-center" href="applications.jsp">Заявки</a>
+                                                    </li> <%}%>
+                                                    <% if (permission == 1 || permission == 2 || permission == 5 || permission == 6) {%><li style="margin-left: <%=width%>px; margin-right: <%=width%>px">
+                                                        <a class="text-center" type="button" class="btn btn-toggle <% if (tab == 3) { %>btn-toggle-active <% }%>" data-toggle="dropdown">Ресурсы</a>
                                                         <ul class="dropdown-menu dropdown-animation">
-                                                            <li><a <% if (permission == 1 || permission == 2 || permission == 5 || permission == 6) {%> href="availableResources.jsp"<%}%>>В наличии</a></li>
-                                                            <li><a <% if (permission == 1 || permission == 5 || permission == 6) {%> href="typesOfResources.jsp"<%}%>>Виды</a></li>
+                                                            <% if (permission == 1 || permission == 2 || permission == 5 || permission == 6) {%><li><a href="availableResources.jsp">В наличии</a></li><%}%>
+                                                            <% if (permission == 1 || permission == 5 || permission == 6) {%><li><a href="typesOfResources.jsp">Виды</a></li><%}%>
                                                         </ul>
-                                                    </li>                                      
-                                                    <li <% if (tab == 4) { %>class="active" <% } %>>
-                                                        <a <% if (permission == 1 || permission == 2 || permission == 3 || permission == 5) {%> href="stocks.jsp" <%}%>>Склады</a>
-                                                    </li>
-                                                    <li>
-                                                        <a type="button" class="btn btn-toggle <% if (tab == 5) { %>btn-toggle-active <% }%>" <% if (permission == 1 || permission == 2 || permission == 4 || permission == 5) {%>data-toggle="dropdown"<%}%>>Транспорт</a>
-                                                        <ul class="dropdown-menu dropdown-animation">
-                                                            <li><a <% if (permission == 1 || permission == 2 || permission == 4 || permission == 5) {%> href="transport.jsp" <%}%>>В наличии</a></li>
-                                                            <li><a <% if (permission == 1 || permission == 5 ) {%>href="typesOfTransport.jsp"<%}%>>Виды</a></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li>
-                                                        <a type="button" class="btn btn-toggle <% if (tab == 6) { %>btn-toggle-active<% }%>" <% if (permission == 1 || permission == 2 || permission == 3 || permission == 4) {%>data-toggle="dropdown"<%}%>>Перевозки</a>
-                                                        <ul class="dropdown-menu dropdown-animation">
-                                                            <li><a <% if (permission == 1 || permission == 2 || permission == 4) {%> href="transportations.jsp"<%}%>>Расписание</a></li>
-                                                            <li><a <% if (permission == 1 || permission == 2) {%> href="" <%}%>>Рассчет маршрутов</a></li>
-                                                            <li><a <% if (permission == 1 || permission == 3) {%> href="" <%}%>>Состояние дорог</a></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li <% if (tab == 7) { %>class="active" <% } %>>
-                                                        <a <% if (permission == 1) {%>href="volunteers.jsp"<%}%>>Волонтёры</a>
+                                                    </li>  <% } %>                                    
+                                                    <% if (permission == 1 || permission == 2 || permission == 3 || permission == 5) {%><li style="margin-left: <%=width%>px; margin-right: <%=width%>px" <% if (tab == 4) { %>class="active" <% } %>>
+                                                        <a class="text-center" href="stocks.jsp">Склады</a>
                                                     </li><%}%>
+                                                    <% if (permission == 1 || permission == 2 || permission == 4 || permission == 5) {%><li style="margin-left: <%=width%>px; margin-right: <%=width%>px">
+                                                        <a class="text-center" type="button" class="btn btn-toggle <% if (tab == 5) { %>btn-toggle-active <% }%>" data-toggle="dropdown">Транспорт</a>
+                                                        <ul class="dropdown-menu dropdown-animation">
+                                                            <% if (permission == 1 || permission == 2 || permission == 4 || permission == 5) {%><li><a href="transport.jsp">В наличии</a></li><%}%>
+                                                            <% if (permission == 1 || permission == 5 ) {%><li><a href="typesOfTransport.jsp">Виды</a></li><%}%>
+                                                        </ul>
+                                                    </li><% } %>
+                                                    <% if (permission == 1 || permission == 2 || permission == 3 || permission == 4) {%><li style="margin-left: <%=width%>px; margin-right: <%=width%>px">
+                                                        <a class="text-center" type="button" class="btn btn-toggle <% if (tab == 6) { %>btn-toggle-active<% }%>" data-toggle="dropdown">Перевозки</a>
+                                                        <ul class="dropdown-menu dropdown-animation">
+                                                            <% if (permission == 1 || permission == 2 || permission == 4) {%><li><a href="transportations.jsp">Расписание</a></li><%}%>
+                                                            <% if (permission == 1 || permission == 2) {%> <li><a href="">Рассчет маршрутов</a></li><%}%>
+                                                            <% if (permission == 1 || permission == 3) {%><li><a href="changeSafety.jsp">Состояние дорог</a></li><%}%>
+                                                        </ul>
+                                                    </li><%}%>
+                                                    <% if (permission == 1) {%> <li style="margin-left: <%=width%>px; margin-right: <%=width%>px;" <% if (tab == 7) { %>class="active" <% } %>>
+                                                        <a class="text-center" href="volunteers.jsp">Волонтёры</a>
+                                                    </li><%}}%>
                                                     <li>
                                                         <div class="btn-group"  style="margin-left: 15px">
                                                             <% if (isLogin) {%>
@@ -169,7 +179,7 @@
                                                             <a type="button" class="btn btn-login btn-default" href="exit.jsp"><i class="fa fa-sign-out"></i></a>
                                                                 <%} else { %>
 
-                                                            <button type="button" class="btn dropdown-toggle btn-login btn-default" data-toggle="dropdown" style="width: 165px; margin-left: 790px;"><i class="fa fa-sign-in"></i> Вход</button>
+                                                            <button type="button" class="btn dropdown-toggle btn-login btn-default" data-toggle="dropdown" style="width: 165px; margin-left: 750px;"><i class="fa fa-sign-in"></i> Вход</button>
                                                             <ul class="dropdown-menu dropdown-menu-right dropdown-animation">
                                                                 <li>
                                                                     <div class="form-block center-block">
