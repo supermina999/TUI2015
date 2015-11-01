@@ -16,7 +16,7 @@
 <br>
 
 <div class="form-block center-block" style="width: 50%; min-height: 1000px;">
-  <center><h2 class="title">Изменить опасность дороги</h2></center>
+  <center><h2 class="title">Безопасность дорог</h2></center>
   <hr>
   <div class="form-horizontal">
     <br>
@@ -30,18 +30,21 @@
   ymaps.ready(init);
   var myMap, myCollection;
 
+  var colors = ['', '#00FF00', '#37C800', '#7D8200', '#AF5000', '#FF0000'];
+
   function addRoutes() {
     <%
       if (Map.nodes.size() == 0) Map.load();
       for (int i = 0; i < Map.graph.size(); i++) {
         maps.Node node1 = Map.nodes.get(i);
         for (int j = 0; j < Map.graph.get(i).size(); j++) {
-          if (Map.graph.get(i).get(j).safety == 0) continue;
+          int safety = Map.graph.get(i).get(j).safety;
+          if (safety == 0) continue;
           maps.Node node2 = Map.nodes.get(Map.graph.get(i).get(j).node);
     %>
-    myMap.geoObjects.add(new ymaps.Polyline([[<%= node1.x%>, <%=node1.y%>], [<%=node2.x%>, <%=node2.y%>]], {}, {
-      strockeWidth: 6,
-      strokeColor: '#0000FF'
+    myMap.geoObjects.add(new ymaps.Polyline([[<%=node1.x%>, <%=node1.y%>], [<%=node2.x%>, <%=node2.y%>]], {}, {
+      strokeWidth: 4,
+      strokeColor: colors[<%=safety%>]
     }));
     <%}}%>
   }

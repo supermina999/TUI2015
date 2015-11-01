@@ -1,3 +1,4 @@
+<%@ page import="maps.Map" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
   int tab = 0;
@@ -45,6 +46,25 @@
   ymaps.ready(init);
   var myMap, myCollection, myRoute;
 
+  var colors = ['', '#00FF00', '#37C800', '#7D8200', '#AF5000', '#FF0000'];
+
+  function addRoutes() {
+    <%
+      if (Map.nodes.size() == 0) Map.load();
+      for (int i = 0; i < Map.graph.size(); i++) {
+        maps.Node node1 = Map.nodes.get(i);
+        for (int j = 0; j < Map.graph.get(i).size(); j++) {
+          int curSafety = Map.graph.get(i).get(j).safety;
+          if (curSafety == 0) continue;
+          maps.Node node2 = Map.nodes.get(Map.graph.get(i).get(j).node);
+    %>
+    myMap.geoObjects.add(new ymaps.Polyline([[<%=node1.x%>, <%=node1.y%>], [<%=node2.x%>, <%=node2.y%>]], {}, {
+      strokeWidth: 4,
+      strokeColor: colors[<%=curSafety%>]
+    }));
+    <%}}%>
+  }
+
   function addPlacemarks() {
     var myCoords = myMap.getCenter();
 
@@ -68,6 +88,7 @@
       zoom: 6
     });
     addPlacemarks();
+    addRoutes();
   }
 
   function clicked() {
