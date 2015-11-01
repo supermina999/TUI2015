@@ -5,20 +5,6 @@ import java.io.PrintStream;
 import java.io.PrintWriter;
 import java.util.*;
 
-class Edge
-{
-    int node, safety = 0;
-    Edge(int node, int safety)
-    {
-        this.node = node;
-        this.safety = safety;
-    }
-    Edge(int node)
-    {
-        this.node = node;
-    }
-}
-
 class Position implements Comparable<Position>
 {
     int node;
@@ -39,8 +25,8 @@ class Position implements Comparable<Position>
 
 public class Map
 {
-    static ArrayList<Node> nodes = new ArrayList<>();
-    static ArrayList<ArrayList<Edge>> graph = new ArrayList<>();
+    public static ArrayList<Node> nodes = new ArrayList<>();
+    public static ArrayList<ArrayList<Edge>> graph = new ArrayList<>();
     static final String filePath = "/home/xlv/map.txt";
     static final double inf = 1e18;
     static final double earthRadius = 6372.795;
