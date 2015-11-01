@@ -43,36 +43,43 @@ public class MakeFileXLS {
         History[] history = History.getAll(params);
         String[] columnNames = {"Дата", "Ресурс", "Кол-во", "Склад"};
         Object[][] data = new Object[history.length][4];
-        int[] total = new int[Resource.getAll(null).length];
-        for (int i = 0; i < Resource.getAll(null).length; i++)
+        int len = Resource.getAll(null)[Resource.getAll(null).length - 1].getId();
+        int[] total = new int[len];
+        for (int i = 0; i < len;i++)
             total[i] = 0;
         for (int i = 0; i < history.length; i++)
         {
             data[i][0] = history[i].getDateString();
-            data[i][1] = Resource.getOne(history[i].getResourceId()).getName();
-            total[history[i].getResourceId()] += history[i].getNumber();
-            data[i][2] = total[history[i].getResourceId()] + " " + Resource.getOne(history[i].getResourceId()).getMeasureName();
+            Resource res = Resource.getOne(history[i].getResourceId());
+            data[i][1] = res.getName();
+            total[history[i].getResourceId() - 1] += history[i].getNumber();
+            data[i][2] = total[history[i].getResourceId() - 1] + " " + res.getMeasureName();
             data[i][3] = "№" + history[i].getStockId();
         }
         JTable jtable = new JTable(data, columnNames);
         HSSFWorkbook table = new HSSFWorkbook();
         HSSFSheet fSheet = table.createSheet("Ресурсы");
         String link;
+        //link = "/opt/tomcat/webapps/ROOT/"; //location on server
         if (stock_id == -1 && id != -1)
         {
-            link = "/opt/tomcat/webapps/ROOT/resourceId" + id + ".xls";
+            link = "/opt/tomcat/webapps/ROOT/resourceId" + id + ".xls"; //on server
+            //link = "../../TUI2015/src/main/webapp/load/resourceId" + id + ".xls"; //on local
         }
         else if (stock_id != -1 && id != -1)
         {
-            link = "/opt/tomcat/webapps/ROOT/resourceId" + id + "&stockId" + stock_id + ".xls";
+            link = "/opt/tomcat/webapps/ROOT/resourceId" + id + "&stockId" + stock_id + ".xls"; //on server
+            //link = "../../TUI2015/src/main/webapp/load/resourceId" + id + "&stockId" + stock_id + ".xls"; //on local
         }
         else if (stock_id != -1 && id == -1)
         {
-            link = "/opt/tomcat/webapps/ROOT/stockId" + stock_id + ".xls";
+            link = "/opt/tomcat/webapps/ROOT/stockId" + stock_id + ".xls"; //on server
+            //link = "../../TUI2015/src/main/webapp/load/stockId" + stock_id + ".xls"; //on local
         }
         else
         {
-            link = "/opt/tomcat/webapps/ROOT/history.xls";
+            link = "/opt/tomcat/webapps/ROOT/history.xls"; //on server
+            //link = "../../TUI2015/src/main/webapp/load/history.xls"; //on local
         }
         File file = new File(link);
         HSSFCellStyle cellStyle = table.createCellStyle();

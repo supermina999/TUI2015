@@ -78,7 +78,7 @@
     <div class="form-group col-sm-12">
         <p style="font-size: 20px; margin-bottom: 0"> <b>Расположение:</b> <%=stock.getFullAddress()%> </p>
         <p style="font-size: 20px;"> <b>Заведующий:</b> <a href="userInfo.jsp?id=<%=stock.getPersonId()%>"><%=stock.getFullPersonName()%></a> </p>
-        <%if (history.length > 0) {%><p style="font-size: 20px;"> <a href="/stockId<%=Integer.parseInt(s)%>.xls" download="Report.xls">Скачать отчет о изменениях на складе</a> </p><%}%>
+        <%if (history.length > 0) {%><p style="font-size: 20px;"> <a href="/stockId<%=Integer.parseInt(s)%>.xls" download="stockId<%=Integer.parseInt(s)%>.xls">Скачать отчет о изменениях на складе</a> </p><%}%>
     </div>
     <div class="tabs-style-2">
         <ul class="nav nav-tabs" role="tablist">

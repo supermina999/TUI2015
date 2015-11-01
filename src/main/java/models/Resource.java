@@ -91,4 +91,5 @@ public class Resource extends DBModel {
         int id = getMeasureId();
         return Measure.getOne(id).getName();
     }
+
 }
