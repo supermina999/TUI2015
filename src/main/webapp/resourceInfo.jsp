@@ -104,7 +104,7 @@
         <div class="form-group col-sm-7">
             <p style="font-size: 15px;"> <b>Кол-во:</b> <%=sum_now%> <%=MeasureName%></p>
             <%if (stock_id == -1) {%><p style="font-size: 15px;"> <b>Склады:</b> <a href="stockInfo.jsp?id=0">№<%=stocks[0]%></a><%for (int i = 1; i < stocks.length; i++) {%>, <a href="stockInfo.jsp?id=<%=i%>">№<%=stocks[i]%></a><%}%> </p><%}%> 
-            <%if (history.length > 0){%><p style="font-size: 15px;"> <a href="/TUI2015/load/resourceId<%=id%>.xls" download="resourceId<%=id%>.xls"> Скачать таблицу </a></p><%}%>
+            <%if (history.length > 0){%><p style="font-size: 15px;"> <a href="/resourceId<%=id%>.xls" download="resourceId<%=id%>.xls"> Скачать таблицу </a></p><%}%>
         </div>
         <%if (history.length > 0){%><canvas class="graph-line" id="myChart1"></canvas><%}%>
     </form>

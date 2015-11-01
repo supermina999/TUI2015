@@ -41,7 +41,7 @@ public class Map
 {
     static ArrayList<Node> nodes = new ArrayList<>();
     static ArrayList<ArrayList<Edge>> graph = new ArrayList<>();
-    static final String filePath = "/home/xlv/map.txt"; //  /Users/roma/Documents/map.txt
+    static final String filePath = "/home/xlv/map.txt";
     static final double inf = 1e18;
     static final double earthRadius = 6372.795;
     
