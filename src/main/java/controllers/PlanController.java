@@ -45,6 +45,8 @@ public class PlanController {
                 transportion.setTimeFinish(sdf.format(dateFinish));
                 transportion.setTransportId(way.transportId);
                 transportion.writeToDB();
+                req.setStatus(1);
+                req.saveChanges();
             }
         }
     }
