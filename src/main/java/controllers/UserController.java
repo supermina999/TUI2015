@@ -82,15 +82,17 @@ public class UserController {
         return true;
     }
     
-    public static void updatePassword(HttpServletRequest request) throws Exception 
+    public static boolean updatePassword(HttpServletRequest request) throws Exception 
     {
         String id = request.getParameter("id");
         Person person = Person.getOne(Integer.parseInt(id));
         String passwordOld = request.getParameter("passwordOld");
         String password1 = request.getParameter("password1");
         String password2 = request.getParameter("password2");
+        if (!password1.equals(password2)) return false;
         person.setPassword(Sql.md5(password1));
         person.saveChanges();
+        return true;
     }
     
     public static void delete(HttpServletRequest request) throws Exception
