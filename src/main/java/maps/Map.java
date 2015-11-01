@@ -188,7 +188,7 @@ public class Map
                     curDist.put(nxtNode, nxtDist);
                     curF.put(nxtNode, nxtF);
                     previous.put(nxtNode, node);
-                    previous.put(nxtNode, edgeNumber);
+                    previousEdge.put(nxtNode, edgeNumber);
                 }
             }
         }
@@ -200,7 +200,7 @@ public class Map
         int curNode = node2;
         while(curNode != node1) {
             pathNodes.add(curNode);
-            pathNodes.add(previousEdge.get(curNode));
+            pathEdges.add(previousEdge.get(curNode));
             curNode = previous.get(curNode);
         }
         pathNodes.add(node1);

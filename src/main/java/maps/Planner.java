@@ -94,11 +94,10 @@ public class Planner {
                 if (loc1.getRegionId() == loc2.getRegionId())
                 {
                     distances[loc1.getId()][loc2.getId()] = 
-                            maps.Map.getDistance(loc1.onMapId, loc2.onMapId, 0);
+                            maps.Map.getDistance(loc1.onMapId, loc2.onMapId, safetyId);
                   
                 }
                 else distances[loc1.getId()][loc2.getId()] = null;
-                // Warning! No safety set!
             }
         
         
@@ -272,9 +271,17 @@ public class Planner {
                         ArrayList<Location> cords = new ArrayList<>();
                         ArrayList<Request> reqs = new ArrayList<>();
                         cords.add(Stock.getOne(car.getStockId()).getLocation());
-                        if (stockId2 != stockId1) cords.add(stocks.get(stockId2).getLocation());
+                        way.stocks.add(stocks.get(stockId1));
+                        if (stockId2 != stockId1) 
+                        {
+                            cords.add(stocks.get(stockId2).getLocation());
+                            way.stocks.add(stocks.get(stockId2));
+                        }
                         if (stockId3 != stockId1 || stockId3 != stockId2) 
+                        {
                             cords.add(stocks.get(stockId3).getLocation());
+                            way.stocks.add(stocks.get(stockId3));
+                        }
                         if (i1 >= 0) {
                             cords.add(requestsM[i1].getLocation());
                             reqs.add(requestsM[i1]);

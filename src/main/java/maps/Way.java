@@ -8,6 +8,7 @@ package maps;
 import java.util.ArrayList;
 import models.Location;
 import models.Request;
+import models.Stock;
 
 public class Way {
     public Way()
@@ -15,12 +16,14 @@ public class Way {
         requests = new ArrayList<>();
         cords = new ArrayList<>();
         deltas = new ArrayList<>();  
+        stocks = new ArrayList<>();
         path = new Path(); 
     }
     public int transportId;
     public ArrayList<Request> requests;
     public ArrayList<Location> cords; 
     public ArrayList<StockDelta> deltas;
+    public ArrayList<Stock> stocks;
     public Path path; 
     public int mask;
     public double time;
