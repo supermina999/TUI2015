@@ -1,5 +1,7 @@
 package maps;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -7,6 +9,7 @@ import java.util.Map;
 import models.DBEntry;
 import models.EntryType;
 import java.util.Date;
+import models.DBConnectionHolder;
 import models.Location;
 import models.Request;
 import models.Resource;
@@ -28,6 +31,8 @@ public class Planner {
     public static Map<Integer, Integer> status = new HashMap<>();
     public static Date date;
     public static Date lDate;
+    public static Thread thread;
+    public static Connection con;
     
     public static void accepted(int safetyId)
     {
@@ -38,6 +43,8 @@ public class Planner {
     public static void createPlan(Date date) throws Exception
     {
    //     if (lDate != null && date.before(lDate)) return;
+        con = DriverManager.getConnection("jdbc:mysql://localhost:3306/", "root", "root");
+        thread = Thread.currentThread();
         Planner.date = date;
         plan = new HashMap<>();
         Safety[] safetys = Safety.getAll(null);
@@ -413,7 +420,7 @@ public class Planner {
                 }
                 else
                 {
-                    getBestWays(maskM, Nmask, i, nCurTime, nCarTimes);
+                    getBestWays(new ArrayList<Integer>(maskM), Nmask, i, nCurTime, nCarTimes);
                 }
             }
             maskM.remove(maskM.size()-1);
