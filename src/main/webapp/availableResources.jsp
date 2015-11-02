@@ -1,3 +1,4 @@
+<%@page import="fileXLS.MakeFileXLS"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
     int tab = 3;
@@ -14,6 +15,12 @@
     AvailableResource[] availableRes = AvailableResource.getAll(null);
     Region[] region = Region.getAll(null);
     Stock[] stock = Stock.getAll(null);
+    History[] history = History.getAll(null);
+    if (history.length > 0)
+    {
+        MakeFileXLS mfXLS = new MakeFileXLS();
+        mfXLS.resources(-1, -1);
+    }
 %>
 <script>
     function confirmDelete() {
@@ -28,6 +35,7 @@
     <div class="form-group has-feedback center-block" style="width: 100%; min-height: 1200px;">
         <div style="margin-left: 47%;" <% if (user.user.getPermissionId() != 1 && user.user.getPermissionId() != 5) {%> hidden <% } %>>
             <p><a href="newResource.jsp" class="btn btn-default"><i class="fa fa-plus"></i> Добавить ресурс</a></p>
+            <%if (history.length > 0){%><p style="font-size: 15px;"> <a href="/history.xls" download="history.xls">Скачать полный отчет по ресурсам</a></p><%}%>
         </div>
         <center>
             <h1>Ресурсы в наличии</h1><br> </center>

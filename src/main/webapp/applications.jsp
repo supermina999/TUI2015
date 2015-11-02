@@ -1,3 +1,4 @@
+<%@page import="fileXLS.MakeFileXLS"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
     int tab = 2;
@@ -16,6 +17,11 @@
 <%} else if (user.user.getPermissionId() != 1 && user.user.getPermissionId() != 6) {%>
     <%@include file = "wrongPermission.jsp"%>
 <%} else {
+    MakeFileXLS mfXLS = new MakeFileXLS();
+    mfXLS.applications(0);
+    mfXLS.applications(1);
+    mfXLS.FullApplication(0);
+    mfXLS.FullApplication(1);
 %>
 
 <script>
@@ -111,6 +117,8 @@
                 </div>
                 <table class="table">
                     <thead>
+                        <p><a href="/resources_ready.xls" download="resources_ready.xls">Скачать таблицу утвержденных заявок</a></p>
+                        <p><a href="/full_resources_ready.xls" download="full_resources_ready.xls">Скачать полную таблицу утвержденных заявок</a></p>
                         <tr>
                             <th style="width: 5%;">№</th>
                             <th style="width: 40%;">Содержание</th>
@@ -162,6 +170,8 @@
                 </div>
                 <table class="table">
                     <thead>
+                        <p><a href="/resources_done.xls" download="resources_done.xls">Скачать таблицу выполненых заявок</a></p>
+                        <p><a href="/full_resources_done.xls" download="full_resources_done.xls">Скачать полную таблицу выполненых заявок</a></p>
                         <tr>
                             <th style="width: 5%;">№</th>
                             <th style="width: 45%;">Содержание</th>
