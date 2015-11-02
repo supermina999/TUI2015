@@ -288,12 +288,12 @@ public class MakeFileXLS {
         String link;
         if (status == 0)
         {
-            link = "/opt/tomcat/webapps/ROOT/resources_ready.xls"; //on server
+            link = "/opt/tomcat/webapps/ROOT/full_resources_ready.xls"; //on server
             //link = "../../TUI2015/src/main/webapp/load/full_resources_ready.xls"; //on local
         }
         else
         {
-            link = "/opt/tomcat/webapps/ROOT/resources_done.xls"; //on server
+            link = "/opt/tomcat/webapps/ROOT/full_resources_done.xls"; //on server
             //link = "../../TUI2015/src/main/webapp/load/full_resources_done.xls"; //on local
         }
         File file = new File(link);
