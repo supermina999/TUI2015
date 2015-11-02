@@ -46,11 +46,18 @@
             return false;
         }
     }
+    function confirmConfirm() {
+        if (confirm("Вы уверены, что хотите подтвердить, что груз успешно доставлен/получен?")) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 </script>
 
 <br>
 <div class="form-block center-block" style="width: 70%;">
-    <div style="margin-left: 90%;">
+    <div style="margin-left: 90%;" <% if (user.user.getPermissionId() == 4) {%> hidden <% } %>>
         <p style="font-size: 25px;"><a href="changeTransportInfo.jsp?id=<%=id%>"><i class="fa fa-edit"></i></a>
             <a href="deleteTransport.jsp?id=<%=id%>" onclick="return confirmDelete();"><i class="fa fa-close"></i></a></p>
     </div>
@@ -120,7 +127,7 @@
                         <b>Пункт назначения: </b><%=transit[i].getFinishLocation().getFullAddress()%><br>
                         <b>Опасность: </b><%=transit[i].getSafetyName()%><br>
                     </td>
-                    <td><a href="confirmTransportation.jsp?id=<%=transit[i].getId()%>"><i class="fa fa-check"></i></a></td>
+                    <td><a href="confirmTransportation.jsp?id=<%=transit[i].getId()%>" onclick="return confirmConfirm();"><i class="fa fa-check"></i></a></td>
                     </tr>
                     <% }%>
                     </tbody>
