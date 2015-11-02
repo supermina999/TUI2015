@@ -407,7 +407,13 @@ CREATE TABLE `safety` (
 
 LOCK TABLES `safety` WRITE;
 /*!40000 ALTER TABLE `safety` DISABLE KEYS */;
-INSERT INTO `safety` VALUES (1,'абсолютно безопасно'),(2,'безопасно'),(3,'достаточно безопасно'),(4,'небезопасно'),(5,'опасно'),(6,'очень опасно');
+INSERT INTO `safety` (`id`, `name`) VALUES
+(0, 'абсолютно безопасно'),
+(1, 'безопасно'),
+(2, 'достаточно безопасно'),
+(3, 'небезопасно'),
+(4, 'опасно'),
+(5, 'очень опасно');
 /*!40000 ALTER TABLE `safety` ENABLE KEYS */;
 UNLOCK TABLES;
 
