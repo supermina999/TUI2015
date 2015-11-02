@@ -26,7 +26,7 @@
     String MeasureName;
     String ResourceName;
     int sum_now = 0;
-    DBEntry[] params;
+    DBEntry[] params = null;
     int[] stocks = new int[0];
     if (stock_id == -1)
     {
@@ -35,13 +35,16 @@
         params = new DBEntry[1];
         params[0] = new DBEntry("resource_id", EntryType.Int, id);
         AvailableResource[] avRes = AvailableResource.getAll(params);
-        stocks = new int[avRes.length];
-        for (int i = 0; i < avRes.length; i++)
+        if (avRes != null)
         {
-            sum_now += avRes[i].getNumber();
-            stocks[i] = avRes[i].getStockId();
+            stocks = new int[avRes.length];
+            for (int i = 0; i < avRes.length; i++)
+            {
+                sum_now += avRes[i].getNumber();
+                stocks[i] = avRes[i].getStockId();
+            }
+            Arrays.sort(stocks);
         }
-        Arrays.sort(stocks);
     }
     else
     {
@@ -49,9 +52,12 @@
         ResourceName = AvailableResource.getOne(id).getResourceName();
         params = new DBEntry[2];
         AvailableResource avRes = AvailableResource.getOne(id);
-        sum_now = avRes.getNumber();
-        params[0] = new DBEntry("resource_id", EntryType.Int, avRes.getResourceId());
-        params[1] = new DBEntry("stock_id", EntryType.Int, stock_id);
+        if (avRes != null)
+        {
+            sum_now = avRes.getNumber();
+            params[0] = new DBEntry("resource_id", EntryType.Int, avRes.getResourceId());
+            params[1] = new DBEntry("stock_id", EntryType.Int, stock_id);
+        }
     }
     History[] history = History.getAll(params);
     Vector<String> graph_date = new Vector<String>();
@@ -95,7 +101,7 @@
     <form class="form-horizontal">
         <div class="form-group col-sm-7">
             <p style="font-size: 15px;"> <b>Кол-во:</b> <%=sum_now%> <%=MeasureName%></p>
-            <%if (stock_id == -1) {%><p style="font-size: 15px;"> <b><%if (stocks.length > 1){%>Склады<%}else{%>Склад<%}%>:</b> <a href="stockInfo.jsp?id=0">№<%=stocks[0]%></a><%for (int i = 1; i < stocks.length; i++) {%>, <a href="stockInfo.jsp?id=<%=i%>">№<%=stocks[i]%></a><%}%> </p><%}%> 
+            <%if (stock_id == -1 && stocks.length > 0) {%><p style="font-size: 15px;"> <b><%if (stocks.length > 1){%>Склады<%}else{%>Склад<%}%>:</b> <a href="stockInfo.jsp?id=0">№<%=stocks[0]%></a><%for (int i = 1; i < stocks.length; i++) {%>, <a href="stockInfo.jsp?id=<%=i%>">№<%=stocks[i]%></a><%}%> </p><%}%> 
             <%if (history.length > 0){%><p style="font-size: 15px;"> <a href="/<%if (stock_id == -1){%>resourceId<%=id%><%} else {%>resourceId<%=id%>&stockId<%=stock_id%><%}%>.xls" download="<%if (stock_id == -1){%>resourceId<%=id%><%} else {%>resourceId<%=id%>&stockId<%=stock_id%><%}%>.xls">Скачать таблицу</a></p><%}%>
         </div>
         <%if (history.length > 0){%><canvas class="graph-line" id="myChart1"></canvas><%}%>
