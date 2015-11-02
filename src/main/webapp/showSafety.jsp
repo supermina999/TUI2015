@@ -10,13 +10,16 @@
 <script>
   window.location.href = "/";
 </script>
-<%} else if (user.user.getPermissionId() != 1 && user.user.getPermissionId() != 3) {%>
+<%} else if (user.user.getPermissionId() != 1 && user.user.getPermissionId() != 3 && user.user.getPermissionId() != 4) {%>
 <%@include file = "wrongPermission.jsp"%>
 <% } else {%>
 <br>
 
 <div class="form-block center-block" style="width: 50%; min-height: 1000px;">
-  <center><h2 class="title">Безопасность дорог</h2></center>
+    <div style="margin-left: 37%;">
+        <p><a href="changeSafety.jsp" class="btn btn-default"><i class="fa fa-plus"></i> Изменить опасность дороги</a></p>
+    </div>
+  <center><h2 class="title">Опасность дорог</h2></center>
   <hr>
   <div class="form-horizontal">
     <br>

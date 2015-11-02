@@ -72,7 +72,7 @@
                     for (int i = 0; i < availableRes.length; i++) {
                     if (user.user.getPermissionId() != 5 || Stock.getOne(availableRes[i].getStockId()).getPersonId() == user.user.getId()) {%>
                         <tr>
-                            <td class="idSearch"><% if (user.user.getPermissionId() == 1 || user.user.getPermissionId() == 5) {%><a href="resourceInfo.jsp?id=<%=availableRes[i].getId()%>&stock_id=<%=availableRes[i].getStockId()%>"><% } %><%=availableRes[i].getResourceName()%> <% if (user.user.getPermissionId() == 1 || user.user.getPermissionId() == 5) {%></a><% } %></td>
+                            <td class="idSearch"><% if (user.user.getPermissionId() == 1) {%><a href="resourceInfo.jsp?id=<%=availableRes[i].getId()%>&stock_id=<%=availableRes[i].getStockId()%>"><% } %><%=availableRes[i].getResourceName()%> <% if (user.user.getPermissionId() == 1) {%></a><% } %></td>
                             <td class="idSearch"><% if (user.user.getPermissionId() == 1 || user.user.getPermissionId() == 5) {%><a href="stockInfo.jsp?id=<%=availableRes[i].getStockId()%>"><% } %>№<%=availableRes[i].getStockId()%><% if (user.user.getPermissionId() == 1 || user.user.getPermissionId() == 5) {%></a><% } %>, <%=availableRes[i].getStockAddress()%> </td>
                             <td class="idSearch"><%=availableRes[i].getNumber()%> <%=availableRes[i].getMeasureName()%></td>
                             <% if (user.user.getPermissionId() == 1 || user.user.getPermissionId() == 5) {%><td><a href="changeResource.jsp?id=<%=availableRes[i].getId()%>"><i class="fa fa-edit"></i></a></td><% } %>

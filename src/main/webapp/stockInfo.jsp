@@ -108,7 +108,7 @@
                         <%
                             for (int i = 0; i < availableRes.length; i++) {%>
                         <tr>
-                            <td><a href="resourceInfo.jsp?id=<%=availableRes[i].getId()%>&stock_id=<%=Integer.parseInt(s)%>"> <%=availableRes[i].getResourceName()%></a></td>
+                            <td><% if (user.user.getPermissionId() == 1) {%><a href="resourceInfo.jsp?id=<%=availableRes[i].getId()%>&stock_id=<%=Integer.parseInt(s)%>"><% } %> <%=availableRes[i].getResourceName()%><% if (user.user.getPermissionId() == 1) {%></a><% } %></td>
                             <td><%=availableRes[i].getNumber()%> <%=availableRes[i].getMeasureName()%></td>      
                             <td><a href="changeResource.jsp?id=<%=availableRes[i].getId()%>"><i class="fa fa-edit"></i></a></td>
                             <td><a href="deleteAvailableResource.jsp?id=<%=availableRes[i].getId()%>" onclick="return confirmDelete2();"><i class="fa fa-close"></i></a></td>

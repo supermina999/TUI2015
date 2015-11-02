@@ -51,7 +51,7 @@
                     <%
                     for (int i = 0; i < resource.length; i++) {%>
                     <tr>
-                        <td class="idSearch"> <%if (user.user.getPermissionId() == 1 || user.user.getPermissionId() == 5) {%><a href="resourceInfo.jsp?id=<%=resource[i].getId()%>&stock_id=-1"><% } %><%= resource[i].getName()%><%if (user.user.getPermissionId() == 1 || user.user.getPermissionId() == 5) {%></a><% } %>, <%= resource[i].getMeasureName()%> </td>
+                        <td class="idSearch"> <%if (user.user.getPermissionId() == 1) {%><a href="resourceInfo.jsp?id=<%=resource[i].getId()%>&stock_id=-1"><% } %><%= resource[i].getName()%><%if (user.user.getPermissionId() == 1) {%></a><% } %>, <%= resource[i].getMeasureName()%> </td>
                         <td class="idSearch"><%=resource[i].getWeight()%> кг</td>
                         <%if (user.user.getPermissionId() == 1 || user.user.getPermissionId() == 5) {%><td><a href="changeTypeOfResource.jsp?id=<%=resource[i].getId()%>"><i class="fa fa-edit"></i></a></td>
                         <td><a href="deleteTypeOfResource.jsp?id=<%=resource[i].getId()%>" onclick="return confirmDelete();"><i class="fa fa-close"></i></a></td> <% } %>

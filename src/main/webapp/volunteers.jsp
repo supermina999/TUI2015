@@ -26,7 +26,7 @@
 </script>
 <center>
     <div class="form-group has-feedback center-block" style="width: 100%; min-height: 1000px;">
-        <div style="margin-left: 47%;">
+        <div style="margin-left: 42%;" <% if (user.user.getPermissionId() == 4) {%> hidden <% } %>>
             <p><a href="register.jsp" class="btn btn-default"><i class="fa fa-plus"></i> Регистрация</a></p>
         </div>
         <center>
