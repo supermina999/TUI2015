@@ -15,7 +15,7 @@
 <% } else {%>
 <br>
 
-<div class="form-block center-block" style="width: 50%; min-height: 1000px;">
+<div class="form-block center-block" style="width: 50%; min-height: 1200px;">
     <div style="margin-left: 58%;">
         <p><a href="changeSafety.jsp" class="btn btn-default"><i class="fa fa-warning"></i> Изменить опасность дороги</a></p>
     </div>
