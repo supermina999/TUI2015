@@ -10,8 +10,6 @@ public class DBModel {
     protected DBEntry[] entryes; //First element always ID
     static protected String tableName;
     static public DBEntry[] stdEntryes;
-    static Connection connection;
-    boolean useSpecialCon = false;
 
     public DBModel() {
         this.getRealStatics();
@@ -111,8 +109,7 @@ public class DBModel {
         if (DBConnectionHolder.connection == null || DBConnectionHolder.connection.isClosed()) {
             DBConnectionHolder.createConnection();
         }
-        Connection con = DBConnectionHolder.createConnection();
-        Statement st = con.createStatement();
+        Statement st = DBConnectionHolder.connection.createStatement();
         st.execute("use " + DBConnectionHolder.DBName);
         st.execute("SET NAMES utf8");
         String query = "INSERT " + this.tableName + " SET ";
@@ -124,7 +121,6 @@ public class DBModel {
         }
         st.execute(query);
         st.close();
-        con.close();
     }
 
     public void saveChanges() throws ClassNotFoundException, SQLException, UnsupportedEncodingException, ParseException {
@@ -132,8 +128,7 @@ public class DBModel {
         if (DBConnectionHolder.connection == null || DBConnectionHolder.connection.isClosed()) {
             DBConnectionHolder.createConnection();
         }
-        Connection con = DBConnectionHolder.createConnection();
-        Statement st = con.createStatement();
+        Statement st = DBConnectionHolder.connection.createStatement();
         st.execute("use " + DBConnectionHolder.DBName);
         st.execute("SET NAMES utf8");
         String query = "UPDATE " + this.tableName + " SET ";
@@ -147,7 +142,6 @@ public class DBModel {
         query += " WHERE " + entryes[0].name + "=" + entryes[0].SQLValue();
         st.execute(query);
         st.close();
-        con.close();
     }
 
     public void delete() throws ClassNotFoundException, SQLException, UnsupportedEncodingException, ParseException {
@@ -155,8 +149,7 @@ public class DBModel {
         if (DBConnectionHolder.connection == null || DBConnectionHolder.connection.isClosed()) {
             DBConnectionHolder.createConnection();
         }
-        Connection con = DBConnectionHolder.createConnection();
-        Statement st = con.createStatement();
+        Statement st = DBConnectionHolder.connection.createStatement();
         st.execute("use " + DBConnectionHolder.DBName);
         st.execute("SET NAMES utf8");
         String query = "DELETE FROM " + this.tableName + " WHERE ";
@@ -166,15 +159,13 @@ public class DBModel {
         }
         st.execute(query);
         st.close();
-        con.close();
     }
 
     protected static DBModel getOne(DBEntry[] entryes, int fl) throws Exception {
         if (DBConnectionHolder.connection == null || DBConnectionHolder.connection.isClosed()) {
             DBConnectionHolder.createConnection();
         }
-        Connection con = DBConnectionHolder.createConnection();
-        Statement st = con.createStatement();
+        Statement st = DBConnectionHolder.connection.createStatement();
         st.execute("use " + DBConnectionHolder.DBName);
         st.execute("SET NAMES utf8");
         String query = "SELECT * FROM " + tableName;
@@ -197,7 +188,6 @@ public class DBModel {
                     result[i].setValueDB(rs.getObject(i + 1));
                 }
                 DBModel ans = new DBModel(result);
-                con.close();
                 return ans;
             }
         }
@@ -209,8 +199,7 @@ public class DBModel {
         if (DBConnectionHolder.connection == null || DBConnectionHolder.connection.isClosed()) {
             DBConnectionHolder.createConnection();
         }
-        Connection con = DBConnectionHolder.createConnection();
-        Statement st = con.createStatement();
+        Statement st = DBConnectionHolder.connection.createStatement();
         st.execute("use " + DBConnectionHolder.DBName);
         st.execute("SET NAMES utf8");
         String query = "SELECT * FROM " + tableName;
@@ -236,7 +225,6 @@ public class DBModel {
                 }
                 ans.add(new DBModel(result));
             }
-            con.close();
             return ans.toArray(new DBModel[ans.size()]);
         }
     }
