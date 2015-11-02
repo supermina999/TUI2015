@@ -37,7 +37,7 @@ public class Planner {
     
     public static void createPlan(Date date) throws Exception
     {
-        if (lDate != null && date.before(lDate)) return;
+   //     if (lDate != null && date.before(lDate)) return;
         Planner.date = date;
         plan = new HashMap<>();
         Safety[] safetys = Safety.getAll(null);

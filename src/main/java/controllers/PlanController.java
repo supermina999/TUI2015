@@ -24,7 +24,7 @@ public class PlanController {
     {
         int safetyId = Integer.parseInt(request.getParameter("safetyId"));
         ArrayList<Way> ways = Planner.plan.get(safetyId);
-        Planner.accepted(safetyId);
+       // Planner.accepted(safetyId);
         int i=0;
         for (Way way: ways)
         {
