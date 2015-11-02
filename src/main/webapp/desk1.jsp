@@ -8,7 +8,7 @@
     <a class="btn btn-white btn-block" href="transport.jsp"> Транспортные средства</a>
     <a class="btn btn-white btn-block" href="typesOfTransport.jsp"> Виды транспортных средств</a>
     <a class="btn btn-white btn-block" href="transportations.jsp"> Расписание перевозок</a>
-    <a class="btn btn-white btn-block" href="planner.jsp"> Рассчет маршрутов</a>
-    <a class="btn btn-white btn-block" href=""> Состояние дорог</a>
+    <a class="btn btn-white btn-block" href="calculationControlPanel.jsp"> Рассчет маршрутов</a>
+    <a class="btn btn-white btn-block" href="showSafety.jsp"> Состояние дорог</a>
     <a class="btn btn-white btn-block" href="volunteers.jsp"> Волонтёры</a>
 </center>

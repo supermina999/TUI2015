@@ -9,7 +9,7 @@
     }
 </script>
 <center>
-    <form class="center-block" style="width: 50%; min-height: 1000px;">
+    <form class="center-block" style="width: 50%; min-height: 1200px;">
         <div class="form-horizontal" style="border: 4px double #e84c3d; background: transparent; padding: 10px;">
             <h1><i class="fa fa-close" style="color: #e84c3d"></i></h1>
             <h2>К сожалению, пользователь с таким логином уже существует. Попробуйте другой.</h2>

@@ -32,14 +32,14 @@
     }
 </script>
 <center>
-    <div class="form-group has-feedback center-block" style="width: 100%; min-height: 1000px;">
+    <div class="form-group has-feedback center-block" style="width: 100%; min-height: 1200px;">
         <div style="margin-left: 47%;" <% if (user.user.getPermissionId() != 1 && user.user.getPermissionId() != 5) {%> hidden <% } %>>
             <p><a href="newResource.jsp" class="btn btn-default"><i class="fa fa-plus"></i> Добавить ресурс</a></p>
             <%if (history.length > 0){%><p style="font-size: 15px;"> <a href="/history.xls" download="history.xls">Скачать полный отчет по ресурсам</a></p><%}%>
         </div>
         <center>
             <h1>Ресурсы в наличии</h1><br> </center>
-            <div class="form-group has-feedback" style="width: 60%; min-height: 1000px;">
+            <div class="form-group has-feedback" style="width: 60%; min-height: 1200px;">
                 <div class="gray-bg">
                     <br>
                     <div class="col-md-4">
@@ -80,7 +80,7 @@
                     for (int i = 0; i < availableRes.length; i++) {
                     if (user.user.getPermissionId() != 5 || Stock.getOne(availableRes[i].getStockId()).getPersonId() == user.user.getId()) {%>
                         <tr>
-                            <td class="idSearch"><% if (user.user.getPermissionId() == 1 || user.user.getPermissionId() == 5) {%><a href="resourceInfo.jsp?id=<%=availableRes[i].getId()%>&stock_id=<%=availableRes[i].getStockId()%>"><% } %><%=availableRes[i].getResourceName()%> <% if (user.user.getPermissionId() == 1 || user.user.getPermissionId() == 5) {%></a><% } %></td>
+                            <td class="idSearch"><% if (user.user.getPermissionId() == 1) {%><a href="resourceInfo.jsp?id=<%=availableRes[i].getId()%>&stock_id=<%=availableRes[i].getStockId()%>"><% } %><%=availableRes[i].getResourceName()%> <% if (user.user.getPermissionId() == 1) {%></a><% } %></td>
                             <td class="idSearch"><% if (user.user.getPermissionId() == 1 || user.user.getPermissionId() == 5) {%><a href="stockInfo.jsp?id=<%=availableRes[i].getStockId()%>"><% } %>№<%=availableRes[i].getStockId()%><% if (user.user.getPermissionId() == 1 || user.user.getPermissionId() == 5) {%></a><% } %>, <%=availableRes[i].getStockAddress()%> </td>
                             <td class="idSearch"><%=availableRes[i].getNumber()%> <%=availableRes[i].getMeasureName()%></td>
                             <% if (user.user.getPermissionId() == 1 || user.user.getPermissionId() == 5) {%><td><a href="changeResource.jsp?id=<%=availableRes[i].getId()%>"><i class="fa fa-edit"></i></a></td><% } %>

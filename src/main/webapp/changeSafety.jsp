@@ -1,3 +1,4 @@
+<%@ page import="maps.Map" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
   int tab = 0;
@@ -15,7 +16,7 @@
 %>
 <br>
 
-<div class="form-block center-block" style="width: 50%; min-height: 1000px;">
+<div class="form-block center-block" style="width: 50%; min-height: 1200px;">
   <center><h2 class="title">Изменить опасность дороги</h2></center>
   <hr>
   <div class="form-horizontal">
@@ -45,6 +46,25 @@
   ymaps.ready(init);
   var myMap, myCollection, myRoute;
 
+  var colors = ['', '#00FF00', '#37C800', '#7D8200', '#AF5000', '#FF0000'];
+
+  function addRoutes() {
+    <%
+      if (Map.nodes.size() == 0) Map.load();
+      for (int i = 0; i < Map.graph.size(); i++) {
+        maps.Node node1 = Map.nodes.get(i);
+        for (int j = 0; j < Map.graph.get(i).size(); j++) {
+          int curSafety = Map.graph.get(i).get(j).safety;
+          if (curSafety == 0) continue;
+          maps.Node node2 = Map.nodes.get(Map.graph.get(i).get(j).node);
+    %>
+    myMap.geoObjects.add(new ymaps.Polyline([[<%=node1.x%>, <%=node1.y%>], [<%=node2.x%>, <%=node2.y%>]], {}, {
+      strokeWidth: 4,
+      strokeColor: colors[<%=curSafety%>]
+    }));
+    <%}}%>
+  }
+
   function addPlacemarks() {
     var myCoords = myMap.getCenter();
 
@@ -54,6 +74,7 @@
         route.editor.start({
           addWayPoints: false
         });
+        addRoutes();
       },
       function (error) {
         alert('Возникла ошибка: ' + error.message);

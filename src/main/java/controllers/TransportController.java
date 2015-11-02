@@ -25,6 +25,13 @@ public class TransportController {
         String id = request.getParameter("id");
         int transportId = Integer.parseInt(id);
         Transport transport = Transport.getOne(transportId);
+        DBEntry[] params = {
+            new DBEntry("transport_id", EntryType.Int, transportId)
+        };
+        Transportation[] transit = Transportation.getAll(params);
+        for (Transportation transit1 : transit) {
+            transit1.delete();
+        }
         transport.delete();
     }
     
