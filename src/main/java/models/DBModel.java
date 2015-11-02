@@ -134,7 +134,7 @@ public class DBModel {
         String query = "UPDATE " + this.tableName + " SET ";
         for (int i = 1; i < entryes.length; i++) {
 
-            query += entryes[i].name + " = " + entryes[i].SQLValue();
+            query += entryes[i].name + "=" + entryes[i].SQLValue();
             if (i + 1 < entryes.length) {
                 query += ", ";
             }
