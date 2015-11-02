@@ -12,7 +12,7 @@
 <script>
     window.location.href = "/";
 </script>
-<%} else if (user.user.getPermissionId() != 1 && user.user.getPermissionId() != 3) {%>
+<%} else if (user.user.getPermissionId() != 1 && user.user.getPermissionId() != 2) {%>
 <%@include file = "wrongPermission.jsp"%>
 <%} else {
    Safety[] safetys = Safety.getAll(null);
@@ -68,7 +68,7 @@
     
     <form class="form-horizontal" method = "post" action = "startPlanning.jsp">
         <input type="hidden" name="startNew" value="true">
-        <button type="submit" class="btn btn-group btn-default btn-block">Расчитать план на завтра</button>
+        <button type="submit" class="btn btn-group btn-default btn-block">Расcчитать план на завтра</button>
     </form>
     
 </div>
