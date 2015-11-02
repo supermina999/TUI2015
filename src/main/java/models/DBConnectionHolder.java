@@ -12,11 +12,12 @@ public class DBConnectionHolder
     static private String password="root";
     
     
-    static void createConnection() throws ClassNotFoundException, SQLException
+    static Connection createConnection() throws ClassNotFoundException, SQLException
     {
         Connection con;
         Class.forName("com.mysql.jdbc.Driver");
         con = DriverManager.getConnection(url, login, password);
         DBConnectionHolder.connection = con;
+        return con;
     }
 }
