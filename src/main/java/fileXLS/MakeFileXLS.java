@@ -67,15 +67,16 @@ public class MakeFileXLS {
         JTable jtable = new JTable(data, columnNames);
         HSSFWorkbook table = new HSSFWorkbook();
         HSSFSheet fSheet = table.createSheet("Ресурсы");
+        String link1 = link;
         if (stock_id == -1 && id != -1)
-            link += "resourceId" + id + ".xls";
+            link1 += "resourceId" + id + ".xls";
         else if (stock_id != -1 && id != -1)
-            link += "resourceId" + id + "&stockId" + stock_id + ".xls";
+            link1 += "resourceId" + id + "&stockId" + stock_id + ".xls";
         else if (stock_id != -1 && id == -1)
-            link += "stockId" + stock_id + ".xls";
+            link1 += "stockId" + stock_id + ".xls";
         else
-            link += "history.xls";
-        File file = new File(link);
+            link1 += "history.xls";
+        File file = new File(link1);
         HSSFCellStyle cellStyle = table.createCellStyle();
         TableModel model = jtable.getModel();
         HSSFRow fRow = fSheet.createRow(0);
@@ -181,11 +182,12 @@ public class MakeFileXLS {
         HSSFWorkbook table = new HSSFWorkbook();
         HSSFSheet fSheet = table.createSheet("Нуждающиеся ресурсы");
         HSSFSheet fSheet1 = table.createSheet("Пожертвованные ресурсы");
+        String link1 = link;
         if (status == 0)
-            link += "resources_ready.xls";
+            link1 += "resources_ready.xls";
         else
-            link += "resources_done.xls";
-        File file = new File(link);
+            link1 += "resources_done.xls";
+        File file = new File(link1);
         HSSFCellStyle cellStyle = table.createCellStyle();
         TableModel model = jtable.getModel();
         TableModel model1 = jtable1.getModel();
@@ -267,11 +269,12 @@ public class MakeFileXLS {
         HSSFWorkbook table = new HSSFWorkbook();
         HSSFSheet fSheet = table.createSheet("Нуждающиеся ресурсы");
         HSSFSheet fSheet1 = table.createSheet("Пожертвованные ресурсы");
+        String link1 = link;
         if (status == 0)
-            link += "full_resources_ready.xls";
+            link1 += "full_resources_ready.xls";
         else
-            link += "full_resources_done.xls";
-        File file = new File(link);
+            link1 += "full_resources_done.xls";
+        File file = new File(link1);
         HSSFCellStyle cellStyle = table.createCellStyle();
         TableModel model = jtable.getModel();
         TableModel model1 = jtable1.getModel();
