@@ -13,8 +13,8 @@
     };
     for (Transport tr : transports)
     {
-        params[0].setValue(tr.getId());
-        Transportation[] buf = Transportation.getAll(params);
+        params2[0].setValue(tr.getId());
+        Transportation[] buf = Transportation.getAll(params2);
         for (Transportation buf2 : buf)
         {
             transArr.add(buf2);
