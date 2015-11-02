@@ -16,7 +16,7 @@
     StockController.update(request);
 %>
 <script>
-    window.location.href = "stockInfo.jsp?id=<%=request.getParameter("id")%>";
+    window.location.href = "stocks.jsp";
 </script>
 <% } %>
 <%@include file = "layout2.jsp"%>

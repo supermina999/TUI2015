@@ -257,7 +257,14 @@ CREATE TABLE `request` (
 
 LOCK TABLES `request` WRITE;
 /*!40000 ALTER TABLE `request` DISABLE KEYS */;
-INSERT INTO `request` VALUES (1,1,3,10,3,4,0,'2015-05-05'),(2,2,2,12,4,2,0,'2015-10-27'),(3,1,2,10,5,5,1,'2015-10-25'),(4,2,11,30,6,6,1,'2015-10-19'),(6,1,4,20,10,24,0,'2015-10-27'),(7,2,2,37,11,25,0,'2016-01-17'),(8,2,2,25,12,26,1,'2016-02-06');
+INSERT INTO `request` (`id`, `request_type_id`, `resource_id`, `number`, `application_id`, `location_id`, `status`, `date`) VALUES
+(1, 1, 3, 10, 3, 4, 0, '2015-11-02'),
+(2, 2, 2, 12, 4, 2, 0, '2015-11-02'),
+(3, 1, 2, 10, 5, 5, 1, '2015-10-25'),
+(4, 2, 11, 30, 6, 6, 1, '2015-11-02'),
+(6, 1, 4, 20, 10, 24, 1, '2015-10-27'),
+(7, 2, 2, 37, 11, 25, 0, '2015-11-02'),
+(8, 2, 2, 25, 12, 26, 0, '2015-11-03');
 /*!40000 ALTER TABLE `request` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -383,7 +390,12 @@ CREATE TABLE `transport` (
 
 LOCK TABLES `transport` WRITE;
 /*!40000 ALTER TABLE `transport` DISABLE KEYS */;
-INSERT INTO `transport` VALUES (3,4,'АС5665УУ',4,3),(4,2,'АК5670УА',12,4),(5,6,'АУ4444АУ',16,5),(6,4,'ГР5672АА',16,6),(7,1,'АХ6767АУ',4,7);
+INSERT INTO `transport` (`id`, `type_id`, `number`, `person_id`, `stock_id`) VALUES
+(3, 4, 'АС5665УУ', 20, 3),
+(4, 2, 'АК5670УА', 12, 4),
+(5, 6, 'АУ4444АУ', 20, 5),
+(6, 4, 'ГР5672АА', 16, 6),
+(7, 1, 'АХ6767АУ', 4, 7);
 /*!40000 ALTER TABLE `transport` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -438,7 +450,10 @@ CREATE TABLE `transportation` (
 
 LOCK TABLES `transportation` WRITE;
 /*!40000 ALTER TABLE `transportation` DISABLE KEYS */;
-INSERT INTO `transportation` VALUES (1,1,4,'11:00','12:00',0,1),(3,3,3,'15:30','16:45',1,2),(4,4,5,'8:00','9:15',1,4);
+INSERT INTO `transportation` (`id`, `request_id`, `transport_id`, `time_start`, `time_finish`, `status`, `safety_id`) VALUES
+(1, 1, 4, '11:00', '12:00', 0, 1),
+(3, 3, 3, '15:30', '16:45', 1, 2),
+(4, 4, 5, '8:00', '9:15', 0, 4);
 /*!40000 ALTER TABLE `transportation` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;

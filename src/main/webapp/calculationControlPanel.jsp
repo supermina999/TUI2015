@@ -24,7 +24,7 @@
 %>
 <br>
 
-<div class="form-block center-block" style="width: 80%; min-height: 700px;">
+<div class="form-block center-block" style="width: 80%; min-height: 1200px;">
     <center><h2 class="title">Управление расчетом маршрутов</h2></center>
     <hr>
     <table class="table" id="tableBases">
