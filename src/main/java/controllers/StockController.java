@@ -54,14 +54,30 @@ public class StockController
         String id = request.getParameter("id");
         Stock stock = Stock.getOne(Integer.parseInt(id));
         int locationId = stock.getLocationId();
-        Location location = new Location();
-        location.setId(locationId);
-        location.setRegionId(stock.getLocation().getRegionId());
-        location.setId(locationId);
-        location.setAddress(stock.getLocation().getAddress());
-        location.setXCoord(1);
-        location.setYCoord(1);
+        Location location = Location.getOne(locationId);
         location.delete();
+        DBEntry[] params = {
+            new DBEntry("stock_id", EntryType.Int, Integer.parseInt(id))
+        };
+        AvailableResource[] aRes = AvailableResource.getAll(params);
+        for (AvailableResource aRes1 : aRes) {
+            aRes1.delete();
+        }
+        Transport[] transport = Transport.getAll(params);
+        for (Transport transport1 : transport) {
+            DBEntry[] params2 = {
+                new DBEntry("transport_id", EntryType.Int, transport1.getId())
+            };
+            Transportation[] transit = Transportation.getAll(params2);
+            for (Transportation transit1 : transit) {
+                transit1.delete();
+            }
+            transport1.delete();
+        }
+        History[] history = History.getAll(params);
+        for (History history1 : history) {
+            history1.delete();
+        }
         stock.delete();
     }
 }

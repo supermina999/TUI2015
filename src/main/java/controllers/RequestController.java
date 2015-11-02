@@ -72,6 +72,13 @@ public class RequestController
        {
            int id = Integer.parseInt(idS);
            req = Request.getOne(id);
+           DBEntry[] params = {
+                new DBEntry("request_id", EntryType.Int, id)
+           };
+           Transportation[] transit = Transportation.getAll(params);
+           for (Transportation transit1 : transit) {
+                transit1.delete();
+           }
            req.delete();
        }
     }
