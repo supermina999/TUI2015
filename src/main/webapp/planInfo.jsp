@@ -1,3 +1,4 @@
+<%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.Calendar"%>
 <%@page import="maps.Way.StockDelta"%>
 <%@page import="maps.Node"%>
@@ -21,12 +22,13 @@
     if (ways == null) ways = new ArrayList<>();
     Calendar calendar = Calendar.getInstance();
     calendar.setTime(Planner.date);
+    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 %>
 <br>
 
 <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
 <div class="form-block center-block" style="width: 80%; min-height: 700px;">
-    <center><h2 class="title">Маршруты на <%=calendar.get(Calendar.YEAR)+"-"+calendar.get(Calendar.MONTH) +"-"+calendar.get(Calendar.DAY_OF_MONTH)%></h2></center>
+    <center><h2 class="title">Маршруты на <%=sdf.format(calendar.getTime())%></h2></center>
     <center><h2 class="title">Минимальная безопасность: <%=Safety.getOne(safetyId).getName()%></h2></center>    
     <hr>
     <form class="form-horizontal" method = "post" action = "acceptPlan.jsp">  

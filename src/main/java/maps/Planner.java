@@ -54,7 +54,7 @@ public class Planner {
     
     static ArrayList<Way> getPlan(Date date, int safetyId) throws Exception
     {
-        maps.Map.load();
+        if (maps.Map.nodes.isEmpty()) maps.Map.load();
         ArrayList<Way> ways = new ArrayList<>();
         //Loading data
         Stock[] stocksM = Stock.getAll(null);
