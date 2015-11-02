@@ -17,6 +17,9 @@ import models.*;
 
 public class MakeFileXLS {
     
+    private String link = "/opt/tomcat/webapps/ROOT/"; //on server
+    //private String link = "../../TUI2015/src/main/webapp/load/"; //on local (Please create a table "load" in TUI2015/src/main/webapp/)
+    
     public void resources(int id, int stock_id) throws IOException, Exception
     {
         DBEntry[] params;
@@ -64,28 +67,14 @@ public class MakeFileXLS {
         JTable jtable = new JTable(data, columnNames);
         HSSFWorkbook table = new HSSFWorkbook();
         HSSFSheet fSheet = table.createSheet("Ресурсы");
-        String link;
-        //link = "/opt/tomcat/webapps/ROOT/"; //location on server (not uncommented)
         if (stock_id == -1 && id != -1)
-        {
-            link = "/opt/tomcat/webapps/ROOT/resourceId" + id + ".xls"; //on server
-            //link = "../../TUI2015/src/main/webapp/load/resourceId" + id + ".xls"; //on local
-        }
+            link += "resourceId" + id + ".xls";
         else if (stock_id != -1 && id != -1)
-        {
-            link = "/opt/tomcat/webapps/ROOT/resourceId" + id + "&stockId" + stock_id + ".xls"; //on server
-            //link = "../../TUI2015/src/main/webapp/load/resourceId" + id + "&stockId" + stock_id + ".xls"; //on local
-        }
+            link += "resourceId" + id + "&stockId" + stock_id + ".xls";
         else if (stock_id != -1 && id == -1)
-        {
-            link = "/opt/tomcat/webapps/ROOT/stockId" + stock_id + ".xls"; //on server
-            //link = "../../TUI2015/src/main/webapp/load/stockId" + stock_id + ".xls"; //on local
-        }
+            link += "stockId" + stock_id + ".xls";
         else
-        {
-            link = "/opt/tomcat/webapps/ROOT/history.xls"; //on server
-            //link = "../../TUI2015/src/main/webapp/load/history.xls"; //on local
-        }
+            link += "history.xls";
         File file = new File(link);
         HSSFCellStyle cellStyle = table.createCellStyle();
         TableModel model = jtable.getModel();
@@ -192,17 +181,10 @@ public class MakeFileXLS {
         HSSFWorkbook table = new HSSFWorkbook();
         HSSFSheet fSheet = table.createSheet("Нуждающиеся ресурсы");
         HSSFSheet fSheet1 = table.createSheet("Пожертвованные ресурсы");
-        String link;
         if (status == 0)
-        {
-            link = "/opt/tomcat/webapps/ROOT/resources_ready.xls"; //on server
-            //link = "../../TUI2015/src/main/webapp/load/resources_ready.xls"; //on local
-        }
+            link += "resources_ready.xls";
         else
-        {
-            link = "/opt/tomcat/webapps/ROOT/resources_done.xls"; //on server
-            //link = "../../TUI2015/src/main/webapp/load/resources_done.xls"; //on local
-        }
+            link += "resources_done.xls";
         File file = new File(link);
         HSSFCellStyle cellStyle = table.createCellStyle();
         TableModel model = jtable.getModel();
@@ -285,17 +267,10 @@ public class MakeFileXLS {
         HSSFWorkbook table = new HSSFWorkbook();
         HSSFSheet fSheet = table.createSheet("Нуждающиеся ресурсы");
         HSSFSheet fSheet1 = table.createSheet("Пожертвованные ресурсы");
-        String link;
         if (status == 0)
-        {
-            link = "/opt/tomcat/webapps/ROOT/full_resources_ready.xls"; //on server
-            //link = "../../TUI2015/src/main/webapp/load/full_resources_ready.xls"; //on local
-        }
+            link += "full_resources_ready.xls";
         else
-        {
-            link = "/opt/tomcat/webapps/ROOT/full_resources_done.xls"; //on server
-            //link = "../../TUI2015/src/main/webapp/load/full_resources_done.xls"; //on local
-        }
+            link += "full_resources_done.xls";
         File file = new File(link);
         HSSFCellStyle cellStyle = table.createCellStyle();
         TableModel model = jtable.getModel();
