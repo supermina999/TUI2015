@@ -7,6 +7,10 @@
     Transport[] transports = Transport.getAll(params);
     ArrayList<Transportation> transArr = new ArrayList<>();
     params[0].name = "transport_id";
+    DBEntry[] params2 = {
+        new DBEntry("transport_id", EntryType.Int),
+        new DBEntry("status", EntryType.Int, 0)
+    };
     for (Transport tr : transports)
     {
         params[0].setValue(tr.getId());
