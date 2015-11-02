@@ -35,7 +35,7 @@
         if (history.length > 0)
         {
             MakeFileXLS mfXLS = new MakeFileXLS();
-            mfXLS.makeFile(-1, Integer.parseInt(s));
+            mfXLS.resources(-1, Integer.parseInt(s));
         }
 %>
 <script>

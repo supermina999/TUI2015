@@ -83,7 +83,7 @@
         for (int i = 1; i < number.size(); i++)
             number.setElementAt(number.elementAt(i) + sum_now - sum, i);
         MakeFileXLS mfXLS = new MakeFileXLS();
-        mfXLS.makeFile(id, stock_id);
+        mfXLS.resources(id, stock_id);
     }
 %>
 
