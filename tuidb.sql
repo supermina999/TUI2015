@@ -387,7 +387,16 @@ CREATE TABLE `stock` (
 
 LOCK TABLES `stock` WRITE;
 /*!40000 ALTER TABLE `stock` DISABLE KEYS */;
-INSERT INTO `stock` VALUES (2,3,11),(3,7,2),(4,8,2),(5,9,14),(6,10,11),(7,11,11),(12,24,14),(13,25,2),(14,26,14);
+INSERT INTO `stock` (`id`, `location_id`, `person_id`) VALUES
+(2, 3, 21),
+(3, 7, 2),
+(4, 8, 2),
+(5, 9, 14),
+(6, 10, 21),
+(7, 11, 11),
+(12, 24, 14),
+(13, 25, 2),
+(14, 26, 14);
 /*!40000 ALTER TABLE `stock` ENABLE KEYS */;
 UNLOCK TABLES;
 
