@@ -1,3 +1,4 @@
+<%@page import="fileXLS.MakeFileXLS"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
     int tab = 4;
@@ -30,6 +31,12 @@
         if (stock.getPersonId() != user.user.getId() && user.user.getPermissionId() != 1) {%>
               <%@include file = "wrongPermission.jsp"%>
         <%} else {
+        History[] history = History.getAll(params);
+        if (history.length > 0)
+        {
+            MakeFileXLS mfXLS = new MakeFileXLS();
+            mfXLS.resources(-1, Integer.parseInt(s));
+        }
 %>
 <script>
     function confirmDelete() {
@@ -71,6 +78,7 @@
     <div class="form-group col-sm-12">
         <p style="font-size: 20px; margin-bottom: 0"> <b>Расположение:</b> <%=stock.getFullAddress()%> </p>
         <p style="font-size: 20px;"> <b>Заведующий:</b> <a href="userInfo.jsp?id=<%=stock.getPersonId()%>"><%=stock.getFullPersonName()%></a> </p>
+        <%if (history.length > 0) {%><p style="font-size: 20px;"> <a href="/stockId<%=Integer.parseInt(s)%>.xls" download="stockId<%=Integer.parseInt(s)%>.xls">Скачать отчет о изменениях на складе</a> </p><%}%>
     </div>
     <div class="tabs-style-2">
         <ul class="nav nav-tabs" role="tablist">
@@ -78,7 +86,7 @@
             <li class="text-center" style="width: 50%;"><a href="#h2tab2" role="tab" data-toggle="tab" style="font-size: 15px;"><i class="fa fa-truck"></i> Транспорт</a></li>
         </ul>
         <div class="tab-content">
-            <div class="tab-pane fade in active" id="h2tab1" style="min-height: 1000px;">
+            <div class="tab-pane fade in active" id="h2tab1" style="min-height: 1200px;">
                 <div class="gray-bg">
                     <br>
                     <div class="col-md-11" style="width: 98%">
@@ -100,7 +108,7 @@
                         <%
                             for (int i = 0; i < availableRes.length; i++) {%>
                         <tr>
-                            <td><a href="resourceInfo.jsp?id=<%=availableRes[i].getId()%>&stock_id=<%=Integer.parseInt(s)%>"> <%=availableRes[i].getResourceName()%></a></td>
+                            <td><% if (user.user.getPermissionId() == 1) {%><a href="resourceInfo.jsp?id=<%=availableRes[i].getId()%>&stock_id=<%=Integer.parseInt(s)%>"><% } %> <%=availableRes[i].getResourceName()%><% if (user.user.getPermissionId() == 1) {%></a><% } %></td>
                             <td><%=availableRes[i].getNumber()%> <%=availableRes[i].getMeasureName()%></td>      
                             <td><a href="changeResource.jsp?id=<%=availableRes[i].getId()%>"><i class="fa fa-edit"></i></a></td>
                             <td><a href="deleteAvailableResource.jsp?id=<%=availableRes[i].getId()%>" onclick="return confirmDelete2();"><i class="fa fa-close"></i></a></td>
@@ -109,8 +117,8 @@
                     </tbody>
                 </table>
             </div>
-            <div class="tab-pane" id="h2tab2" style="min-height: 1000px;">
-                <div class="form-group has-feedback" style="width: 100%; min-height: 1000px;">
+            <div class="tab-pane" id="h2tab2" style="min-height: 1200px;">
+                <div class="form-group has-feedback" style="width: 100%; min-height: 1200px;">
                 <div class="gray-bg">
                     <br>
                     <div class="col-md-8" style="width: 69%">

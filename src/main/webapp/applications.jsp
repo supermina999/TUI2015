@@ -1,3 +1,4 @@
+<%@page import="fileXLS.MakeFileXLS"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
     int tab = 2;
@@ -16,6 +17,11 @@
 <%} else if (user.user.getPermissionId() != 1 && user.user.getPermissionId() != 6) {%>
     <%@include file = "wrongPermission.jsp"%>
 <%} else {
+    MakeFileXLS mfXLS = new MakeFileXLS();
+    mfXLS.applications(0);
+    mfXLS.applications(1);
+    mfXLS.FullApplication(0);
+    mfXLS.FullApplication(1);
 %>
 
 <script>
@@ -47,7 +53,7 @@
             <li class="text-center" style="width: 30%;"><a href="#h2tab3" role="tab" data-toggle="tab" style="font-size: 15px;"><i class="fa fa-list-alt"></i> Архив</a></li>
         </ul>
         <div class="tab-content">
-            <div class="tab-pane fade in active" id="h2tab1" style="min-height: 1000px;">
+            <div class="tab-pane fade in active" id="h2tab1" style="min-height: 1200px;">
                 <div class="gray-bg">
                     <br>
                     <div class="col-md-8">
@@ -92,7 +98,7 @@
                     </tbody>
                 </table>
             </div>
-            <div class="tab-pane" id="h2tab2" style="min-height: 1000px;">
+            <div class="tab-pane" id="h2tab2" style="min-height: 1200px;">
                 <div class="gray-bg">
                     <br>
                     <div class="col-md-8">
@@ -111,6 +117,8 @@
                 </div>
                 <table class="table">
                     <thead>
+                        <p><a href="/resources_ready.xls" download="resources_ready.xls">Скачать таблицу утвержденных заявок</a></p>
+                        <p><a href="/full_resources_ready.xls" download="full_resources_ready.xls">Скачать полную таблицу утвержденных заявок</a></p>
                         <tr>
                             <th style="width: 5%;">№</th>
                             <th style="width: 40%;">Содержание</th>
@@ -143,7 +151,7 @@
                     </tbody>
                 </table>
             </div>
-            <div class="tab-pane" id="h2tab3" style="min-height: 1000px;">
+            <div class="tab-pane" id="h2tab3" style="min-height: 1200px;">
                 <div class="gray-bg">
                     <br>
                     <div class="col-md-8">
@@ -162,6 +170,8 @@
                 </div>
                 <table class="table">
                     <thead>
+                        <p><a href="/resources_done.xls" download="resources_done.xls">Скачать таблицу выполненых заявок</a></p>
+                        <p><a href="/full_resources_done.xls" download="full_resources_done.xls">Скачать полную таблицу выполненых заявок</a></p>
                         <tr>
                             <th style="width: 5%;">№</th>
                             <th style="width: 45%;">Содержание</th>

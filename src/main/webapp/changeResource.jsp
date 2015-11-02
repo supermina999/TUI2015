@@ -27,7 +27,7 @@
         <%} else {
 %>
 <br>
-<div class="form-block center-block" style="width: 40%; min-height: 1000px;">
+<div class="form-block center-block" style="width: 40%; min-height: 1200px;">
     <center><h2 class="title">Изменить информацию о ресурсе</h2></center>
     <hr>
     <form class="form-horizontal" method = "post" action = "updateResourceInfo.jsp?id=<%=id%>">

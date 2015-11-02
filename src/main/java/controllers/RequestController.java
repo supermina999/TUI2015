@@ -19,6 +19,9 @@ public class RequestController
         String address = request.getParameter("address");
         String lat = request.getParameter("lat");
         String lon = request.getParameter("lon");
+        if (appId == null || requestType == null || resource == null || number == null || dateS == null || regionId == null || address == null || lat == null || lon == null) return 0;
+        if (!Sql.isInt(requestType) || !Sql.isInt(resource) || !Sql.isInt(number) || !Sql.isInt(appId) || !Sql.isInt(regionId) || !Sql.isDouble(lon) || !Sql.isDouble(lat) || !Sql.isDate(dateS)) return 0;
+        if (resource.equals("-1") || regionId.equals("-1")) return 0;
         Request req = new Request();
         req.setRequestTypeId(Integer.parseInt(requestType));
         req.setResourceId(Integer.parseInt(resource));
@@ -40,7 +43,7 @@ public class RequestController
         return reqs[reqs.length-1].getId();
     }
     
-    public static void update(HttpServletRequest request) throws Exception
+    public static boolean update(HttpServletRequest request) throws Exception
     {
         String id = request.getParameter("id");
         String number = request.getParameter("number");
@@ -49,6 +52,9 @@ public class RequestController
         String address = request.getParameter("address");
         String lat = request.getParameter("lat");
         String lon = request.getParameter("lon");
+        if (id == null || number == null || dateS == null || regionId == null || address == null || lat == null || lon == null) return false;
+        if (!Sql.isInt(id) || !Sql.isInt(number) || !Sql.isInt(regionId) || !Sql.isDouble(lon) || !Sql.isDouble(lat) || !Sql.isDate(dateS)) return false;
+        if (regionId.equals("-1")) return false;
         Request req = Request.getOne(Integer.parseInt(id));
         int locationId = req.getLocationId();
         Location location = Location.getOne(locationId);
@@ -62,6 +68,7 @@ public class RequestController
         Date date = new SimpleDateFormat("yyyy-MM-dd").parse(dateS);
         req.setDate(date);
         req.saveChanges();
+        return true;
     }
     
     public static void delete(HttpServletRequest request) throws Exception
@@ -72,6 +79,13 @@ public class RequestController
        {
            int id = Integer.parseInt(idS);
            req = Request.getOne(id);
+           DBEntry[] params = {
+                new DBEntry("request_id", EntryType.Int, id)
+           };
+           Transportation[] transit = Transportation.getAll(params);
+           for (Transportation transit1 : transit) {
+                transit1.delete();
+           }
            req.delete();
        }
     }
