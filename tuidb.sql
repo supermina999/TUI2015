@@ -123,7 +123,7 @@ INSERT INTO `history` (`id`, `number`, `resource_id`, `stock_id`, `date`) VALUES
 (7, 25, 6, 12, '2015-10-24'),
 (8, 15, 9, 13, '2015-10-25'),
 (9, 10, 7, 2, '2015-10-23'),
-(10, 30, 7, 2, '2015-10-26');
+(10, -20, 7, 2, '2015-10-26');
 /*!40000 ALTER TABLE `history` ENABLE KEYS */;
 UNLOCK TABLES;
 
