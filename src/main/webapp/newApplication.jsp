@@ -6,7 +6,7 @@
 %>
 <%@include file = "layout1.jsp"%>
 <br>
-<div class="form-block center-block" style="min-height: 1000px;">
+<div class="form-block center-block" style="min-height: 1200px;">
     <center><h2 class="title">Оставить заявку</h2></center>
     <hr>
     <form class="form-horizontal" method="post" action="addApplication.jsp">

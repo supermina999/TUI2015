@@ -16,8 +16,8 @@
 <br>
 
 <div class="form-block center-block" style="width: 50%; min-height: 1000px;">
-    <div style="margin-left: 37%;">
-        <p><a href="changeSafety.jsp" class="btn btn-default"><i class="fa fa-plus"></i> Изменить опасность дороги</a></p>
+    <div style="margin-left: 58%;">
+        <p><a href="changeSafety.jsp" class="btn btn-default"><i class="fa fa-warning"></i> Изменить опасность дороги</a></p>
     </div>
   <center><h2 class="title">Опасность дорог</h2></center>
   <hr>

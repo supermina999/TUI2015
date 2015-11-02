@@ -25,13 +25,13 @@
     }
 </script>
 <center>
-    <div class="form-group has-feedback center-block" style="width: 100%; min-height: 1000px;">
+    <div class="form-group has-feedback center-block" style="width: 100%; min-height: 1200px;">
         <div style="margin-left: 47%;" <% if (user.user.getPermissionId() != 1 && user.user.getPermissionId() != 5) {%> hidden <% } %>>
             <p><a href="newResource.jsp" class="btn btn-default"><i class="fa fa-plus"></i> Добавить ресурс</a></p>
         </div>
         <center>
             <h1>Ресурсы в наличии</h1><br> </center>
-            <div class="form-group has-feedback" style="width: 60%; min-height: 1000px;">
+            <div class="form-group has-feedback" style="width: 60%; min-height: 1200px;">
                 <div class="gray-bg">
                     <br>
                     <div class="col-md-4">

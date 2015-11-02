@@ -89,7 +89,7 @@
 
 <script src="plugins/charts/Chart.js"></script> 
 <br>
-<div class="form-block center-block" style="width: 50%; min-height: 1000px;">
+<div class="form-block center-block" style="width: 50%; min-height: 1200px;">
     <center><h2 class="title"><%=ResourceName%> <%if (stock_id != -1) {%>на складе №<%=stock_id%><%}%></h2></center>
     <hr>
     <form class="form-horizontal">

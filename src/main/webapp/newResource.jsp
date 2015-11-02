@@ -17,7 +17,7 @@
     Stock[] stock = Stock.getAll(null);
 %>
 <br>
-<div class="form-block center-block" style="min-height: 1000px;">
+<div class="form-block center-block" style="min-height: 1200px;">
     <center><h2 class="title">Добавить ресурс</h2></center>
     <hr>
     <form class="form-horizontal" method="post" action="addResource.jsp">

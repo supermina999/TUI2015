@@ -35,7 +35,7 @@
 %>
 
 <br>
-<div class="form-block center-block" style="min-height: 1000px;">
+<div class="form-block center-block" style="min-height: 1200px;">
     <center><h2 class="title">Изменить информацию о транспортном средстве</h2></center>
     <hr>
     <form class="form-horizontal" method="post" action="updateTransportInfo.jsp?id=<%=id%>&transport_type_id=<%=transport.getTypeId()%>">
