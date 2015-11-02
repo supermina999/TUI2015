@@ -85,8 +85,8 @@ INSERT INTO `available_resource` (`id`, `resource_id`, `stock_id`, `number`) VAL
 (5, 2, 5, 20),
 (6, 3, 6, 30),
 (7, 5, 7, 10),
-(8, 6, 12, 25),
-(9, 9, 13, 15);
+(8, 6, 18, 25),
+(9, 9, 19, 15);
 /*!40000 ALTER TABLE `available_resource` ENABLE KEYS */;
 UNLOCK TABLES;
 
