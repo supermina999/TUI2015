@@ -26,13 +26,13 @@
     }
 </script>
 <center>
-    <div class="form-group has-feedback center-block" style="width: 100%; min-height: 1000px;">
+    <div class="form-group has-feedback center-block" style="width: 100%; min-height: 1200px;">
         <div style="margin-left: 42%;" <% if (user.user.getPermissionId() != 1 && user.user.getPermissionId() != 5) { %> hidden <% } %>>
             <p><a href="newTransport.jsp" class="btn btn-default"><i class="fa fa-plus"></i> Добавить транспортное средство</a></p>
         </div>
         <center>
             <h1>Транспортные средства в наличии</h1><br> </center>
-            <div class="form-group has-feedback" style="width: 65%; min-height: 1000px;">
+            <div class="form-group has-feedback" style="width: 65%; min-height: 1200px;">
                 <div class="gray-bg">
                     <br>
                     <div class="col-md-11" style="width: 98%">

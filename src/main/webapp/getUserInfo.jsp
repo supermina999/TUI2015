@@ -6,17 +6,8 @@
 <%=person.getName()%>
 <%=person.getSurname()%>
 <%=person.getSecondName()%>
-<%=person.getAddress()%>
-<%=person.getCityName()%>
-<%=person.getEmail()%>
-<%=person.getPhone()%>
 <%=person.getPermissionName()%>
-<%=person.getOrganizationName()%>
-<%=person.getOrganizationId()%>
-<%=person.getPermissionId()%>
-<%=person.getCityId()%>
-<%=City.getOne(person.getCityId()).getCountryId()%>
-<%=person.getLogin()%><%
+<%
 } else {
 %><%="error"%><%
             }

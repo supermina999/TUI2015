@@ -133,7 +133,7 @@
             </div>
             <div class="tab-pane fade" id="h2tab2">
                 <center><br><h2 class="title">Измененить пароль</h2></center><br>
-                <form class="form-horizontal" method="post" action="updateUserPassword.jsp?id=<%=Integer.parseInt(s)%>" style="min-height: 1000px;">
+                <form class="form-horizontal" method="post" action="updateUserPassword.jsp?id=<%=Integer.parseInt(s)%>" style="min-height: 1200px;">
                     <div class="form-group has-feedback">
                         <label class="col-sm-3 control-label">Старый пароль </label>
                         <div class="col-sm-8" id="divPassOld">

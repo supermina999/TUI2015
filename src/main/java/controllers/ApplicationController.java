@@ -34,6 +34,20 @@ public class ApplicationController
        {
            int id = Integer.parseInt(idS);
            res = Application.getOne(id);
+           DBEntry[] params = {
+                new DBEntry("application_id", EntryType.Int, id)
+           };
+           Request[] req = Request.getAll(params);
+           for (Request req1 : req) {
+                DBEntry[] params2 = {
+                    new DBEntry("request_id", EntryType.Int, req1.getId())
+                };
+                Transportation[] transit = Transportation.getAll(params2);
+                for (Transportation transit1 : transit) {
+                     transit1.delete();
+                }
+                req1.delete();
+           }
            res.delete();
        }
     }

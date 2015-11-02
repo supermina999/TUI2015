@@ -22,6 +22,28 @@ public class ResourceController {
         String id = request.getParameter("id");
         int resourceId = Integer.parseInt(id);
         Resource resource = Resource.getOne(resourceId);
+        DBEntry[] params = {
+            new DBEntry("resource_id", EntryType.Int, resourceId)
+        };
+        AvailableResource[] aRes = AvailableResource.getAll(params);
+        for (AvailableResource aRes1 : aRes) {
+            aRes1.delete();
+        }
+        History[] history = History.getAll(params);
+        for (History history1 : history) {
+            history1.delete();
+        }
+        Request[] req = Request.getAll(params);
+        for (Request req1 : req) {
+            DBEntry[] params2 = {
+                new DBEntry("request_id", EntryType.Int, req1.getId())
+            };
+            Transportation[] transit = Transportation.getAll(params2);
+            for (Transportation transit1 : transit) {
+                 transit1.delete();
+            }
+            req1.delete();
+        }
         resource.delete();
     }
     public static void change(HttpServletRequest request) throws Exception

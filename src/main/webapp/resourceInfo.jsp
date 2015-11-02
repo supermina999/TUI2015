@@ -16,7 +16,7 @@
 <script>
     window.location.href = "/";
 </script>
-<%} else if (user.user.getPermissionId() != 1 && user.user.getPermissionId() != 5) {%>
+<%} else if (user.user.getPermissionId() != 1) {%>
     <%@include file = "wrongPermission.jsp"%>
 <%} else {
     String string_id = request.getParameter("id");
@@ -83,13 +83,13 @@
         for (int i = 1; i < number.size(); i++)
             number.setElementAt(number.elementAt(i) + sum_now - sum, i);
         MakeFileXLS mfXLS = new MakeFileXLS();
-        mfXLS.makeFile(id, stock_id);
+        mfXLS.resources(id, stock_id);
     }
 %>
 
 <script src="plugins/charts/Chart.js"></script> 
 <br>
-<div class="form-block center-block" style="width: 50%; min-height: 1000px;">
+<div class="form-block center-block" style="width: 50%; min-height: 1200px;">
     <center><h2 class="title"><%=ResourceName%> <%if (stock_id != -1) {%>на складе №<%=stock_id%><%}%></h2></center>
     <hr>
     <form class="form-horizontal">

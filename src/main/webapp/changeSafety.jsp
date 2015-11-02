@@ -16,7 +16,7 @@
 %>
 <br>
 
-<div class="form-block center-block" style="width: 50%; min-height: 1000px;">
+<div class="form-block center-block" style="width: 50%; min-height: 1200px;">
   <center><h2 class="title">Изменить опасность дороги</h2></center>
   <hr>
   <div class="form-horizontal">

@@ -76,7 +76,7 @@
             <li class="text-center" style="width: 50%;"><a href="#h2tab2" role="tab" data-toggle="tab" style="font-size: 15px;"><i class="fa fa-truck"></i> Архив перевозок</a></li>
         </ul>
         <div class="tab-content">
-            <div class="tab-pane fade in active" id="h2tab1" style="min-height: 1000px;">
+            <div class="tab-pane fade in active" id="h2tab1" style="min-height: 1200px;">
                 <div class="gray-bg">
                     <br>
                     <div class="col-md-8">
@@ -133,7 +133,7 @@
                     </tbody>
                 </table>
             </div>
-            <div class="tab-pane" id="h2tab2" style="min-height: 1000px;">
+            <div class="tab-pane" id="h2tab2" style="min-height: 1200px;">
                 <div class="gray-bg">
                     <br>
                     <div class="col-md-8">

@@ -23,7 +23,7 @@
 <br>
 
 <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
-<div  class="form-block center-block" style="min-height: 1000px; width: 50%">
+<div  class="form-block center-block" style="min-height: 1200px; width: 50%">
     <center><h2 class="title">Изменение утвержденной заявки</h2></center>
     <hr>
     <form class="form-horizontal" method="post" action="updateRequestInfo.jsp?id=<%=id%>">

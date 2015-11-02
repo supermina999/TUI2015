@@ -98,6 +98,47 @@ public class UserController {
     public static void delete(HttpServletRequest request) throws Exception
     {
         String id = request.getParameter("id");
-        Person.getOne(Integer.parseInt(id)).delete();       
+        Person person = Person.getOne(Integer.parseInt(id));
+        DBEntry[] params = {
+            new DBEntry("person_id", EntryType.Int, Integer.parseInt(id))
+        };
+        Transport[] transport = Transport.getAll(params);
+        for (Transport transport1 : transport) {
+            DBEntry[] params2 = {
+                new DBEntry("transport_id", EntryType.Int, transport1.getId())
+            };
+            Transportation[] transit = Transportation.getAll(params2);
+            for (Transportation transit1 : transit) {
+                transit1.delete();
+            }
+            transport1.delete();
+        }
+        Stock[] stock = Stock.getAll(params);
+        for (Stock stock1 : stock) {
+            DBEntry[] params2 = {
+                new DBEntry("stock_id", EntryType.Int, stock1.getId())
+            };
+            AvailableResource[] aRes = AvailableResource.getAll(params2);
+            for (AvailableResource aRes1 : aRes) {
+                aRes1.delete();
+            }
+            Transport[] transport2 = Transport.getAll(params2);
+            for (Transport transport3 : transport2) {
+                DBEntry[] params3 = {
+                    new DBEntry("transport_id", EntryType.Int, transport3.getId())
+                };
+                Transportation[] transit2 = Transportation.getAll(params3);
+                for (Transportation transit3 : transit2) {
+                    transit3.delete();
+                }
+                transport3.delete();
+            }
+            History[] history = History.getAll(params2);
+            for (History history1 : history) {
+                history1.delete();
+            }
+            stock1.delete();
+        }
+        person.delete();       
     }
 }
