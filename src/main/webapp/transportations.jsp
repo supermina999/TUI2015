@@ -18,6 +18,15 @@
     TransportType[] transportType = TransportType.getAll(null);
     Transportation[] transit = Transportation.getAll(null);
 %>
+<script>
+    function confirmConfirm() {
+        if (confirm("Вы уверены, что хотите подтвердить, что груз успешно доставлен/получен?")) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+</script>
 <center>
     <div class="form-group has-feedback center-block" style="width: 100%; min-height: 1200px;">
         <center>
@@ -103,7 +112,7 @@
                                 <b>Пункт назначения: </b><%=transit[i].getFinishLocation().getFullAddress()%><br>
                                 <b>Опасность пути: </b><%=transit[i].getSafetyName()%>
                             </td>
-                            <% if (user.user.getPermissionId() != 2) {%><td><a href="confirmTransportation.jsp?id=<%=transit[i].getId()%>"><i class="fa fa-check"></i></a></td><% } %>
+                            <% if (user.user.getPermissionId() != 2) {%><td><a href="confirmTransportation.jsp?id=<%=transit[i].getId()%>" onclick="return confirmConfirm();"><i class="fa fa-check"></i></a></td><% } %>
                             </tr>
                             <% }}%>
                             </tbody>

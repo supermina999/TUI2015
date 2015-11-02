@@ -15,7 +15,7 @@
   MapsController.updateSafety(request);
 %>
 <script>
-  window.location.href = "/";
+  window.location.href = "showSafety.jsp";
 </script>
 <% } %>
 <%@include file = "layout2.jsp"%>
