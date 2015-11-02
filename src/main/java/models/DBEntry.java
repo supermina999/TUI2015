@@ -19,7 +19,9 @@ public class DBEntry
         public String name;
         private String value="1";
         public EntryType type; 
-        
+        boolean fromDB = false;
+
+
         public DBEntry()
         {
         }
@@ -37,6 +39,21 @@ public class DBEntry
         }
         public void setValue(Object obj)
         {
+            fromDB = false;
+            if (obj.getClass() == Boolean.class)
+                obj = new Integer((Boolean)obj ? 1 : 0);
+            if (type == EntryType.Int) value = ((Integer)obj).toString();
+            else if (type == EntryType.Double) value = ((Double)obj).toString();
+            else if (type == EntryType.Date)
+            {
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                value = sdf.format(obj);
+            }
+            else value = (String)obj;
+        }
+        public void setValueDB(Object obj)
+        {
+            fromDB = true;
             if (obj.getClass() == Boolean.class)
                 obj = new Integer((Boolean)obj ? 1 : 0);
             if (type == EntryType.Int) value = ((Integer)obj).toString();
@@ -60,6 +77,11 @@ public class DBEntry
                 String string_date = sdf.format(date);
                 return '"' + string_date + '"';
             }
-            else return '"' + Sql.sql(new String(value.getBytes("iso8859-1"), "utf8")) + '"';
+            else if (fromDB)
+            {
+                return '"' +Sql.sql(value) + '"';
+            }
+            else
+                return '"' + Sql.sql(new String(value.getBytes("iso8859-1"), "utf8")) + '"';
         }
     }

@@ -185,7 +185,7 @@ public class DBModel {
                     result[i] = new DBEntry();
                     result[i].type = stdEntryes[i].type;
                     result[i].name = stdEntryes[i].name;
-                    result[i].setValue(rs.getObject(i + 1));
+                    result[i].setValueDB(rs.getObject(i + 1));
                 }
                 DBModel ans = new DBModel(result);
                 return ans;
@@ -221,7 +221,7 @@ public class DBModel {
                     result[i] = new DBEntry();
                     result[i].type = stdEntryes[i].type;
                     result[i].name = stdEntryes[i].name;
-                    result[i].setValue(rs.getObject(i + 1));
+                    result[i].setValueDB(rs.getObject(i + 1));
                 }
                 ans.add(new DBModel(result));
             }
